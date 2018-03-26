@@ -1,0 +1,6 @@
+#name+age
+#Fri Jan 19 20:01:49 CST 2018
+zhangsan=30
+lisi=31
+zhaoliu=20
+wangwu=36

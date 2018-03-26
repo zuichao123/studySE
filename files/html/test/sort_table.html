@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表格排序</title>
+	<link rel="stylesheet" type="text/css" href="table.css" />
+	
+	<style type="text/css">
+		th a:link,th a:visited{
+			color: #279bda;
+			text-decoration: none;
+		}
+	</style>
+
+	<script type="text/javascript">
+		var flag;
+		function sortTable(){
+			/*
+				思路：
+					1.排序就需要数组。获取需要参与排序的行对象数组。
+					2.对行数组中的每一个行的年龄单元格的数据进行比较，并完成行对象在数组中的位置置换。
+					3.将排好序的数组重新添加回表格。
+			 */
+			
+			//获取表格对象
+			var oTabNode = document.getElementById("info");
+
+			//拿所有的行对象
+			var collTrNodes = oTabNode.rows;
+
+			//定义一个临时容器，存储需要排序行对象
+			var trArr = [];
+
+			//遍历原行集合，并将需要排序的行对象存储到临时容器中
+			for(var x=1; x<collTrNodes.length; x++){
+				trArr[x-1] = collTrNodes[x];
+			}
+
+			//对临时容器排个序
+			mySort(trArr);
+
+			//将排完序的行对象添加回表格
+			if(flag){
+				for(var x=0; x<trArr.length; x++){
+
+					// alert(trArr[x].cells[1].innerHTML);
+					trArr[x].parentNode.appendChild(trArr[x]);
+				}
+				flag = false;
+			}else{
+				for(var x=trArr.length-1; x>=0; x--){
+					trArr[x].parentNode.appendChild(trArr[x]);
+				}
+				flag = true;
+			}
+
+			function mySort(arr){
+
+				//按照年龄数值进行排序，并将排序后的数值转成整数
+				for(var x=0; x<arr.length-1;x++){
+					for(var y=x+1; y<arr.length; y++){
+
+						if(parseInt(arr[x].cells[1].innerHTML) > parseInt(arr[y].cells[1].innerHTML)){
+
+							// arr[x].swapNode(arr[y]);
+							var temp = arr[x];
+							arr[x] = arr[y];
+							arr[y] = temp;
+						}
+					}
+				}
+			}
+
+		}
+	</script>
+
+</head>
+<body>
+	<table id="info">
+		<tr>
+			<th>姓名</th>
+			<th><a href="javascript:void(0)" onclick="sortTable()">年龄</a></th>
+			<th>地址</th>
+
+		</tr>
+
+		<tr>
+			<td>张三</td>
+			<td>25</td>
+			<td>北京</td>
+		</tr>
+
+		<tr>
+			<td>李四</td>
+			<td>6</td>
+			<td>河北</td>
+		</tr>
+
+		<tr>
+			<td>王五</td>
+			<td>31</td>
+			<td>河南</td>
+		</tr>
+
+		<tr>
+			<td>赵六</td>
+			<td>29</td>
+			<td>上海</td>
+		</tr>
+
+		<tr>
+			<td>旺财</td>
+			<td>10</td>
+			<td>沈阳</td>
+		</tr>
+
+		<tr>
+			<td>毕姥爷</td>
+			<td>18</td>
+			<td>辽宁</td>
+		</tr>
+
+	</table>
+</body>
+</html>

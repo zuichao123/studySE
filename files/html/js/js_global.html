@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>全局方法</title>
+</head>
+<body>
+	<script type="text/javascript" src="out.js"></script>
+	<script type="text/javascript">
+
+//		pareseInt("123");
+		/*
+		演示global的全局方法
+		 */
+		
+//		println(parseInt("123")+1);
+
+//		var val = parseInt("123abc");//val = 12;
+
+//		println("value="+val);//通过isNaN来判断结果是否非法。
+
+	
+		/*
+		 * 将指定进制格式的字符串，转成十进制。
+		 */
+		var num = parseInt("110", 2);//将2进制转成10进制。
+		println("num="+num);
+		
+		var num1 = parseInt('0x3c', 16);//将16进制转成10进制。
+		println("num1="+num1);
+
+		//将十进制转成其他进制。使用数字对象完成。
+		var num3 = new Number(6);
+		println("num3="+num3.toString(2));//将十进制转成二进制。
+		
+		var num4 = 60;
+		println("num4="+num4.toString(16));//将十进制转成十六进制。
+		
+		
+		println("<hr/>");
+		/*
+		 * js中特有的语句for in
+		 * 格式：
+		 * for(变量 in 对象){
+		 * 	  
+		 * }
+		 * 
+		 */
+		
+		var arr = [32,80,65];
+		for(i in arr){
+			println("i="+arr[i]);
+		}
+		
+		println("<hr/>");
+		
+		var numObj = new Number(4);//这种的对象不能遍历
+		for(x in numObj){
+			println(x);
+		}
+		
+		
+		
+		
+		
+		
+	</script>
+
+</body>
+</html>

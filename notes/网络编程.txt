@@ -1,0 +1,131 @@
+网络模型：
+	OSI（Open System Interconnection开放系统互联）参考模型
+	TCP/IP参考模型
+	
+网络通讯要素
+	IP地址：InetAddress
+		网络中设备的标识
+		不易记忆，可用主机名
+		本地回环地址：127.0.0.1主机名：localhost
+	端口号：
+		用于标识进程的逻辑地址，不同进程的标识
+		有效端口：0~65535，其中0~1024系统使用或保留端口
+	传输协议：
+		通讯的规则
+		常见协议：TCP传输控制协议，UDP
+			UDP：QQ视频、发信息
+				将数据及源和目的封装成数据包中，不需要建立连接
+				每个数据报的大小限制在64K内
+				无连接，是不可靠协议
+				不需要建立连接，速度快 
+				
+			TCP：打电话、下载数据
+				建立连接，形成传输数据的通道；
+				在连接中进行大数据量传输；
+				通过三次握手完成连接，是可靠协议
+				必须建立连接，效率会稍低
+				
+Socket：套接字，网络编程又称之为Socket编程。
+	就是为网络服务提供的一种机制。
+	通信的两端都有Socket。
+	网络通信其实就是Socket间的通讯。
+	数据在两个Socket间通过IO传输。
+	
+UDP传输：
+	DatagramSocket：用来发送和接收数据报包的套接字。
+		clos();关闭
+		receive();接收
+		send();发送
+	
+	DatagramPacket：用来实现无连接包投递服务。每条报文仅根据该包中包含的信息从一台机器路由到另一台机器。
+		参数中包含地址的为发送；
+		参数中不包含地址的为接收；
+		
+TCP传输：
+	Socket和ServerSocket两个对象
+		Socket：此类实现了客户端套接字（也可以就叫“套接字”），套接字时两台机器将通信的端点。
+		ServerSocket：此类实现了服务器套接字。服务器套接字等待请求通过网络传入。它基于该请求执行某些操作，然后可能向请求者返回结果。
+	建立客户端和服务器端
+	建立连接后，通过Socket中的IO流进行数据的传输
+	关闭Socket
+	同样，客户端与服务器端是两个独立的应用程序。
+	
+***********************************************************	
+	通过Socket建立对象并制定要连接的服务端主机以及端口：
+		Socket s = new Socket("10.2.1.96",9999);
+		OutputStream out = s.getOutputStream();
+		out.write("hello",getBytes());
+		s.close();
+	建立服务端需要监听一个端口
+		ServerSocket ss = new ServerSocket(9999);
+		Socket s = ss.accept();
+		InputStream in = s.getInputStream();
+		byte[] buf = new byte[1024];
+		int num = in.read(buf);
+		String str = new String(buf,0,num);
+		System.out.println(s.getInetAddress().toString()+":"+str);
+		s.close();
+		ss.close();
+		
+	
+================注意===============
+一讲到客户端、服务端，就是TCP传输
+一讲到发送端、接收端，就是UDP传输
+==================================
+	
+	最常见的客户端：
+		浏览器：IE
+	最常见的服务端：
+		Tomcat:WEB服务器
+		
+	为了了解其原理：
+	1.自定义服务端：
+		使用已有的客户的IE，了解一下客户端给服务端发了什么请求？
+		
+		发送的请求是：
+		0:0:0:0:0:0:0:1....connected
+		GET / HTTP/1.1 请求行 请求方式 /myweb/
+		Host: localhost:19090
+		Connection: keep-alive
+		Cache-Control: max-age=0
+		Upgrade-Insecure-Requests: 1
+		User-Agent: Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36
+		Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+		Accept-Encoding: gzip, deflate, sdch, br
+		Accept-Language: zh-CN,zh;q=0.8
+		
+网络结构：
+	1.C/S
+		client/server
+		特点：
+			该结构的软件，客户端和服务端都需要编写。
+			开发成本较高，维护较为麻烦。
+		好处：
+			客户端在本地可以分担一部分运算。
+	
+	2.B/S
+		browser/server				
+		特点：
+			该结构的软件，只开发服务器端，不开发客户端，因为客户端直接由浏览器取代。
+			开发成本相对低，维护更为简单。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

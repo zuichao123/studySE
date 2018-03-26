@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>调出问卷-单选按钮</title>
+
+	<style type="text/css">
+		#contentid{
+			display: none;
+		}
+
+		#no1ul{
+			list-style: none;
+			margin: 0px;
+		}
+
+		.close{
+			display: none;
+		}
+		.open{
+			display: block;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+
+		function showResult(){
+			//1.判断是否有答案被选中
+			//获取所有的no1的radio，并遍历判断checked状态。
+			var oNo1Nodes = document.getElementsByName("no1");
+			var flag = false;
+
+			var val;
+			for(var x=0; x<oNo1Nodes.length; x++){
+
+				if(oNo1Nodes[x].checked){
+					flag = true;
+				
+					val = oNo1Nodes[x].value;
+					break;
+				}
+			}
+
+			if(!flag){
+				document.getElementById("errinfo").innerHTML = "没有任何答案被选中!".fontcolor("red");
+				return;
+			}else{
+
+				document.getElementById("errinfo").className = "close";
+			}	
+
+			if(val>=1 && val<=3){
+				document.getElementById("res_1").className = "open";
+				document.getElementById("res_2").className = "close";
+			}else{
+				document.getElementById("res_1").className = "close";
+				document.getElementById("res_2").className = "open";
+			}
+		
+		}
+	</script>
+
+</head>
+<body>
+	
+	<!--
+		单选按钮演示：
+		1.是否参与调出问卷？
+		
+	-->
+
+	<!--2.性格测试。-->
+	<h2>欢迎您参与性格测试：<h2/>
+	<div>
+		<h3>第一题：</h3>
+		<span>您喜欢的水果是什么：</span>
+		<ul id="no1ul">
+			<li><input type="radio" name="no1" value="1" />葡萄</li>
+			<li><input type="radio" name="no1" value="2" />西瓜</li>
+			<li><input type="radio" name="no1" value="3" />苹果</li>
+			<li><input type="radio" name="no1" value="4" />芒果</li>
+			<li><input type="radio" name="no1" value="5" />樱桃</li>
+		</ul>
+	
+	</div>
+
+	<div>
+		<input type="button" value="查看测试结果" onclick="showResult()" />
+	
+		<span id="errinfo" close=""></span>
+		<div id="res_1" class="close">1--3分：你的性格内向并扭曲，建议...</div> 
+		<div id="res_2" class="close">4分以上：你的性格外向并分裂，建议...</div> 
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<hr/>
+	<script type="text/javascript">
+		function showContent(node){
+
+			var oDivNode = document.getElementById("contentid");
+
+			with(oDivNode.style){
+				if(node.value == 'yes'){
+					display = "block";
+				}else{
+					display = "none";
+				}
+			}
+		}
+	</script>
+
+
+
+
+
+
+
+	<!--问卷调查-->
+	<div>
+	您要参与问卷调查吗？<br/>
+	<br/>
+	<br/>
+	<input type="radio" name="wenjuan" value="yes" onclick="showContent(this)" />是
+	<input type="radio" name="wenjuan" value="no" checked="checked" onclick="showContent(this)" />否
+	</div>
+	<br/>
+	<br/>
+	<div id="contentid">
+	问卷调查内容：<BR/>
+	您的姓名：<input type="text" name=""><br/>
+	您的邮箱：<input type="text" name="">
+	</div>
+
+
+	
+</body>
+</html>

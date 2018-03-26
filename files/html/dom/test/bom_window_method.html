@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>演示window中的常见方法</title>
+</head>
+<body>
+	<!--
+		演示window中的常见方法
+	-->
+
+	<script type="text/javascript" src="E:\\Java\\jworkspace\\javastudy\\javastudy\\files\\js\\out.js"></script>
+
+	<script type="text/javascript">
+
+		//确定提示框   ===创建事件
+		function windowMethodDemo(){
+
+			// var b = confirm("你真的确定点击吗？");
+			// alert("b="+b);
+			
+			// setTimeout("alert('time out run')", 4000);//四秒钟后，弹出
+
+			timeid = setInterval("alert('interval run')", 3000);//每隔三秒后，弹出
+
+		
+		}
+		
+		//停止按钮  ====删除事件
+		function stopTime(){
+			
+			clearInterval(timeid);
+		}
+		
+		
+		//移动到坐标点
+		function windowMove(){
+			
+			// moveTo(10, 40);
+			
+			for(var x = 0; x<100; x++){
+								
+				//窗体震动
+				moveBy(20, 0); 
+				moveBy(0, 20); 
+				moveBy(-20, 0); 
+				moveBy(0, -20); 
+			}
+			
+		}
+		
+		
+		//打开一个新窗体(第一个：源第二个：新窗体 status=状态栏 toolbar=工具栏menubar=菜单栏 location=地址栏)
+		function windowOpen(){
+		
+			open("ad.html","_blank","height=200, width=200,status=yes, toolbar=yes, menubar=yes, location=yes");
+		}
+		
+		
+		
+
+	</script>
+
+
+	<input type="button" name="" value="演示window中的常见方法" onclick="windowMethodDemo()">
+	<input type="button" name="" value="stop" onclick="stopTime()">
+	<input type="button" name="" value="移动" onclick="windowMove()">
+	<input type="button" name="" value="打开窗体" onclick="windowOpen()">
+	
+
+
+
+
+
+</body>
+</html>

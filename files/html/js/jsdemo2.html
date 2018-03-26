@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>语句</title>
+</head>
+<body>
+	语句
+		<br>判断语句：
+	
+	<br>
+	<script type="text/javascript">
+		var x = 3;
+		if (4==x) {
+			alert("yes");
+		}else{
+			alert("no");
+		}
+
+
+
+		if (x>1) {
+			alert("a");
+		}else if (x>2) {
+			alert("b");
+		}else if (x>3) {
+			alert("c");
+		}else{
+			alert("d");
+		}
+
+		
+		// <br>选择语句：
+		var x = "abc";
+		switch(x){
+			case "kk":
+				alert("a");
+				break;
+			case "abc":
+				alert("b");
+				break;
+			default:
+				alert("c");
+				break;
+		}
+
+
+		//循环结构(while do while for)
+		// var x = 1;
+		// document.write("<font color='blue'>");
+		// while(x<20){
+		// 	// aler t("x="+x);
+		// 	//将数据直接写到当前页面当中
+		// 	document.write("x="+x+"<br/>");
+		// 	x++;
+		// }
+		// document.write("</font>");
+
+		// for (var i = 0; i < 3; i++) {
+		// 	document.write("i="+i+"<br/>");
+		// }
+		// 
+		// 
+		// 其他语句（
+		// break:调出选择，跳出循环）
+		// continue：用于循环语句，结束本次循环，继续下次循环。
+
+		w:for(var x =0; x<3; x++){
+			for(var y=0; y<4;y++){
+				document.write("x="+x+"<br/>");
+				// break;
+				continue w;
+			}
+		}	
+
+
+
+
+
+
+	</script>
+
+
+</body>
+</html>

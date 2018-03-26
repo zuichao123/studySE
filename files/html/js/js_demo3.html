@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>全局变量</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		/* for(var x=0; x<3; x++){//在脚本片段中定义的变量，是全局变量。
+			document.write("x="+x);
+		} */
+		
+		/* function show(){
+			var x = 7;//局部变量
+		} */
+		
+		/* document.write("xx=========="+x); */
+	
+		
+		var x = 3;//全局变量x
+		
+		function show(x){//函数局部的变量x
+			x = 9;
+		}
+		
+		document.write("x="+x);//x=3
+		
+	</script>
+	
+	<script type="text/javascript">
+	
+	/* document.write("xxx=========="+x); */
+	</script>
+	
+</body>
+</html>

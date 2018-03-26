@@ -1,0 +1,100 @@
+css时层叠样式表。
+将网页内容和显示样式进行分离，提高了显示功能。
+
+css和html是如何进行结合的呢？
+	css和html相结合的第一种方式。
+	1.每一个html标签中都有一个style样式属性。
+	2.使用style标签的方式。
+	
+	/*html链接*/
+	<link rel="stylesheet" type="text/css" href="1.css">
+
+	/*css代码导入*/
+	@import url(1.css);
+	
+	/*1.css*/
+	@import url(div.css);
+	@import url(span.css);
+	@import url(p.css);
+	
+	/*p span div.css*/
+	span{
+		background-color:#FC3;
+		color:#0c0;
+	}
+	
+	
+样式优先级：
+	由上到下，由外到内。优先级由低到高。
+	
+优先级：
+	标签选择器<类选择器<id选择器<style属性
+	
+总结css代码格式：
+	选择器名称：{属性名：属性值； 属性名：属性值；。。。；}
+	属性与属性之间用分号隔开；
+	属性与属性值直接用冒号连接；
+	如果一个属性有多个值的话，那么多个值用空格隔开。
+	
+选择器：
+	就是指定css要作用的标签，那个标签的名称就是选择器，意为：选择哪个容器。
+	选择器共有三种：
+	a)html标签名选择器，使用的就是html的标签名；
+	b)class选择器，使用的时标签中的class属性。
+	c)id选择器，使用的是标签中的id属性。
+	每一个标签都定义了class属性和id属性。用于对标签进行标识。方便对标签进行操作。
+	在定义中，多个标签的class属性值可以相同。
+	
+	而id值要唯一。因为除了给css使用，还要给JavaScript中经常用。
+	
+	id通常都是为了去标识页面中的一些特定区域使用。
+	
+	class选择器：
+	.haha{
+		background-color: #FF3;
+		color: #0c0; 
+	}
+
+	id选择器：
+	#qq{
+		background-color: #FF0;
+		color: #F00;
+	}
+	
+class选择器：
+	在标签中定义class属性并赋值，通过标签名.class值对该标签进行样式设置。
+	例子：
+	相同标签设置不同样式的时候，用class进行分区。
+	p.class_1 {color:#FF0000;}
+	
+	
+	
+b)组合选择器：
+	对多个不同选择器进行相同样式设置的时候应用此选择器。
+	p, div {color:#FF0000;}
+	<p>p标签显示段落</>
+	<div>div标签显示段落</>
+	注意：多个不同的选择器用逗号隔开。
+	
+c)伪元素选择器：
+	其实就是HTML中预先定义好的一些选择器，称为伪元素。是因为css的术语。
+	格式：标签名：伪元素。 类名  标签名。  类名   伪元素。 都可以
+	a:link 超链接未点击的状态。
+	a:visited 被访问后的状态。
+	a:hover 光标移动到超链接上的状态（未点击）。
+	a:active 点击超链接是的状态。
+	使用顺序L-V-H-A
+	p:first-line 堕落中的第一行文本。
+	p:first-letter 段落中的第一个字母。 
+	:focus 具有焦点的元素。IE6浏览器不支持。在Firefox中可以看到效果。
+	
+盒子模型：
+	边框：border
+		上border-top
+		下border-bottom
+		左border-left
+		右border-right
+	内边距：pappding
+		上。。。
+	外边距：margin
+		

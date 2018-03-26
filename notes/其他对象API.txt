@@ -1,0 +1,77 @@
+ System:类的方法和属性都是静态的
+        常见方法:
+	* long currentTimeMillis();获取当前时间的毫秒值
+	* System.out.println("hello-"+System.getProperty("line.separator")+"world");根据操作系统换行符System
+	* 获取系统的属性信息，并存储到Properties集合中;properties集合中存储的都是String类型的键和值;最好使用它自己的存储和取出的方法来完成元素的操作。
+		Properties prop = System.getProperties();
+		
+		Set<String> nameSet = prop.stringPropertyNames();
+		
+		for(String name : nameSet){
+			String value = prop.getProperty(name);
+			System.out.println(name+"::"+value);
+		}
+		
+ Runtime:没有构造方法摘要，说明该类不可以创建对象。
+ 		* 又发现还有非静态的方法。说明该类应该提供静态的返回该类对象的方法。
+ 		* 而且只有一个，说明Runtime类使用单例设计模式。
+ 	Runtime r = Runtime.getRuntime();
+	//打开notepad记事本		
+	r.exec("notepad.exe");
+		
+	//使用notepad打开c盘下的中科虹霸简介.txt文件
+	r.exec("notepad.exe c:\\中科虹霸简介.txt");
+		
+	Process p = r.exec("notepad.exe");
+	Thread.sleep(3000);
+	//杀掉进程
+	p.destroy();
+	
+Math: 提供了操作数学运算的方法。都是静态的。
+	 * ceil();返回大于参数的最小整数
+	 * floor();返回小于参数的最小整数
+	 * round();返回四舍五入的整数
+	 * pow(a,b);a的b次方
+	 * random();随机数
+
+Date类：1、将日期格式的字符串转换成日期对象
+	   * 使用的是DateFormat中的parse()方法。 
+	   2、将日期对象转换成日期格式的字符串
+	   * 使用的是DateFormat中的format方法。
+	   3、获取日期格式对象，具体是默认的风格。FULL LONG可以指定风格。
+		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
+		dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG);
+	   4、如果风格是自定定义的，如果解决呢？
+		dateFormat = new SimpleDateFormat("yyyy--MM--dd");
+		String str_date = dateFormat.format(date);
+	   5、将当前日期和时间封装成date对象
+	 */
+	public static void methodDemo_1() {
+		long time = System.currentTimeMillis();
+		//		System.out.println(time);
+		
+		Date date = new Date();//将当前日期和时间封装成date对象
+		System.out.println(date);
+		
+		//		Date date2 = new Date(15148162706900);//将指定毫秒值封装成date对象
+		//		System.out.println(date2);
+	}
+
+	/**
+	 * 日期对象和毫秒值之间的转换
+	 * 
+	 * 毫秒值-->日期对象
+	 * 	1.通过Date对象的构造方法new Date(timeMillis);
+	 *  2.还可以通过setTime设置
+	 *  因为可以通过Date对象的方法对该日期中的各个字段（年月日等）进行操作。
+	 *  
+	 *  日期对象-->毫秒值：
+	 *   1.getTime方法
+	 *   因为可以通过具体的数值进行运算。
+ 
+		
+	
+	 
+	 
+	 
+	 
