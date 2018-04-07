@@ -136,6 +136,8 @@ java中的多态性主要体现在：
 			
 			向下转型时，最好进行验证（使用instanceof），避免类转换异常。
 
+	对象在向下转型时，一定要先进行向上转型。
+
 ***
 	一个类永远不要去继承一个已经实现好的类，而只能继承抽象类或实现接口。
 ***
@@ -193,30 +195,192 @@ instanceof关键字：
 	重要提示：
 		一个类永远不要继承一个已经实现好的类，要么继承抽象类，要么实现接口，如果接口和抽象类同时都可以使用的话，那么优先使用接口，避免单继承的出现。
 				
+Object类：如果一个类没有明确继承的类，则默认继承object类。
+	
+	Object类中的主要方法：
+		public Object();构造方法
+		一个完整的类，应该覆写以下三个Object类分方法：
+		public boolean equals(Object obj);对象比较时调用
+		public int hashCode();取得Hash码
+		public String toString();对象打印时调用
+		
+		String类也是Object类的子类。
+		
+	Object是所有类的父类，则所有类的对象都可以使用Object接收，但是Object不光可以接收对象，还可以接收任意的引用数据类型（接口、数组等）。
+
+
+包装类：
+	因为java的宗旨是：一切皆对象，而八种基本数据类型不是对象，所有需要将八种数据类型包装成对象。
+		把int包装成一个类，这样就可以使用对象操作基本数据类型了。
+		
+			int		Integer
+			char	Character
+			short 	Short
+			long	Long
+			float	Float
+			double	Double
+			boolean	Boolean
+			byte	Byte
+			
+		Integer Byte Float Double Short Long都属于Number类的子类，Number类本身提供了一系列的返回以上六种基本数据类型的操作。
+			Number类是一个抽象类，主要是将数字包装类中内容变为基本数据类型。
+				主要方法如下：
+					public byte void Value();以byte形式返回指定的数值
+					public abstract double doubleValue();以double形式返回指定的数值
+					public abstract float floatValue();以float形式返回指定的数值
+					public abstract int intValue();以int形式返回指定的数值
+					public abstract long longValue();以long形式返回指定的数值
+					public short shortValue();以short形式返回指定的数值
+		
+		Character属于Object的直接子类。
+		
+		Boolean属于Object的直接子类。
+	
+	装箱及拆箱：
+		装箱：将基本数据类型变为包装类称为装箱；
+		拆箱：将包装类的类型变为基本数据类型称为拆箱。
+		
+		自动装箱：
+			Integer i = 30;
+		自动拆箱：
+			int x = i;
+	
+	包装类应用：
+		将一个全由数字组成的字符串转变成int或者float类型的数据。
+			A、Integer类（字符串转int型）
+				public static int parseInt(String s)throws NumberFormatException
+				
+			B、Float类（字符串转float型）
+				public static float parseFloat(String s)throws NumberFormatException		
+	
+		
+匿名内部类：
+	内部类：在一个类的内部还有另一个类称为内部类；
+	匿名内部类：如果一个类在整个操作过程中，只使用一次的话，就可以将其定义为匿名内部类。
+			匿名内部类实在接口及抽象类的基础上发展起来的。
+		
+异常（Exception）：	
+	导致程序中断运行的一种指令流。
+	try中捕获异常，出现异常之后的代码将不再被执行，而是跳转到相应的catch语句中执行，用于处理异常。
+	对于异常可以设置其统一的出口，使用finally完成。		
+	
+	异常类的继承结构：
+		最常用的类：Exception、Error，这两个类全都是Throwable的子类。
+		Exception：一般表示的是程序中出现的问题，可以直接使用try...catch处理。
+		Error：一般指的是JVM错误，程序中无法处理。	
+		
+		一般在输出异常信息的时候，可以直接使用System.out.println()打印异常对象。
+		也可以通过Exception提供的一个方法，public void printStackTrace()方法。
+	
+	java的异常处理机制：
+		1.一旦产生异常，则首先会产生一个异常类的实例化对象；
+		2.在try语句中对此异常进行捕捉；
+		3.产生的异常对象与catch语句中的各个异常类型进行匹配，如果匹配成功，则执行catch语句中的代码。	
+		
+	在异常处理中，捕获更粗的异常要放在捕获更细的异常之后。	
+		
+	throw和throws关键字：
+		throws关键字：
+			使用throws声明的方法表示此方法不处理异常，而交给方法的调用处进行处理。
+			格式：
+				public 返回值类型   方法名称(参数列表。。。)throws 异常类{}
+		throw关键字：
+			作用是在程序中抛出一个异常，抛出的是一个异常类的实例化对象；		
+			格式：
+				throw new Exception("coutent");
+		
+	***RuntimeException与Exception的区别？
+		在java的异常处理机制中：
+			1.如果抛出的是Exception的类型，则必须使用try...catch进行处理；
+			2.如果抛出的是RuntimeException的类型，则不是必须使用try...catch处理，一旦发生异常之后将由JVM进行处理，但是为了保证程序的健康性，建议在有可能发生异常的地方还是老实的使用try...catch进行处理。	
+	
+	自定义异常类：
+		只需要继承Exception就可以完成自定义异常类。因为在JAVA中提供的都是标准的异常类（包括一些异常信息等待），如果需要定义自己想要的异常信息的时候就可以自定义异常类。			
+		
+		
+	断言：
+		就是肯定某一个结果的返回值是正确的，如果最终此结果的返回值是错误的，则通过断言检查肯定会为用户提示错误信息。
+		格式：
+			assert Boolean表达式；
+			assert boolean表达式：详细的信息	
+		
+包及访问控制权限：
+	所谓的包实际上就是一个文件夹；
+	打包命令：
+		javac -d . 类名.java
+		javac -d . *.java
+	包的导入：
+		import 报名称.子包名称.类名称;//手工导入
+		import 报名称.子包名称.*;//JVM自动导入
+	系统常见包：	
+		java.lang
+			此包为基础包，像String这样的类就保存在此包之中；
+		java.lang.reflect
+			此包为反射机制的包，是java.lang的子包；
+		java.util
+			此包为工具包，一些常用的类库、日期操作等都在此包之中；
+		java.text
+			提供了一些文本的处理类库；
+		java.sql
+			数据库操作包，提供了各种数据库操作的类和接口；
+		java.net
+			完成网络编程；
+		java.io
+			输入、输出处理
+		java.awt
+			包含了构成抽象窗口工具集（abstract window toolkits）的多个类，这些类被用来构建和管理应用程序的图形用户界面（GUI）；
+		javax.swing
+			此包用于建立图形用户界面，此包中的组件相对于java.awt而言是轻量级组件。	
+			
+	静态导入：
+		如果一个类中的方法都是static的，则可以通过静态导入；
+		格式：
+			import static 包名.类名.*;
+
+	jar命令：
+		将所有的*.class文件压缩成一个文件交付给可以使用，这个文件就叫jar文件。
+		如果想要生成jar文件，直接使用	jdk中bin目录里的jar.exe就可以将所有的类文件进行压缩。
+		主要参数：
+			“T”：查看jar包中的内容；
+			“C”：创建新的文档；
+			“V”：生成详细的输出信息；
+			“F”：指定存档的文件名。
+		打jar包命令：
+			javac -d . 类名.java
+			jar  -cvf  打成jar包后的名称.jar  要打包的文件夹或文件
+			一个jar包如果想要使用的话，则必须配置classpath路径；
+				set classpath = .; d:\xx\xx.jar	
+					类文件所在的当前文件夹和jar包所在的目录			
+
+	访问控制权限：
+		private：不能被类的外部所看到；
+		default：可以在本包中的任意地方访问；
+		protected：包含，不同包的非子类不可以访问；
+		public：公共的，都可以访问，不受任何的限制。
+
+java命名规范：
+	类：所有单词的首字母大写；
+	方法：第一个单词的首字母小写，之后的每个单词的首字母大写；
+	属性：第一个单词的首字母小写，之后的每个单词的首字母大写；
+	包：所有单词的字母小写；
+	常量：所有单词的字母大写。
+
+多线程：
 	
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+回顾：
+		当产生了一个类之后，为了保证类中的内容不被外部直接看到，则使用private关键字；
+		但是，如果现在两个有关系的类要进行属性互相访问的话，之前只能使用getter/setter取得和设置，
+	所以为了减少私有属性的访问的麻烦，使用了内部类，但是内部类本身会破坏程序的结构。
+		为了让一个类的内容可以继续访问的时候，使用了继承的概念，但是在继承中private属性也是无法被子类
+	看到的，所以此时，为了方便子类的操作，可以将属性使用protected进行封装，这样一来外部也无法直接看到（不同包）。	
+		之后有了继承的概念，既然有了父子的关系，所有就可以使用向上或向下的转型操作，以完成多态性，但是在开发中类
+	与类之间的直接继承并不多见，而往往是继承抽象类或实现接口，当若干个操作间需要解耦合的时候就可以使用接口完成。
+		既然有内部类，则如果一个接口或抽象类的子类只使用一次，则可以将其定义为匿名内部类。
+		开发中没有包的类是绝对不存在的。
+		继承-->封装-->多态。	
 
 
 
