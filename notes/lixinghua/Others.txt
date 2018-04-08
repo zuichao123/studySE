@@ -257,7 +257,7 @@ Object类：如果一个类没有明确继承的类，则默认继承object类。
 匿名内部类：
 	内部类：在一个类的内部还有另一个类称为内部类；
 	匿名内部类：如果一个类在整个操作过程中，只使用一次的话，就可以将其定义为匿名内部类。
-			匿名内部类实在接口及抽象类的基础上发展起来的。
+			匿名内部类是在接口及抽象类的基础上发展起来的。
 		
 异常（Exception）：	
 	导致程序中断运行的一种指令流。
@@ -365,10 +365,6 @@ java命名规范：
 	包：所有单词的字母小写；
 	常量：所有单词的字母大写。
 
-多线程：
-	
-
-
 
 回顾：
 		当产生了一个类之后，为了保证类中的内容不被外部直接看到，则使用private关键字；
@@ -381,6 +377,252 @@ java命名规范：
 		既然有内部类，则如果一个接口或抽象类的子类只使用一次，则可以将其定义为匿名内部类。
 		开发中没有包的类是绝对不存在的。
 		继承-->封装-->多态。	
+
+多线程：
+	java中的多线程实现：
+		1.继承Thread类：
+			Thread类是在java.lang包中定义的，一个类只要继承了Thread类，此类就称为多线程操作类。
+			在Thread子类之中，必须明确的覆写Thread类中的run()方法，此方法为线程的主体：
+			多线程定义语法：
+				class 类名称    extends Thread{	//继承Thread类
+					属性...;					//类中定义属性
+					方法...;					//类中定义方法
+					//覆写Thread类中的run()方法，此方法时线程的主体
+					public void run(){
+						线程主体...;
+					}
+				}
+				
+			native关键字：是一个由Java调用本机操作系统函数的一个关键字。
+			
+			一个线程对象只能启动一次。
+			
+		2.实现Runnable接口：
+			在Java中也可以通过实现Runnable接口的方式实现多线程，Runnable接口中只定义了一个抽象方法；
+				public void run();
+			通过Runnable接口实现多线程：
+				class 类名称    implements Runnable{		//实现Runnable接口
+					属性...;				//类中定义属性
+					方法...;				//类中定义方法
+					public void run(){		//覆写Runnable接口里的run()方法
+						线程主体;
+					}
+				}
+				
+			利用Thread类中的可以接收Runnable接口实例的构造方法，启动线程；
+			
+			因为接口可以避免单继承，所有使用Runnable接口方式；
+			
+			Thread类也是Runnable接口的子类；
+				
+		3.Thread类和Runnable接口的区别？
+			使用Thread类在操作多线程的时候，无法达到资源共享的目的；而使用Runnable接口实现的多线程操作可以实现资源共享。
+
+		4.实现Runnable接口比继承Thread类的优点：
+			1.适合多个相同程序代码的线程去处理同一个资源；
+			2.可以避免由于单继承局限所带来的影响；
+			3.增强了程序的健壮性，代码能够被多个线程共享，代码与数据是独立的；
+			结论：
+				开发中使用实现Runnable接口是最合适的。
+				
+		5.线程的状态：
+			创建状态：准备好了一个多线程的对象：Thread t = new Thread();
+			
+			就绪状态：调用了start()方法，等待CPU进行调度；
+			
+			运行状态：执行run()方法；
+			
+			阻塞状态：暂时停止执行，可能将资源交给其他线程使用；
+		
+			终止状态：(死亡状态)：线程执行完毕了，不再使用了。
+			
+			结论：
+				实际上，线程在调用start()方法的时候不是立刻启动的，而是要等待CPU进行调度的。
+		6.总结：
+			1.进程和线程的区别，关系？
+				线程是在进程的基础上划分的；
+				线程消失了进程不会消失，进程如果消失了，则线程肯定消失。
+			2.Java实现多线程的两种方式：
+				继承Thread类
+				实现Runnable接口
+			3.线程的启动，通过start()方法完成，需要进行CPU调度，调用start()方法实际上调用的就是run()方法；
+			4，Thread类也是Runnable接口的子类，使用了代理机制完成；
+			5.在使用多线程的时候建议通过实现Runnable接口的方式实现，这样可以避免由于单继承所带来的开发局限，而且通过使用
+			  Runnable接口也可以达到资源共享的目的。
+	
+	线程的常用操作方法：
+		public Thread(Runnable target);
+			构造方法；接收Runnable接口子类对象，实例化Thread对象；
+		public Thread(Runnable target,String name);
+			构造方法；接收Runnable接口子类对象，实例化Thread对象，并设置线程名称；
+		public Thread(String name);
+			构造方法；实例化thread对象，并设置线程名称；
+		public static Thread currentThread();
+			普通方法；返回目前正在执行的线程；
+		public final String getName();
+			普通方法；返回线程的名称；
+		public final int getPriority();
+			普通方法；发挥线程的优先级；
+		public boolean isInterrupted();
+			普通方法；判断目前线程是否被中断，如果是，返回true；否则返回false；
+		public final boolean isAlive();
+			普通方法；判断线程是否在活动，如果是，返回true；否则返回false；
+		public final void join() throws InterruptedException
+			等待线程死亡；
+		public final synchronized void join(long millis)throws InterruptedException
+			等待millis毫秒后，线程死亡；
+		public void run();
+			普通方法；执行线程；
+		public final void setName(String name);
+			普通方法；设定线程名称；
+		public final void setPrioriy(int newPriority);
+			普通方法；设定线程的优先值；
+		public static void sleep(long millis)throws InterruptedException
+			普通方法；使目前正在执行的线程休眠millis毫秒；
+		public void start();
+			普通方法；开始执行线程；
+		public static void yield();
+			普通方法；将目前正在执行的线程暂停，允许其它线程执行；
+		public final void setDaemon(boolean on);
+			普通方法；讲一个线程设置成后台运行；
+		public final void setPriority(int newPriority);
+			普通方法；更改线程的优先级；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
