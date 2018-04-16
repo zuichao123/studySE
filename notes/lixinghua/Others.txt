@@ -614,7 +614,39 @@ java命名规范：
 		在设置泛型的时候，同时指定另一个泛型类型；
 					
 
-
+Java常用类库：
+	1.StringBuffer：
+		StringBuffer是使用缓冲区的，本身也是操作字符串的，但是与String类不同，String类的内容一旦声明之后不可改变，
+		改变的只是内存地址的指向，而StringBuffer中的内容是可以改变的。
+		对于StringBuffer而言，本身是一个具体的操作类，所以不能像String那样采用直接赋值的方式进行对象的实例化，必须通过构造方法完成。
+	
+		1.1 StringBuffer类的常用方法：
+			1.public StringBuffer append();
+				与String类中的“+”类似，可以向StringBuffer中追加内容，此方法可以添加任何的数据类型；
+			2.public int indexOf(String str);
+				查找指定字符串是否存在；
+			3.public int indexOf(String str,int fromIndex);
+				从指定位置开始查找指定的字符串是否存在；
+			4.public StringBuffer replace(int start,int end,String str);
+				指定内容替换；
+			5.public StringBuffer reverse();
+				指定内容反转保存；
+			6.public StringBuffer insert(int offset,String str);
+				在指定位置处加上指定字符串；
+			7.public int length();
+				求出内容长度；
+			8.public StringBuffer delete(int start,int end);
+				删除指定范围的字符串；
+			9.public String subString(int start);
+				字符串截取，指定开始点；
+			10.public String subString(int start,int end);
+				截取指定范围的字符串；
+			11.public String toString();
+				Object类继承的方法，用于将内容变为String类型。
+		
+		1.2 StringBuffer连接字符操作：
+			当一个字符串的内容需要被经常改变时就要使用StringBuffer；
+			在StringBuffer中使用append()方法，完成字符串的连接操作；
 
 
 
