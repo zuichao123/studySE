@@ -24,6 +24,14 @@ public class StringBuffersDemo3 {
 		
 		String str = buf.substring(1, 4);//字符串截取指定范围的字符串
 		
+		str = buf.delete(0, 1).toString();//删除指定范围内的内容
+		
+		if (buf.indexOf("hell")==-1) {//查找指定的内容
+			System.out.println("没有差遭到指定的内容");
+		}else{
+			System.out.println("可以查找到指定的内容");
+		}
+		
 		System.out.println(str);
 	}
 

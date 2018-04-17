@@ -615,7 +615,7 @@ java命名规范：
 					
 
 Java常用类库：
-	1.StringBuffer：
+	1.StringBuffer：在频繁修改字符串内容的时候，使用。
 		StringBuffer是使用缓冲区的，本身也是操作字符串的，但是与String类不同，String类的内容一旦声明之后不可改变，
 		改变的只是内存地址的指向，而StringBuffer中的内容是可以改变的。
 		对于StringBuffer而言，本身是一个具体的操作类，所以不能像String那样采用直接赋值的方式进行对象的实例化，必须通过构造方法完成。
@@ -644,21 +644,58 @@ Java常用类库：
 			11.public String toString();
 				Object类继承的方法，用于将内容变为String类型。
 		
-		1.2 StringBuffer连接字符操作：
 			当一个字符串的内容需要被经常改变时就要使用StringBuffer；
-			在StringBuffer中使用append()方法，完成字符串的连接操作；
 
+	2.Runtime类：
+		运行时，是一个封装JVM进程的类，每一个Java程序实际上都是启动了一个JVM进程，那么每一个JVM进程都是对应一个Runtime实例，此实例是由JVM为其实例化的。
+		此静态方法getRuntime()，直接返回一个Runtime类的实例；
 
+		Runtime类的常用方法：一旦取得实例之后，以下的方法就可以使用了。
+			public static Runtime getRuntime();
+				取得Runtime类的实例；
+			public long freeMemory();
+				返回Java虚拟机中的空闲内存量；
+			public long maxMemory();
+				返回JVM的最大内存量；
+			public void gc();
+				运行垃圾回收器，释放空间；
+			public Process exec(String command)throws IOException{}
+				执行本机命令；
+	
+		2.1 Runtime类和Process类：
+			除了观察内存使用之外，也可以直接使用Runtime类运行本机的可执行程序；
+				public Process exec(String command)throws IOException{}
+			exec()方法的返回值是Process,表示一个进程的操作类，可以通过destroy()方法毁掉一个进程。
 
+		Runtime类本身就是单态设计的一种，因为在整个jvm中只存在一个Runtime类的对象，
+		可以使用Runtime类取得jvm的系统信息，或者使用gc()方法释放掉垃圾空间，还可以使用此类运行本机的程序。
 
-
-
-
-
-
-
-
-
+	3.国际化程序：通过国际化操作，让一个程序适合各个国家的语言要求。
+		国际化操作必须通过以下三个类完成：
+			java.util.Locale;
+				用于表示一个国家语言类；
+			java.util.ResoruceBundle;
+				用于访问资源文件；
+			java.text.MessageFormat;
+				格式化资源文件的占位字符串；
+		
+		3.1 Local类：表示的是本地，实际上使用的是一个ISO编码的封装类。
+		
+		3.2 ResourceBundle：此类是专门完成属性文件读取操作的，
+			读取的时候直接指定文件名称即可（此文件名称一般不需要指定后缀，后缀统一为*.properties）,
+			可以根据Locale所指定的区域来自动选择所需要的资源文件。
+			
+			public static final ResourceBundle getBundle(String baseName);
+				此方法就是指定要操作的资源文件；此方法找到的是默认的操作系统的语言Local对象。
+			public static final ResourceBundle getBundle(String baseName,Locale locale);
+				此方法也是指定操作的资源文件，并传入Locale对象。
+			public final String getString(String key);
+				根据key取得对应的value值；
+				
+		3.3 Java国际化程序实现：
+			
+			
+			031103_20分钟
 
 
 
