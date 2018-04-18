@@ -693,10 +693,26 @@ Java常用类库：
 				根据key取得对应的value值；
 				
 		3.3 Java国际化程序实现：
+			通过Jdk的bin目录中的native2ascii.exe进行转码。
+			主要是中文就必须进行转码。
+		
+			3.3.1 处理动态文本：
+				如果资源文件中的内容是动态的，就必须在资源文件中进行一些动态文本的配置，“设置占位符”，这些符号中的内容暂时不固定，
+				而是在程序执行的时候由程序进行设置的，而要想实现这样的功能，则必须使用MessageForm类。此类在java.text包中定义的。
+				在Format类中还存在数字格式化的Format(NumberFormat)、日期格式化的Format(DateFormat)这两个类以后会介绍。
 			
+				占位符使用{数字}的形式表示，如果现在表示第一个内容“{0}”、第二个内容“{1}”一次类推。
+				
+				在MassageFormat类中主要使用的format()方法；
+					public static String format(String pattern,Object... arguments);
+				
+			3.3.2 java新特性：传入可变参数
+					public void fun(Object... args){}
 			
-			031103_20分钟
-
+			3.3.3 使用一个类替换资源文件：
+				所有的要显示的内容实际上都应该放在资源文件中，但是在Java中为了照顾部分习惯于使用类的用户，
+				所以也可以直接使用一个类来存放所有的资源文件内容，但是，此类在操作的时候就必须有一个明显的注意点，必须继承：ListResourceBundle类。
+				
 
 
 
