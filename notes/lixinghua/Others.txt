@@ -713,12 +713,30 @@ Java常用类库：
 				所有的要显示的内容实际上都应该放在资源文件中，但是在Java中为了照顾部分习惯于使用类的用户，
 				所以也可以直接使用一个类来存放所有的资源文件内容，但是，此类在操作的时候就必须有一个明显的注意点，必须继承：ListResourceBundle类。
 				
+				不管资源类还是资源文件，找的时候都是Message，那么最终找到时候是哪一个？
+					此时需要区分优先级：
+						1. Message_zh_CN.class
+						2. Message_zh_CN.properties
+						3. Message.properties
 
+	4.System类：
+		是系统提供好的类，与系统相关的属性和方法的集合在System类中所有的属性都是静态的。
 
-
-
-
-
+		常用方法：
+			public static void exit(int Status); 
+				系统推出，如果status为非0就是表示退出；
+			public Static void ge();
+				运行垃圾收集机制，调用的是Runtime类中的gc方法；
+			public static long currentTimeMillis();
+				返回以毫秒为单位的当前时间；
+			public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length);
+				数组拷贝操作；
+			public static Properties getProperties();
+				取得当前系统的全部属性；
+			public static String getProperty(String key);
+				根据键值取得属性的具体内容；
+				
+					
 
 
 
