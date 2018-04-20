@@ -725,7 +725,7 @@ Java常用类库：
 		常用方法：
 			public static void exit(int Status); 
 				系统推出，如果status为非0就是表示退出；
-			public Static void ge();
+		  *	public Static void ge();
 				运行垃圾收集机制，调用的是Runtime类中的gc方法；
 			public static long currentTimeMillis();
 				返回以毫秒为单位的当前时间；
@@ -737,25 +737,55 @@ Java常用类库：
 				根据键值取得属性的具体内容；
 				
 					
+			垃圾回收可以自动调用也可以手工调用，手工调用的时候就是调用System.gc()或者Runtime.getRuntim().gc();
+			但是，如果一个对象在回收之前需要做一些收尾的工作，则就必须覆写Object类中的finalize()方法：
+				protected void finalize() throws Throwable{}
+			在对象被回收之前进行调用，以处理对象回收前的若干操作，例如释放资源等。
 
+			Java对象的生命周期：
+				初始化-->对象实例化-->垃圾收集-->对象终结-->卸载
+	
+	5.DateFomat类：抽象类
+		是一个日期的格式化类，专门格式化日期的操作。此包在java.text.*;包中
+		在内部有可以为它实例化的方法：
+			public static final DateFormat getDateInstance();
+				得到日期的DateFormat对象；
+			public static final DateFormat getDateTimeInstance();
+				得到日期时间的DateFormat对象；
+			
+		使用DateFormat类完成Date类的转换功能：
+			public final String format(Date date);
 
+	6.SimpleDateFormat类：在Java。text;类中
+		此类的功能是完成日期的显示格式化的，例如：在开发中，可能会将一种日期格式变为另外一种日期格式，如下所示：
+			原始日期：2008-10-19 10:11:30.345
+			转换后日期：2008年10月19日 10时11分30秒345毫秒
+			
+		但是以上的两个日期中日期的数字是完全一样的，唯一不同的是日期的显示格式不同，所以要想实现这样的转换功能就必须依靠SimpleDateFormat类。
+			如果要想实现转换，则必须首先准备好一个模板，通过此模板进行日期数字的提取工作。
 
+			y：表示年，年份是四位数字，所以需要使用“yyyy”表示年；
+			M：表示月，月份是两位数字，所以需要使用“MM”表示；
+			d：表示日，日期是两位数字，所以需要使用“dd”表示；
+			H：表示时，时间是两位数字，所以需要使用“HH”表示；
+			m：表示分，分钟是两位数字，所以需要使用“mm”表示；
+			s：表示秒，秒数是两位数字，所以需要使用“ss”表示；
+			S：表毫秒，毫秒是三位数字，所以需要使用“SSS”表示。
+		
+		在SimpleDateFormat类使用的时候，必须注意的是，在构造对象时要传入匹配的模板：
+			构造方法：
+				public SimpleDateformat(String parrern);
+			转换：
+				public Date parse(String source)throws ParseException{}
+					此时取得的是全部的时间数
+			格式化：
+				public final String format(Date date);
+					将时间重新格式化成字符串显示。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		***总结：
+			1.DateFormat可以直接使用，但其本身是一个抽象类，可以根据Locale指定的区域不同得到不同的日期时间显示效果；
+			2.SimpleDateFormat类是DateFormat类的子类，一般情况下来讲DateFormat类很少会直接使用，而都是使用SimpleDateFormat类完成。
+			
 
 
 
