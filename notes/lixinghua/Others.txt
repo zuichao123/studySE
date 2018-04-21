@@ -785,16 +785,43 @@ Java常用类库：
 		***总结：
 			1.DateFormat可以直接使用，但其本身是一个抽象类，可以根据Locale指定的区域不同得到不同的日期时间显示效果；
 			2.SimpleDateFormat类是DateFormat类的子类，一般情况下来讲DateFormat类很少会直接使用，而都是使用SimpleDateFormat类完成。
+		  **3.直接使用SimpleDateFormat类取得时间会比使用Calendar类更加方便，而且不用去增加补零操作，所以在开发中如果需要取得一个日期的话，基本上都使用SimpleDateFormat类进行操作。
+
+	7.Math类和Random类：
+		Math类：表示数学操作；
+			Math类中的方法都是静态方法，直接使用“类.方法名称()”的形式调用即可
+		Random类：主要功能是产生随机数；
+			Random r = new Random();//实例化random对象
+			r.nextInt(100);//100以内的随机数
+
+	8.NumberFormat类：
+		此类的主要功能是：数字的格式化；即可以按照本地的风格习惯记性数字的显示。此类在java.text包中。
+		
+		定义格式：
+			public abstract class NumberFormat extends Format
+		
+		常用方法：
+			public static Locale[] getAvailableLocales();
+				返回所有语言环境的数组；
+			public static final NumberFormat getInstance();
+				返回当前默认语言环境的数字格式；
+			public static NumberFormat getInstance(Locale inLocale);
+				返回指定语言环境的数字格式；
+			public static final NumberFormat getCurrencyInstance();
+				返回当前默认环境的货币格式；
+			public static NumberFormat getCurrencyInstance(Locale inLocale);
+				返回指定语言环境的数字格式。
+
+		注意：
+			MessageFormat、DateFormat、NumberFormat是Format三个常用的子类，如果想要进一步完成一个好的国际化程序，
+			则肯定需要同时使用这样三个类完成，根据不同的国家显示日期，或者显示货币的形式。
+		
+		8.1 DecimalFormat类：
+			是NumberFormat类的子类；主要作用是用来格式化数字，要比直接使用NumberFormat更加方便，
+			因为，可以直接指定按用户自定义的方式进行格式化操作，与SimpleDateFormat类似，如果想要进行
+			自定义格式化操作，则必须指定格式化操作的模板。
+
 			
-
-
-
-
-
-
-
-
-
 
 
 

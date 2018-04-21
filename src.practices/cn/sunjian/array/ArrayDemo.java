@@ -1,4 +1,4 @@
-package cn.sunjian.Array;
+package cn.sunjian.array;
 
 
 class Array{
