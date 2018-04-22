@@ -821,7 +821,100 @@ Java常用类库：
 			因为，可以直接指定按用户自定义的方式进行格式化操作，与SimpleDateFormat类似，如果想要进行
 			自定义格式化操作，则必须指定格式化操作的模板。
 
+	9.BigInteger和BigDecimal：
+		操作大数：
+			操作的整型数据超过了long的话，使用BigInteger：
+			常用方法：
+				public BigInteger(String val)
+					构造方法，将一个字符串变为BigInteger类型的数值；
+				public BigInteger add(BigInteger val)	
+					加法；
+				public BigInteger subtract(BigInteger val)
+					减法；
+				public BigInteger multiply(BigInteger val)
+					乘法；
+				public BigInteger divide(BigInteger val)
+					除法；
+				public BigInteger max(BigInteger val)
+					返回两个大数中的最大值；
+				public BigInteger min(BigInteger val)
+					返回两个大数中的最小值；
+				public BigInteger[] divideAndRemainder(BigInteger val)
+					除法操作，数值的第一个元素为除法的商，第二个元素为除法的余数。
+				
+		操作小数：	
+			使用此类可以完成大的小数操作，可以进行精确的四舍五入；
+			常用方法：
+				public BigDecimal(double val)
+					构造方法，将double表示形式转换位Bigdecimal；
+				public BigDecimal(int val)
+					构造方法，将int表示的形式转换为BigDecimal；
+				public BigDecimal(String val)
+					构造方法，将字符串表示形式转换为BigDecimal；
+				public BigDecimal add(BigDecimal augend)
+					加法；
+				public BigDecimal subtract(BigDecimal subtrahend)
+					减法；
+				public BigDecimal multiply(BigDecimal multiplicand)
+					乘法；
+				public BigDecimal divide(BigDecimal divisor)
+					除法。
+		
+	10.对象克隆技术：
+		对象的复制，完整的复制一个对象，如果想要完成对象克隆的话，则肯定依靠Object类。
+		克隆方法：
+			protected Object clone()throws CloneNotsupportedException
+		以上的方法就是对象的克隆方法，如果一个对象被克隆，则必须在次类中明确的覆写此方法，但是此方法不能直接调用。
+		Cloneable是一个接口，但是在此接口中没有任何的操作方法，所以此接口实际上属于标识接口，标识一种能力。
 			
+	11.Arrays类：
+		是数组的操作类，定义在java。util包中，主要的功能可以实现数组元素的查找，数组内容的填充，排序等。
+		常用方法：
+			public static boolean equals(int[] a,int[] a2)
+				判断两个数组是否相等，此方法被重载多次，可以判断各种数据类型的数组；
+			public static void fill(int[] a,int val)
+				将指定内容填充到数组中，此方法被重载多次，可以填充各种数据类型的数组；
+			public static void sort(int[] a)
+				数组排序，此方法被重载多次，可以对各种类型的数组进行排序；
+			public static int binarySearch(int[] a,int key)
+				对排序后的数组进行检索，此方法被重载多次，可以对各种类型的数组进行检索；
+			public static String toString(int[] a)
+				输出数组信息，此方法被重载多次，可以输出各种数据类型的数组。
+				
+	12.Comparable类：比较器
+		可以直接使用java.util.Arrays类进行数组的排序操作，但对象所在的类必须实现Comparable接口，用于指定排序接口。
+		Comparable接口定义如下：
+			public interface Comparable<T>{
+				public int compareTo(T o);
+			}
+			此方法返回一个int类型的数据，但是此int的值只能是以下三种：
+				1：表示大于；
+				-1：表示小于；
+				0：表示相等。
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
