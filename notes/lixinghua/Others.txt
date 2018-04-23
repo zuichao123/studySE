@@ -1,3 +1,9 @@
+输出对象时，默认调用toString()方法；
+一个好的类，应该覆写Object类中的：
+	1.toString()方法
+	2.equals()方法
+	3.hashCode()方法
+
 				封装性
 this:代表当前对象
 	如果一个类中有多个构造方法时，可以使用this关键字调用。
@@ -881,7 +887,7 @@ Java常用类库：
 			public static String toString(int[] a)
 				输出数组信息，此方法被重载多次，可以输出各种数据类型的数组。
 				
-	12.Comparable类：比较器
+	12.Comparable接口：比较器
 		可以直接使用java.util.Arrays类进行数组的排序操作，但对象所在的类必须实现Comparable接口，用于指定排序接口。
 		Comparable接口定义如下：
 			public interface Comparable<T>{
@@ -891,13 +897,26 @@ Java常用类库：
 				1：表示大于；
 				-1：表示小于；
 				0：表示相等。
-
+		排序原理：
+			二叉树排序方法：同二叉树进行排序后，再利用中序遍历的方式把内容依次读取出来；
+			将第一个内容作为根节点保存，之后如果后面的值比根节点打，则放在根节点的左子树，如果后面的值比根节点的值小，则放在根节点的右子树。
 	
+	13.Comparator接口：比较器
+		如果一个类已经开发完成，但是在此类建立的初期并没有实现comparable接口，此时肯定是无法进行对象排序操作的，所有为了解决这样的问题，Java又定义了另一个比较器的操作接口：
+			Comparator接口定义在Java.util包中，格式如下：
+				public interface Comparator<T>{
+					public int compare(T o1,T o2);
+					boolean euqals(Object obj);
+				}
 
-
-
-
-
+		**总结：
+			在使用中尽可能的还是使用Comparable在需要排序的类上实现好此接口，而Comparator需要单独建立一个排序的类，
+			这样如果有很多的话，则排序的规则类也就会非常多，操作起来比较麻烦。
+			掌握一点：只要是对象排序，则在Java中永远是以Comparable接口为准的。
+			
+	14.观察者设计模式：
+		如果要想实现观察者模式，则必须依靠java.util包中提供的Observable和Observer接口；
+		此模式时一种Java本身的机制，不使用Observa和Observer也可以实现，只是有点麻烦。
 
 
 
