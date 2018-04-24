@@ -918,18 +918,71 @@ Java常用类库：
 		如果要想实现观察者模式，则必须依靠java.util包中提供的Observable和Observer接口；
 		此模式时一种Java本身的机制，不使用Observa和Observer也可以实现，只是有点麻烦。
 
+	15.正则表达式：
+		1.掌握正则表达式的作用；
+		2.掌握正则表达式的匹配模式；
+		3.掌握Pattern类和Matcher类的使用；
+		4.掌握String类对正则的支持
+		
+		正则表达式可以方便的对数据进行匹配，可以执行更加复杂的字符串验证、拆分、替换功能。
+		
+	  **Pattern类和Matcher类：
+			Pattern类的主要作用是：进行正则规范（如：“[0-9]”）的编写；	
+			Matcher类主要是执行规范，验证一个字符串是否符合其规范；	
+		
+			常用的正则规则1：
+				\\			表示反斜线(\)字符	
+				\t			表示制表符
+				\n			表示换行
+				[abc]		字符a、b或c
+				[^abc]		除了a、b、c之外的任意字符
+				[a-zA-Z0-9]	表示由字符、数字组成
+				\d			表示数字
+				\D			表示非数字（[^0-9]）
+				\w			表示字母、数字、下划线
+				\W			表示非字母、数字、下划线
+				\s			表示所有空白字符（换行、空格等）
+				\S			表示所有非空白字符
+				^			行的开头
+				$			行的结尾
+				.			匹配除换行符之外的任意字符
 
+			常用的正则规则2：数量表示（X表示一组规范）
+				X			必须出现一次
+				X?			可以出现0次或一次
+				X*			可以出现0次、1次或多次
+				X+			可以出现1次或多次
+				X{n}		必须出现n次
+				X{n,}		必须出现n次以上
+				X{n,m}		必须出现n~m次
+				
+			常用的正则规则3：逻辑运算符（X、Y表示一组规范）
+				XY			X规范后跟着Y规范
+				X | Y		X规范或Y规范
+				(X)			作为一个捕获组规范
 
-
-
-
-
-
-
-
-
-
-
+			以上的正则，如果要驱动起来，必须依靠Pattern类和Matcher类。
+			常用方法：
+				public static Pattern compile(String regex)
+					指定好操作的正则；
+				public Matcher matcher(CharSequence input)
+					可以为Matcher类实例化；
+				public String[] split(CharSequence input)
+					拆分；
+			Matcher类常用方法：
+				public boolean matches()
+					执行验证；
+				public String replaceAll(String replacement)
+					字符串替换；与String类中相同；
+					
+			例如：验证一个字符串是否是合法的日期格式：
+				日期：		1983		07			27
+				格式：		四位数字		两位数字		两位数字
+				正则：		\d{4}		\d{2}		\d{2}
+		  
+		  **String类对正则的支持：
+		  	
+			
 
 
 
