@@ -981,12 +981,41 @@ Java常用类库：
 				正则：		\d{4}		\d{2}		\d{2}
 		  
 		  **String类对正则的支持：
-		  	
+		  		如果有时候发现一个字符串无法按照指定的字符拆分的话，则需要使用“\”转义，转义的时候两个“\”表示一个“\”.
 			
+			**总结：
+				1.使用正则可以方便的完成字符串的验证、拆分、替换等复杂功能；
+				2.在开发中一般会直接使用String类中提供好的正则支持，而往往很少直接使用Pattern类或Matcher类；
+				3.在一些正则应用的时候，对于一些敏感的字符要进行转义操作。
 
-
-
-
+		16.定时调度：
+			定时调度：每当一段时间，程序会自动执行，称为定时调用；
+					        使用定时调度，则必须保证程序始终运行着，相当于定时调度是在程序外又启动了一个新的线程。
+			Timer类：
+				是一种线程设施，可以用来实现在某一时间或某一段时间后，安排某一个任务执行一次，或定期重复执行。该功能要与TimerTask配合使用。
+				TimerTask类用来实现由Timer安排的一次或重复执行的某一个任务。
+				
+				每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则可能会延迟后续任务的执行，而这些后续的任务就有可能堆在一起，等到该任务完成后才能快速连续执行。
+				
+				常用方法：
+					public Timer()
+						构造，用来创建一个计时器并启动该计时器；
+					public void cancel()
+						用来终止该计时器，并放弃所有已安排的任务，对当前正在执行的任务没有影响；
+					public int purge()
+						将所有已经取消的任务移除，一般用来释放内存空间；
+					public void schedule(TimerTask task,Date time)
+						安排一个任务在指定的时间执行，如果已经超过该时间，则立即执行；
+					public void schedule(TimerTask task,Date firstTime,long period)
+						安排一个任务在指定的时间执行，之后以固定的频率（单位：毫秒）重复执行；
+					public void schedule(TimerTask task,long delay)
+						安排一个任务在一段时间（单位：毫秒）后执行；
+					public void schedule(TimerTask task,long delay,ling period)
+						安排一个任务在一段时间（单位：毫秒）后执行，之后以固定的频率（单位：毫秒）重复执行；
+					public void scheduleAtFixedRate(TimerTask task,Date firstTime,long period)
+						安排一个任务在指定的时间执行，之后以近似固定的频率（单位：毫秒）重复执行；
+					public void scheduleAtFixedRate(TimerTask task,long delay,long period)
+						安排一个任务在一段时间（单位：毫秒）后执行，之后以近似固定的频率（单位：毫秒）重复执行。
 
 
 
