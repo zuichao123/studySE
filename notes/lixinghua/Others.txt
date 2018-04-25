@@ -988,43 +988,84 @@ Java常用类库：
 				2.在开发中一般会直接使用String类中提供好的正则支持，而往往很少直接使用Pattern类或Matcher类；
 				3.在一些正则应用的时候，对于一些敏感的字符要进行转义操作。
 
-		16.定时调度：
-			定时调度：每当一段时间，程序会自动执行，称为定时调用；
-					        使用定时调度，则必须保证程序始终运行着，相当于定时调度是在程序外又启动了一个新的线程。
-			Timer类：
-				是一种线程设施，可以用来实现在某一时间或某一段时间后，安排某一个任务执行一次，或定期重复执行。该功能要与TimerTask配合使用。
-				TimerTask类用来实现由Timer安排的一次或重复执行的某一个任务。
-				
-				每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则可能会延迟后续任务的执行，而这些后续的任务就有可能堆在一起，等到该任务完成后才能快速连续执行。
-				
-				常用方法：
-					public Timer()
-						构造，用来创建一个计时器并启动该计时器；
-					public void cancel()
-						用来终止该计时器，并放弃所有已安排的任务，对当前正在执行的任务没有影响；
-					public int purge()
-						将所有已经取消的任务移除，一般用来释放内存空间；
-					public void schedule(TimerTask task,Date time)
-						安排一个任务在指定的时间执行，如果已经超过该时间，则立即执行；
-					public void schedule(TimerTask task,Date firstTime,long period)
-						安排一个任务在指定的时间执行，之后以固定的频率（单位：毫秒）重复执行；
-					public void schedule(TimerTask task,long delay)
-						安排一个任务在一段时间（单位：毫秒）后执行；
-					public void schedule(TimerTask task,long delay,ling period)
-						安排一个任务在一段时间（单位：毫秒）后执行，之后以固定的频率（单位：毫秒）重复执行；
-					public void scheduleAtFixedRate(TimerTask task,Date firstTime,long period)
-						安排一个任务在指定的时间执行，之后以近似固定的频率（单位：毫秒）重复执行；
-					public void scheduleAtFixedRate(TimerTask task,long delay,long period)
-						安排一个任务在一段时间（单位：毫秒）后执行，之后以近似固定的频率（单位：毫秒）重复执行。
+	16.定时调度：
+		定时调度：每当一段时间，程序会自动执行，称为定时调用；
+				        使用定时调度，则必须保证程序始终运行着，相当于定时调度是在程序外又启动了一个新的线程。
+		Timer类：
+			是一种线程设施，可以用来实现在某一时间或某一段时间后，安排某一个任务执行一次，或定期重复执行。该功能要与TimerTask配合使用。
+			TimerTask类用来实现由Timer安排的一次或重复执行的某一个任务。
+			
+			每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则可能会延迟后续任务的执行，而这些后续的任务就有可能堆在一起，等到该任务完成后才能快速连续执行。
+			
+			常用方法：
+				public Timer()
+					构造，用来创建一个计时器并启动该计时器；
+				public void cancel()
+					用来终止该计时器，并放弃所有已安排的任务，对当前正在执行的任务没有影响；
+				public int purge()
+					将所有已经取消的任务移除，一般用来释放内存空间；
+				public void schedule(TimerTask task,Date time)
+					安排一个任务在指定的时间执行，如果已经超过该时间，则立即执行；
+				public void schedule(TimerTask task,Date firstTime,long period)
+					安排一个任务在指定的时间执行，之后以固定的频率（单位：毫秒）重复执行；
+				public void schedule(TimerTask task,long delay)
+					安排一个任务在一段时间（单位：毫秒）后执行；
+				public void schedule(TimerTask task,long delay,ling period)
+					安排一个任务在一段时间（单位：毫秒）后执行，之后以固定的频率（单位：毫秒）重复执行；
+				public void scheduleAtFixedRate(TimerTask task,Date firstTime,long period)
+					安排一个任务在指定的时间执行，之后以近似固定的频率（单位：毫秒）重复执行；
+				public void scheduleAtFixedRate(TimerTask task,long delay,long period)
+					安排一个任务在一段时间（单位：毫秒）后执行，之后以近似固定的频率（单位：毫秒）重复执行。
 
+			schedule()与scheduleAtFixedRate()方法的区别：
+				两者的区别在于重复执行任务时，对于时间间隔出现延迟的情况处理；
+					schedule()方法的执行时间间隔永远是固定的，如果之前出现了延迟的情况，之后也会继续按照设定好的间隔来执行；
+					scheduleAtFixedRate()方法可以根据出现的延迟时间自动调整下一次间隔的执行时间。
+			
+			如果一个Timer类要想调度程序的话，则必须使用TimerTask的子类；TimerTask类是一个抽象类，如果要使用该类，需要自己建立一个类来继承此类，并实现其中的抽象方法。
+			
+		TimerTask类：
+			常用方法：只有run()方法必须是抽象的，其他的方法非比抽象；
+				public void cancel()
+					用来终止此任务，如果该任务只执行一次且还没有执行，则永远不会再执行，如果为重复执行任务，则之后不会再执行（如果任务正在执行，则执行完后不会再执行）。
+				public void run()
+					该任务所要执行的具体操作，该方法为引入的接口Runnable中的方法，子类需要覆写此方法；
+				public long scheduledExecutionTime()
+					返回最近一次要执行该任务的时间（如果正在执行，则返回此任务的执行安排时间），一般在run()方法中调用，用来判断当前是否有足够的时间来执行完成该任务。
+						
+		**总结：
+			一般在web的开发中此内容比较有用，因为要维护一个容器不关闭才可以一直定时操作下去。
 
-
-
-
-
-
-
-
+***IO：
+	1.File类：
+		唯一表示与文件本身有关的类就是File类，使用File类可以创建或删除文件等常用操作。
+		常用构造方法：
+			public File(String pathname)	
+				实例化File类的时候，必须设置好路径。直接根据路径，找到文件。
+		常用方法和常量：
+			public static final String pathSeparator
+				常量，表示路径的分隔符（windows是：“;”） ；根据操作系统自动选择
+			public static final String separator
+				常量，表示路径的分隔符（windows是：“\”）；根据操作系统自动选择
+			public boolean createNewFile()throws IOException
+				创建新文件；
+			public boolean delete()
+				删除文件；
+			public boolean exists()
+				判断文件是否存在；
+			public boolean isDirectory()
+				判断给定的路径是否是一个目录；
+			public long length()
+				返回文件的大小；
+			public String[] list()
+				列出指定目录的全部内容，只是列出了名称；
+			public File[] listFiles()
+				列出指定目录的全部内容，会列出路径；
+			public boolean mkdir()
+				创建一个目录；
+			public boolean renameTo(File dest)				
+				为已有的文件重新命名。
+		
 
 
 
