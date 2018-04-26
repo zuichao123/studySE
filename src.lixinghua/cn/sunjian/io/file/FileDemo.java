@@ -1,4 +1,4 @@
-package cn.sunjian.io;
+package cn.sunjian.io.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,12 +29,12 @@ public class FileDemo {
 		
 		deleteFile(file);//删除文件
 		
-		createAndDelete(file);
+		createAndDelete(file);//综合创建、删除文件操作
 		
 	}
 
 	
-
+	
 	private static void createAndDelete(File file) {
 
 		if (file.exists()) {//如果文件已经存在，就删除

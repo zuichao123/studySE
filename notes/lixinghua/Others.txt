@@ -1066,13 +1066,39 @@ Java常用类库：
 			public boolean renameTo(File dest)				
 				为已有的文件重新命名。
 		
+		*对于文件的后缀，是可有可无的。
+		
+		*list()和listFiles()的区别：
+			如果现在给出了一个目录，则可以直接列出目录中的内容，但是列出的方法File类中存在两个：
+				1.已字符串数组的形式返回：public String[] list()
+					列出全部的名字，包括文件夹的名字或者文件的名字等；
+				2.已File数组的形式返回：public File[] listFiles()
+					列出的是一个完整的路径，对应程序来说容易操作；
+		
+	2.RandomAccessFile类：对文件的内容进行操作。
+		主要功能：完成随机读取功能，可以读取指定位置的内容。
 
-
-
-
-
-
-
+		常用方法：
+			public RandomAccessFile(File file,String mode)throws FileNotFoundException
+				构造，接收File类的对象，指定操作路径，但是在设置时需要设置模式，“r”：只读、“w”：只写、“rw”：读写；
+			public RandomAccessFile(String name,String mode)throws FileNotFoundException
+				构造，不再使用File类对象表示文件，而是直接输入了一个固定的文件路径；
+			public void close()throws IOException
+				关闭操作；
+			public int read(byte[] b)throws IOException
+				将内容读取到一个byte数组之中；
+			public final byte readByte()throws IOException
+				读取一个字节；
+			public final int readInt()throws IOException
+				从文件中读取整形数据；
+			public void seek(long pos)throws IOException
+				设置读指针的位置；
+			public final void writeBytes(String s)throws IOException
+				将一个字符串写入到文件之中，按字节的方式处理；
+			public final void writeInt(int v)throws IOException
+				将一个int型数据写入文件，长度为4位；
+			public int skipBytes(int n)	throws IOException
+				指针跳过多少个字节。
 
 
 
