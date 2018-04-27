@@ -1,3 +1,4 @@
+trim()：去空格；
 输出对象时，默认调用toString()方法；
 一个好的类，应该覆写Object类中的：
 	1.toString()方法
