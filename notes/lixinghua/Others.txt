@@ -1101,25 +1101,80 @@ Java常用类库：
 			public int skipBytes(int n)	throws IOException
 				指针跳过多少个字节。
 
+	3.字符流和字节流
+		目标：
+			1.掌握流的概念；
+				在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。
+				流中保存的实际上全都是字节文件。
+			2.掌握字节流与字符流的作用；
+			3.掌握文件的标准操作步骤；
+			4.掌握字节与字符操作的区别。
 
+		字节流中输出数据主要是使用OutputStream完成，输入使用的是InputStream完成；
+		字符流中输出数据主要是使用Writer类完成，输入使用的Reader类完成。
 
+		***操作流程：
+			A.使用File类打开一个文件；
+			B.通过字节流或字符流的子类，指定输出的位置；
+			C。进行读/写操作；
+			D.关闭输入/输出流。
+			
+		使用File类操作的时候一定要注意路径的问题，注意分隔符；
+		实际上四个操作类都是抽象类。
 
+		3.1 字节流
+			字节流主要是操作byte类型数据，以byte数据为准，主要操作类就是OutputStream字节输出流、InputStream字节输入流。
 
+			Byte是字节，肯定使用字节流操作，所有的数据基本上都可以直接使用byte数组表示出来。
 
+			3.1.1 OutputStream类：字节输出流(写)
+				是整个io包中字节输出流的最大父类，此类的定义如下：
+					public abstract class OutputStream extends Object implements Closeable, Flushable
+				此类是一个抽象类，想要使用此类则必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream类实例化。
 
+				常用方法：
+					public void close()throws IOException
+						关闭输出流；
+					public void flush()throws IOException
+						刷新缓冲区；
+					public void write(byte[] b)throws IOException
+						将一个byte数组写入数据流；
+					public void write(byte[],int off,int len)throws IOException
+						将一个指定范围的byte数组写入数据流；
+					public abstract void write(int b)throws IOException
+						将一个字节数据写入数据流。
+				
+				3.1.1.1 FileOutputStream类：		
+					要想使用以上方法，必须使用子类实例化，此时使用了子类FileOutputStream，此类的构造方法如下：
+						public FileOutputStream(File file)throws FileNotFoundException
+					
+					**追加内容：
+						之前所有的操作中，如果重新执行程序，则肯定覆盖文件中的已有的内容，那么此时可以通过FileOutputStream向文件中追加内容；
+						FileOutputStream的另一个构造方法：
+							public FileOutputStream(File file,boolean append)throws FileNotFoundException
+						在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。
 
-
-
-
-
-
-
-
-
-
-
-
-
+			3.1.2 InputStream类：字节输入流(读)
+				通过InputStream从文件中吧内容读取进来；此类的定义如下：
+					public abstract class InputStream extends Object implements Closeable
+				与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，子类肯定是FileInputStream。
+				
+				常用方法：
+					public int available()throws IOException
+						可以取得输入文件的大小；
+					public void close()throws IOException
+						关闭输入流；
+					public abstract int read()throws IOException
+						读取内容，以数字的方式读取；
+					public int read(byte[] b)throws IOException
+						将内容读到byte数组之中，同时返回读入的个数。
+				
+				3.1.2.1 FileInputStream类：
+					要想使用以上方法，必须使用子类实例化，此时使用了子类FileInputStream，此类的构造方法如下：
+						public FileInputStream(File file)throws FileNotFoundException
+					
+					当不知道读取内容有多大的时候，使用判断内容结尾是否还有内容的方式：-1；（-1代表没有内容了，不等于-1代表还有内容）
+					
 
 
 
