@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 /**
  * 
- * java.io练习：
+ * java.io练习：字节输出流（写）
  * 
  * 		OutputStream类练习
  * 

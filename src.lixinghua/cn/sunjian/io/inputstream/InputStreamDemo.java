@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * InputStream类操作练习：输入流（就是读取操作）
+ * InputStream类操作练习：字节输入流（就是读取操作）
  * 
  * 		读取内容：直接使用byte数组的方式完成
  * 		

@@ -9,7 +9,7 @@ import java.io.OutputStream;
  * 
  * java.io练习：
  * 
- * 		OutputStream类练习
+ * 		OutputStream类练习：字节输出流（写）
  * 
  * 			在文件的末尾追加内容；
  * 			并且追加内容时，换行；\r\n
