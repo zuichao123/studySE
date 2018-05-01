@@ -13,8 +13,8 @@ this:代表当前对象
 		2.至少有一个构造方法是不用this()调用的，否则会出现构造方法递归调用。
 		
 static关键字：声明全局属性。
-	最好实用类名调用。
-	实用static不能调用非static的方法和属性。
+	最好使用类名调用。
+	使用static不能调用非static的方法和属性。
 		因为：static可以在对象没有实例化时就可以调用，而非static属性和方法，在实例化后才能被调用。
 
 java中到底有多少个内存区域呢？
@@ -1316,7 +1316,7 @@ Java常用类库：
 			
 			一般来讲，如果要想输出错误信息的时候最好不要使用System.out而是直接使用System.err。
 	
-			System.in实际上是一个键盘输入流，其本身是InputStream类型的对象。利用此方式从键盘读取数据的。
+			System.in实际上是一个键盘的字节输入流，其本身是InputStream类型的对象。利用此方式从键盘读取数据的。
 
 		8.2 输入、输出重定向：
 			System类也可以改变System.in的输入流来源，以及System.out和System.err两个输出流的输出位置。
@@ -1344,32 +1344,130 @@ Java常用类库：
 			public String readLine()throws IOException
 				一次性从缓冲区中将内容全部读取进来。
 		
+	10.Scanner类：
+		在jdk1.5之后java提供了专门的输入数据类，此类可以完成BufferedReader类的功能。
+		也可以方便的对输入数据进行验证。此类放在java.util包中。
+		常用方法：
+			public Scanner(File source)throws FileNotFoundException
+				构造，从文件中接收内容；
+			public Scanner(Inputstream source)
+				构造，从指定的字节输入流中接收内容；
+			public boolean hasNext(Pattern pattern)
+				判断输入的数据是否符合指定的正则标准；
+			public boolean hasNextInt()
+				判读输入的是否是整数；
+			public boolean hasNextFloat()
+				判断输入的是否是小数；
+			public String next()
+				接收内容；
+			public String next(Pattern pattern)
+				接收内容，进行正则验证；
+			public int nextInt()
+				接收数字；
+			public float nextFloat()
+				接收小数；
+			public Scanner useDelimiter(String pattern)
+				设置读取的分隔符。
+	
+	**11.数据操作流：
+		目标：1.掌握DataOutputStream和DataInputStream的作用
+			2.可以使用DataOutputStream和DataInputStream写入和读取数据。
+				
+		在IO包中，提供了两个与平台无关的数据操作流：
+			数据输出流：DataOutputStream
+			数据输入流：DataInputStream
+		通常数据输出流会按照一定的格式将数据输出，再通过数据输入流按照一定的格式将数据读入。
+		
+		DataOutputStream类：
+			是Outputstream类的子类，此类的定义如下：
+				public class DataOutputStream extends FilterOutputStream implements DataOutput
+			此类继承自FileOutputStream类（FilterOutputStream是OutputStream类的子类）同时实现了DataOutput接口，在DataOutput接口定义了一系列的写入各种数据的方法。
 
+		使用DataOutputStream写入的数据，要使用DataInputStream读取。
+			
+		DataInputStream类：
+			是InputStream类的子类，专门负责读取使用DataOutputStream输出的数据，此类的定义如下：
+				public class DataInputStream extends FilterInputStream implements DataInput
+			此类继承自FilterInputStream（FilterInputStream是InputStream的子类），同时实现DataInput接口，在DataInput接口中定义了一系列的读入各种数据的方法。
 
+	12.合并流：SequenceInputStream类：
+		主要功能是将两个文件的内容合并成一个文件，主要操作的是内容。
+		常用方法：
+			public SequenceInputStream(InputStream s1,InputStream s2)
+				构造，使用两个输入流对象实例化本类对象；
+			public int available()throws IOException
+				返回文件大小。
+	13.压缩流：
+		本章目标：
+			1.了解压缩流的主要作用；
+			2.了解javaIO支持的三种压缩格式；
+			3.掌握ZipOutputStream、ZipFile、ZipInputStream三个类的作用。
+		
+		ZIP文件格式的输入输出流：
+			Zip是一种较为常见的压缩形式，在java中要想实现zip的压缩需要导入java.util.zip包，
+			可以使用此包中的ZipFile、ZipOutputStream、ZipInputStream、ZipEntry几个类完成操作。
+		
+		JAR及GZIP文件格式的压缩输入、输出流：
+			在java.io中，不仅可以实现ZIP压缩格式的输入、输出，也可以实现JAR及GZIP文件格式的压缩：
+				JAR压缩的支持类保存在java.util.jar包中，常用类有如下几个：
+					JAR压缩输出流：JarOutputStream；
+					JAR压缩输入流：JarInputStream；
+					JAR文件：JARFile；
+					JAR实体：JAREntry
+				GZIP是用于UNIX系统的文件压缩，在Linux中经常会使用到*.gz的文件，就是了GZIP格式，
+				GZIP压缩的支持类保存在java.util.zip包中，常用类有如下几个：
+					GZIP压缩输出流：GZIPOutputStream
+					GZIP压缩输入流：GZIPInputStream
 
+		ZipEntry类：实体；
+			在每一个压缩文件中都会存在多个子文件，那么这每一个的子文件在JAVA中就使用ZipEntry表示。
+			常用方法：
+				public ZipEntry(String name)
+					构造，创建对象并指定要创建的ZipEntry名称；
+				public boolean isDirectory()
+					判断此ZipEntry是否是目录；
+		
+		1.ZipOutputStream类：压缩文件和文件夹（完成Zip格式输出）；
+			如果要想完成一个文件或文件夹的压缩，要使用ZipOutputStream类完成，此类是OutputStream类的子类。	
+			常用方法：
+				public ZipOutputStream(OutputStream out)
+					构造，创建新的Zip输出流；
+				public void putNextEntry(ZipEntry e)throws IOException
+					设置每一个ZipEntry对象；
+				public void setComment(String comment)
+					设置Zip文件的注释。
+					
+			*在压缩文件中每一个压缩的内容都可以用一个ZipEntry表示，所以在进行压缩之前必须通过putNextEntry设置一个ZipEntry即可。
 
+			*压缩文件夹：	
+				在实现的时候应该列出文件夹中的全部内容，并把每一个内容设置成ZipEntry的对象，保存到文件之中。
 
+		2.ZipFile类：解压缩文件；
+			是一个专门表示压缩文件的类；在java中，每一个压缩文件都可以使用ZipFile表示，
+			还可以使用ZipFile根据压缩后的文件名称找到每一个压缩文件中的ZipEntry并将其进行解压缩操作。
+			常用方法：
+				public ZipFile()throws ZipExceptionIOException
+					构造，根据File类实例化ZipFile对象；
+				public ZipEntry getEntry(String name)
+					根据名称找到其对应的ZipEntry；
+				public InputStream getInputStream(ZipEntry entry)throws IOException
+					根据ZipEntry取得InputStream实例；
+				public String getName()
+					得到压缩文件的路径名称。
+			
+			ZipFile类在实例化的时候必须接收File类实例，File类实例指向的是一个压缩的*zip文件。
+			
+		3.ZipInputStream类：解压缩文件夹；
+			结合ZipFile类就可以完成压缩文件夹的功能；
+			ZipFile对象可以找到每一个ZipEntry的输入流。但是ZipInputStream并不能得到每一个输入流，所以需要使用ZipFile，
+			但是ZipInputStream在取得每一个ZipEntry的时候，不需要每一个ZipEntry的名称。
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		小结：
+			1.压缩文件中的每一个压缩实体都使用ZipEntry保存，一个压缩文件中可能包含一个或多个的ZipEntry对象；
+			2.在java中可以进行zip、jar、gz三种格式的压缩支持，操作流程基本上一样；
+			3.ZipOutputStream可以进行压缩的输出，但是输出的位置不一定是文件所在的位置；
+			4.ZipFile表示每一个压缩文件，可以得到每一个压缩实体的输入流；
+			5.ZipInputStream可以得到每一个实体，但是却无法得到每一个实体的输入流。
 
 
 
