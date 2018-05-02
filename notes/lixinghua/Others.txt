@@ -1469,8 +1469,37 @@ Java常用类库：
 			4.ZipFile表示每一个压缩文件，可以得到每一个压缩实体的输入流；
 			5.ZipInputStream可以得到每一个实体，但是却无法得到每一个实体的输入流。
 
-
-
+	14.回退流：PushBackInputStream类：
+		在JavaIO中所有的数据都是采用顺序的读取方式，即：对于一个输入流来讲都是采用从头到尾顺序读取的，如果在输入流中某个不需要的内容被读取进来，则只能通过程序将这些不需要内容处理掉，
+		为了解决这样的问题，在Java中提供了一种回退输入流（PushbackInputStream、PushbackReader），可以把读取进来的某些数据重新退回输入流的缓冲区之中。
+		常用方法：
+			public void unread(int b) 
+          		推回一个字节：将其复制到推回缓冲区之前。
+			public void unread(byte[] b, int off, int len) 
+        		  推回 byte 数组的某一部分：将其复制到推回缓冲区之前。
+        	public void unread(byte[] b) 
+          		推回一个 byte 数组：将其复制到推回缓冲区之前。
+      		public long skip(long n) 
+       			   从此输入流中跳过并丢弃 n 个数据字节。
+       		pubic int read() 
+        		  从此输入流中读取下一个数据字节。 
+ 			public int read(byte[] b, int off, int len) 
+         		 从此输入流将最多 len 个数据字节读入 byte 数组。 
+          
+	15.字符编码：
+		*Java中常见的几种编码：ISO8859-1、GBK/GB2312、Unicode、UTF；
+			ISO8859-1编码：
+				属于单字节编码，最多只能表示0~255的字符范围，主要在英文上应用；
+			GBK/GB2312编码：
+				中文的国标编码，专门用来表示汉字，是双字节编码；
+			Unicode编码：
+				Java中就是使用此编码方式，也是最标准的一种编码，是使用16进制表示的编码。但此编码不兼容ISO8859-1编码。
+			UTF编码：
+				由于Unicode不支持ISO8859-1编码，而且容易占用更多的空间，而且对于英文字母也需要使用两个字节编码，这样使用Unicode不便于传输和存储，因此产生了UTF编码，UTF编码兼容了ISO8859-1编码，
+				同时也可以用来表示所有的语言字符，不过UTF编码是不定长编码，每一个字符的长度从1~6个字节不等，一般在中文网页中使用此编码，因为这样可以节省空间。
+				
+		*得到本机的编码显示：使用System类可以取得与系统相关的信息，那么直接使用此类就可以找到系统的默认编码，使用如下方法：
+			public static Properties getProperty()
 
 
 
