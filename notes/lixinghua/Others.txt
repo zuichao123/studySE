@@ -1501,14 +1501,39 @@ Java常用类库：
 		*得到本机的编码显示：使用System类可以取得与系统相关的信息，那么直接使用此类就可以找到系统的默认编码，使用如下方法：
 			public static Properties getProperty()
 
+	16.对象序列化和反序列化：
+		一个对象产生之后实际上是在内存中为其开辟了一个存储空间，方便存储信息。
+		对象序列化，就是把一个对象变为二进制的数据流的一种方法，通过对象序列化可以方便的实现对象的传输或存储。
+		如果一个类的对象想被序列化，则对象所在的类必须实现，以下标识接口（标识具备了 某种能力）：
+			public interface Serializable{}
+		一个类不能平白无故的被序列化。
 
-
-
-
-
-
-
-
+		*对象的序列化和反序列化：
+			要想完成对象的输入或输出，还必须依靠对象输出流（ObjectOutputStream）和对象输入流（ObjectInputStream）；
+			使用对象输出流输出序列化对象的步骤，有时也称为序列化，而使用对象输入流读入对象的过程，有时也称为反序列化。
+		
+		*到底序列化了哪些东西呢？
+			所有的对象拥有各自的属性，但是有些方法是公共的，所以序列化对象的时候实际上序列化的就是属性。
+		
+		16.1对象（序列化）输出流：ObjectOutputStream类：
+			一个对象如果要想进行输出，则必须使用ObjectOutputStream类，此类定义如下：
+				public class ObjectOutputStream extends OutputStream implements ObjectOutpt,ObjectStreamConstants
+			常用方法：
+				public ObjectOutputStream(OutputStream out)throws IOException	
+					构造，传入输出的对象；
+				public final void writeObject(Object obj)throws IOException
+					输出对象；
+			此类的使用形式与PrintStream类非常的相似，在实例化时也需要传入一个OutputStream的子类对象，之后根据传入的OutputStream子类的对象不同，输出的位置也不同。		
+			
+		16.2对象（反序列化）输入流：ObjectInputStream类：
+			使用ObjectInputStream可以直接把被序列化好的对象反序列化回来，此类定义格式如下：
+				public class ObjectInputStream extends InputStream implements ObjectInput,ObjectStreamConstants
+			常用方法：
+				public ObjectInputStream(InputStream in)throws IOException
+					构造，传入输入的对象；
+				public final Object readObject()throws IOException,ClassNotFoundException
+					从指定位置读取对象；
+			此类也是InputStream的子类，与PrintStream类的使用类似，此类同样需要接受InputStream类的实例才可以实例化。
 
 
 
