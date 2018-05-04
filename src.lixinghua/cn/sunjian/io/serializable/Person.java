@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;//JDK版本验证
-	private String name;
+	private transient String name;//使用transient关键字声明的属性，可以不被序列化
 	private int age;
 	
 	public Person(String name,int age){

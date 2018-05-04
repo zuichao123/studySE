@@ -33,7 +33,8 @@ public class SerializableDemo2 implements Serializable {
 		
 		ois.close();//关闭对象输入流
 		
-		System.out.println(""+temp.toString());//打印内容
+		System.out.println(temp);
+//		System.out.println(""+temp.toString());//打印内容
 
 	}
 

@@ -1501,7 +1501,7 @@ Java常用类库：
 		*得到本机的编码显示：使用System类可以取得与系统相关的信息，那么直接使用此类就可以找到系统的默认编码，使用如下方法：
 			public static Properties getProperty()
 
-	16.对象序列化和反序列化：
+	16.对象序列化和反序列化：对象的传输或存储；
 		一个对象产生之后实际上是在内存中为其开辟了一个存储空间，方便存储信息。
 		对象序列化，就是把一个对象变为二进制的数据流的一种方法，通过对象序列化可以方便的实现对象的传输或存储。
 		如果一个类的对象想被序列化，则对象所在的类必须实现，以下标识接口（标识具备了 某种能力）：
@@ -1535,11 +1535,38 @@ Java常用类库：
 					从指定位置读取对象；
 			此类也是InputStream的子类，与PrintStream类的使用类似，此类同样需要接受InputStream类的实例才可以实例化。
 
-
-
-
-
-
+		16.3手工序列化：Externalizable接口：
+			被serializable接口声明的类其对象的内容都将被序列化，如果现在用户希望可以自己制定序列化的内容，则可以让一个类实现Externalizable接口，此接口定义如下：
+				public interface Externalizable extends Serializable{
+					public void writeExternal(ObjectOutput out)throws IOException
+						//写入操作；
+					public void readExternal(ObjectInput in)throws IOException,ClassNotFoundException
+						//读取操作；
+				}
+				
+			**在使用Externalizable接口的时候需要在被序列化的类中定义一个无参构造，因为此接口在进行反序列化的时候，会先使用类中无参构造方法为其进行实例化，之后再将内容分别设置到属性之中。
+		
+		16.4关键字transient：
+			在序列化操作的时候，如果某个属性不希望被序列化下来，则可以直接使用transient关键字声明
+			
+		16.5序列化一组对象：
+			对象输出时只提供了一个对象的输出操作（writeObject(Object obj)）并没有提供多个对象的输出，所以如果现在要同时序列化多个对象的时候就可以使用对象数组进行操作，因为数组属于引用数据类型，所以可以直接使用Object类型进行接收。
+		
+		*小结：
+			Externalizable接口与Serializable接口实现序列化的区别：
+				1.实现复杂度：
+					Serializable：实现简单，Java对其有内建支持；
+					Externalizable：实现复杂，由开发人员自己完成；
+				2.执行效率：
+					Serializable：所有对象由Java统一保存，性能较低；
+					Externalizable：开发人员决定哪个对象保存，可能的速度提升；
+				3.保存信息：
+					Serializable：保存时占用空间大；
+					Externalizable：部分存储，可能的空间减少。
+			
+			在开发中使用Serializable接口时最多的。
+			transient + Serilizable接口完全可以取代Externalizable接口。
+			如果要保存多个对象时，则最好使用对象数组形式完成；问题：保存的数据有限，所以为了解决这样的问题，Java中引入了类集框架解决数组的存储限制问题。
 
 
 
