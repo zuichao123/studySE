@@ -16,11 +16,16 @@ public class FileDemo4 {
 
 		File file = new File("c:"+File.separator+"users\\jack\\desktop\\2");//实例化File类对象
 		
-		if(file.isDirectory()){
-			System.out.println(file.getPath()+"：是目录");
+		if (file.exists()) {			
+			if(file.isDirectory()){
+				System.out.println(file.getPath()+"：是目录");
+			}else {
+				System.out.println(file.getPath()+"：不是目录");
+			}
 		}else {
-			System.out.println(file.getPath()+"：不是目录");
+			System.out.println("目标不存在！");
 		}
+		
 		
 	}
 

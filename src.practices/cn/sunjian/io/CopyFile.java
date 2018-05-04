@@ -29,7 +29,7 @@ public class CopyFile {
 
 		if (args.length != 2) {
 			System.out.println("输入的参数不正确！");
-			System.out.println("例如：java copy 源文件    目标文件");
+			System.out.println("例如：java CopyFile 源文件    目标文件");
 			System.exit(1);//系统退出
 		}
 		

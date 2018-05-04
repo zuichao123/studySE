@@ -7,7 +7,7 @@ import java.io.IOException;
 /**
  * 内存操作流：ByteArrayInputStream和ByteArrayOutputStream
  * 
- * 		练习：将一个大写字符串变成小写字符串，来连续内存操作流
+ * 		练习：将一个大写字符串变成小写字符串，来练习内存操作流
  * 
  * @author jack
  *
