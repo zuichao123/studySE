@@ -75,15 +75,36 @@ java类集：
 				Queue接口：队列接口；
 				SortedSet接口：可以对集合中的数据进行排序；
 		
+	2.List接口：
+		本章目标：
+			1.掌握List接口与Collection接口的关系；
+			2.掌握List接口的常用子类：ArrayList、Vector；
+			3.掌握ArrayList与Vector类的区别；
 		
+		List接口是Collection接口的子接口，List接口中可以存放任意的数据。而且在List接口中内容是允许重复的。
+		定义格式：
+			public interface List<E> extends Collection<E>	
+		常用（扩展）方法：
+			public void add(int index, E element)
+				在指定位置增加元素；
+			public boolaen addAll(int index, Collection<? extends E> c)
+				在指定位置增加一组元素；
+			E get(int index)
+				返回指定位置的元素；
+			public int indexOf(Object o)
+				查找指定元素的位置；
+			public int lastIndexOf(Object o)
+				从后向前查找指定元素的位置；
+			public ListIterator<E> listIterator()
+				为ListIterator接口实例化；
+			public E remove(int index)
+				按指定的位置删除元素；
+			public List<E> subList(int fromIndex, int toIndex)
+				取出集合中的子集合；
+			public E set(int index, E element)
+				替换指定位置的元素；
 		
-		
-		
-		
-		
-		
-		
-		
+		031302_03:46分钟
 		
 		
 		
