@@ -11,8 +11,9 @@ import java.io.Serializable;
 /**
  * 对象序列化和反序列化操作练习
  * 
- * 		反序列化：
- * 			对象输入流：ObjectIntputStream练习
+ * 		序列化+反序列化：一组对象
+ * 			对象输入流：ObjectInputStream练习
+ * 			对象输出流：ObjectOutputStream练习
  * 
  * @author jack
  *
@@ -30,7 +31,7 @@ public class SerializableDemo3 implements Serializable {
 		Person[] person = {new Person("张三",30),new Person("李四", 31),new Person("王五", 32)};
 		ser(person);
 		
-		Object o[] = desr();
+		Object[] o = desr();
 		
 		for(int i=0;i<o.length;i++){
 			Person p = person[i];

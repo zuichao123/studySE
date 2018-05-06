@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 对象序列化和反序列化操作练习
  * 
- * 		序列化：
+ * 		序列化：一个对象
  * 			对象输出流：ObjectOutputStream练习
  * 
  * @author jack

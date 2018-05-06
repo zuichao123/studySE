@@ -1,0 +1,535 @@
+***IO：
+	1.File类：
+		唯一表示与文件本身有关的类就是File类，使用File类可以创建或删除文件等常用操作。
+		常用构造方法：
+			public File(String pathname)	
+				实例化File类的时候，必须设置好路径。直接根据路径，找到文件。
+		常用方法和常量：
+			public static final String pathSeparator
+				常量，表示路径的分隔符（windows是：“;”） ；根据操作系统自动选择
+			public static final String separator
+				常量，表示路径的分隔符（windows是：“\”）；根据操作系统自动选择
+			public boolean createNewFile()throws IOException
+				创建新文件；
+			public boolean delete()
+				删除文件；
+			public boolean exists()
+				判断文件是否存在；
+			public boolean isDirectory()
+				判断给定的路径是否是一个目录；
+			public long length()
+				返回文件的大小；
+			public String[] list()
+				列出指定目录的全部内容，只是列出了名称；
+			public File[] listFiles()
+				列出指定目录的全部内容，会列出路径；
+			public boolean mkdir()
+				创建一个目录；
+			public boolean renameTo(File dest)				
+				为已有的文件重新命名。
+		
+		*对于文件的后缀，是可有可无的。
+		
+		*list()和listFiles()的区别：
+			如果现在给出了一个目录，则可以直接列出目录中的内容，但是列出的方法File类中存在两个：
+				1.已字符串数组的形式返回：public String[] list()
+					列出全部的名字，包括文件夹的名字或者文件的名字等；
+				2.已File数组的形式返回：public File[] listFiles()
+					列出的是一个完整的路径，对应程序来说容易操作；
+		
+	2.RandomAccessFile类：对文件的内容进行操作。
+		主要功能：完成随机读取功能，可以读取指定位置的内容。
+
+		常用方法：
+			public RandomAccessFile(File file,String mode)throws FileNotFoundException
+				构造，接收File类的对象，指定操作路径，但是在设置时需要设置模式，“r”：只读、“w”：只写、“rw”：读写；
+			public RandomAccessFile(String name,String mode)throws FileNotFoundException
+				构造，不再使用File类对象表示文件，而是直接输入了一个固定的文件路径；
+			public void close()throws IOException
+				关闭操作；
+			public int read(byte[] b)throws IOException
+				将内容读取到一个byte数组之中；
+			public final byte readByte()throws IOException
+				读取一个字节；
+			public final int readInt()throws IOException
+				从文件中读取整形数据；
+			public void seek(long pos)throws IOException
+				设置读指针的位置；
+			public final void writeBytes(String s)throws IOException
+				将一个字符串写入到文件之中，按字节的方式处理；
+			public final void writeInt(int v)throws IOException
+				将一个int型数据写入文件，长度为4位；
+			public int skipBytes(int n)	throws IOException
+				指针跳过多少个字节。
+
+	3.字符流和字节流：
+		目标：
+			1.掌握流的概念；
+				在程序中所有的数据都是以流的方式进行传输或保存的，程序需要数据的时候要使用输入流读取数据，而当程序需要将一些数据保存起来的时候，就要使用输出流完成。
+				流中保存的实际上全都是字节文件。
+			2.掌握字节流与字符流的作用；
+			3.掌握文件的标准操作步骤；
+			4.掌握字节与字符操作的区别。
+
+		字节流中输出数据主要是使用OutputStream完成，输入使用的是InputStream完成；
+		字符流中输出数据主要是使用Writer类完成，输入使用的Reader类完成。
+
+		***操作流程：
+			A.使用File类打开一个文件；
+			B.通过字节流或字符流的子类，指定输出的位置；
+			C。进行读/写操作；
+			D.关闭输入/输出流。
+			
+		使用File类操作的时候一定要注意路径的问题，注意分隔符；
+		实际上四个操作类都是抽象类。
+
+		3.1 字节流：
+			字节流主要是操作byte类型数据，以byte数据为准，主要操作类就是OutputStream字节输出流、InputStream字节输入流。
+
+			Byte是字节，肯定使用字节流操作，所有的数据基本上都可以直接使用byte数组表示出来。
+
+			3.1.1 OutputStream类：字节输出流(写)
+				是整个io包中字节输出流的最大父类，此类的定义如下：
+					public abstract class OutputStream extends Object implements Closeable, Flushable
+				此类是一个抽象类，想要使用此类则必须通过子类实例化对象，那么如果现在要操作的是一个文件，则可以使用：FileOutputStream类。通过向上转型之后，可以为OutputStream类实例化。
+
+				常用方法：
+					public void close()throws IOException
+						关闭输出流；
+					public void flush()throws IOException
+						刷新缓冲区；
+					public void write(byte[] b)throws IOException
+						将一个byte数组写入数据流；
+					public void write(byte[],int off,int len)throws IOException
+						将一个指定范围的byte数组写入数据流；
+					public abstract void write(int b)throws IOException
+						将一个字节数据写入数据流。
+				
+				3.1.1.1 FileOutputStream类：		
+					要想使用以上方法，必须使用子类实例化，此时使用了子类FileOutputStream，此类的构造方法如下：
+						public FileOutputStream(File file)throws FileNotFoundException
+					
+					**追加内容：
+						之前所有的操作中，如果重新执行程序，则肯定覆盖文件中的已有的内容，那么此时可以通过FileOutputStream向文件中追加内容；
+						FileOutputStream的另一个构造方法：
+							public FileOutputStream(File file,boolean append)throws FileNotFoundException
+						在构造方法中，如果将append的值设置为true，则表示在文件的末尾追加内容。
+
+			3.1.2 InputStream类：字节输入流(读)
+				通过InputStream从文件中吧内容读取进来；此类的定义如下：
+					public abstract class InputStream extends Object implements Closeable
+				与OutputStream类一样，InputStream本身也是一个抽象类，必须依靠其子类，如果现在是从文件中读取，子类肯定是FileInputStream。
+				
+				常用方法：
+					public int available()throws IOException
+						可以取得输入文件的大小；
+					public void close()throws IOException
+						关闭输入流；
+					public abstract int read()throws IOException
+						读取内容，以数字的方式读取；
+					public int read(byte[] b)throws IOException
+						将内容读到byte数组之中，同时返回读入的个数。
+				
+				3.1.2.1 FileInputStream类：
+					要想使用以上方法，必须使用子类实例化，此时使用了子类FileInputStream，此类的构造方法如下：
+						public FileInputStream(File file)throws FileNotFoundException
+					
+					*判断标志位：
+						当不知道读取内容有多大的时候，使用判断内容结尾是否还有内容的方式：-1；（-1代表没有内容了，不等于-1代表还有内容）
+					
+		3.2字符流：
+			在程序中一个字符等于2个字节，那么JAVA提供了Reader、Write两个专门操作字符流的类；
+			
+			3.2.1字符输出流 Write类：（写）
+				Write本身是一个字符流的输出类，此类的定义如下：
+					public abstract class Write extends Object implements Appendable,Closeable,Flushable
+				此类本身也是一个抽象类，如果要想使用此类，则肯定要使用其子类，此时如果是向文件中写入内容，所以应该使用FileWrite的子类。
+					FileWrite类的构造方法定义如下：
+						public FileWrite(File file)throws IOException	
+				常用方法：
+					public abstract void close()throws IOException
+						关闭输出流；
+					public void  write(String str)throws IOException
+						将字符串输出；
+					public void write(char[] cbuf)throws IOException
+						将字符数组输出；
+					public abstract void flush()throws IOException
+						强制性清空缓存。
+						
+					字符流操作比字节流的操作好在一点上：就是可以直接输出字符串了，不用再像之前那样进行转换操作了。
+
+					使用字符流，依然是覆盖之前已有内容，如果想要追加，添加true。
+			
+			3.2.2字符输入流Reader：（读） 
+				Reader是使用字符的方式从文件中取出数据，Reader类的定义如下：
+					public abstract class Reader extends Object implements Readable,Closeable
+				Reader本身也是抽象类，如果现在要从文件中读取内容，则可以直接使用FileReader子类。
+					FileReader类 的构造方法如下：
+						public FileReader(File file)throws FileNotFoundException
+
+				常用方法：
+					public abstract void close()throws IOException
+						关闭输出流；
+					public int read()throws IOException
+						读取单个字符；
+					public int read(char[] cbuf)throws IOException
+						将内容读到字符数组之中，返回读入的长度；
+						
+		*****字节流和字符流的区别：
+			字节流在操作的时候本身是不会用到缓冲区（内存）的，是与文件本身直接操作的，而字符流在操作的时候是使用到缓冲区的。
+				字节流：程序-->直接操作文件
+				字符流：程序-->数据先放在缓存之中，再从缓存写入文件
+			在所有的硬盘上保存文件或是进行传输的时候都是以字节的方式进行的，所使用字节的操作时最多的。
+	
+	*重点掌握。
+	*4.字节流和字符流的转换：字节-字符转换流
+		OutputStreamWrite和InputStreamReader
+			在整个IO包中，实际上就是分为字节流和字符流，但是除了这两个流之外，还存在了一组字节流-字符流的转换类。
+		
+		  4.1 OutputStreamWriter：写
+			       是Write的子类，将输出的字符流变为字节流，即：将一个字符流的输出对象变为字节流的输出对象；
+			  OutputStreamWriter中接收的类型是OutputStream，只要是字节输出流都可以使用字符的形式操作。
+			
+		  4.2 InputStreamReader：读
+			       是Reader的子类，讲输入的字节流变为字符流，即：将一个字节流的输入对象变为字符流的输入对象。
+			  InputStreamReader中接受的类型是InputStream，只要是字节输入流都可以使用字符的输入流操作。
+		
+	*5.内存操作流：ByteArrayInputstream和ByteArrayOutputStream
+		之前所讲解的程序中，输出和输入都是从文件中来的，当然，也可以将输出的位置设置在内存之上。此时就要使用ByteArrayInputStream、ByteArrayOutputStream类来完成输入、输出功能了。
+		ByteArrayInputstream：
+			主要完成将内容写入到内存之中；
+			常用方法：
+				public ByteArrayInputStream(byte[] buf)
+					将全部的内容写入到内存中；
+				public ByteArrayInputStream(byte[] buf,int offset,int length)
+					将指定范围的内容写入到内存之中。
+		ByteArrayOutputStream：
+			主要完成将内存中的数据输出。就是从内存中写出数据。
+			常用方法：
+				public ByteArrayOutputStream()
+					创建对象；
+				public void write(int b)
+					将内容从内存中输出。
+		
+		内存输出流在Java开发中也是经常用到的。重点掌握。
+		
+	*6.管道流：
+		管道流的主要作用是：可以进行两个线程间的通讯，分为管道输出流（PipedOutputStream）和管道输入流（PipedInputStream）；
+		如果要想进行管道输出，则必须把输出流连接在输入流之上，在PipedOutputStream类上有如下的一个方法用于连接管道：
+			public void connect(PipedInputStream snk)throws IOException
+			如果要连接输入和输出，就必须使用此方法。
+	
+	*7.打印流：
+		打印流是输出信息最方便的类，主要包含字节打印流（PrintStream），和字符打印流（PrintWriter）。
+		打印流提供了非常有用的打印功能，可以打印任何的数据类型，例如：小数、整数、字符串等。
+
+		常用方法：
+			public PrintStream()throws FileNotFountException
+				通过一个File对象实例化PrintStream类；
+			public PrintStream(OutputStream out)
+				接收OutputStream对象，实例化PrintStream类；
+			public PrintStream printf(Locale l,String format,Object... args)
+				根据指定的Locale进行格式化输出；
+			public PrintStream printf(String format,Object... args)
+				根据本地环境格式化输出；
+			public void print(boolean b)
+				此方法被重载很多次，输出任意数据；
+			public void println(boolean b)
+				此方法被重载很多次，输出任意数据后换行。
+
+		其实，就是将FileOutputStream类的功能包装了一下。
+
+		在JDK1.5之后，Java又对PrintStream类进行了扩充，增加了格式化的输出方式，直接使用printf()方法就可以完成操作，但是在进行格式化输出的时候需要指定其输出的数据类型。
+			1.	%s	表示内容为字符串；
+			2.	%d	表示内容为整数；
+			3.	%f	表示内容为小数；
+			4.	%c	表示内容为字符。
+
+		*本章总结：
+			PrintStream可以方便的完成输出的功能；
+			在以后的输出中基本上都是使用PrintStream完成，因为比较方便；
+			PrintStream属于装饰设计模式。
+
+	*8.System类对IO的支持：
+		本章目标：
+			1.掌握System类对IO的三种支持；
+				System.out
+				System.err
+				System.in
+			2.掌握System.out及System.err的区别；
+			3.掌握输入、输出重定向。
+	
+		8.1 System表示系统类，实际上Java中System类也对IO给予了一定的支持。
+			System类的常量：
+				public static final PrintStream.out
+					对应系统标准输出，一般是显示器；
+				public static final PrintStream.err
+					错误信息输出；
+				public static final InputStream.in
+					对应着标准输入，一般是键盘。
+			
+			使用System.out输出的时候就是将输出的位置定义在了显示器之中。
+			FileOutputStream是定位在文件里，而System.out是定位在屏幕上。
+			PrintStream就是OutputStream的子类。
+	
+			System.out和System.err都是PrintStream的实例化对象，两者都可以输出信息，前者时将信息显示给用户看，是正常的信息显示；
+			后者正好相反是不希望用户看到的，会直接在后台打印，是专门显示错误的。
+			
+			一般来讲，如果要想输出错误信息的时候最好不要使用System.out而是直接使用System.err。
+	
+			System.in实际上是一个键盘的字节输入流，其本身是InputStream类型的对象。利用此方式从键盘读取数据的。
+
+		8.2 输入、输出重定向：
+			System类也可以改变System.in的输入流来源，以及System.out和System.err两个输出流的输出位置。
+			常用方法：
+				public static void setOut(PrintStream out)
+					重定向“标准”输出流；
+				public static void setErr(PrintStream err)
+					重定向“标准”错误输出流；(一般不建议重定向，不希望用户看到)
+				public static void setIn(InputStream in)
+					重定向“标准”输入流。
+			对于重定向操作，基本上都是在System.out上使用，以把信息展现给用户观看。
+
+	***9.BufferedReader类：
+		Buffer：表示缓冲区的，之前的StringBuffer缓冲区中的内容可以更改，可以提高效率。
+		如果要想接收任意长度的数据，而且避免乱码产生，就可以使用BufferReader。
+		BufferedReader是从缓冲区之中读取内容，所有的输入的字节数据都将放在缓冲区之中。
+		实例化格式如下：
+			BufferedReader buf = null;
+			buf = new BufferedReader(new InputStreamReader(System.in));
+			将字符流放到缓冲区之中；
+			将字节流转换为字符流。
+		常用方法：
+			public BufferedReader(Reader in)
+				构造，接收一个Reader类的实例；
+			public String readLine()throws IOException
+				一次性从缓冲区中将内容全部读取进来。
+		
+	10.Scanner类：
+		在jdk1.5之后java提供了专门的输入数据类，此类可以完成BufferedReader类的功能。
+		也可以方便的对输入数据进行验证。此类放在java.util包中。
+		常用方法：
+			public Scanner(File source)throws FileNotFoundException
+				构造，从文件中接收内容；
+			public Scanner(Inputstream source)
+				构造，从指定的字节输入流中接收内容；
+			public boolean hasNext(Pattern pattern)
+				判断输入的数据是否符合指定的正则标准；
+			public boolean hasNextInt()
+				判读输入的是否是整数；
+			public boolean hasNextFloat()
+				判断输入的是否是小数；
+			public String next()
+				接收内容；
+			public String next(Pattern pattern)
+				接收内容，进行正则验证；
+			public int nextInt()
+				接收数字；
+			public float nextFloat()
+				接收小数；
+			public Scanner useDelimiter(String pattern)
+				设置读取的分隔符。
+	
+	**11.数据操作流：
+		目标：1.掌握DataOutputStream和DataInputStream的作用
+			2.可以使用DataOutputStream和DataInputStream写入和读取数据。
+				
+		在IO包中，提供了两个与平台无关的数据操作流：
+			数据输出流：DataOutputStream
+			数据输入流：DataInputStream
+		通常数据输出流会按照一定的格式将数据输出，再通过数据输入流按照一定的格式将数据读入。
+		
+		DataOutputStream类：
+			是Outputstream类的子类，此类的定义如下：
+				public class DataOutputStream extends FilterOutputStream implements DataOutput
+			此类继承自FileOutputStream类（FilterOutputStream是OutputStream类的子类）同时实现了DataOutput接口，在DataOutput接口定义了一系列的写入各种数据的方法。
+
+		使用DataOutputStream写入的数据，要使用DataInputStream读取。
+			
+		DataInputStream类：
+			是InputStream类的子类，专门负责读取使用DataOutputStream输出的数据，此类的定义如下：
+				public class DataInputStream extends FilterInputStream implements DataInput
+			此类继承自FilterInputStream（FilterInputStream是InputStream的子类），同时实现DataInput接口，在DataInput接口中定义了一系列的读入各种数据的方法。
+
+	12.合并流：SequenceInputStream类：
+		主要功能是将两个文件的内容合并成一个文件，主要操作的是内容。
+		常用方法：
+			public SequenceInputStream(InputStream s1,InputStream s2)
+				构造，使用两个输入流对象实例化本类对象；
+			public int available()throws IOException
+				返回文件大小。
+	13.压缩流：
+		本章目标：
+			1.了解压缩流的主要作用；
+			2.了解javaIO支持的三种压缩格式；
+			3.掌握ZipOutputStream、ZipFile、ZipInputStream三个类的作用。
+		
+		ZIP文件格式的输入输出流：
+			Zip是一种较为常见的压缩形式，在java中要想实现zip的压缩需要导入java.util.zip包，
+			可以使用此包中的ZipFile、ZipOutputStream、ZipInputStream、ZipEntry几个类完成操作。
+		
+		JAR及GZIP文件格式的压缩输入、输出流：
+			在java.io中，不仅可以实现ZIP压缩格式的输入、输出，也可以实现JAR及GZIP文件格式的压缩：
+				JAR压缩的支持类保存在java.util.jar包中，常用类有如下几个：
+					JAR压缩输出流：JarOutputStream；
+					JAR压缩输入流：JarInputStream；
+					JAR文件：JARFile；
+					JAR实体：JAREntry
+				GZIP是用于UNIX系统的文件压缩，在Linux中经常会使用到*.gz的文件，就是了GZIP格式，
+				GZIP压缩的支持类保存在java.util.zip包中，常用类有如下几个：
+					GZIP压缩输出流：GZIPOutputStream
+					GZIP压缩输入流：GZIPInputStream
+
+		ZipEntry类：实体；
+			在每一个压缩文件中都会存在多个子文件，那么这每一个的子文件在JAVA中就使用ZipEntry表示。
+			常用方法：
+				public ZipEntry(String name)
+					构造，创建对象并指定要创建的ZipEntry名称；
+				public boolean isDirectory()
+					判断此ZipEntry是否是目录；
+		
+		1.ZipOutputStream类：压缩文件和文件夹（完成Zip格式输出）；
+			如果要想完成一个文件或文件夹的压缩，要使用ZipOutputStream类完成，此类是OutputStream类的子类。	
+			常用方法：
+				public ZipOutputStream(OutputStream out)
+					构造，创建新的Zip输出流；
+				public void putNextEntry(ZipEntry e)throws IOException
+					设置每一个ZipEntry对象；
+				public void setComment(String comment)
+					设置Zip文件的注释。
+					
+			*在压缩文件中每一个压缩的内容都可以用一个ZipEntry表示，所以在进行压缩之前必须通过putNextEntry设置一个ZipEntry即可。
+
+			*压缩文件夹：	
+				在实现的时候应该列出文件夹中的全部内容，并把每一个内容设置成ZipEntry的对象，保存到文件之中。
+
+		2.ZipFile类：解压缩文件；
+			是一个专门表示压缩文件的类；在java中，每一个压缩文件都可以使用ZipFile表示，
+			还可以使用ZipFile根据压缩后的文件名称找到每一个压缩文件中的ZipEntry并将其进行解压缩操作。
+			常用方法：
+				public ZipFile()throws ZipExceptionIOException
+					构造，根据File类实例化ZipFile对象；
+				public ZipEntry getEntry(String name)
+					根据名称找到其对应的ZipEntry；
+				public InputStream getInputStream(ZipEntry entry)throws IOException
+					根据ZipEntry取得InputStream实例；
+				public String getName()
+					得到压缩文件的路径名称。
+			
+			ZipFile类在实例化的时候必须接收File类实例，File类实例指向的是一个压缩的*zip文件。
+			
+		3.ZipInputStream类：解压缩文件夹；
+			结合ZipFile类就可以完成压缩文件夹的功能；
+			ZipFile对象可以找到每一个ZipEntry的输入流。但是ZipInputStream并不能得到每一个输入流，所以需要使用ZipFile，
+			但是ZipInputStream在取得每一个ZipEntry的时候，不需要每一个ZipEntry的名称。
+
+		小结：
+			1.压缩文件中的每一个压缩实体都使用ZipEntry保存，一个压缩文件中可能包含一个或多个的ZipEntry对象；
+			2.在java中可以进行zip、jar、gz三种格式的压缩支持，操作流程基本上一样；
+			3.ZipOutputStream可以进行压缩的输出，但是输出的位置不一定是文件所在的位置；
+			4.ZipFile表示每一个压缩文件，可以得到每一个压缩实体的输入流；
+			5.ZipInputStream可以得到每一个实体，但是却无法得到每一个实体的输入流。
+
+	14.回退流：PushBackInputStream类：
+		在JavaIO中所有的数据都是采用顺序的读取方式，即：对于一个输入流来讲都是采用从头到尾顺序读取的，如果在输入流中某个不需要的内容被读取进来，则只能通过程序将这些不需要内容处理掉，
+		为了解决这样的问题，在Java中提供了一种回退输入流（PushbackInputStream、PushbackReader），可以把读取进来的某些数据重新退回输入流的缓冲区之中。
+		常用方法：
+			public void unread(int b) 
+          		推回一个字节：将其复制到推回缓冲区之前。
+			public void unread(byte[] b, int off, int len) 
+        		  推回 byte 数组的某一部分：将其复制到推回缓冲区之前。
+        	public void unread(byte[] b) 
+          		推回一个 byte 数组：将其复制到推回缓冲区之前。
+      		public long skip(long n) 
+       			   从此输入流中跳过并丢弃 n 个数据字节。
+       		pubic int read() 
+        		  从此输入流中读取下一个数据字节。 
+ 			public int read(byte[] b, int off, int len) 
+         		 从此输入流将最多 len 个数据字节读入 byte 数组。 
+          
+	15.字符编码：
+		*Java中常见的几种编码：ISO8859-1、GBK/GB2312、Unicode、UTF；
+			ISO8859-1编码：
+				属于单字节编码，最多只能表示0~255的字符范围，主要在英文上应用；
+			GBK/GB2312编码：
+				中文的国标编码，专门用来表示汉字，是双字节编码；
+			Unicode编码：
+				Java中就是使用此编码方式，也是最标准的一种编码，是使用16进制表示的编码。但此编码不兼容ISO8859-1编码。
+			UTF编码：
+				由于Unicode不支持ISO8859-1编码，而且容易占用更多的空间，而且对于英文字母也需要使用两个字节编码，这样使用Unicode不便于传输和存储，因此产生了UTF编码，UTF编码兼容了ISO8859-1编码，
+				同时也可以用来表示所有的语言字符，不过UTF编码是不定长编码，每一个字符的长度从1~6个字节不等，一般在中文网页中使用此编码，因为这样可以节省空间。
+				
+		*得到本机的编码显示：使用System类可以取得与系统相关的信息，那么直接使用此类就可以找到系统的默认编码，使用如下方法：
+			public static Properties getProperty()
+
+	16.对象序列化和反序列化：对象的传输或存储；
+		一个对象产生之后实际上是在内存中为其开辟了一个存储空间，方便存储信息。
+		对象序列化，就是把一个对象变为二进制的数据流的一种方法，通过对象序列化可以方便的实现对象的传输或存储。
+		如果一个类的对象想被序列化，则对象所在的类必须实现，以下标识接口（标识具备了 某种能力）：
+			public interface Serializable{}
+		一个类不能平白无故的被序列化。
+
+		*对象的序列化和反序列化：
+			要想完成对象的输入或输出，还必须依靠对象输出流（ObjectOutputStream）和对象输入流（ObjectInputStream）；
+			使用对象输出流输出序列化对象的步骤，有时也称为序列化，而使用对象输入流读入对象的过程，有时也称为反序列化。
+		
+		*到底序列化了哪些东西呢？
+			所有的对象拥有各自的属性，但是有些方法是公共的，所以序列化对象的时候实际上序列化的就是属性。
+		
+		16.1对象（序列化）输出流：ObjectOutputStream类：
+			一个对象如果要想进行输出，则必须使用ObjectOutputStream类，此类定义如下：
+				public class ObjectOutputStream extends OutputStream implements ObjectOutpt,ObjectStreamConstants
+			常用方法：
+				public ObjectOutputStream(OutputStream out)throws IOException	
+					构造，传入输出的对象；
+				public final void writeObject(Object obj)throws IOException
+					输出对象；
+			此类的使用形式与PrintStream类非常的相似，在实例化时也需要传入一个OutputStream的子类对象，之后根据传入的OutputStream子类的对象不同，输出的位置也不同。		
+			
+		16.2对象（反序列化）输入流：ObjectInputStream类：
+			使用ObjectInputStream可以直接把被序列化好的对象反序列化回来，此类定义格式如下：
+				public class ObjectInputStream extends InputStream implements ObjectInput,ObjectStreamConstants
+			常用方法：
+				public ObjectInputStream(InputStream in)throws IOException
+					构造，传入输入的对象；
+				public final Object readObject()throws IOException,ClassNotFoundException
+					从指定位置读取对象；
+			此类也是InputStream的子类，与PrintStream类的使用类似，此类同样需要接受InputStream类的实例才可以实例化。
+
+		16.3手工序列化：Externalizable接口：
+			被serializable接口声明的类其对象的内容都将被序列化，如果现在用户希望可以自己制定序列化的内容，则可以让一个类实现Externalizable接口，此接口定义如下：
+				public interface Externalizable extends Serializable{
+					public void writeExternal(ObjectOutput out)throws IOException
+						//写入操作；
+					public void readExternal(ObjectInput in)throws IOException,ClassNotFoundException
+						//读取操作；
+				}
+				
+			**在使用Externalizable接口的时候需要在被序列化的类中定义一个无参构造，因为此接口在进行反序列化的时候，会先使用类中无参构造方法为其进行实例化，之后再将内容分别设置到属性之中。
+		
+		16.4关键字transient：
+			在序列化操作的时候，如果某个属性不希望被序列化下来，则可以直接使用transient关键字声明
+			
+		16.5序列化一组对象：
+			对象输出时只提供了一个对象的输出操作（writeObject(Object obj)）并没有提供多个对象的输出，所以如果现在要同时序列化多个对象的时候就可以使用对象数组进行操作，因为数组属于引用数据类型，所以可以直接使用Object类型进行接收。
+		
+		*小结：
+			Externalizable接口与Serializable接口实现序列化的区别：
+				1.实现复杂度：
+					Serializable：实现简单，Java对其有内建支持；
+					Externalizable：实现复杂，由开发人员自己完成；
+				2.执行效率：
+					Serializable：所有对象由Java统一保存，性能较低；
+					Externalizable：开发人员决定哪个对象保存，可能的速度提升；
+				3.保存信息：
+					Serializable：保存时占用空间大；
+					Externalizable：部分存储，可能的空间减少。
+			
+			在开发中使用Serializable接口时最多的。
+			transient + Serilizable接口完全可以取代Externalizable接口。
+			如果要保存多个对象时，则最好使用对象数组形式完成；问题：保存的数据有限，所以为了解决这样的问题，Java中引入了类集框架解决数组的存储限制问题。
+
+
+
+
+	
