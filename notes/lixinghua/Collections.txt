@@ -104,8 +104,16 @@ java类集：
 			public E set(int index, E element)
 				替换指定位置的元素；
 		
-		031302_03:46分钟
-		
+		2.1 List接口的常用子类--ArrayList：是List接口中最常用的子类；
+			ArrayList是List接口的子类，可以直接通过对象的多态性，为List接口实例化；
+			此类的定义格式如下：
+				public class ArrayList<E> extends AbstractList<E> implements List<E>, RandomAccess, Cloneable, Serializable
+				
+			AbstractList类的定义如下：
+				public abstract class AbstractList<E> extends AbstractCollection<E> implements List<E>
+				
+				
+		031302第19分钟...
 		
 		
 		
