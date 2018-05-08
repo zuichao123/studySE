@@ -51,7 +51,7 @@ java类集：
 			public int hashCode()
 				哈希码；
 			public boolean isEmpty()
-				集合是否为空；
+				判断集合是否为空；
 			public Iterator<E> iterator()
 				为Iterator接口实例化；
 			public boolean remove(Object o)
@@ -100,7 +100,7 @@ java类集：
 			public E remove(int index)
 				按指定的位置删除元素；
 			public List<E> subList(int fromIndex, int toIndex)
-				取出集合中的子集合；
+				取出集合中的子集合；截取部分集合：
 			public E set(int index, E element)
 				替换指定位置的元素；
 		
@@ -112,14 +112,58 @@ java类集：
 			AbstractList类的定义如下：
 				public abstract class AbstractList<E> extends AbstractCollection<E> implements List<E>
 				
+		2.2 Vector类：是List接口的子类：
+			考虑到大多数人已经习惯了Vector类，Java设计者就让Vector类实现了已List接口，这才将其保存下来。但是因为其实List接口的子类，所有Vector类的使用与之前的并没有太大的区别；
+			Vector类的定义如下：
+				public class Vector<E> extends AbstractList<E> implements List<E> RandomAccess, Cloneable, Serializable
 				
-		031302第19分钟...
+		***子类的差异：ArrayList与Vector的区别：
+			1.推出时间：
+				ArrayList：JDK1.2之后推出的，属于新的操作类；
+				Vector：JDK1.0时推出的，属于旧的操作类；
+			2.性能：
+				ArrayList：采用异步处理的方式；
+				Vector：采用同步的方式，性能较低；
+			3.线程安全：
+				ArrayList：属于非线程安全的操作类；
+				Vector：属于线程安全的操作类；
+			4.输出：
+				ArrayList：只能使用Iterator、foreach输出；
+				Vector：可以使用Iterator、foreach、Enumeration输出；
+		
+	3.Queue接口与LinkedList子类：
+		队列操作（对头永远是新增的内容，队尾永远是先出的内容）
+		3.1 LinkedList表示的是一个链表的操作类，此类的定义如下：
+ 				public class LinkedList<E> extends AbstractSequentialList<E> implements List<E>, Queue<E>, Clineable, Serializable
+ 			LinkedList子类的常用方法：
+				public void addFirst(E o)
+					在链表开头增加元素；
+				public vlid addLast(E o)
+					在链表结尾增加元素；
+				public boolean offer(E o)
+					将指定元素增加到链表的结尾；
+				public E removeFirst()
+					删除链表的第一个元素；
+				public E removeLast()
+					删除链表的最后一个元素；
+ 			LinkedList本身大量扩充了Queue接口和List接口的操作，所有在使用时最好直接使用LinkedList类完成操作。
+ 		3.2 Queue接口是Collection的子接口，此接口定义如下：
+ 				public interface Queue<E> extends Collection<E>	
+			Queue接口的常用方法：
+				public E element()
+					找到链表的表头；
+				public boolean offer(E o)
+					将指定元素增加到链表的结尾；
+				public E peek()
+					找到但并不删除链表的头；
+				public E poll()
+					找到并删除链表的头；
+				public E remove()
+					检索并移除表头；
 		
 		
 		
-		
-		
-		
+		031303:5分钟处
 		
 		
 		
