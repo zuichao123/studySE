@@ -75,7 +75,7 @@ java类集：
 				Queue接口：队列接口；
 				SortedSet接口：可以对集合中的数据进行排序；
 		
-	2.List接口：
+	2.List接口：可重复
 		本章目标：
 			1.掌握List接口与Collection接口的关系；
 			2.掌握List接口的常用子类：ArrayList、Vector；
@@ -161,7 +161,7 @@ java类集：
 				public E remove()
 					检索并移除表头；
 		
-	4.Set接口：
+	4.Set接口：不可重复
 		掌握：
 			treeSet的排序原理；
 			Set接口中重复元素的定义；
@@ -175,7 +175,13 @@ java类集：
 			散列存放：HashSet
 			有序存放：TreeSet
 		
-		031305：3分钟
+		 如果想要取消掉重复元素，则需要Object类中的两个方法帮助：
+		 	*1.hashCode()：表示一个唯一的编码，一般通过计算表示；
+		 	*2.equals()：进行对象的比较操作；
+		 	
+		 小结：
+		 	Set接口依靠hashCode()和equals()完成重复元素的判断，关于这一点在日后的Map接口中也有体现；
+		 	TreeSet依靠Compatable接口完成排序操作。
 		
 		
 		

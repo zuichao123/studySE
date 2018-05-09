@@ -1,4 +1,4 @@
-package cn.sunjian.collections;
+package cn.sunjian.collections.set;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,14 +18,18 @@ public class TreeSetDemo {
 
 		Set<String> allSet = new TreeSet<String>();
 		
+		allSet.add("D");
 		allSet.add("A");
+		allSet.add("E");
 		allSet.add("B");
 		allSet.add("C");
 		allSet.add("C");
-		allSet.add("D");
-		allSet.add("E");
 		
 		System.out.println(allSet);
+		
+		/*
+		 * ”––Ú≈≈¡–
+		 */
 		
 	}
 

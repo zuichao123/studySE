@@ -1,13 +1,13 @@
-package cn.sunjian.collections;
+package cn.sunjian.collections.list;
 
-import java.util.ArrayList;
+import java.util.Vector;
 import java.util.Collection;
 import java.util.List;
 
 /**
  * 集合：List接口
  * 	
- *		ArrayList接口：
+ *		Vector接口：
  *			添加内容：
  *				添加一个内容
  *				添加一组内容
@@ -32,12 +32,12 @@ import java.util.List;
  * @author jack
  *
  */
-public class ArrayListDemo {
+public class VectorDemo {
 
 	public static void main(String[] args) {
 
 		List<String> allList = null;
-		allList = new ArrayList<String>();//实例化List，指定操作的泛型为String
+		allList = new Vector<String>();//实例化List，指定操作的泛型为String
 		
 		System.out.println("添加****************************************************");
 		allList.add("hello1");//添加内容，此方法由Collection接口而来
@@ -48,7 +48,7 @@ public class ArrayListDemo {
 		
 		
 		Collection<String> allCollection = null;
-		allCollection = new ArrayList<String>();//指定一个集合
+		allCollection = new Vector<String>();//指定一个集合
 		
 		allCollection.add("sunjian");//向Collection中加入内容
 		allCollection.add("nihao");
