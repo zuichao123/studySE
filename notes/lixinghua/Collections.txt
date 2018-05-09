@@ -161,10 +161,21 @@ java类集：
 				public E remove()
 					检索并移除表头；
 		
+	4.Set接口：
+		掌握：
+			treeSet的排序原理；
+			Set接口中重复元素的定义；
+	
+		Set接口也是Collection接口的子接口，但是与Collection或List接口不同的是，Set接口中不能加入重复的元素；
+		Set接口的定义：
+			public interface Set<E> extends Collection<E>
+		Set接口的主要方法与Collection是一致的；
+		Set接口的实例无法像List接口那样进行双向输出；因为没有提供get()方法；
+		Set接口的常用子类：
+			散列存放：HashSet
+			有序存放：TreeSet
 		
-		
-		031303:5分钟处
-		
+		031305：3分钟
 		
 		
 		
