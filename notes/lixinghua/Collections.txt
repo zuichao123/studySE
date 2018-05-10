@@ -247,14 +247,66 @@ java类集：
 		注意：此操作时，必须先进行由前向后，再进行右后向前的操作。
 	                            如果要想使用ListIterator接口，则只能依靠List接口完成；
 		
+	8.foreach及Enumeration接口：
+		foreach输出：
+			List<String> allList = new ArrayList<String>();
 		
+			allList.add("hello");
+			allList.add("_");
+			allList.add("world");
+			
+			for(String str : allList){
+				System.out.print(str+"、");
+			}
 		
+		Enumeration接口：
+			在Java刚出来的时候，使用Enumeration接口完成输出；
+			在使用Enumeration输出的时候一般都是直接操作Vector类完成的。
+			常用方法：
+				public boolean hasMoreElements()
+					判断是否有内容；
+				public E nextElement()
+					输出内容
+		注意：在所有的输出操作红，以Iterator接口为最标准的输出操作；
 		
-		
-		
-		
-		
-		
+	*9.Map接口：	
+		本章目标：
+			1.掌握Map接口与Collection接口的不同；
+			2.掌握Map接口与Map.Entry接口的关系；
+			3.掌握Map接口的常用子类：HashMap、Hashtable、TreeMap、WeakHashMap；
+			4.掌握HashMap与Hastable的区别。
+		之前所讲解的Collection、Set、List接口都属于单值的操作，即每一次只能操作一个对象，而Map与他们不同的是，每次操作的是一对对象，即二元偶对象；
+		Map中保存的是一对对象，对象的形式以：key-->value的形式保存的。此接口的定义如下：
+			public interface Map<K,V>
+		常用方法：
+			public void clear()
+				清空Map集合；
+			public boolean containsKey(Object key)
+				判断指定的key是否存在；
+			public boolean containsValue(Object value)
+				判断指定的value是否存在；
+			public Set<Map.Entry<K,V>> entrySet()
+				将Map对象变为Set集合；
+			public boolean equals(Object o)
+				对象比较；
+			public V get(Object key)
+				根据key取得value；
+			public int hashCode()
+				返回哈希码；
+			public boolean isEmpty()
+				判断集合是否为空；
+			public Set<K> keySet()
+				取得所有的key；
+			public V put(K key, V value)
+				向集合中加入元素；
+			public void putAll(Map<? extends K, ? extends V> t)
+				将一个Map集合中的内容加入到另一个Map；
+			public V remove(Object key)
+				根据key删除value；
+			public int size()
+				取出集合的长度；
+			public Collection<V> values()
+				取出全部的value；
 		
 		
 		
