@@ -183,20 +183,69 @@ java类集：
 		 	Set接口依靠hashCode()和equals()完成重复元素的判断，关于这一点在日后的Map接口中也有体现；
 		 	TreeSet依靠Compatable接口完成排序操作。
 		
+	5.SortedSet接口：排序接口
+		TreeSet实际上也是SortedSet接口的子类：所以此接口的所有类都是可以排序的。
+		SortedSet接口的定义如下：
+			public interface SortedSet<E> extends Set<E>
+		SortedSet接口中定义的方法：
+			public Comparator<? super E> comparator()
+				返回与排序有关联的比较器；
+			public E first()
+				返回集合中的第一个元素；
+			public SortedSet<E> headSet(E toElement)
+				返回从开始到指定元素的集合；
+			public E last()
+				返回最后一个元素；
+			public SortedSet<E> subSet(E fromElement,E toElement)
+				返回指定对象间的元素；
+			public SortedSet<E> tailSet(E fromElement)
+				从指定元素到最后；
+				
+		只要看到了SortedSet开头的接口，就是可以排序的接口。（按照Comparable排序）
 		
+	*6.Iterator接口：集合输出接口（从前向后输出，属于单向的输出）
+		在集合的输出操作中，支持以下几种方式：
+			1.Iterator
+			2.ListIterator
+			3.foreach
+			4.Enumeration
+		Iter接口简介：
+			1.集合输出的标准操作：
+				在使用集合输出的时候必须形成以下的一个思路：只要是碰到了集合输出的操作，就一定使用Iterator接口，因为这是最标准的做法；
+			2.Iterator接口的操作原理：
+				Iterator是专门的迭代输出接口，所谓的迭代输出就是将元素一个个进行判断，判断其是否有内容，如果有内容则把内容取出。
 		
+		对于Iterator而言，因为其本身是一个接口，所有要想实例化则必须依靠Collection接口完成。
+		常用方法：
+			public boolean hasNext()
+				正向判断是否有内容；
+			public E next()
+				取出内容；
+			public void remove()
+				删除当前元素；
 		
+		如果在迭代输出过程中使用了List中的remove()执行删除操作，则代码将出现问题。
+		在使用iterator输出时，不要使用集合类中的remove方法，而只能使用Iterator的remove方法。
+		iterator接口的功能时从前向后输出，属于单向的输出；
+		在使用iterator时，最后不要删除数据。
+	
+	7.ListIterator接口：集合输出接口（是Iterator的子接口，双向输出）
+		是Iterator接口的子接口，主要功能实现了右前向后、右后向前的双向输出；
+		ListIterator接口的定义如下：
+			public interface ListIterator<E> extends Iterator<E>
+		此接口可以进行双向输出操作，但是在Collection接口中并没有定义可以为此类实例化的操作，只有List接口中才存在了ListIterator接口的实例化操作（通过调用ListIterator()方法实现）。
+		常用方法：
+			public void add(E e)
+				添加操作，将指定元素插入列表；
+			public boolean hasPrevious()
+				逆向判断是否有内容；
+			public E previous()
+				返回列表中的前一个元素
+			public void set(E e)
+				用指定元素替换next或previous返回的最后一个元素；
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		注意：此操作时，必须先进行由前向后，再进行右后向前的操作。
+	                            如果要想使用ListIterator接口，则只能依靠List接口完成；
 		
 		
 		
