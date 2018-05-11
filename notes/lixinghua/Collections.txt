@@ -352,7 +352,12 @@ java类集：
 				public V setValue(V value)
 					设置value的值；
 		
-		
+		**小结：
+			Map是Java中的接口，Map.Entry时Map的一个内部接口，java.util.Map.Entry接口主要就是在遍历Map的时候用到；
+			Map提供了一些常用方法：
+				keySet():返回的是Map中key值的集合；
+				entrySet():返回的是类型为Map.Entry的Set集合；
+			Map.Entry接口为泛型，表示Map中的一个实体（一个key-value对），接口中有getKey()方法和getValue()方法。
 		
 		
 		
