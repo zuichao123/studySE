@@ -308,7 +308,49 @@ java类集：
 			public Collection<V> values()
 				取出全部的value；
 		
+		Map接口的常用子类：
+			1.HashMap：无序存放的，是新的操作类，key不允许重复；
+			2.Hashtable：无效存放的，是旧的操作类，key不允许重复；
+			3.TreeMap：可以排序的Map集合，按集合中的key排序，key不允许重复。
+			4.WeakHashMap：弱引用的Map集合，当集合中的某些内容不再使用时，可以清除掉无用的数据，可以使用gc进行回收；
+			5.IdentityHashMap：key可以重复的Map集合；
+			
+		HashMap与Hashtable的区别：
+			1.推出时间：
+				HashMap：JDK1.2之后推出的，属于新的操作类；
+				Hashtable：JDK1.0时推出的，属于旧的操作类；
+			2.性能：
+				HashMap：采用异步处理方式，性能更高；
+				Hashtable：采用同步处理方式，性能较低；
+			3.线程安全：
+				HashMap：属于非线程安全操作类；
+				Hashtable：属于线程安全的操作类；
+			
+		如果自定义的类要想作为key的话，则肯定要实现Comparable接口，指定比较规则。	
+			
+		对象引用的强度说明：
+			从JDK1.2版本开始，Java把对象的引用分为四种级别，从而使程序能更加灵活的控制对象的声明周期。这四种级别又高到底依次是：
+			强引用、软引用、弱引用、虚引用，这四种引用的区别如下：
+				强引用：当内存不足时，jvm宁可出现OutOfMemeryError错误而使程序停止，也不会回收此对象来释放空间；
+				软引用：当内存不足时，会回收这些对象的内存，用来实现内存敏感的高速缓存；
+				弱引用：无论内存是否紧张，被垃圾回收器发现立即回收；
+				虚引用：和没有任何引用一样。	
 		
+		Map.Entry接口：
+			Map.Entry是Map中内部定义的一个接口，专门用来保存key—>value的内容。
+			Map.Entry接口的定义格式：
+				public static interface Map.Entry<K, V>
+			Map.Entry接口的常用方法：
+				public boolean equals(Object o)
+					对象比较；
+				public K getKey()
+					取得key；
+				public V getValue()
+					取得value；
+				public int hashCode()
+					返回哈希码；
+				public V setValue(V value)
+					设置value的值；
 		
 		
 		

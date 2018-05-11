@@ -25,9 +25,9 @@ public class MapTest2 {
 		map.put("星期三", "wes");
 		map.put("星期四", "kjd");
 		map.put("星期五", "fri");
+		map.put("星期天", "qi");
 		map.put("星期六", "liu");
 		map.put("星期七", "qi");
-		map.put("星期天", "qi");
 		
 		return map.get(week);
 	}
