@@ -1,15 +1,15 @@
-package cn.sunjian.collections.map;
+package cn.sunjian.collection_map;
 
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  * Map集合练习：
  * 
- * 		HashMap：无序存放的，是旧的操作类，key不允许重复；
+ * 		TreeMap：可以排序的Map集合，按集合中的key排序，key不允许重复。
  * 			增加、取出内容
  * 
  * 		可以使用map.containsKey()方法判断key是否存在
@@ -18,13 +18,13 @@ import java.util.Set;
  * @author jack
  *
  */
-public class HashTableDemo {
+public class TreeMapDemo {
 
 	public static void main(String[] args) {
 
 		Map<String, String> map = null;//声明Map对象，其中key和value的值为String类型
 		
-		map = new Hashtable<String,String>();//子类实例化父接口对象
+		map = new TreeMap<String,String>();//子类实例化父接口对象
 		
 		map.put("sunjian", "is chinese people!");//增加内容
 		map.put("sunjian1", "is chinese peple!");
@@ -51,7 +51,6 @@ public class HashTableDemo {
 		/*
 		 * 如果要输出全部的key时，使用：Set接口中的map.keys()方法； 
 		 */
-		System.out.print("全部的key：");
 		Set<String> keys = map.keySet();//得到全部的键key
 		Iterator<String> iterator = keys.iterator();//调用iterator()方法实例化Iterator接口对象
 		while(iterator.hasNext()){//判断内容是否存在
@@ -59,7 +58,7 @@ public class HashTableDemo {
 			System.out.print(str+"、");
 		}
 		
-		System.out.print("\n全部的value：");
+		System.out.println();
 		/*
 		 * 输出全部的value，使用：Collection接口中的map.values()方法；
 		 */

@@ -1,4 +1,4 @@
-package cn.sunjian.collections.foreach;
+package cn.sunjian.collection;
 
 import java.util.Enumeration;
 import java.util.Vector;

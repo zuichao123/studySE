@@ -1,4 +1,4 @@
-package cn.sunjian.collections.queue;
+package cn.sunjian.collection;
 
 import java.util.LinkedList;
 

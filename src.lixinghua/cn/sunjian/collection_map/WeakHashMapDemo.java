@@ -1,4 +1,4 @@
-package cn.sunjian.collections.map;
+package cn.sunjian.collection_map;
 
 import java.util.Map;
 import java.util.WeakHashMap;

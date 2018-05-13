@@ -1,4 +1,4 @@
-package cn.sunjian.collections.iterator;
+package cn.sunjian.collection;
 
 import java.util.ArrayList;
 import java.util.Iterator;

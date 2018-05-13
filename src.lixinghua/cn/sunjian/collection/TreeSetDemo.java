@@ -1,4 +1,4 @@
-package cn.sunjian.collections.set;
+package cn.sunjian.collection;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -14,10 +14,10 @@ import java.util.TreeSet;
  *
  */
 
-class Person implements Comparable<Person>{
+class Persons2 implements Comparable<Persons2>{
 	private String name ;
 	private int age ;
-	public Person(String name,int age){
+	public Persons2(String name,int age){
 		this.name = name ;
 		this.age = age ;
 	}
@@ -26,7 +26,7 @@ class Person implements Comparable<Person>{
 		return "姓名：" + this.name + "；年龄：" + this.age ;
 	}
 	
-	public int compareTo(Person per){
+	public int compareTo(Persons2 per){
 		if (this.age>per.age) {
 			return 1;
 		}else if (this.age<per.age) {
@@ -37,18 +37,34 @@ class Person implements Comparable<Person>{
 	}
 }
 
-public class TreeSetDemo02{
+public class TreeSetDemo{
 	public static void main(String args[]){
 		
-		Set<Person> allSet = new TreeSet<Person>() ;
+		Set<String> set = new TreeSet<String>();
 		
-		allSet.add(new Person("张三",30)) ;
-		allSet.add(new Person("李四",31)) ;
-		allSet.add(new Person("王五",32)) ;
-		allSet.add(new Person("王五",32)) ;
-		allSet.add(new Person("王五",32)) ;
-		allSet.add(new Person("赵六",33)) ;
-		allSet.add(new Person("孙七",33)) ;
+		set.add("D");
+		set.add("A");
+		set.add("E");
+		set.add("B");
+		set.add("C");
+		set.add("C");
+		
+		System.out.println(set);
+		
+		/*
+		 * 有序排列,内容不可重复
+		 */
+		
+		
+		Set<Persons2> allSet = new TreeSet<Persons2>() ;
+		
+		allSet.add(new Persons2("张三",30)) ;
+		allSet.add(new Persons2("李四",31)) ;
+		allSet.add(new Persons2("王五",32)) ;
+		allSet.add(new Persons2("王五",32)) ;
+		allSet.add(new Persons2("王五",32)) ;
+		allSet.add(new Persons2("赵六",33)) ;
+		allSet.add(new Persons2("孙七",33)) ;
 		
 		System.out.println(allSet) ;
 		

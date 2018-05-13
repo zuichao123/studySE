@@ -9,8 +9,9 @@ import java.util.Iterator;
  * @author sunjian
  *
  */
-public class IteratorDemo {
+public class IteratorDemos {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void main(String[] args) {
 		
 		Collection coll = new ArrayList();

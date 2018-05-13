@@ -1,4 +1,4 @@
-package cn.sunjian.collections.list;
+package cn.sunjian.collection;
 
 import java.util.Vector;
 import java.util.Collection;

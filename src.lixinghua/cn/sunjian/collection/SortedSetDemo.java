@@ -1,4 +1,4 @@
-package cn.sunjian.collections.set;
+package cn.sunjian.collection;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
