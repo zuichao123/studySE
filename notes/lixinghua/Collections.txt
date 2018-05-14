@@ -481,11 +481,11 @@ java类集：
 		使用枚举，可以限定取值的范围；
 		使用enum关键字可以定义枚举；
 	
-	Enum类：
+	1.Enum类：
 		使用enum可以定义一个枚举，实际上此关键字表示的是java.lang.Enum类型，即:使用enum声明的枚举类型，就相当于定义一个类，而此类则默认继承java.lang.Enum类。
 		java.lang.Enum类的定义如下：
 			public abstract class Enum<E extends Enum<E>> extends Object implements Comparable<E>, java.io.Serializable
-		此种类型是可以比较，可以序列化的。	
+		此种类型是可以比较、排序、可以序列化的。	
 		枚举类的主要操作方法：
 			protected Enum(String name,int ordinal)
 				构造，接收枚举的名称和枚举的常量创建枚举对象；（一个表示枚举的名字，一个表示枚举的序号）
@@ -503,8 +503,30 @@ java类集：
 				返回带指定名称的指定枚举类型的枚举常量；
 		一旦定义有参构造之后，在声明枚举对象的时候就必须明确的调用构造方法，并传递参数。
 		
+	2.类集对Enum的支持：
+		2.1掌握EnumMap类的使用；
+			Map接口的子类；
+			定义如下：
+				public class EnumMap<K extends Enum<K>,V> extends AbstractMap<K,V> implements Serializable, Cloneable
+				
+		2.2掌握EnumSet类的使用；
+			Set接口的子类；所有里面的内容时无法重复的，在使用EnumSet的时候是不能直接使用关键字new为其进行实例化的，所有再次类中提供了很多的静态方法。
+			常用方法：
+				public static <E extends Enum<E>> EnumSet<E> allOf(Class<E> elementType)
+					将枚举中的全部内容设置到EnumSet之中；
+				public static <E extends Enum<E>> EnumSet<E> of(E first, E... rest)
+					创建一个包含枚举指定内容的EnumSet对象；
+				public static <E extends Enum<E>> EnumSet<E> copyOf(Collection<E> c)
+					创建一个从指定Collection中指定的EnumSet对象；
+				public static <E extends Enum<E>> EnumSet<E> complementOf(EnumSet<E> s)
+					创建一个其元素类型与指定枚举set相同的枚举set，最初包含指定集合中所不包含的此类型的所有元素；
+				public static <E extends Enum<E>> EnumSet<E> noneOf(Class<E> elementType)
+					创建一个可以接收指定类的空集合；
 		
-		031402：six minutes
+		小结：
+			EnumMap和EnumSet：EnumMap是符合Map的操作形式的，而EnumSet基本上就是都使用静态方法完成；
+			在操作中大量的使用了枚举.class，这个属于java发射机制；
+		
 		
 		
 		

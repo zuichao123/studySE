@@ -18,7 +18,7 @@ public class ComparableEnum {
 
 	public static void main(String[] args) {
 
-		Set<Color5> t = new TreeSet<Color5>();
+		Set<Color5> t = new TreeSet<Color5>();//设置类型
 		
 		t.add(Color5.GREEN);//加入绿色
 		t.add(Color5.RED);//加入红色
