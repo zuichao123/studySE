@@ -472,15 +472,39 @@ java类集：
 		
 枚举：	enumeration	
 	所谓的枚举就是规定好了指定的取值范围，所有的内容只能从指定的范围中取得。
+	在JDK1.5之后，引入了一个新的关键字类型--enum，可以直接定义枚举格式，格式如下：
+		[public] enum 枚举类型名称{
+			枚举对象1,枚举对象2,枚举对象3,....,枚举对象n;
+		}
+	因为枚举已经指定好了范围，所有可以使用foreach进行全部的输出，使用“枚举.values()”的形式取得全部的枚举内容。	
+	小结；
+		使用枚举，可以限定取值的范围；
+		使用enum关键字可以定义枚举；
+	
+	Enum类：
+		使用enum可以定义一个枚举，实际上此关键字表示的是java.lang.Enum类型，即:使用enum声明的枚举类型，就相当于定义一个类，而此类则默认继承java.lang.Enum类。
+		java.lang.Enum类的定义如下：
+			public abstract class Enum<E extends Enum<E>> extends Object implements Comparable<E>, java.io.Serializable
+		此种类型是可以比较，可以序列化的。	
+		枚举类的主要操作方法：
+			protected Enum(String name,int ordinal)
+				构造，接收枚举的名称和枚举的常量创建枚举对象；（一个表示枚举的名字，一个表示枚举的序号）
+			protected final Object clone()throws CloneNotSupportedException
+				克隆枚举对象；
+			public final int compareTo(E o)
+				对象比较；
+			public final boolean equals(Object other)
+				比较两个枚举对象；
+			public final int hashCode()
+				返回枚举常量的哈希码；
+			public final String name()
+				返回此枚举常量的序数；
+			public static <T extends Enum<T>> T valueOf(Class<T> enumType,String name)
+				返回带指定名称的指定枚举类型的枚举常量；
+		一旦定义有参构造之后，在声明枚举对象的时候就必须明确的调用构造方法，并传递参数。
 		
-		031401-05分
 		
-		
-		
-		
-		
-		
-		
+		031402：six minutes
 		
 		
 		

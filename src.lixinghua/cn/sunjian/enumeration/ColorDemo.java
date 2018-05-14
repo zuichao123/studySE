@@ -54,5 +54,9 @@ public class ColorDemo {
 		System.out.println(c3.getName());
 		
 	}
+	
+	/*
+	 * 此时程序限定了所能取得的对象的范围，达到了枚举的功能。
+	 */
 
 }
