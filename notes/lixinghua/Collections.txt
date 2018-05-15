@@ -572,15 +572,53 @@ java类集：
 		   *1、通过forName()方法；
 		   *2、类.class
 			3、对象.getClass()方法
+	
+	2.Class类的使用：
+		本章目标：
+			可以使用Class类完成对象的实例化操作；
+			可以通过Constructor类调用有参构造方法完成对象的实例化操作；
+			
+		Class主要是反射的源头，不光可以取得对象所在类的信息，也可以直接通过Class类的方法进行对象的实例化操作，正常情况下，使用关键字new为对象实例化；
+		如果现在已经实例化好了Class对象，就可以通过Class类中的newInstance()方法完成对象的实例化。
+			
+		 即使不通过关键字new对象也可以进行实例化操作，反射的作用；
+		 但是，在使用以上操作的时候有一点必须注意，在操作类中必须存在无参构造方法。
+		 否则无法实例化。
+		 如果想要调用有参的构造，则必须按照以下的步骤进行：
+		 		1.通过Class类中的getConstructors()取得本类中的全部构造方法；
+		  		2.向构造方法中传递一个对象数组进去，里面包含了构造方法中所需的各个参数；
+		  		3.之后通过Constructor实例化对象；
+	
+		Constructor常用方法：
+			public int getModifiers()
+				得到构造方法的修饰符；
+			public String getName()
+				得到构造方法的名称；
+			public Class<?>[] getParameterTypes()
+				得到构造方法中参数的类型；
+			public String toString()
+				返回此构造方法的信息；
+			public T newInstance(Object... initargs)throws InstantiationException,IllegalAccessException,IllegalArgumentException,InvocationTargetException
+				向构造方法中传递参数，实例化对象；
+	
+		从实际角度看，如果要使用反射进行对象的实例化操作时，最好在类中存在无参构造。
+	
+	3.反射应用--取得类的结构：
+		本章目标：
+			可以使用反射取得实现的全部接口；
+			可以使用反射取得一个类所继承的父类；
+			可以使用反射取得一个类的全部构造方法；
+			可以使用反射取得一个类中的全部方法；
+			可以使用反射取得一个类中的全部属性；
+			
+		通过反射得到一个类的完整结构，就要使用到java.lang.reflect包中的以下几个类：
+			Constructor：表示类中的构造方法；
+			Field：表示类中的属性；
+			Method：表示类中的方法；
+		这三个类都是AccessibleObject类的子类；
 		
 	
-	
-	
-	
-	
-	
-	
-	
+	031503--6分钟
 	
 	
 	
