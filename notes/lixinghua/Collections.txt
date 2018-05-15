@@ -527,11 +527,99 @@ java类集：
 			EnumMap和EnumSet：EnumMap是符合Map的操作形式的，而EnumSet基本上就是都使用静态方法完成；
 			在操作中大量的使用了枚举.class，这个属于java发射机制；
 		
+反射机制：
+	1.认识Class类：
+		在正常情况下，必须知道一个类的完整路径之后才可以实例化对象，但是在java中也可以允许通过一个对象来找其所在的类的信息，
+		这实际上就是Class类的功能。
+		在Object类中定义了一下方法，此方法将被所有子类继承：
+			public final Class getClass()
+			此方法返回值的类型是一个“Class”类，实际上此类是Java反射的源头，实际上所谓反射从程序的运行结果来看也很好理解，即：
+			以通过对象反射求出类的名称。
+			
+			正常方式：引入需要的“包.类”名称-->通过new实例化-->取得实例化对象
+			反射方式：实例化对象-->getClass()方法-->得到完整的“包.类”名称
 		
+		Class类：本身表示一个类的本身，通过Class类可以完整的得到一个类中的完整结构，包括此类中的方法定义，属性定义等。
+		常用方法：
+			public static Class<?> forName(String className)throws ClassNotFoundException
+				传入完整的“包.类”名称实例化Class对象；
+			public Constructor[] getConstructors()throws SecurityException
+				得到一个类中的全部构造方法；
+			public Field[] getDeclaredFields()throws SecurityException
+				得到一个类父类中的全部属性；
+			public Field[] getFields()throws SecurityException
+				得到本类的全部属性；
+			public Method[] getMethods()throws SecurityException
+				得到一个类中的全部方法；
+			public Method getMethod(String name,Class... parameterTypes)throws NoSuchMethodException,SecurityException
+				返回一个Method对象，并设置一个方法中的所有参赛类型；
+			public Class[] getInterface()
+				得到一个类中所实现的全部接口；
+			public String getName()
+				得到一个类完整的“包.类”名称；
+			public Package getPackage()
+				得到一个类的包；
+			public Class getSuperclass()
+				得到一个类的父类；
+			publci Object newInstance()throws InstantiationException,IllegalAccessException
+				根据Class定义的类实例化对象；
+			public Class<?> getComponentType()
+				返回表示数组类型的Class；
+			public boolean isArray()
+				判断此Class是否是一个数组；
+				
+		实例化Class类对象的方法有三种：
+		   *1、通过forName()方法；
+		   *2、类.class
+			3、对象.getClass()方法
 		
-		
-		
-		
-		
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+在dos窗口中打包：
+	在文件所在目录：
+		javac -d . 文件名.java //打包
+		java 路径.文件名
+			
 			
