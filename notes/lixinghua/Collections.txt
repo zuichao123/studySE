@@ -617,15 +617,31 @@ java类集：
 			Method：表示类中的方法；
 		这三个类都是AccessibleObject类的子类；
 		
+		如果想要取得一个类所实现的全部接口，可以使用Class类中的：
+			public Classs<?>[] getInstances()
+			因为一个类可以同时实现多个接口，所以在此处将以一个数组的形式返回实现的全部接口。
 	
-	031503--6分钟
+		如果想要取得一个类的父类，可以直接使用Class类中的getSuperclass()方法。
+			public Class<? super T> getSuperclass()
+			此方法返回的是Class实例，和之前得到的接口一样，可以通过getName方法取得名称。
 	
+		如果想要取得一个类的全部构造方法，可以使用Class类中的：
+			public Class<?> getConstructors()
+			
+		如果想要取得一个类的全部方法，可以使用Class类中的getDeclaredMethods()方法，
+			public Method[] getDeclaredMethods()throws SecurityException
+				取得本类中的全部方法；
+			public Method[] getMethods()throws SecurityException
+				取得所有类（包括父类）中的全部方法；
+			此方法返回一个Method类的对象数组，而如果要想进一步取得方法的具体信息；
+			例如：方法的参数，抛出的异常声明等等，则就必须依靠Method类；
 	
-	
-	
-	
-	
-	
+		如果想要取得一个类中的全部属性，有以下两种操作：
+			public Field[] getFields()throws SecurityException
+				得到实现的接口或父类中的公共属性；
+			public Field[] getDeclaredFields()throws ScecurityException
+				得到本类中的全部属性；
+			以上方法返回的都是Field的数组，每一个Field对象就表示类中的一个属性；
 	
 	
 	
