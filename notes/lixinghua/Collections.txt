@@ -617,18 +617,18 @@ java类集：
 			Method：表示类中的方法；
 		这三个类都是AccessibleObject类的子类；
 		
-		如果想要取得一个类所实现的全部接口，可以使用Class类中的：
+	   *如果想要取得一个类所实现的全部接口，可以使用Class类中的：
 			public Classs<?>[] getInstances()
 			因为一个类可以同时实现多个接口，所以在此处将以一个数组的形式返回实现的全部接口。
 	
-		如果想要取得一个类的父类，可以直接使用Class类中的getSuperclass()方法。
+	   *如果想要取得一个类的父类，可以直接使用Class类中的getSuperclass()方法。
 			public Class<? super T> getSuperclass()
 			此方法返回的是Class实例，和之前得到的接口一样，可以通过getName方法取得名称。
 	
-		如果想要取得一个类的全部构造方法，可以使用Class类中的：
+	   *如果想要取得一个类的全部构造方法，可以使用Class类中的：
 			public Class<?> getConstructors()
 			
-		如果想要取得一个类的全部方法，可以使用Class类中的getDeclaredMethods()方法，
+	   *如果想要取得一个类的全部方法，可以使用Class类中的getDeclaredMethods()方法，
 			public Method[] getDeclaredMethods()throws SecurityException
 				取得本类中的全部方法；
 			public Method[] getMethods()throws SecurityException
@@ -636,18 +636,30 @@ java类集：
 			此方法返回一个Method类的对象数组，而如果要想进一步取得方法的具体信息；
 			例如：方法的参数，抛出的异常声明等等，则就必须依靠Method类；
 	
-		如果想要取得一个类中的全部属性，有以下两种操作：
+	   *如果想要取得一个类中的全部属性，有以下两种操作：
 			public Field[] getFields()throws SecurityException
 				得到实现的接口或父类中的公共属性；
 			public Field[] getDeclaredFields()throws ScecurityException
 				得到本类中的全部属性；
 			以上方法返回的都是Field的数组，每一个Field对象就表示类中的一个属性；
 	
+	4.反射机制的深入研究；
+		本章目标：
+			使用反射调用类中的指定方法；
+			使用反射完成setter及getter方法的调用；
+			使用反射直接操作类中的属性；
+			使用反射操作数组；
+		在正确情况下一个类的对象功能产生之后，就可以直接调用类中的方法了，如果要想调用的话，
+		则肯定必须清楚的知道要调用的方法的名称是什么，之后通过Class类中的getMethod()方法，
+		得到一个方法的Method对象，之后通过此Method对象来执行方法，但是在方法调用的时候，
+		因为会牵扯到方法中的参数问题，所以通过getMethod()取得的时候，必须设置好需要的参数类型。
+		执行调用的方法为：invoke()方法，执行调用的时候需传入参数进去，实例化对象。
+		
+		如果一个类的属性被封装，则必须通过setter和getter方法设置和取得。
 	
 	
 	
-	
-	
+	031504==15分钟
 	
 	
 	

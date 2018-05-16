@@ -6,14 +6,18 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import cn.sunjian.utils.CurrentPath;
+
 public class CopyTextBufferTest {
 
 	public static void main(String[] args) throws IOException {
 		
-		FileReader fr = new FileReader("buf.txt");
+		String path = CurrentPath.deskTop();
+		
+		FileReader fr = new FileReader(path +"buf.txt");
 		BufferedReader bufr = new BufferedReader(fr);
 		
-		FileWriter fw = new FileWriter("buf_copy.txt");
+		FileWriter fw = new FileWriter(path+"buf_copy.txt");
 		BufferedWriter bufw = new BufferedWriter(fw);
 		
 		String line = null;

@@ -19,9 +19,9 @@ public class ArrayListTest2 {
 
 	public static void main(String[] args) {
 		
-//		singleDemo();
+		singleDemo();
 		
-		ArrayList al = new ArrayList();
+		ArrayList<Person> al = new ArrayList<Person>();
 		
 		al.add(new Person("lisi1",21));
 		al.add(new Person("lisi2",22));
@@ -36,8 +36,17 @@ public class ArrayListTest2 {
 		System.out.println(al);//打印当前容器元素
 		
 		al = getSingleElement(al);
+
+		Person per = null;
+		Iterator<Person> iterator = al.iterator();
 		
-		System.out.println(al);//打印去重后的容器元素
+		System.out.print("[");
+		while(iterator.hasNext()){
+			per = iterator.next();
+			//打印去重后的容器元素
+			System.out.print(per+", ");
+		}
+		System.out.print("]");
 		
 	}
 

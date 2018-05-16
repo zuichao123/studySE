@@ -72,5 +72,7 @@ public class Person implements Comparable {
 		return temp==0?this.age-p.age:temp;
 	}
 		
-	
+	public String toString(){
+		return "ĞÕÃû£º"+this.name+",ÄêÁä£º"+this.age;
+	}
 }
