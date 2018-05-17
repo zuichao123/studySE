@@ -15,7 +15,7 @@ public class GenericsArrayDemo {
 		
 	}
 	
-	public static <T> T[] fun1(T...arg){//接收可变参数
+	public static <T> T[] fun1(@SuppressWarnings("unchecked") T...arg){//接收可变参数
 		return arg;					//返回泛型数组
 	}
 	

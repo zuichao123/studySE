@@ -24,9 +24,9 @@ public class SystemDemo {
 
 	public static void main(String[] args) {
 
-//		systemOut();//输出信息到显示器
-//		systemErr();//打印错误信息
-//		systemIn();//键盘录入信息
+		systemOut();//输出信息到显示器
+		systemErr();//打印错误信息
+		systemIn();//键盘录入信息
 		systemIn2();//键盘录入信息的另一种实现方式
 	}
 

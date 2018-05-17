@@ -37,6 +37,7 @@ class Person{
 
 public class SystemDemo3 {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		Person per = new Person("sunjian",30);

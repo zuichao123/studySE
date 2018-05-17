@@ -1,15 +1,18 @@
 package cn.sunjian.reflect;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * java反射机制的深入研究：
+ * java反射机制的深入研究：重点复习；
  * 
  * 		调用Person3类中的sayChina()方法：(无参)
  * 		调用Person3类中的sayHello()方法：(有参)
  * 
  * 		调用Person3类中的setter()方法
  * 		调用Person3类中的getter()方法
+ * 
+ * 		调用Person3类中的属性；
  * 
  * @author jack
  *
@@ -22,6 +25,12 @@ public class InvokeMethodDemo {
 		
 		try {
 			c = Class.forName("cn.sunjian.reflect.Person3");//实例化Class类对象
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Object obj = null;
+		try {
+			obj = c.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -52,15 +61,41 @@ public class InvokeMethodDemo {
 		/*
 		 * 调用setter()方法
 		 */
-		Object obj = null;
+		setter(obj, "name", "孙健", String.class);//调用setter方法
+		setter(obj, "age", 30, int.class);
+		
+		/*
+		 * 调用getter()方法
+		 */
+		System.out.print("姓名： ");
+		getter(obj, "name");
+		System.out.print("年龄：");
+		getter(obj, "age");
+		
+		/*
+		 * 调用属性：与setter和getter方法无关
+		 * 		调用公共属性；getField(String name)
+		 * 		调用本类属性；getDeclaredField(String name)
+		 * 		设置属性；set(Object obj,String name)
+		 * 在访问私有属性的时候，必须让这个属性可见：setAccessible(true)
+		 */
+		Field nameField = null;
+		Field ageField = null;
+		
 		try {
-			obj = c.newInstance();
+			nameField = c.getDeclaredField("name");//得到name属性
+			ageField = c.getDeclaredField("age");//得到age属性
+			
+			nameField.setAccessible(true);//设置name属性可见
+			ageField.setAccessible(true);//设置age属性可见
+			
+			nameField.set(obj, "齐天大圣");//设置name属性内容
+			ageField.set(obj, 500);//设置age属性内容
+			System.out.println("姓名："+nameField.get(obj));
+			System.out.println("年龄："+ageField.get(obj));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		setter(obj, "name", "孙健", String.class);//调用setter方法
-		setter(obj, "age", 30, int.class);
 	}
 
 	/*
@@ -77,6 +112,16 @@ public class InvokeMethodDemo {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void getter(Object obj,String att){//传入操作对象和参数
+		try {			
+			Method met = obj.getClass().getMethod("get"+initStr(att));//得到setter方法
+			System.out.println(met.invoke(obj));//调用getter取得内容后输出
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private static String initStr(String old) {//将单词的首字母大写
 		String str = old.substring(0,1).toUpperCase() + old.substring(1);
 		return str;

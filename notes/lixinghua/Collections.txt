@@ -657,11 +657,23 @@ java类集：
 		
 		如果一个类的属性被封装，则必须通过setter和getter方法设置和取得。
 	
-	
-	
-	031504==15分钟
-	
-	
+		如果现在要操作一个类中的属性，则也可以通过Filed完成，不必麻烦的通过setter及getter方法。
+			通过getField(String name)方法得到公共属性；
+			通过getDeclaredField(String name)得到本类属性；
+			通过set(Object obj,String name)方法设置属性
+			在访问私有属性的时候，必须让这个属性可见：setAccessible(true)
+			最好是通过setter和getter方法完成调用。
+			
+		反射机制不光可以使用在类中，也可以应用在任意的引用数据类型上，当然，这就包含了数组，数组使用Array类完成；
+		Class类中存在以下一个方法：
+			public Class<?> getComponentType()
+				返回一个数组；
+			public Static Object get(Object array,int index)throws IlleaglArgumentException,ArrayIndexOutOfBoundsException
+				得到数组指定下标的内容；
+			public static void set(Object array,int index,Object value)throws IllegalArgumentException,ArrayIndexOutOfBoundsException
+				修改内容；
+			public Static Object newInstance(Class<?> componentType,int... dimensions)throws IllegalArgumentException,NegativeArraySizeException
+				开辟新数组；
 	
 	
 	

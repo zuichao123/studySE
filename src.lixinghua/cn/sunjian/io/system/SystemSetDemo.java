@@ -22,9 +22,9 @@ public class SystemSetDemo {
 
 	public static void main(String[] args) throws IOException {
 
-//		reSystemOut();
-//		reSystemOut2();
-//		reSystemErr();
+		reSystemOut();
+		reSystemOut2();
+		reSystemErr();
 		reSystemIn();
 	
 	}

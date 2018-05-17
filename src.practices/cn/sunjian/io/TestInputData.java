@@ -23,11 +23,11 @@ public class TestInputData {
 
 	public static void main(String[] args) throws IOException {
 
-//		newIntAddMethod();
+		newIntAddMethod();
 		
-//		oldIntAddMethod();
+		oldIntAddMethod();
 		
-//		floatAddMethod();
+		floatAddMethod();
 		
 		dateMethod();
 			

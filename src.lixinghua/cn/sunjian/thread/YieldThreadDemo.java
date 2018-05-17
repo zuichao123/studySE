@@ -16,7 +16,8 @@ class MyThread9 implements Runnable{//实现Runnable接口
 			System.out.println(Thread.currentThread().getName()+"运行, i = "+i);
 			if (i==2) {
 				System.out.print("线程礼让：");
-				Thread.currentThread().yield();//线程礼让
+				Thread.currentThread();
+				Thread.yield();//线程礼让
 			}
 		}
 	}

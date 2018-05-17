@@ -2,11 +2,12 @@ package cn.sunjian.io.scanner;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
+import cn.sunjian.utils.CurrentPath;
 
 /**
  * java.io练习：
@@ -24,8 +25,8 @@ public class ScannerDemo {
 		Scanner scan = new Scanner(System.in);//接收键盘数据
 		String str = null;//存放键盘数据
 		
-//		dataInput(scan,str);//1.实现基本的数据输入
-//		dateInput(scan,str);//2.实现日期格式的数据输入
+		dataInput(scan,str);//1.实现基本的数据输入
+		dateInput(scan,str);//2.实现日期格式的数据输入
 		readFile();//3.从文件中得到(读取)数据
 	}
 
@@ -34,7 +35,7 @@ public class ScannerDemo {
 	 * 如果文件中，有空格、换行等时：使用StringBuffer来接收。
 	 */
 	private static void readFile() {
-		File f = new File("c:"+File.separator+"中科虹霸简介1.txt");
+		File f = new File(CurrentPath.deskTop()+"1.txt");
 		Scanner scan = null;
 		try {
 			scan = new Scanner(f);//读取指定文件数据
