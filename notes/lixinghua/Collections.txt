@@ -675,14 +675,53 @@ java类集：
 			public Static Object newInstance(Class<?> componentType,int... dimensions)throws IllegalArgumentException,NegativeArraySizeException
 				开辟新数组；
 	
+	5.动态代理：
+		本章目标：
+			掌握动态代理的作用；
+			掌握InvocationHandler接口和Proxy类的作用；
+		代理设计：
+			一个操作的接口有两个子类：一个是真实主题的实现类；另一个时代理类，代理实现类要完成比真实主题实现类更多的内容，
+			而且本身还需要处理一些与具体业务有关的程序代码。
+		
+		静态代理：
+			一个代理类只能为一个接口服务；
+		动态代理：
+			通过一个代理类完成全部的代理功能；
+			在java中要想实现动态代理机制，则需要：
+				java.lang.reflect.InvocationHandler接口和java.lang.reflect.Proxy类的支持；
+			InvocationHandler接口：
+				public interface InvocationHandler{
+					public Object invoke(Object Proxy,Method method,Object[] args)throws Throwalbe
+				}
+				*参数说明：
+					Object proxy：被代理的对象；
+					Method method：要调用的方法；
+					Object args[]：方法调用时所需要的参数；
+				可以将InvocationHandler接口的子类想象成一个代理的最终操作类，替换掉ProxySubject。
 	
+		Proxy类：
+			Proxy类是专门完成代理的操作类，可以通过此类为一个或多个接口动态的生成实现类，此类提供了如下的操作方法：
+				public static Object newProxyInstance(ClassLoader loader,Class<?>[] interfaces,InvocationHandler h)throws IllegalArgumentException
+			参数说明：
+				ClassLoaderloader：类加载器；
+				Class<?> interfaces：得到全部的接口；
+				InvocationHandler h：得到InvocationHandler接口的子类实例；
+				
+			提示：类加载器：
+				在Proxy类中的newProxyInstance()方法中需要一个ClassLoader类的实例，ClassLoader实际上对应的是类加载器，在java中主要有以下三种类加载器：
+					1.Bootstrap ClassLoader：此加载器采用C++编写，一般开发中是看不到的；
+					2.Extension ClassLoader：用来进行扩展类的加载，一般对应的是jre/lib/ext目录中的类；
+					3.APPClassLoader：加载classpath指定的类，时最常使用的一种加载器。
+			如果想要得到一个加载器的对象，需要使用Class类完成。
 	
-	
-	
-	
-	
-	
-	
+	6.工厂设计模式：
+		工厂设计模式的最大好处是可以在应用中进行解耦合操作。
+		如果此时希望在扩充子类时不用修改工厂类的话，则就必须使用反射完成。
+		但是在使用反射的时候输入完整的“包.类”名称的话，肯定很麻烦，所有可以通过一些配置文件的方式保存这些完整的路径。	
+		程序运行的时候，就可以将属性文件的内容读取出来，之后直接操作属性文件中的key，就可以避免输入过长的类路径。
+		以上的程序达到了配置文件与程序代码相分离的目的；
+	 	那么这种设计思路时以后开发的基本思路；
+	 	当然，最新的设计理念：是在程序中直接通过注释的方式进行配置；
 	
 	
 	

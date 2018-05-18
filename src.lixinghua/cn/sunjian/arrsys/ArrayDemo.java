@@ -1,6 +1,6 @@
 package cn.sunjian.arrsys;
 /**
- * 联系数组反转、排序
+ * 练习数组反转、排序
  * 
  * @author sunjian
  *

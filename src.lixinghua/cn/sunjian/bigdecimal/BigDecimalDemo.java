@@ -3,7 +3,7 @@ package cn.sunjian.bigdecimal;
 import java.math.BigDecimal;
 
 /**
- * BigDecimal类操作练习：
+ * BigDecimal类操作练习：大小数
  * 	
  * @author sunjian
  *

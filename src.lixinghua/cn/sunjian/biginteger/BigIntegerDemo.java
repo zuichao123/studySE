@@ -3,7 +3,7 @@ package cn.sunjian.biginteger;
 import java.math.BigInteger;
 
 /**
- * BigInteger类操作练习：
+ * BigInteger类操作练习：大整数
  * 
  * @author sunjian
  *
