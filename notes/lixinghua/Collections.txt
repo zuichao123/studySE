@@ -723,6 +723,259 @@ java类集：
 	 	那么这种设计思路时以后开发的基本思路；
 	 	当然，最新的设计理念：是在程序中直接通过注释的方式进行配置；
 	
+Annotation：元数据特性，即：使用注释的方式加入一些程序的信息；
+	了解Annotation的作用；
+	掌握系统内建的三个Annotation；
+	
+	1.系统内建的Annotation：	
+		java.lang.annotation.Annotation接口是所有的Annotation都必须实现的接口。
+		
+		在JDK1.5之后，系统中已经建立了如下的三个内建的Annotation类型，用户直接使用即可。
+			1. @Override：覆写的Annotation；
+				表示方法覆写的正确性，可以保证程序正确的执行；
+				java中声明：
+					@Target(value = METHOD)
+					@Retention(value = SOURCE)
+					public @interface Override
+			2. @Deprecated：不赞成使用的Annotation；
+				编译时不会出错，而是出现一个警告信息；也可以用在类上；
+				java中声明：
+					@Documented
+					@Retention(value = RUNTIME)
+					public @interface Deprecated
+			3. @SuppressWarnings：压制安全警告的Annotation；
+				也可以压制多个警告，可以通过数组是形式
+				java中声明：
+					@Target(value = {TYPE,FIELD,METHOD,PARAMETER,CONSTRUCTOR,LOCAL_VARIABLE})
+					@Retention(value = SOURCE)
+					public @interface Suppress Warnings
+				@SuppressWarnings中的关键字：
+					1. deprecation：使用了不赞成使用的类或方法时的警告；
+					2. unchecked：执行了未检查的转换时的警告，例如：泛型中没有指定泛型类型；
+					3. fallthrough：当switch程序块直接通往下种情况而没有break时的警告；
+					4. path：在类路径、源文件路径等中不存在的路径时警告；
+					5. serial：当在可序列化的类上缺少serialVersionUID定义时的警告；
+					6. finally：任何finally子句不能正常完成时的警告；
+					7. all：关于以上所有情况的警告；
+				在设置注释信息的时候，是以key->value的形式出现的，所以以上的@SuppressWarnings也可以直接使用“value = {"unchecked","deprecation"}”的方式设置；
+				注释里边是使用value的字符串数组接收的，在传入注释参数的时候也可以明确的指出要传给那个变量接收；
+				
+	2.自定义的Annotation：
+		本章目标：
+			掌握自定义Annotation的简单格式；
+			可以使用Annotation接收设置的内容；
+			可以为Annotation中的变量指定默认值；
+			可以使用枚举指定Annotation的取值范围；
+			掌握Retention及RetentionPolicy的作用；
+		Annotation的定义格式：
+			public @interface Annotation名称{
+				数据类型     变量名称();
+			}	
+			
+		Annotation中有一个特点，所有的参数需要在使用的时候设置上去，那么也可以为一个参数设置默认的内容，在声明的使用使用default即可。
+	
+		2.1 Retention和RetentionPolicy：
+			在Annotation，可以使用Retention定义一个Annotation的保存范围，此Annotation的定义如下：
+				@Documented
+				@Retention(value = RUNTIME)
+				@Target(value = ANNOTATION_TYPE)
+				public @interface Retention{
+					RetentionPolicy value();
+				}
+			在以上的Rentetion定义中存在了一个RententionPolicy的变量，此变量用于指定Annotation的保存范围，RetentionPolicy包含一下三种范围：
+				SOURCE：
+					此Annotation类型的信息只会保留在程序源文件之中(*.java)，编译之后不会保存在编译好的类文件(*.class)之中。
+				CLASS：
+					此Annotation类型将保留在程序源文件(*.java)和编译之后的类文件(*.class)之中，在使用此类的时候，这些Annotation信息将不会被加载到虚拟机(JVM)之中，如果一个Annotation声明时没有指定范围，则默认是此范围；
+				RUNTIME：
+					此Annotation类型的信息保留在源文件(*.java)、类文件(*.class)之中，在执行时也会加载到JVM之中；
+	
+			在三个范围中，最需要关心的是RUNTIME范围，因为执行的时候起作用。
+	
+		2.2 内建Annotation的RetentionPolicy：
+			@Override：
+				采用的是@Retention(value = SOURCE)，只能在源文件中出现；
+			@Deprecated：
+				采用的是@Retention(value = RUNTIME)，可以在执行时出现；
+			@SuppressWarnings：
+				采用的是@Retention(value = SOURCE)，只能在源文件中出现；
+	
+	3.反射与Annotation：
+		本章目标：
+			可以通过java反射机制取得使用的全部Annotation；
+			可以通过java反射机制取得指定的Annotation；
+		
+		一个Annotation如果要想让其变得有意义，则必须结合反射机制取得Annotation中设置的全部内容；
+		在Class类中存在以下几种Annotation操作有关的方法：
+			public<A extends Annotation>A getAnnotation(Class<A> annotationClass)
+				如果在一个元素中存在注释，则取得全部注释；
+			public Annotation[] getAnnotations()
+				返回此元素上的所有注释；
+			public Annotation[] getDeclaredAnnotations()
+				返回直接存放在此元素上的所有注释；
+			public boolean isAnnotation()
+				判断元素是否表示一个注释；
+			public boolean isAnnotationPresent(Class<? extends Annotation> annotationClass)
+				判断一个元素上是否存在注释；
+	
+	4.深入Annotation：
+		本章目标：
+			掌握@Target注释的作用；
+			掌握@Documented注释的作用；
+			掌握@Inherited注释的作用
+			
+		4.1 @Target注释：
+			之前定义的Annotation，如果没有明确的说明可以在任意位置上使用；
+			如果现在需要指定其使用范围的话，则必须使用@Target注释；	
+		
+			ElementType的保存范围：
+				public static final ElementType ANNOTATION_TYPE
+					只能用在注释声明上；
+				public static final ElementType CONSTRUCTOR
+					只能用在构造方法声明上；
+				public static final ElementType FIELD
+					只能用在字段声明（包括枚举常量）上；
+				public static final ElementType LOCAL_VARIABLE
+					只能用在局部变量声明上；
+				public static final ElementType METHOD
+					只能用在方法的声明上；
+				public static final ElementType PACKAGE
+					只能用在包的声明上；
+				public static final ElementType PARAMETER
+					只能用在参数的声明上；
+				public static final ElementType TYPE
+					只能用在类、接口、枚举类型上；
+	
+		4.2 @Documented注释：
+			可以用在任何的Annotation上使用。所有的Annotation默认情况下都是使用@Documented进行注释的，
+			而且在生成javadoc的时候可以通过@Documented设置一些说明信息。
+			之后通过javadoc命令，生成java.doc文档
+				javadoc -d 目录    文件名.java
+	
+		4.3 @Inherited注释：
+			此注释表示一个Annotation是否可以被继承下来；
+			定义一个父类，在父类上使用此Annotation；
+			
+java数据库编程：java.sql.*包中；
+	1.JDBC概述：
+		在实际开发中，可以直接使用JDBC进行各个数据库的连接操作，而且可以方便的向数据库中发送各种SQL命令。在JDBC中提供的是一套
+		标准的接口，这样，各个支持JAVA的数据库生产商只要按照此接口提供相应的实现，则就都可以使用JDBC进行操作。
+		
+		JDBC驱动：
+			JDBC-ODBC桥驱动；
+				是sun公司提供的一个标准的jdbc操作，直接利用微软的ODBC进行数据库的连接操作，操作性能较低，不推荐使用；
+			JDBC本地驱动；
+				直接使用各个数据库生产商提供的JDBC驱动程序，但是因为其只能应用在特定的数据库上，会丧失掉程序的可移植性，但是这样的操作性能较高；
+				JDBC本身提供的是一组类和接口，各个数据库生产商要实现这些接口，所有这些驱动程序时需要单独配置的，往往是以一组jar包(zip包)的形式出现的，
+				如果要使用的话，则肯定要配置classpath；在开发中大部分情况都是使用一种数据库的开发，所有一般使用此种模式是最多的。
+			JDBC网络驱动；
+				这种驱动程序将JDBC转换为与DBMS无关的网络协议，之后这种网络协议又被某个服务器转换为一种DBMS协议。这种网络服务器中间件能够将它的纯java客户机
+				连接到多种不同的数据库上。所用的具体协议取决于提供者。通常，这是最为灵活的JDBC驱动程序。
+			本地协议纯JDBC驱动；
+				这种类型的驱动程序将JDBC调用直接转换为DBMS所使用的网络协议。这将允许从客户机机器上直接调用DBMS服务器，时Internet访问的一个很实用的解决方法。
+	
+		JDBC的主要操作类和接口：
+			java.sql.DriverManager
+				用于管理JDBC驱动程序；是一个最常用的类，使用此类可以连接一个数据库；
+			java.sql.Connection
+				用于建立与特定数据库的连接，一个连接就是一个会话，建立连接后便可以执行SQL语句和获得检索结果；
+			java.sql.Statement
+				一个Statement对象用于执行静态SQL语句，并获得语句执行后产生的结果；
+			java.sql.PreparedStatement
+				创建一个可以编译的SQL语句对象，该对象可以被多次运行，以提高执行的效率，该接口时Statement的子接口；
+			java.sql.ResultSet
+				用于创建表示SQL语句检索结果的结果集，用户通过结果集完成对数据库的访问；
+			java.sql.Date
+				该类是标准java.util。Date的一个子集，用于表示与SQL DATE相同的日期类型，该日期不包括时间；
+			java.sql.Timestamp
+				标准java.util.Date类的扩展，用于表示SQL时间戳，并增加了一个能表示纳秒的时间域；
+			java.sql.CallableStatement
+				用于执行SQL存储过程；
+			java.sql.DatabaseMetaData
+				与java.sql.ResultSetMetaData一同用于访问数据库的元信息；
+			java.sql.Driver
+				定义一个数据库驱动程序的接口；
+			java.sql.DataTruncation
+				在JDBC遇到数据截断的异常时，报告一个警告（读数据时）或产生一个异常（写数据时）；
+			java.sql.DriverPropertyInfo
+				高级程序设计人员通过DriverPropertyInfo与Driver进行交流，可使用getDriverPropertyInfo获取或提供驱动程序的信息；
+			java.sql.Time
+				该类是标准java.util.Date的一个子集，用于表示时、分、秒；
+			java.sql.SQLException
+				对数据库访问时产生的错误的描述信息；
+			java.sql.SQLWarning
+				对数据库访问时产生的警告的描述信息；
+			java.sql.Types
+				定义了表示SQL类型的常量；
+	
+	2.MySql数据库：
+		
+	3.JDBC操作步骤及数据库连接操作：
+		掌握JDBC的操作步骤；
+		掌握数据库驱动程序的配置方法；
+		可以使用JDBC进行数据库连接；
+	
+		3.1 数据库JDBC操作步骤：
+			1.加载数据库驱动程序；
+			2.连接数据库；
+			3.使用语句进行数据库操作；
+			4.关闭数据库连接；
+		
+		3.2配置数据库的驱动程序：
+			环境变量--新建--classpath中加入驱动程序所在的路径和驱动程序名称；
+		 
+		3.3加载驱动程序：
+			通过Class.forName()语句可以加载一个驱动程序；
+			Class实例化需要一个完整的包.类名称，此“包.类”名称的路径就应该是驱动程序的名称；
+	
+		3.4连接和关闭数据库：
+			数据库驱动程序可以正常加载的话，下面就可以连接数据库了，使用DriverManager类进行连接操作，DriverManager类中的常用方法如下：
+				public static Connection getConnection(String url)throws SQLException
+					通过连接地址连接数据库；
+				public static Connection getConnection(String url,String user,String password)throws SQLException
+					通过连接地址连接数据库，同时输入用户名和密码；
+			
+			在driverManager中，提供的主要操作就是得到一个数据库的连接，getConnection()方法就是取得连接对象，此方法返回的类型时Connection对象，
+			不管使用哪种连接方式，都必须提供一个数据库的连接地址，如果在连接数据库的时候需要用户名和密码，则还需要将用户名和密码设置上。
+			*连接格式如下：
+				jdbc:mysql://ipAddress:port/databaseName
+			数据库操作完成后，必须关闭；
+			
+			Connection接口的常用方法：
+				Statement createStatement()throws SQLException
+					创建一个Statement对象；
+				Statement createStatement(int resultSetType,int resultSetConcurrency)throws SQLException
+					创建一个Statement对象，该对象将生成具有给定类型和并发性的ResultSet对象；
+				PreparedStatement prepareStatement(String sql)throws SQLException
+					创建一个PreparedStatement类型的对象；
+				PreparedStatement prepareStatement(String sql,int resultSetType,int resultSetConcurrency)throws SQLException
+					创建一个PreparedStatement对象，该对象生成具有给定类型和并发性的ResultSet对象；
+				CallableStatement prepareCall(String sql)throws SQLException
+					创建一个CallableStatement对象，此对象专门用于调用数据库的存储过程；
+				CallableStatement prepareCall(String sql,int resultSetType,int resultSetConcurrency)throws SQLException
+					创建一个CallableStatement对象，该对象将生成具有给定类型和并发性的ResultSet对象；
+				DatabaseMetaData getMetaData()throws SQLException
+					得到数据库的元数据；
+				void setAutoCommit(boolean autoCommit)throws SQLException
+					设置数据库的自动提交，与事物有关；
+				boolean getAutoCommit()throws SQLException
+					判断数据库是否可以自动提交，与事物有关；
+				Savepoint setSavepoint()throws SQLException
+					设置数据库的恢复点，与事物有关；
+				Savepoint setSavepoint(String name)throws SQLException
+					为数据库的恢复点指定一个名字，与事物有关；
+				void rollback()throws SQLException
+					数据库操作回滚，与事物有关；
+				void rollback(Savepoint savepoint)throws SQLException
+					数据库回滚到指定的保存点，与事物有关；
+				void commit()throws SQLException
+					提交操作，与事物有关；
+				boolean isClosed()throws Exception
+					判断连接是否已关闭；
+				void close()throws SQLException
+					关闭数据库；
+				DatabaseMetaData getMetaData()throws SQLException
+					得到数据库的元数据对象；
 	
 	
 	
@@ -734,9 +987,7 @@ java类集：
 	
 	
 	
-在dos窗口中打包：
-	在文件所在目录：
-		javac -d . 文件名.java //打包
-		java 路径.文件名
+	
+
 			
 			
