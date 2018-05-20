@@ -977,16 +977,57 @@ java数据库编程：java.sql.*包中；
 				DatabaseMetaData getMetaData()throws SQLException
 					得到数据库的元数据对象；
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		3.5执行数据库更新操作：
+			本章目标：
+				可以使用Connection对象取得Statement实例；
+				可以使用Statement进行数据增加、修改、删除操作；
+			
+			Statement接口：
+				数据库可以连接之后，下面就可以进行数据库的具体操作了，如果要想对数据库进行操作，则肯定要使用Statement接口完成，此接口可以使用Connection接口中的提供的createStatement()方法实例化；
+				此接口中的常用方法：
+					int executeUpdate(String sql)throws SQLException
+						执行数据库更新的SQL语句，例如：INSERT UPDATE DELETE等语句，返回更新的记录数；
+					ResultSet executeQuery(String sql)throws SQLException
+						执行数据库查询操作，返回一个结果集对象；
+					void addBatch(String sql)throws SQLException
+						增加一个待执行的SQL语句；
+					int[] executeBatch()throws SQLException
+						批量执行SQL语句；
+					void close()throws SQLException
+						关闭Statement操作；
+					boolean execute(String sql)throws SQLException
+						执行SQL语句；
+		
+		3.6ResultSet接口：
+			掌握ResultSet接口的主要作用；
+			使用ResultSet接口查询数据；
+			
+			将查询的数据显示出来；
+			常用方法：
+				boolean next()throws SQLException
+					将指针移动到下一行；
+				int getInt(int columnIndex)throws SQLException
+					以整数形式按列的编号取得指定列的内容；
+				int getInt(String columnName)throws SQLException
+					以整数形式取得指定列的内容；
+				float getFloat(int columnIndex)throws SQLException
+					以浮点型的形式按列的编号取得指定列的内容；
+				float getFloat(String columnName)throws SQLException
+					以浮点数的形式取得指定列的内容；
+				String getString(int columnIndex)throws SQLException
+					以字符串的形式按列的编号取得指定列的内容；
+				String getString(String columName)throws SQLException
+					以字符串的形式取得指定列的内容；
+				Date getDate(int columnIndex)throws SQLException
+					以Date的形式按列的编号取得指定列的内容；
+				Date getDate(String columnName)throws SQLException
+					以Date的形式取得指定列的内容；
+					
+					
+					
+					
+					
+					
 	
 
 			
