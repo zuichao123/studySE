@@ -1022,13 +1022,35 @@ java数据库编程：java.sql.*包中；
 					以Date的形式按列的编号取得指定列的内容；
 				Date getDate(String columnName)throws SQLException
 					以Date的形式取得指定列的内容；
-					
-					
-					
-					
+		
+		3.7PreparedStatement接口：
+			掌握PreparedStatement接口的工作原理；
+			可以使用PreparedStatement进行数据库的更新及查询操作；
+			
+			PreparedStatement是Statement的子接口，属于预处理操作，与直接使用Statement不同的是，PreparedStatement在操作时，
+			是现在数据表之中准备好一条SQL语句，但是此SQL语句的具体内容暂时不设置，而是之后再设置，以插入数据为例：使用PreparedStatement插入数据时，
+			数据表中的指针首先指向最后一条数据之后，但是里面的内容是不知道的，而是等待用户分别设置；		
+			常用方法：
+				int executeUpdate()throws SQLException
+					执行设置的预处理SQL语句；
+				void setInt(int parameterIndex,int x)throws SQLException		
+					指定要设置的索引编号，并设置整数内容；
+				void setFloat(int parameterIndex,float x)throws SQLException
+					指定要设置的索引编号，并设置浮点数内容；
+				void setString(int parameterIndex,String x)throws SQLException
+					指定要设置的索引编号，并设置字符串内容；
+				void setDate(int parameterIndex,Date x)throws SQLException
+					指定要设置的索引编号，并设置java.sql.Date类型的日期内容；
+			
+			通过Connection接口中的PreparedStatement prepareStatement(String sql)throws SQLException方法得到一个PreparedStatement的接口实例，
+			之后再使用一系列的setXXX()方法设置内容，根据位置设置；
+			如果执行更新语句的话，则会返回更新数据的记录数；
+			
+			注意点：
+				关于日期的输入问题：在正常情况下都使用java.util.Date表示日期，但是在PreparedStatement中如果要想使用日期必须使用java.sql.Date类型。		
 					
 					
 	
-
+13分钟
 			
 			
