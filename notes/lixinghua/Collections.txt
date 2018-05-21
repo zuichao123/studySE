@@ -998,7 +998,7 @@ java数据库编程：java.sql.*包中；
 					boolean execute(String sql)throws SQLException
 						执行SQL语句；
 		
-		3.6ResultSet接口：
+		3.6 ResultSet接口：
 			掌握ResultSet接口的主要作用；
 			使用ResultSet接口查询数据；
 			
@@ -1023,7 +1023,7 @@ java数据库编程：java.sql.*包中；
 				Date getDate(String columnName)throws SQLException
 					以Date的形式取得指定列的内容；
 		
-		3.7PreparedStatement接口：
+		3.7 PreparedStatement接口：插入时，先占位，之后在设置内容
 			掌握PreparedStatement接口的工作原理；
 			可以使用PreparedStatement进行数据库的更新及查询操作；
 			
@@ -1046,11 +1046,44 @@ java数据库编程：java.sql.*包中；
 			之后再使用一系列的setXXX()方法设置内容，根据位置设置；
 			如果执行更新语句的话，则会返回更新数据的记录数；
 			
-			注意点：
+			*注意点：
 				关于日期的输入问题：在正常情况下都使用java.util.Date表示日期，但是在PreparedStatement中如果要想使用日期必须使用java.sql.Date类型。		
-					
-					
-	
-13分钟
+				
+				在开发中到底是使用PreparedStatement接口还是使用Statement接口呢？
+					实际上开发应用中不使用Statement接口，因为其采用的是拼凑的SQL语句形式，那么这样一来就有可能造成SQL的注入漏洞；
+					举例：最早的国内的大部分站点 ，只要输入“'”单引号已查询，就完蛋了。
+			
+	031708_【第17章：Java数据库编程】_处理大数据对象（1）—处理CLOB数据
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			

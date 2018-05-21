@@ -8,7 +8,9 @@ import java.sql.Connection;
 
 /**
  * java数据库编程：
- * 
+ * 			
+ * 		开发中不使用
+ * 		
  * 		更新操作Mysql数据库；
  * 			增删改查；
  * 
