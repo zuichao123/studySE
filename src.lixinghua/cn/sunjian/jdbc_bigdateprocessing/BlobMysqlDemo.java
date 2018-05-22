@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -52,7 +53,7 @@ public class BlobMysqlDemo {
 			e.printStackTrace();
 		}
 		
-		String name = "sunjian";
+		String name = "sunjian1";
 		
 		//SQL语句==插入数据
 		String sql = "insert into userblob(name,photo)values(?,?)";
@@ -62,7 +63,7 @@ public class BlobMysqlDemo {
 		//写入时的图片文件
 		File file = new File(CurrentPath.deskTop()+"mldn.bmp");
 		//输出时的图片文件
-		File file1 = new File(CurrentPath.deskTop()+"mldn1.bmp");
+		File file1 = new File(CurrentPath.deskTop()+"mldn2.bmp");
 		
 		InputStream intput = null;//文件输入流
 		OutputStream output = null;//文件输出流
@@ -83,9 +84,9 @@ public class BlobMysqlDemo {
 			/*
 			 * 插入数据
 			 */
-//			pste.setString(1, name);//设置第一个位置为：name字符sunjian
-//			pste.setBinaryStream(2, intput,file.length());//设置第二个位置为：读取到的文件内容
-//			pste.executeUpdate();//执行更新
+			pste.setString(1, name);//设置第一个位置为：name字符sunjian
+			pste.setBinaryStream(2, intput,file.length());//设置第二个位置为：读取到的文件内容
+			pste.executeUpdate();//执行更新
 			
 			/*
 			 * 查询并输出（读取）数据
@@ -94,33 +95,54 @@ public class BlobMysqlDemo {
 			pste.setString(1, name);//替换SQL语句中的第一个问号
 			rs = pste.executeQuery();//执行查询,并保存结果
 			
-			if(rs.next()){//如果有内容
-				
+			//方法一：
+//			if(rs.next()){//如果有内容
+//				
+//				name = rs.getString(1);
+//				System.out.println("姓名："+name);
+//				intput = rs.getBinaryStream(2);//使用输入流对象获取第二个字段的二进制数据
+//				try {
+//					output = new FileOutputStream(file1);//找到输出文件
+//				} catch (FileNotFoundException e) {
+//					e.printStackTrace();
+//				}
+//				int temp = 0;
+//				try {
+//					while((temp = intput.read())!= -1){//边读边写
+//						output.write(temp);
+//					}
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			
+//				try {
+//					intput.close();//关闭输入流
+//					output.close();//关闭输出流
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+			
+			//方法二：常用
+			if (rs.next()) {
 				name = rs.getString(1);
 				System.out.println("姓名："+name);
-				intput = rs.getBinaryStream(2);//使用输入流对象获取第二个字段的二进制数据
+				
+				Blob b = rs.getBlob(2);
+				
 				try {
-					output = new FileOutputStream(file1);//找到输出文件
+					output = new FileOutputStream(file1);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-				int temp = 0;
+				
 				try {
-					while((temp = intput.read())!= -1){//边读边写
-						output.write(temp);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			
-				try {
-					intput.close();//关闭输入流
+					output.write(b.getBytes(1, (int) b.length()));
 					output.close();//关闭输出流
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-		
 			
 			rs.close();//关闭查询结果集
 			

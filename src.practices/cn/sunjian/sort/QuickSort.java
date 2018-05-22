@@ -36,52 +36,69 @@ public class QuickSort {
 
 	
 	/** 
-	 * 查找出中轴（默认是最低位low）的在arr数组排序后所在位置
+	 * 查找出中轴（默认是最低位left）的在arr数组排序后所在位置
      * 
      * @param arr 带查找数组
-     * @param low   开始位置
-     * @param high  结束位置
-     * @return  中轴所在位置
+     * @param left   开始位置
+     * @param right  结束位置
+     * @return 中轴所在位置
      */
-    public static int getMiddle(int[] arr, int low,int high){
+    public static int getMiddle(int[] arr, int left,int right){
     	
-        int temp = arr[low]; //数组的第一个作为中轴
+        int temp = arr[left]; //数组的第一个作为中轴
 
-        while(low < high){
-        	
-	        while(low < high && arr[high] > temp){
-	            high--;
-	        }
-	        
-	        arr[low] = arr[high];//比中轴小的记录移到低端
+        while(left < right){//如果第一个脚标值小于最后一个角标值
 
-	        while(low < high && arr[low] < temp){
-	            low++;
+        	/*
+        	 * 从数组的最右边开始依次找比中轴小的值
+        	 * 
+        	 * 如果最右边的值大于中轴，脚本往左移动一个，再次比较；
+        	 * 直到找到小于中轴的值，将找的比中轴小的数值移动到最左边
+        	 * 
+        	 */
+	        while(left < right && arr[right] > temp){
+	            right--;
 	        }
-	        
-	        arr[high] = arr[low] ; //比中轴大的记录移到高端
+	        //将找的比中轴小的数值移动到最左边
+	        arr[left] = arr[right];
+
+	        /*
+	         * 再拿最左边的值（包括刚才移动过来的值）和中轴比较，如果最左边的值比中轴小，将数组最左的脚本往右移动一个，再次比较；
+	         * 直到找到比中轴大的值，将改值移动到现在最右边的位置处
+	         */
+	        while(left < right && arr[left] < temp){
+	            left++;
+	        }
+	        //比中轴大的数值移到最右边
+	        arr[right] = arr[left] ;
         }
         
-        arr[low] = temp ; //中轴记录到尾
-        return low ; // 返回中轴的位置
+        //将最开始的中轴数值放在当前最左边的角标所处的位置
+        arr[left] = temp ;
+        
+        // 返回中轴的位置
+        return left ;
     }
     
     /**
      * 递归形式的分治排序算法
      * 
      * @param arr 带排序数组
-     * @param low  开始位置
-     * @param high 结束位置
+     * @param left  开始位置
+     * @param right 结束位置
      */
-    public static void quickSort(int[] arr,int low,int high){
+    public static void quickSort(int[] arr,int left,int right){
     	
-        if(low < high){
+        if(left < right){
         	
-        	int middle = getMiddle(arr,low,high); //将arr数组进行一分为二
+        	//将arr数组进行一分为二
+        	int middle = getMiddle(arr,left,right);
         	
-        	quickSort(arr, low, middle-1);   //对低字段表进行递归排序
+        	//递归排序（从数组最左边到中轴的左边一个）
+        	quickSort(arr, left, middle-1);
 
-        	quickSort(arr, middle+1, high); //对高字段表进行递归排序
+        	//递归排序（从中轴的右边一个到数组的最后一个）
+        	quickSort(arr, middle+1, right);
         }
     
     }

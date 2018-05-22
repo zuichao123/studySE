@@ -1068,6 +1068,7 @@ java数据库编程：java.sql.*包中；
 		sex varchar(4) default "man",
 		birthday DATE
 	);
+	
 	1.处理CLOB数据：专门保存海量文字的；
 		了解大对象处理的基本原理；
 		掌握CLOB数据的读写操作；
@@ -1110,7 +1111,15 @@ java数据库编程：java.sql.*包中；
 		
 		BLOB表示大二进制数据，在Mysql中使用LONGBLOB声明，最高可以保存4G大小的内容；
 		
-		9分钟	
+		与大文本操作类似，在JDBC中也提供了专门的BLOB类型，用于表示二进制数据；
+		常用方法：
+			InputStream getBinaryStream()throws SQLException
+				取得BLOB的输入流；
+			byte[] getBytes(long pos,int length)throws SQLException
+				以字节数组的形式返回Blob数据的内容；
+			long length()throws SQLException
+				取出数据的长度；
+		
 			
 			
 			
