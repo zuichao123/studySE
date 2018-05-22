@@ -1053,14 +1053,64 @@ java数据库编程：java.sql.*包中；
 					实际上开发应用中不使用Statement接口，因为其采用的是拼凑的SQL语句形式，那么这样一来就有可能造成SQL的注入漏洞；
 					举例：最早的国内的大部分站点 ，只要输入“'”单引号已查询，就完蛋了。
 			
-	031708_【第17章：Java数据库编程】_处理大数据对象（1）—处理CLOB数据
+处理大数据对象：只能通过PreparedStatement操作完成
+	create table userblob(
+		id int AUTO_INCREMENT PRIMARY KEY,
+		name VARCHAR(30) not null,
+		photo LONGBLOB
+	);
+	
+	create table user(
+		id int AUTO_INCREMENT PRIMARY KEY,
+		name varchar(30) not null,
+		password varchar(32) not null,
+		age int not null,
+		sex varchar(4) default "man",
+		birthday DATE
+	);
+	1.处理CLOB数据：专门保存海量文字的；
+		了解大对象处理的基本原理；
+		掌握CLOB数据的读写操作；
+		可以使用Clob类方便的处理大文本数据；
+		
+		大对象处理主要指的是CLOB和BLOB两种类型的字段，在CLOB中可以存储海量文字，如：存储一部《三国演义》；在BLOB中可以存储二进制数据，如图片、电影等等；
+		如果在程序中要想处理这样的大对象操作，则必须使用PreparedStatement完成，所有的内容要通过IO流的方式从大文本字段中保存和读取。
+		
+		写入大对象数据方法：
+			void setAsciiStream(int parameterIndex,InputStream x,int length)throws SQLException
+				将指定的输入流写入数据库的文本字段；
+			void setBinaryStream(int parameterIndex,InputStream x,int length)throws SQLException	
+				将二进制的输入流数据写入到二进制字段之中；
+		
+		读取大对象数据：
+			InputStream getAsciiStream(int columnIndex)throws SQLException
+				根据列的编号返回大对象的文本输入流；
+			InputStream getAsciiStream(String columnName)throws SQLException
+				根据列的名称返回大对象的文本输入流；
+			Clob getClob(int i)throws SQLException
+				根据列的编号返回Clob数据；
+			Clob getClob(String cloName)throws SQLException
+				根据列名称返回Clob数据；
+			InputStream getBinaryStream(int columnIndex)throws SQLException
+				根据列的编号，返回二进制数据；
+			InputStream getBinaryStream(String columnName)throws SQLException
+				根据列的名称，返回二进制数据；
+			Blob getBlob(int i)throws SQLException		
+				根据列的编号，返回Blob数据；
+			Blob getBlob(String colName)throws SQLException
+				根据列名称，返回Blob数据；
 			
+		CLOB表示大文本数据，在Mysql中提供了LONGTEXT表示大文本数据，此字段的最大保存数据量为4G；
+		可以使用ResultSet中提供的getClob()方法，将全部的内容变为Clob对象的内容，直接使用Clob可以方便的取得大文本的数据，
+		也可以对这些文本数据进行一些简单的操作，如截取指定长度的文本等。
 			
-			
-			
-			
-			
-			
+	2.处理BLOB数据：专门保存二进制数据，包括（图片、音乐、电影等）
+		掌握BLOB数据的读、写操作；
+		可以使用BLOB类方便的处理二进制数据；
+		
+		BLOB表示大二进制数据，在Mysql中使用LONGBLOB声明，最高可以保存4G大小的内容；
+		
+		9分钟	
 			
 			
 			
