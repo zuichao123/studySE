@@ -1053,82 +1053,147 @@ java数据库编程：java.sql.*包中；
 					实际上开发应用中不使用Statement接口，因为其采用的是拼凑的SQL语句形式，那么这样一来就有可能造成SQL的注入漏洞；
 					举例：最早的国内的大部分站点 ，只要输入“'”单引号已查询，就完蛋了。
 			
-处理大数据对象：只能通过PreparedStatement操作完成
-	create table userblob(
-		id int AUTO_INCREMENT PRIMARY KEY,
-		name VARCHAR(30) not null,
-		photo LONGBLOB
-	);
-	
-	create table user(
-		id int AUTO_INCREMENT PRIMARY KEY,
-		name varchar(30) not null,
-		password varchar(32) not null,
-		age int not null,
-		sex varchar(4) default "man",
-		birthday DATE
-	);
-	
-	1.处理CLOB数据：专门保存海量文字的；
-		了解大对象处理的基本原理；
-		掌握CLOB数据的读写操作；
-		可以使用Clob类方便的处理大文本数据；
+	4.处理大数据对象：只能通过PreparedStatement操作完成
+		create table userblob(
+			id int AUTO_INCREMENT PRIMARY KEY,
+			name VARCHAR(30) not null,
+			photo LONGBLOB
+		);
 		
-		大对象处理主要指的是CLOB和BLOB两种类型的字段，在CLOB中可以存储海量文字，如：存储一部《三国演义》；在BLOB中可以存储二进制数据，如图片、电影等等；
-		如果在程序中要想处理这样的大对象操作，则必须使用PreparedStatement完成，所有的内容要通过IO流的方式从大文本字段中保存和读取。
+		create table user(
+			id int AUTO_INCREMENT PRIMARY KEY,
+			name varchar(30) not null,
+			password varchar(32) not null,
+			age int not null,
+			sex varchar(4) default "man",
+			birthday DATE
+		);
 		
-		写入大对象数据方法：
-			void setAsciiStream(int parameterIndex,InputStream x,int length)throws SQLException
-				将指定的输入流写入数据库的文本字段；
-			void setBinaryStream(int parameterIndex,InputStream x,int length)throws SQLException	
-				将二进制的输入流数据写入到二进制字段之中；
-		
-		读取大对象数据：
-			InputStream getAsciiStream(int columnIndex)throws SQLException
-				根据列的编号返回大对象的文本输入流；
-			InputStream getAsciiStream(String columnName)throws SQLException
-				根据列的名称返回大对象的文本输入流；
-			Clob getClob(int i)throws SQLException
-				根据列的编号返回Clob数据；
-			Clob getClob(String cloName)throws SQLException
-				根据列名称返回Clob数据；
-			InputStream getBinaryStream(int columnIndex)throws SQLException
-				根据列的编号，返回二进制数据；
-			InputStream getBinaryStream(String columnName)throws SQLException
-				根据列的名称，返回二进制数据；
-			Blob getBlob(int i)throws SQLException		
-				根据列的编号，返回Blob数据；
-			Blob getBlob(String colName)throws SQLException
-				根据列名称，返回Blob数据；
+		4.1  处理CLOB数据：专门保存海量文字的；
+			了解大对象处理的基本原理；
+			掌握CLOB数据的读写操作；
+			可以使用Clob类方便的处理大文本数据；
 			
-		CLOB表示大文本数据，在Mysql中提供了LONGTEXT表示大文本数据，此字段的最大保存数据量为4G；
-		可以使用ResultSet中提供的getClob()方法，将全部的内容变为Clob对象的内容，直接使用Clob可以方便的取得大文本的数据，
-		也可以对这些文本数据进行一些简单的操作，如截取指定长度的文本等。
+			大对象处理主要指的是CLOB和BLOB两种类型的字段，在CLOB中可以存储海量文字，如：存储一部《三国演义》；在BLOB中可以存储二进制数据，如图片、电影等等；
+			如果在程序中要想处理这样的大对象操作，则必须使用PreparedStatement完成，所有的内容要通过IO流的方式从大文本字段中保存和读取。
 			
-	2.处理BLOB数据：专门保存二进制数据，包括（图片、音乐、电影等）
-		掌握BLOB数据的读、写操作；
-		可以使用BLOB类方便的处理二进制数据；
+			写入大对象数据方法：
+				void setAsciiStream(int parameterIndex,InputStream x,int length)throws SQLException
+					将指定的输入流写入数据库的文本字段；
+				void setBinaryStream(int parameterIndex,InputStream x,int length)throws SQLException	
+					将二进制的输入流数据写入到二进制字段之中；
+			
+			读取大对象数据：
+				InputStream getAsciiStream(int columnIndex)throws SQLException
+					根据列的编号返回大对象的文本输入流；
+				InputStream getAsciiStream(String columnName)throws SQLException
+					根据列的名称返回大对象的文本输入流；
+				Clob getClob(int i)throws SQLException
+					根据列的编号返回Clob数据；
+				Clob getClob(String cloName)throws SQLException
+					根据列名称返回Clob数据；
+				InputStream getBinaryStream(int columnIndex)throws SQLException
+					根据列的编号，返回二进制数据；
+				InputStream getBinaryStream(String columnName)throws SQLException
+					根据列的名称，返回二进制数据；
+				Blob getBlob(int i)throws SQLException		
+					根据列的编号，返回Blob数据；
+				Blob getBlob(String colName)throws SQLException
+					根据列名称，返回Blob数据；
+				
+			CLOB表示大文本数据，在Mysql中提供了LONGTEXT表示大文本数据，此字段的最大保存数据量为4G；
+			可以使用ResultSet中提供的getClob()方法，将全部的内容变为Clob对象的内容，直接使用Clob可以方便的取得大文本的数据，
+			也可以对这些文本数据进行一些简单的操作，如截取指定长度的文本等。
+				
+		4.2  处理BLOB数据：专门保存二进制数据，包括（图片、音乐、电影等）
+			掌握BLOB数据的读、写操作；
+			可以使用BLOB类方便的处理二进制数据；
+			
+			BLOB表示大二进制数据，在Mysql中使用LONGBLOB声明，最高可以保存4G大小的内容；
+			
+			与大文本操作类似，在JDBC中也提供了专门的BLOB类型，用于表示二进制数据；
+			常用方法：
+				InputStream getBinaryStream()throws SQLException
+					取得BLOB的输入流；
+				byte[] getBytes(long pos,int length)throws SQLException
+					以字节数组的形式返回Blob数据的内容；
+				long length()throws SQLException
+					取出数据的长度；
+			
+			但是从实际角度来看，把一个过大的文件存放在数据库中是不明智的，因为数据过大，往往采用的是映射路径的方式写入的。
 		
-		BLOB表示大二进制数据，在Mysql中使用LONGBLOB声明，最高可以保存4G大小的内容；
+	5. CallableStatement接口：很少用，了解即可；
+		了解Mysql存储过程的建立；
+		了解存储过程中参数传递的三种方式；
+		了解CallableStatement调用存储过程的操作；
 		
-		与大文本操作类似，在JDBC中也提供了专门的BLOB类型，用于表示二进制数据；
+		CallableStatement主要是调用数据库中的存储过程，CallableStatement也是Statement接口的子接口；在使用CallableStatement的时候可以接收过程的返回值。
 		常用方法：
-			InputStream getBinaryStream()throws SQLException
-				取得BLOB的输入流；
-			byte[] getBytes(long pos,int length)throws SQLException
-				以字节数组的形式返回Blob数据的内容；
-			long length()throws SQLException
-				取出数据的长度；
+			int getInt(int parameterIndex)throws SQLException
+				根据编号取出过程的返回值；
+			float getFloat(int parameterIndex)throws SQLException
+				根据编号取出过程的返回值；
+			void setInt(String paramenterName,int x)throws SQLException
+				设置指定编号的内容；
+			void setFloat(String parameterName,float x)throws SQLException
+				设置指定编号的内容；
+			void registerOutParaameter(int parameterIndex,int sqlType)throws SQLException
+				设置返回值的类型，需要使用Types类；
+			
+		在JDBC中，如果要想设置过程的返回值类型，可以使用Types完成，在Types中定义了很多的常量，如果现在返回值类型为int，则使用：
+			Types.INTEGER
+		三种数据类型：	
+			IN 类型：默认的设置，什么都不声明就表示IN类型，只是将内容传递进来；
+			INOUT类型：表示把值传递到过程中，并且可以保留过程对此值的修改，引用；
+			OUT类型：可以不用传递内容，过程中对此值的操作可以返回；	
+			
+	6.JDBC2.0操作：
+		了解jdbc2。0提供的主要新特性；
+		了解可滚动结果集的操作；
+		了解结果集的增加、修改、删除操作；
+		掌握批处理操作；
 		
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		在jdbc2。0，加强了结果集ResultSet的功能，可以直接使用ResultSet执行更新的操作，或者实现双向滚动；可以一次性执行多个语句；
+		JDBC 2.0对ResultSet的支持：
+			static final int TYPE_FORWARD_ONLY
+				表示指针只能向前移动的ResultSet，是默认值；
+			static final int TYPE_SCROLL_SENSITIVE
+				表示ResultSet可以滚动，可以更新内容；
+			static fianl int TYPE_SCROLL_INSENSITIVE
+				表示ResultSet可以滚动，但不能更新内容；
+			static final int CONCUR_READ_ONLY
+				按只读的方式打开数据库；
+			static final int CONCUR_UPDATABLE
+				表示ResultSet可以更新；
+			boolean absolute(int row)throws SQLException
+				将结果集移动到指定行；
+			void afterLast()throws SQLException
+				将结果集移动到末尾之后；
+			void beforeFirst()throws SQLException
+				将结果集移动到首航之前；
+			boolean first()throws SQLException
+				将结果集移动到第一行；
+			boolean last()throws SQLException
+				将结果集移动到最后一行；
+			boolean previous()throws SQLException
+				将结果集向上移动；
+			void updateString(int columnIndex,String x)throws SQLException
+				指定更新列的内容，此方法被重载多次，支持各种数据类型；
+			void updateString(String columnName,String x)throws SQLException
+				指定更新列的内容，此方法被重载多次，支持各种数据类型；
+			void moveToInsertRow()throws SQLException
+				将指针移动到插入行；
+			void updateRow()throws SQLException
+				更新行数据信息；
+			void cancelRowUpdates()throws SQLException
+				取消更新数据，在updateRow()调用之前有效；
+			void insertRow()throws SQLException
+				插入行数据；
+			void deleteRow()throws SQLException
+				删除行数据；
+				
+	
+		031711---3minute		
 			
 			
 			

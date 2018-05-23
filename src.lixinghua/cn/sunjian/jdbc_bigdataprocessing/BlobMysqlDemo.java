@@ -1,4 +1,4 @@
-package cn.sunjian.jdbc_bigdateprocessing;
+package cn.sunjian.jdbc_bigdataprocessing;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +21,8 @@ import cn.sunjian.utils.CurrentPath;
  * 		Blob类型的二进制数据操作；
  * 			写入二进制；
  * 			读取二进制；
+ * 		
+ * 		使用blob读取会简单一些；
  * 
  * 			
  * @author jack
@@ -90,12 +92,14 @@ public class BlobMysqlDemo {
 			
 			/*
 			 * 查询并输出（读取）数据
+			 * 		使用io读取操作
+			 * 		使用BLOB读取操作
 			 */
 			pste = conn.prepareStatement(sql2);
 			pste.setString(1, name);//替换SQL语句中的第一个问号
 			rs = pste.executeQuery();//执行查询,并保存结果
 			
-			//方法一：
+			//方法一：io读取
 //			if(rs.next()){//如果有内容
 //				
 //				name = rs.getString(1);
@@ -123,21 +127,21 @@ public class BlobMysqlDemo {
 //				}
 //			}
 			
-			//方法二：常用
+			//方法二：BLOB读取（常用）
 			if (rs.next()) {
-				name = rs.getString(1);
+				name = rs.getString(1);//接收第一个内容
 				System.out.println("姓名："+name);
 				
-				Blob b = rs.getBlob(2);
+				Blob b = rs.getBlob(2);//使用blob接收第二个内容
 				
 				try {
-					output = new FileOutputStream(file1);
+					output = new FileOutputStream(file1);//找到目标文件（要输出到的文件）
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
 				
 				try {
-					output.write(b.getBytes(1, (int) b.length()));
+					output.write(b.getBytes(1, (int) b.length()));//将blob对象接收的内容，写入到目标文件中，从第一个字节到最后一个字节。
 					output.close();//关闭输出流
 				} catch (IOException e) {
 					e.printStackTrace();
