@@ -1182,7 +1182,7 @@ java数据库编程：java.sql.*包中；
 			void updateString(String columnName,String x)throws SQLException
 				指定更新列的内容，此方法被重载多次，支持各种数据类型；
 			void moveToInsertRow()throws SQLException
-				将指针移动到插入行；
+				将指针移动到插入行；插入数据；
 			void updateRow()throws SQLException
 				更新行数据信息；
 			void cancelRowUpdates()throws SQLException
@@ -1192,9 +1192,21 @@ java数据库编程：java.sql.*包中；
 			void deleteRow()throws SQLException
 				删除行数据；
 				
-	
-		031711---3minute		
-			
+		如果想要创建可滚动的结果集，则在创建PreparedStatement（Statement）的时候必须指定了创建的类型。
+		开发中一般不使用可滚动的结果集。
+		如果想要使用ResultSet插入数据，则在创建数据库操作的时候就必须选择好允许更新。插入数据的方法：
+
+		批处理：
+			就是指一次性向数据库中执行多条语句，一次提交。
+			加入语句：
+				void addBatch()throws SQLException
+			执行语句：
+				int[] executeBatch()throws SQLException
+					
+		小结：
+			了解jdbc2.0中结果集的功能提升：可滚动、可插入、可修改、可删除；
+			如果要想创建灵活的结果集，则在创建数据库操作的时候就必须指定类型；
+			批处理可以一次性提交多条数据到数据库表中；	
 			
 			
 			
