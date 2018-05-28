@@ -1256,7 +1256,7 @@ java数据库编程：java.sql.*包中；
 					Savepoint sp = conn.setSavepoint();
 			在开发汇中，这是标准的事务处理操作；	
 			正常情况下，可以通过SAVEPOINT保存事务的操作点，因为默认情况下所有的回滚，就是将全部的操作取消掉，而通过Savepoint设置回滚的位置；
-			
+			 
 			
 			
 			
