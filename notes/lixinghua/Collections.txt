@@ -1256,11 +1256,138 @@ java数据库编程：java.sql.*包中；
 					Savepoint sp = conn.setSavepoint();
 			在开发汇中，这是标准的事务处理操作；	
 			正常情况下，可以通过SAVEPOINT保存事务的操作点，因为默认情况下所有的回滚，就是将全部的操作取消掉，而通过Savepoint设置回滚的位置；
-			 
+		
+	8.使用元数据分析数据库；
+		了解DatabaseMetaData；
+		了解ResultSetMetaData；
+		
+		DatabaseMetaData：
+			使用元数据可以分析数据库的基本信息，包括数据库的名称、版本以及得到表的信息；
+			常用方法：
+				String getDatabaseProductName()throws SQLException
+					得到数据库的名称；
+				int getDriverMajorVersion()
+					得到数据库的主版本号；
+				int getDriverMinorVersion()
+					得到数据库的次版本号；
+				ResultSet getPrimaryKeys(String catalog,String schema,String table)throws SQLException
+					得到表的主键信息，每一个主键都有以下的描述：
+						TABLE_CAT String =>表类别（可为null）；
+						TABLE_SCHEM String =>表模式（可为null）；
+						TABLE_NAME String =>表名称；
+						COLUMN_NAME String =>列名称；
+						KEY_SEQ short =>主键中的序列号；
+						PK_NAME String =>主键的名称（可为null）；
+		ResultSetMetaData：
+			使用ResultSetMetaData可以获取关于ResultSet对象中列的类型和属性信息的对象，ResultSetMetaData存储了ResultSet的MetaData，可以通过以下的方法取得ResultSet的信息。
+			常用方法：
+				int getColumnCount()throws SQLException
+					返回一个查询结果中的列数；
+				boolean AutoIncrement(int column)throws SQLException
+					判断指定列是否是自动编号；
+				String getColumnName(int column)throws SQLException
+					返回列的名称；		
+		以上的两个操作在一般的数据的开发底层上比较常用，实际上也就是类似于反射的操作机制，取得一些基本的信息。在正常开发中基本上是不会用的。
+	
+图像界面：
+	了解AWT作用：
+		专门创建桌面程序的；
+	了解Swing与AWT的关系；
+		Jxx就表示Swing的操作；
+		Swing继承自AWT；
+		AWT和Swing的关系，可以发现Swing中还是大量使用了AWT的开发包，在现在的开发中肯定不会再去使用AWT，连Swing基本上都不怎么使用了。
+		
+	在整个AWT包中提供的所有工具类，主要分为以下三种：
+		组件：Component
+			在整个AWT包中，所有的组件类（例如：按钮、文本框等）都是从Component和MenuComponent扩展而来的，这些类会继承这两个类的公共操作。
+		容器：Container
+			所有的AWT组件都应该放到容器之中。在容器之中，所有的组件都可以设置在容器中的位置、大小等，所有的容器都是Commponent的子类，在AWT中包含以下几种容器。
+				Window：
+					Frame：
+					Dialog：
+				Panel：
+				ScrollPane：
+		布局管理器：LayoutManager	
+			使用布局管理器可以使容器中的组件按照指定的位置进行摆放，另外的一个好处是，即使容器改变了大小，布局管理器也可以准确的把组件放到指定的位置，这样就可以有效的保证版面不会混乱。
+			在AWT中所有的布局管理器都是LayoutManager的子类。	
+		 
+	1.基本容器JFrame：		
+		
+		。。。。。。。。。	
 			
+
+JAVA网络编程：
+	1.IP（Internet Protocol）与InetAddress：
+		InetAddress类的常用方法：
+			public static InetAddress getByName(String host)throws UnknownHostException
+				通过主机名称得到InetAddress对象；
+			public static InetAddress getLocalHost()throws UnknownHostException
+				通过本机得到InetAddress对象；
+			public String getHostName()
+				得到IP地址；
+			public boolean isReachable(int timeout)throws IOException
+				判断地址是否可达，同时指定超时时间；
+	
+	2.URL与URLConnection：
+		URL（Uniform Resource Locator）统一资源定位符，可以直接使用此类找到互联网上的资源（如：一个网页）；	
+		
+		URLConnection：
+			是封装远程网络资源一般方法的类，通过它可以建立与远程服务器的连接，检查远程资源的一些属性；
+			常用方法：
+				public int getContentLength()
+					取得内容的长度；
+				public String getContentType()
+					取得内容的类型；
+				public InputStream getInputStream()throws IOException
+					取得连接的输入流；	
+	
+	3.URLEncoder与URLDecoder类：（编码和解码）
+		常用方法：
+			public static String encode(String s,String enc)throws UnsupportedEncodingException
+				使用指定的编码机制将字符串转换为application/x-www-form-urlencoded格式；
+			public static String decode(String s,String enc)throws UnsupportedEncodingException
+				使用指定的编码机制对application/x-www-form-urlencoded字符串解码；
+
+		一般在进行网络程序开发时，传递中文的时候往往会需要进行编码和解码操作；
+
+	4.TCP程序设计：
+		在java中使用Socket（即套接字）完成TCP程序的开发，使用此类可以方便的建立可靠的、双向的、持续的、点对点的通讯连接；
+		在Socket的程序开发中，服务器端使用ServerSocket等待客户端的连接，对于java的网络程序来讲，每一个客户端都使用一个Socket对象表示；
+
+		在java的网络程序中，客户端只要符合连接的通讯协议，那么服务器端都可以进行接收；
+		ServerSocket类主要用在服务器端程序的开发上，用于接收客户端的连接请求。
+		常用方法：
+			public ServerSocket(int port)throws IOException
+				创建ServerSocket实例，并指定监听端口；
+			public Socket accept()throws IOException
+				等待客户端连接，此方法连接之前一直阻塞；
+			public InetAddress getInetAddress()
+				返回服务器的IP地址；
+			public boolean isClosed()
+				返回ServerSocket的关闭状态；
+			public void close()throws IOException
+				关闭ServerSocket；
+
+		Accept()每次都会返回一个Socket对象；
+		Socket：在服务器端每次运行时都要使用accept()方法等待客户端连接，此方法执行之后服务端将进入阻塞状态，直到客户端连接之后程序才可以向下继续执行，此方法的返回值类型是Socket，每一个Socket都表示一个客户端对象。
+		常用方法：
+			public Socket(String host,int port)throws UnknownHostException,IOException
+				构造Socket对象，同时指定要连接服务器的主机名称及连接端口；
+			public InputStream getInputStream()throws IOException
+				返回此套接字的输入流；
+			public OutputStream getOutputStream()throws IOExcetpion
+				返回此套接字的输出流；
+			public void close()throws IOException
+				关闭此Socket；
+			public boolean isClosed()
+				判断此套接字是否被关闭；
 			
-			
-			
+		*通过Socket、IO、Thread类在一起，可以共同完成服务器端的代码开发；
+
+	5.UDP程序设计：
+		为了减少网络开销，在网络中又提供了另外一种传输协议--UDP，不可靠连接，在各个聊天工具中被广泛使用；
+		在UDP开发中使用DatagramPacket包装一条要发送的信息，之后使用DatagramSocket用于完成信息的发送操作；
+
 
 
 
