@@ -1387,21 +1387,21 @@ JAVA网络编程：
 	5.UDP程序设计：
 		为了减少网络开销，在网络中又提供了另外一种传输协议--UDP，不可靠连接，在各个聊天工具中被广泛使用；
 		在UDP开发中使用DatagramPacket包装一条要发送的信息，之后使用DatagramSocket用于完成信息的发送操作；
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
+		UDP中主要使用的是数据报协议；是包含真实的要发送的信息，称为数据报；
+		DatagramPacket常用方法：
+			public DatagramPacket(byte[] buf,int length)
+				构造，实例化DatagramPacket对象时，指定接收数据长度；
+			public DatagramPacket(byte[] buf,int length,InetAddress address,int port)
+				构造，实例化DatagramPacket对象时，指定发送的数据、数据的长度、目标地址及端口；
+			public byte[] getData()
+				返回接收的数据；
+			public int getLength()
+				返回要发送或接收数据的长度；
+		
+		所有的数据报使用DatagramSocket发送；常用方法：
+			public DatagramSocket(int port)throws SocketException
+				创建DatagramPacket对象，并指定监听端口；
+			public void send(DatagramPacket p)throws IOException
+				发送数据报；
+			public void receive(DatagramPacket p)throws IOException
+				接收数据报；		
