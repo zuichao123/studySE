@@ -1,7 +1,7 @@
 package cn.sunjian.io.showmenu2;
 
 import cn.sunjian.io.InputData;
-import cn.sunjian.utils.CurrentPath;
+import cn.sunjian.utils.Path;
 
 /**
  * 练习：单人信息管理程序：
@@ -16,7 +16,7 @@ public class Operate {
 	public static void add(){//增加操作
 		
 		InputData input = new InputData();//实例化输入数据对象
-		FileOperate fo = new FileOperate(CurrentPath.deskTop()+"test.txt");
+		FileOperate fo = new FileOperate(Path.deskTop()+"test.txt");
 		
 		String name = input.getString("请输入姓名：");
 		int age = input.getInt("请输入年龄：", "年龄必须是数字！");
@@ -33,7 +33,7 @@ public class Operate {
 	}
 	
 	public static void delete(){//删除操作
-		FileOperate fo = new FileOperate(CurrentPath.deskTop()+"test.txt");
+		FileOperate fo = new FileOperate(Path.deskTop()+"test.txt");
 		
 		try{
 			fo.save(null);
@@ -45,7 +45,7 @@ public class Operate {
 	}
 	
 	public static void update(){//修改操作
-		FileOperate fo = new FileOperate(CurrentPath.deskTop()+"test.txt");
+		FileOperate fo = new FileOperate(Path.deskTop()+"test.txt");
 		Person per = null;
 		
 		try {
@@ -71,7 +71,7 @@ public class Operate {
 	}
 	
 	public static void find(){//查找操作
-		FileOperate fo = new FileOperate(CurrentPath.deskTop()+"test.txt");
+		FileOperate fo = new FileOperate(Path.deskTop()+"test.txt");
 		Person per = null;
 		
 		try {

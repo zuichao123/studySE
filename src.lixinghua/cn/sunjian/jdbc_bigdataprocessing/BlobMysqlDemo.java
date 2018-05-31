@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import cn.sunjian.utils.CurrentPath;
+import cn.sunjian.utils.Path;
 
 /**
  * java数据库编程：之--处理大数据
@@ -63,9 +63,9 @@ public class BlobMysqlDemo {
 		String sql2 = "select name,photo from userblob where name = ?";
 		
 		//写入时的图片文件
-		File file = new File(CurrentPath.deskTop()+"mldn.bmp");
+		File file = new File(Path.deskTop()+"mldn.bmp");
 		//输出时的图片文件
-		File file1 = new File(CurrentPath.deskTop()+"mldn2.bmp");
+		File file1 = new File(Path.deskTop()+"mldn2.bmp");
 		
 		InputStream intput = null;//文件输入流
 		OutputStream output = null;//文件输出流

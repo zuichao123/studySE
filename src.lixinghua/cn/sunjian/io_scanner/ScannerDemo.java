@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import cn.sunjian.utils.CurrentPath;
+import cn.sunjian.utils.Path;
 
 /**
  * java.io练习：
@@ -35,7 +35,7 @@ public class ScannerDemo {
 	 * 如果文件中，有空格、换行等时：使用StringBuffer来接收。
 	 */
 	private static void readFile() {
-		File f = new File(CurrentPath.deskTop()+"1.txt");
+		File f = new File(Path.deskTop()+"1.txt");
 		Scanner scan = null;
 		try {
 			scan = new Scanner(f);//读取指定文件数据

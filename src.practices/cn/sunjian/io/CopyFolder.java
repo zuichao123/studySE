@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 
-import cn.sunjian.utils.CurrentPath;
+import cn.sunjian.utils.Path;
 
 /**
  * java.io操作练习：
@@ -32,7 +32,7 @@ public class CopyFolder {
 
 	public static void main(String[] args) throws IOException {
 		
-		String srcDir = CurrentPath.deskTop()+"Lqbz1";
+		String srcDir = Path.deskTop()+"Lqbz1";
 		String desDir = srcDir+"_bak";
 
 		File srcPath = new File(srcDir);//源文件夹	

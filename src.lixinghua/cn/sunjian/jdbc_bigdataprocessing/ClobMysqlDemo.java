@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import cn.sunjian.utils.CurrentPath;
+import cn.sunjian.utils.Path;
 
 /**
  * java数据库编程：之--处理大数据
@@ -64,7 +64,7 @@ public class ClobMysqlDemo {
 		String sql2 = "select name,note from userclob where name = ?";
 		
 		//文本文件
-		File file = new File(CurrentPath.deskTop()+"mldn.log");
+		File file = new File(Path.deskTop()+"mldn.log");
 		
 		InputStream intput = null;//文件输入流
 		

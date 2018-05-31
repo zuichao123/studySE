@@ -3,8 +3,8 @@ package cn.sunjian.generic;
 import java.util.Iterator;
 import java.util.TreeSet;
 
-import cn.sunjian.generic.bean.Person1;
-import cn.sunjian.generic.comparator.ComparatorByName;
+import cn.sunjian.generic_bean.Person1;
+import cn.sunjian.generic_comparator.ComparatorByName;
 
 /**
  * ÑÝÊ¾·ºÐÍ
