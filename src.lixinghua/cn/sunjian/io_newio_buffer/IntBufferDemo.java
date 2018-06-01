@@ -1,9 +1,9 @@
-package cn.sunjian.io_nio;
+package cn.sunjian.io_newio_buffer;
 
 import java.nio.IntBuffer;
 
 /**
- * java新IO：
+ * java新IO：buffer缓冲区
  * 
  * 		position、limit、capacity，这三个变量完成了缓冲区的操作代码；
  * 
