@@ -608,10 +608,17 @@ java新IO：
 				判断此通道是否是打开的；
 				
 		可以使用FileChannel()完成文件的双向操作；
+		常用方法：
+			public int read(ByteBuffer dst)throws IOException		
+				将内容读入到缓冲区之中；
+			public int write(ByteBuffer src)throws IOException		
+				将内容从缓冲区写入到通道；
+			public final void close()throws IOException
+				关闭通道；
+			public abstract MappedByteBuffer map(FileChannel.MapMode mode,long position,long size)throws IOException
+				将通道的文件区域映射到内存之中，同时指定映射模式、文件中的映射文件以及要映射的区域大小；
+				
 		以FileInputStream、FileOutputStream类为准，这两个类都是支持通道操作的；
-				
-				
-				
 				
 				
 				
