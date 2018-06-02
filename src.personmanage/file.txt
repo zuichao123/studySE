@@ -11,13 +11,14 @@
 
 	数据库的创建脚本编写完成：
 	DROP TABLE user;
-	CREATE TABLE user(
-
-		id 	 INT 	AUTO_INCREMENT PRIMARY KEY,
-		name 	 VARCHAR(50)	NOT NULL,
-		sex 	 VARCHAR(10) 	NOT NULL,
+	create table user(
+		id int AUTO_INCREMENT PRIMARY KEY,
+		name varchar(16) not null,
+		password varchar(16) not NULL,
+		age int not null,
+		sex varchar(10) default "man",
 		birthday DATE
-	)
+	);
 	
 	在进行任何操作的时候首先必须完成的就是接口，接口的定义的时候，为了开发方便，建议在写的时候前
 
@@ -37,3 +38,25 @@
 
 一个专门用于进行数据库连接的操作类；
 	有接口之后，下一步实现接口；
+	
+	一个实现类完成了，一个实现类完成之后，下一步要操作的是工厂，因为只要看见接口了，就可以通过工厂设计进行解耦合的操作，
+	当然，为了开发方便，用户可以自己通过属性文件的配置方法完成。
+	
+	在实际的开发中一定要注意，操作数据库的最前端代码是不能出现任何的SQL包的导入语句的；
+	
+	此时，通过以上的代码完成了后端操作，但是此段代码中存在问题：
+		出现在实现类之中，实现类的主要功能是完成数据库的具体的操作，
+		但是对于数据库的打开和关闭操作与具体的业务操作是么有任何关系的，
+		所以此时最好加入代理的操作。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
