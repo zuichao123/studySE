@@ -597,7 +597,7 @@ java新IO：
 			缓冲区中存在position、limit、capacity三个状态变量；
 			缓冲区的操作中通过allocate()创建缓冲区，或使用只读、直接缓冲区。
 				
-	2.通道（Channel）
+	2.通道（Channel）：通道的操作都是以缓冲区为主的
 		了解Channel，并可以完成双向的操作；
 		通道可以用来读取和写入数据，通道类似于之前的输入/输出流，但是程序不会直接操作通道的，所有的内容都是先读到或写入到缓冲区之中，再通过缓冲区取得或写入的。
 		通道与传统的流操作不同，传统的流操作是分为输入或输出流的，而通道本身是双向操作的，既可以完成输入也可以完成输出。
@@ -619,6 +619,108 @@ java新IO：
 				将通道的文件区域映射到内存之中，同时指定映射模式、文件中的映射文件以及要映射的区域大小；
 				
 		以FileInputStream、FileOutputStream类为准，这两个类都是支持通道操作的；
+				
+		内存映射：MappedByteBuffer（只适合读）
+			内存映射可以把文件映射到内存之中，这样文件内的数据就可以用内存读/写指令来访问，而不是用InputStream或OutputStream这样的I/O操作类，采用此种方式读取文件的速度是最快的；		
+			需要将输入流绑定到内存映射上；
+			FileChannel类的三种内存映射模式：
+				public static final FileChannel.MapMode READ_ONLY
+					常量，只读映射模式；
+				public static final FileChannel.MapMode READ_WRITE
+					常量，读取/写入映射模式；
+				public static final FileChannel.MapMode PRIVATE
+					常量，专用（写入时拷贝）映射模式；		
+				
+		几种读入的方式：
+			1.RandomAccessFile：较慢
+			2.FileInputStream：较慢
+			3.缓冲读取：速度较快
+			4.内存映射：速度是最快的		
+				
+		内存映射在读取的时候是最快的，但是如果在使用以上操作代码的时候，执行的是写入操作则有可能时非常危险的，
+		因为仅仅只是改变数组中的单个元素这种简单的操作，就可能会直接修改磁盘上的文件，因为修改数据与将数据保存在磁盘上是一样的。		
+				
+	3.文件锁：
+		在java新io中提供了文件锁的功能，这样当一个线程将文件锁定之后，其他线程是无法操作此文件的，要想进行文件的锁定操作，则要使用FileLock类完成，此类的对象需要依靠FileChannel进行实例化操作；		
+		实例化FileLock对象的方式：
+			public final FileLock lock()throws IOException
+				获得此通道的文件的独占锁定；
+			public abstract FileLock(long position,long size,boolean shared)throws IOException		
+				获得此通道文件给定区域的锁定，并指定锁定位置、锁定大小、是共享锁定（true）或独占锁定（false）；
+			public final FileLock tryLock()throws IOException
+				试图获取此通道的独占锁定；
+			public abstract FileLock tyrLock(long position,long size,boolean shared)throws IOException
+				试图获取此通道指定区域的锁定，并指定锁定位置、锁定大小、属于共享锁定（true）或是独占锁定（false）；
+		
+		关于锁定的方式：
+			1.共享锁：
+				允许多个线程进行文件的读取操作；
+			2，独占锁：
+				只允许一个线程进行文件的读写操作；	
+				
+		FileLock类的常用方法：
+			public final boolean isShared()
+				判断锁定是否为共享锁定；
+			public final FileChannel channel()
+				返回此锁定的FileChannel；
+			public abstract void release()throws IOException
+				释放锁定（解锁）；		
+			public final long size()
+				返回锁定区域的大小；
+		
+	4.字符集：Charset
+		在整个nio中，对于不同的平台的编码操作，java都可以进行自动的适应，因为可以使用字符集进行字符编码的转换操作；
+		在java的新io中提供了Charset类来专门负责处理编码的问题，该类还包含了创建编码器（CharsetEncoder）和创建解码器（CharsetDecoder）的操作；
+		
+	5.Selector类：非阻塞io操作
+		了解Selector类的使用；
+		可以使用新IO构建异步非阻塞服务器；
+		之前在讲解Socket程序的时候，所有的Socket程序在运行的时候，服务器必须始终等待着客户端的连接，那么就会造成大量的资源浪费，所有引入了非阻塞IO操作（Selector）；			
+		使用Selector可以构建一个非阻塞的网络服务；
+		在新io中实现网络程序需要依靠ServerSocketChannel类与SocketChannel类；		
+		
+		Selector类的常用方法：
+			public static Selector open()throws IOException
+				打开一个选择器；
+			public abstract int select()throws IOException
+				选择一组键，通道已经为IO做好准备；
+			public abstract Set<SelectionKey>selectedKeys()		
+				返回此选择器已选择的key；
+				
+		ServerSocketChannel类的常用方法：
+			public abstract SelectableChannel configureBlocking(boolean block)throws IOException
+				调整此通道的阻塞模式，如果为true将被设置为阻塞模式，如果为false将被设置为非阻塞模式；
+			public final SelectionKey register(Selector sel,int ops)throws ClosedChannelException
+				向指定的选择器注册通道并设置Selector域，返回一个选择键；
+			public static ServerSocketChannel open()throws IOException
+				打开服务器的套接字通道；
+			public abstract ServerSocket socket()
+				返回此通道关联的服务器套接字；		
+		
+		SelectionKey：
+			如果现在要使用服务器向客户端发送信息，则需要通过SelectionKey类中提供的方法判断服务器的操作状态，
+			而要想取得客户端的连接也需要使用SelectionKey类；
+			SelectionKey类的常用方法：
+				public abstract SelectableChannel channel()
+					返回创建此key的通道；
+				public final boolean isAcceptable()
+					判断此通道是否可以接收新的连接；
+				public final boolean isConnectable()
+					判断此通道是否完成套接字的连接操作；
+				public final boolean isReadable()
+					判断此通道是否可以进行读取操作；
+				public final boolean isWritable()
+					判断此通道是否可以进行写入操作；		
+				
+		Selector在实际开发中使用较少，但是对于服务器的性能提高的操作代码上使用较多。	
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				

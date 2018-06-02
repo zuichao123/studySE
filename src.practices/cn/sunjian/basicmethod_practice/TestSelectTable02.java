@@ -1,4 +1,4 @@
-package com.sunjian.basicmethod_practice;
+package cn.sunjian.basicmethod_practice;
 /**
  * 使用查表法查看星期几
  * @author sunjian

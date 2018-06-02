@@ -1,4 +1,4 @@
-package com.sunjian.basicmethod_practice;
+package cn.sunjian.basicmethod_practice;
 /**
  * ≤‚ ‘÷ÿ‘ÿ
  * @author sunjian

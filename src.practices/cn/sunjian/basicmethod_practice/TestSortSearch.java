@@ -1,4 +1,4 @@
-package com.sunjian.basicmethod_practice;
+package cn.sunjian.basicmethod_practice;
 /**
  * 练习数组有序查找
  * @author sunjian

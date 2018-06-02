@@ -1,4 +1,4 @@
-package com.sunjian.basicmethod_practice;
+package cn.sunjian.basicmethod_practice;
 
 public class TestPoint {
 	double x,y,z;
