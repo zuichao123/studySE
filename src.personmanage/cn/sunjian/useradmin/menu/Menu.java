@@ -19,7 +19,7 @@ public class Menu {
 	
 	//显示方法
 	public void show(){
-		System.out.println("==-==XXX人员管理系统==-==");
+		System.out.println("==-====-==XXX人员管理系统==-====-==");
 		System.out.println("    [1]、增加人员");
 		System.out.println("    [2]、修改人员");
 		System.out.println("    [3]、删除人员");

@@ -12,6 +12,8 @@ import cn.sunjian.useradmin.jdbc.DataBaseConnection;
 import cn.sunjian.useradmin.vo.User;
 /**
  * 数据库操作接口的实现类的：代理类
+ * 		1.将连接好的数据库对象，传给所代理的类（IUserDAOImpl）；
+ * 		2.负责数据库的打开、关闭操作；
  * 
  * @author sunjian
  *
@@ -19,7 +21,7 @@ import cn.sunjian.useradmin.vo.User;
 public class IUserDAOProxy implements IUserDAO {
 	
 	private DataBaseConnection dbc = null;//声明数据库连接类对象
-	private IUserDAO dao = null;//声明数据库操作接口对象
+	private IUserDAO dao = null;//声明数据库操作接口对象（用要代理的类来实例化）
 	
 	public IUserDAOProxy() {
 		this.dbc = new DataBaseConnection(); //实例化，指定连接的数据库
