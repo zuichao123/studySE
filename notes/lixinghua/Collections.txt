@@ -1312,7 +1312,48 @@ java数据库编程：java.sql.*包中；
 			在AWT中所有的布局管理器都是LayoutManager的子类。	
 		 
 	1.基本容器JFrame：		
+		如果要使用Swing创建一个窗口，则直接使用JFrame类即可，此类事Component的子类；
+		Dimension类：
+			在JFrame中设置窗体的大小，也可以使用Dimension类完成，此类封装的就是组件的显示宽度和高度，此类的常用操作方法如下：
+				public Dimension()
+					创建一个Dimension实例；
+				public void setSize(double width,double height)
+					设置显示的宽和高；
+				public void setSize(int width,int height)
+					设置显示的宽和高；
+				public double getWidth()
+					返回组件的宽；
+				public double getHeight()
+					返回组件的高；
 		
+		Point类：
+			组件的显示位置也可以使用Point类指定，此类封装的是显示位置的X、Y坐标，此类的常用方法如下：
+				public Point()
+					构造，在坐标原点创建对象；
+				public Point(int x,int y)
+					在指定的坐标点创建对象；
+				public void setLocation(double x,double y)
+					设置X、Y坐标；
+				public void setLocation(int x,int y)
+					设置X、Y坐标；
+				public void move(int x,int y)
+					将此组件移动到指定坐标位置，此方法与setLocation(int x,int y)相同；
+				public void translate(int dx,int dy)
+					平移（x,y）位置的点，沿x轴平移dx，沿y轴平移dy，移动后得到点（x + dx, y + dy）；
+					
+		小结：
+			1.所有的组件都要向容器之中增加；
+			2.JFrame本身的窗体是不具备关闭功能的，如果要想关闭的话，则需要编写对应的时间监听操作；
+	
+	2.JLable标签组件：
+		表示一个标签，就是只用于显示信息的一个组件；		
+				
+							
+				
+					
+			
+					
+					
 		。。。。。。。。。	
 			
 
