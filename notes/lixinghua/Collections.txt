@@ -1386,8 +1386,13 @@ java数据库编程：java.sql.*包中；
 			绝对定位；				
 				通过设置绝对坐标的方式完成，在Component中提供了setBounds()方法，可以定位一个组件的坐标，使用X、Y的坐标表示方式，此方法定义如下：
 					public void setBounds(int x,int y,int width,int height);
-					
-					
+	
+	5.JPanel容器：
+		JPanel也是一种经常用到的容器之一，可以使用JPanel完成各种复杂的界面显示。
+		在JPanel中可以加入任意的组件，之后直接将JPanel容器加入到JFrame容器中即可显示。		
+		
+	6.JSplitPane容器：
+		JSplitPane主要功能是分隔面板，可以将一个窗体分隔为两个子窗体，可以是水平排列也可以是垂直排列；			
 		。。。。。。。。。	
 			
 
