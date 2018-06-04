@@ -1347,7 +1347,27 @@ java数据库编程：java.sql.*包中；
 	
 	2.JLable标签组件：
 		表示一个标签，就是只用于显示信息的一个组件；		
-				
+		2.1更改JLabel的文字样式：
+			如果现在要想更改使用的字体，则可以直接使用Component类中定义的以下方法：
+				public void setFont(Font f)
+					在设置的时候使用了java.awt.Font类来表示字体，Font类的常用操作方法及常量如下：
+						public static final int BOLD
+							文字显示为粗体；
+						public static final int ITALIC
+							文字显示风格为斜体；
+						public static final int PLAIN
+							文字显示风格为普通样式；
+						public Font(String name,int style,int size)
+							实例化对象，指定显示风格及大小；
+						public String getFontName()
+							得到字体的名称；
+			
+			可以通过GraphicsEnvironment类中的静态方法getLocalGraphicsEnvironment()方法得到本机所有的可用字体；
+			
+		2.2在JLable中也可以设置显示的图片：
+			如果要想设置显示的图片，可以使用IO流方式进行图片的读取；			
+			但是使用IO流读取太麻烦了；可以使用Icon类的另一个构造方法，直接传入图片地址；
+				Icon icon = new Icon(picPath);						
 							
 				
 					
