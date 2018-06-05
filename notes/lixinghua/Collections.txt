@@ -1393,6 +1393,22 @@ java数据库编程：java.sql.*包中；
 		
 	6.JSplitPane容器：
 		JSplitPane主要功能是分隔面板，可以将一个窗体分隔为两个子窗体，可以是水平排列也可以是垂直排列；			
+	
+	7.JTabbedPane：
+		是在一个面板上设置多个选项卡供用户选择；
+		
+	8.JScollPane：
+		在Swing中JScrollPane的主要功能就是为显示的内容加入水平滚动条。
+		JScollPane主要由JViewport和JScrollBar两部分组成，前者主要是显示一个矩形的区域让用户浏览，而后者主要是形成水平或垂直的滚动条；	
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		。。。。。。。。。	
 			
 
