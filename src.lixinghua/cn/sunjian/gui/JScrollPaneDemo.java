@@ -28,7 +28,7 @@ public class JScrollPaneDemo {
 		String picPath = System.getProperty("user.dir")+"/files/lixinghua/image/liya.png";
 		Icon icon = new ImageIcon(picPath) ;	// 实例化Icon对象
 		
-		JPanel pan = new JPanel() ;//容器
+		JPanel pan = new JPanel() ;
 		JLabel lab = new JLabel(icon) ;//组件
 		
 		JScrollPane scrl = null ;
@@ -36,7 +36,7 @@ public class JScrollPaneDemo {
 		scrl = new JScrollPane(pan,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS ,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS) ;
 		pan.add(lab) ;//添加组件到容器中
 		cont.add(scrl) ;//添加滚动条到容器中
-		frame.setSize(474,487) ;// 根据组件自动调整大小
+		frame.setSize(474,487) ;//手动设置大小
 		frame.setLocation(300,200) ;
 		frame.setVisible(true) ;
 		
