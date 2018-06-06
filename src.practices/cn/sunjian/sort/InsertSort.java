@@ -1,13 +1,14 @@
 package cn.sunjian.sort;
+
 /**
  * 排序算法：
  * 
- * 		之--选择排序；
+ * 		之--插入排序；
  * 		
  * @author jack
  *
  */
-public class SelectionSort {
+public class InsertSort {
 
 	public static void main(String[] args) {
 
@@ -24,26 +25,20 @@ public class SelectionSort {
 		
 		long startTime = System.currentTimeMillis();
 		
-		//选择优化排序
-		for(int i=0;i<arr.length-1;i++){//第i趟排序
-			
-			int k = i;//记录最小值的角标
-			for(int j=k+1;j<arr.length;j++){
-				if (arr[j]<arr[k]) {//如果第二个小于第一个
-					k = j;//记录第二个的角标
-				}
-			}
-			
-			//找到本轮最小的数以后，进行交换
-			if (i != k) {
-				int temp = arr[i];
-				arr[i] = arr[k];
-				arr[k] = temp;
-			}
-		}
+        int insertNum;//要插入的数
+        
+        for(int i=1;i<arr.length;i++){//插入的次数
+            insertNum=arr[i];//要插入的数
+            int j=i-1;//已经排序好的序列元素个数
+            while(j>=0&&arr[j]>insertNum){//序列从后到前循环，将大于insertNum的数向后移动一格
+                arr[j+1] = arr[j];//元素移动一格
+                j--;
+            }
+            arr[j+1]=insertNum;//将需要插入的数放在要插入的位置。
+        }
 		
-		long endTime = System.currentTimeMillis();
-		
+        long endTime = System.currentTimeMillis();
+        
 		System.out.println("\n使用选择排序法，排序之后：");
 		for(int num : arr){
 			System.out.print(num+"、");
@@ -51,5 +46,4 @@ public class SelectionSort {
 		
 		System.out.println("\n排序用时："+(endTime - startTime)+"毫秒");
 	}
-
 }
