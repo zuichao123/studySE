@@ -1405,9 +1405,18 @@ java数据库编程：java.sql.*包中；
 		在Swing中也可以完成内部窗体的显示，即：在一个窗体可以出现多个子窗体，每一个子窗体都无法超出父窗体的区域；
 		JDesktopPane规定出了一个父窗体的基本形式，而JInternalFrame规定出了各个子窗体，JInternalFrame需要加入到JDesktopPane之中；
 		
-			
+	10.JToggleButton不弹起的按钮组件：
+		JButton提供了一个按钮的基本实现，但是此按钮每次单击之后都会恢复自动弹起，如果现在希望点中一个按钮之后不在自动弹起，而是在第二次点此按钮的时候弹起，则就必须使用JToggleButton类；	
 		
-		
+	11.JTextComponent文本组件：
+		各个软件系统中都存在文本输入框，以方便用户输入数据，在Swing中也提供了同样的文本输入框组件，但是文本输入框组件在Swing中也分为以下几类：
+			单行文本输入框：
+				JTextField
+			密码文本输入框：
+				JPasswordField
+			多行文本输入框：
+				JTextArea
+					如果想要输入多行文本，则可以使用JTextArea实现多行文本的输入，此类扩展了JTextComponent类；
 		
 		
 		
