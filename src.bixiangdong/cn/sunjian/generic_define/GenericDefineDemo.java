@@ -10,6 +10,7 @@ import cn.sunjian.generic_bean.Student;
  */
 public class GenericDefineDemo {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 
 		Tool<Student> tool = new Tool<Student>();

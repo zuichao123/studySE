@@ -10,7 +10,7 @@ import cn.sunjian.p.bean.Person;
  * @author sunjian
  *
  */
-public class ComparatorByName implements Comparator {
+public class ComparatorByName implements Comparator<Object> {
 
 	@Override
 	public int compare(Object o1, Object o2) {

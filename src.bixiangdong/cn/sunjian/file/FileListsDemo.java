@@ -5,11 +5,11 @@ import java.io.File;
 import cn.sunjian.filter.FilterByJava;
 import cn.sunjian.filter.SuffixFilter;
 
-public class FileListDemo {
+public class FileListsDemo {
 
 	public static void main(String[] args) {
 		
-//		FileListDemo();
+		FileListDemo();
 //		FileListDemo_2();
 //		FileListDemo_3();
 		FileListDemo_4();

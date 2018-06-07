@@ -33,7 +33,7 @@ public class ReflectDemo {
 	public static void getClassObject_3() throws ClassNotFoundException{
 		String className = "cn.sunjian.reflect.demo.bean.Person";
 		
-		Class clazz = Class.forName(className);
+		Class<?> clazz = Class.forName(className);
 		
 		System.out.println(clazz);
 	}
@@ -48,9 +48,9 @@ public class ReflectDemo {
 	 * 
 	 */
 	public static void getClassObject_2(){
-		Class clazz = Person.class;
+		Class<Person> clazz = Person.class;
 		
-		Class  clazz1 = Person.class;
+		Class<Person>  clazz1 = Person.class;
 		
 		System.out.println(clazz==clazz1);
 	}
@@ -65,10 +65,10 @@ public class ReflectDemo {
 	 */
 	public static void getClassObject_1(){
 		Person p = new Person();
-		Class clazz = p.getClass();
+		Class<? extends Person> clazz = p.getClass();
 		
 		Person p1 = new Person();
-		Class clazz1 = p1.getClass();
+		Class<? extends Person> clazz1 = p1.getClass();
 		
 		System.out.println(clazz==clazz1);
 	}

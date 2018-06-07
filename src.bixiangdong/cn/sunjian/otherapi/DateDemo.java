@@ -70,6 +70,7 @@ public class DateDemo {
 	 * 将当前日期和时间封装成date对象
 	 */
 	public static void methodDemo_1() {
+		@SuppressWarnings("unused")
 		long time = System.currentTimeMillis();
 //		System.out.println(time);
 		

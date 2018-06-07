@@ -9,8 +9,10 @@ import java.util.Collection;
  * @author sunjian
  *
  */
+@SuppressWarnings("rawtypes")
 public class CollectionDemo {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
 		Collection coll = new ArrayList();
@@ -24,6 +26,7 @@ public class CollectionDemo {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static void show(Collection c1, Collection c2){
 		
 		//给c1添加元素
@@ -62,6 +65,7 @@ public class CollectionDemo {
 		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static void show(Collection coll){
 		
 		//1.添加元素。add

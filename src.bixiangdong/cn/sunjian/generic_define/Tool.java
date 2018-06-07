@@ -1,6 +1,5 @@
 package cn.sunjian.generic_define;
 
-import java.lang.reflect.Method;
 
 /*public class Tool {
 

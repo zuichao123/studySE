@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class BufferReaderDemo {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		
 		FileReader br = new FileReader("buf.txt");

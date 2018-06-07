@@ -4,10 +4,10 @@ import java.util.LinkedList;
 
 public class DuiLie {
 
-	private LinkedList link;
+	private LinkedList<Object> link;
 	
 	public DuiLie() {
-		link = new LinkedList();
+		link = new LinkedList<Object>();
 	}
 	
 	

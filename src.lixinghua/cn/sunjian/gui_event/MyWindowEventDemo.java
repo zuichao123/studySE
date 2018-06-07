@@ -1,4 +1,4 @@
-package cn.sunjian.gui;
+package cn.sunjian.gui_event;
 
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -54,7 +54,7 @@ class MyWindowEventHandle2 extends WindowAdapter{
 	}
 }
 
-public class MyEventWindowEventJFrameDemo {
+public class MyWindowEventDemo {
 
 	public static void main(String[] args) {
 		windowListener();
@@ -63,7 +63,7 @@ public class MyEventWindowEventJFrameDemo {
 	}
 
 	private static void innerClassWindowAdapter() {
-		JFrame frame = new JFrame("Welcome To MLDN") ; 
+		JFrame frame = new JFrame("innerClassWindowAdapter") ; 
 		frame.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				System.out.println("windowClosing --> ´°¿Ú¹Ø±Õ") ;

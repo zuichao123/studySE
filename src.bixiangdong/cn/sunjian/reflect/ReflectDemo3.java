@@ -10,7 +10,7 @@ public class ReflectDemo3 {
 	}
 
 	public static void getFieldDemo() throws Exception {
-		Class clazz = Class.forName("cn.sunjian.reflect.demo.bean.Person");
+		Class<?> clazz = Class.forName("cn.sunjian.reflect.demo.bean.Person");
 		
 		Field field = null; //clazz.getField("age");//只能获取公有的
 		

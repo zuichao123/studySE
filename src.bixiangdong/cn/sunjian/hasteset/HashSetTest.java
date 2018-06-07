@@ -16,7 +16,7 @@ public class HashSetTest {
 
 	public static void main(String[] args) {
 		
-		HashSet hs = new HashSet();
+		HashSet<Person> hs = new HashSet<Person>();
 		
 		hs.add(new Person("lisi1",21));
 		hs.add(new Person("lisi4",24));
@@ -24,7 +24,7 @@ public class HashSetTest {
 		hs.add(new Person("lisi9",29));
 		hs.add(new Person("lisi9",29));
 		
-		Iterator it = hs.iterator();
+		Iterator<Person> it = hs.iterator();
 		
 		while(it.hasNext()){
 			Person p = (Person)it.next();

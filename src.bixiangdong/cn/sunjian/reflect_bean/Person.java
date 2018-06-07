@@ -21,6 +21,7 @@ public class Person {
 		System.out.println(name+"...show run..."+age);
 	}
 	
+	@SuppressWarnings("unused")
 	private void method(){
 		System.out.println("method run...");
 	}

@@ -15,7 +15,7 @@ public class TreeSetTestString {
 
 	public static void main(String[] args) {
 
-		TreeSet ts = new TreeSet(new ComparatorByLength());
+		TreeSet<String> ts = new TreeSet<String>(new ComparatorByLength());
 		
 		ts.add("abs");
 		ts.add("m");
@@ -29,7 +29,7 @@ public class TreeSetTestString {
 		ts.add("hfksdisdf");
 		ts.add("jhgkz");
 		
-		Iterator it = ts.iterator();
+		Iterator<String> it = ts.iterator();
 		
 		while(it.hasNext()){
 			System.out.println(it.next());

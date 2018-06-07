@@ -12,7 +12,7 @@ public class LinkedListDemo {
 
 	public static void main(String[] args) {
 
-		LinkedList link = new LinkedList();
+		LinkedList<String> link = new LinkedList<String>();
 		
 		link.addFirst("abc1");
 		link.addFirst("abc2");

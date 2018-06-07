@@ -1,6 +1,5 @@
 package cn.sunjian.generic_advance;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 import cn.sunjian.generic_bean.Person1;

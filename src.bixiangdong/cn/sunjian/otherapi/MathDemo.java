@@ -38,8 +38,8 @@ public class MathDemo {
 			double dd = (int)(Math.random()*6+1);
 			double ddd = (int)(r.nextDouble()*6+1);
 			int dddd = r.nextInt(6)+1;
-//			System.out.println(dd);
-//			System.out.println(ddd);
+			System.out.println(dd);
+			System.out.println(ddd);
 			System.out.println(dddd);
 		}
 		

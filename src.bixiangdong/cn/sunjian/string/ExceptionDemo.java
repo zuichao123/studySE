@@ -10,6 +10,11 @@ package cn.sunjian.string;
 
 class LanPingException extends Exception{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	LanPingException(String msg){
 		super(msg);
 	}
@@ -17,6 +22,11 @@ class LanPingException extends Exception{
 
 class MaoYanException extends Exception{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	MaoYanException(String msg){
 		super(msg);
 	}
@@ -24,6 +34,11 @@ class MaoYanException extends Exception{
 
 class NoPlanException extends Exception{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	NoPlanException(String msg){
 		super(msg);
 	}

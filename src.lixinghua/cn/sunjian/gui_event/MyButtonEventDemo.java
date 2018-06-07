@@ -1,4 +1,4 @@
-package cn.sunjian.gui;
+package cn.sunjian.gui_event;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -37,7 +37,7 @@ class ActionHandle{
 		but.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				// if(e.getSource() instanceof JButton){}	// 判断是否是按钮
-				if(e.getSource()==but){
+				if(e.getSource()==but){// 判断是否是按钮
 					lab.setText(text.getText()) ;//将单行文本区域中的内容，显示在标签处
 				}
 			}

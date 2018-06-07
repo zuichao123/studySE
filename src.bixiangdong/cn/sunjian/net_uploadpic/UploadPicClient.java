@@ -41,6 +41,7 @@ public class UploadPicClient {
 		//读取服务端发回的内容
 		InputStream in = s.getInputStream();
 		
+		@SuppressWarnings("unused")
 		byte[] bufIn = new byte[1024];
 		
 		int lenIn = in.read(buf);

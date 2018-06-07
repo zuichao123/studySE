@@ -1,7 +1,5 @@
 package cn.sunjian.linkedlist;
 
-import java.util.LinkedList;
-
 /**
  * 请使用LinkedList来模拟一个堆栈或者队列数据结构。
  * 

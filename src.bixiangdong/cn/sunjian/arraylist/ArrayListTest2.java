@@ -17,6 +17,7 @@ import cn.sunjian.p.bean.Person;
  */
 public class ArrayListTest2 {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 		
 		singleDemo();
@@ -53,9 +54,11 @@ public class ArrayListTest2 {
 	/**
 	 * 
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void singleDemo() {
 		
 		ArrayList al = new ArrayList();
+		
 		al.add("abc1");
 		al.add("abc2");
 		al.add("abc1");
@@ -72,6 +75,7 @@ public class ArrayListTest2 {
 		System.out.println(al);//打印去重后的容器
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static ArrayList getSingleElement(ArrayList al) {
 		
 		//创建一个新容器

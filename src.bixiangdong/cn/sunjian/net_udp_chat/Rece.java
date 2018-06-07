@@ -11,6 +11,7 @@ public class Rece implements Runnable {
 		this.ds = ds;
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void run() {
 		

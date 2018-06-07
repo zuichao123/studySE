@@ -12,6 +12,7 @@ public class CalendarDemo {
 
 	public static void main(String[] args) {
 		
+		@SuppressWarnings("unused")
 		int year = 2012;
 		
 //		showEveryYearTwoMonthAllDayNumber(year);

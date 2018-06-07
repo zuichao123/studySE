@@ -1,7 +1,6 @@
 package cn.sunjian.List;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -15,14 +14,14 @@ public class ListIteratorDemo {
 
 	public static void main(String[] args) {
 
-		List list = new ArrayList();
+		List<String> list = new ArrayList<String>();
 		
 		list.add("abc1");
 		list.add("abc2");
 		list.add("abc3");  
 		
 		System.out.println("list:"+list);
-		ListIterator it = list.listIterator(); //获取列表迭代器对象；
+		ListIterator<String> it = list.listIterator(); //获取列表迭代器对象；
 						//它可以实现在迭代过程中对元素的增删改查；
 						//注意：只有list集合具备该功能。
 		

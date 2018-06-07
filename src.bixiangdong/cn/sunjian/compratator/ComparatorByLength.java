@@ -9,7 +9,7 @@ import java.util.Comparator;
  * @author sunjian
  *
  */
-public class ComparatorByLength implements Comparator {
+public class ComparatorByLength implements Comparator<Object> {
 
 	@Override
 	public int compare(Object o1, Object o2) {

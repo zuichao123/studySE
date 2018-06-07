@@ -10,10 +10,10 @@ import java.util.LinkedList;
  */
 public class DuiZhan {
 	
-	private LinkedList list;
+	private LinkedList<Object> list;
 	
 	public DuiZhan(){
-		list = new LinkedList();
+		list = new LinkedList<Object>();
 	}
 	
 	public void  myAdd(Object obj){

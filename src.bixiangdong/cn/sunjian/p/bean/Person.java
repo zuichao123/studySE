@@ -1,6 +1,6 @@
 package cn.sunjian.p.bean;
 
-public class Person implements Comparable {
+public class Person implements Comparable<Object> {
 
 	private String name;
 	private int age;

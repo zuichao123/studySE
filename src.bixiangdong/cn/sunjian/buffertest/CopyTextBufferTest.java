@@ -6,13 +6,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import cn.sunjian.utils.Path;
 
 public class CopyTextBufferTest {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		
-		String path = Path.deskTop();
+		String path = System.getProperty("user.dir")+"/files/bixiangdong/others/";
 		
 		FileReader fr = new FileReader(path +"buf.txt");
 		BufferedReader bufr = new BufferedReader(fr);

@@ -1,23 +1,23 @@
 package cn.sunjian.wrapperclass;
 
 /**
- * 联系包装类的使用
+ * 练习包装类的使用
  * 
  * @author sunjian
  *
  */
 public class WrapperClassDemo {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		
-		int num;
+		int num = 4;
 		
 //		System.out.println(Integer.MAX_VALUE);
 //		System.out.println(Integer.toBinaryString(-6));
 		
-		int num1 = 4 ;
 		
-		num1 += 5;
+		num += 5;
 		
 		Integer i = 4;
 		i = i + 6;

@@ -8,17 +8,17 @@ public class Regex {
 	public static void main(String[] args) {
 
 		String qq = "12346l4567";
-//		checkQQ(qq);
+		checkQQ(qq);
 		
 		String regex = "[1-9][0-9]{4,14}";//正则表达式
-//		boolean b = qq.matches(regex);
+		boolean b = qq.matches(regex);
 		
-//		System.out.println(qq+":"+b);
+		System.out.println(qq+":"+b);
 		
-//		String str = "aoooob";
-//		String  reg = "ao{2,3}b";
-//		boolean b = str.matches(reg);
-//		System.out.println(str+":"+b);
+		String str = "aoooob";
+		String  reg = "ao{2,3}b";
+		boolean b2 = str.matches(reg);
+		System.out.println(str+":"+b2);
 		
 	}
 
@@ -31,14 +31,14 @@ public class Regex {
 	
 	public static void checkQQ(String qq){
 		int len = qq.length();
-		
+		long l = 0;
 		if (len>=5 && len<=15) {
 			
 			if (!qq.startsWith("0")) {
 				
 				try{
 					
-					long l = Long.parseLong(qq);
+					l = Long.parseLong(qq);
 				
 				}catch (NumberFormatException e) {
 					System.out.println(qq+"含义非法字符！");
@@ -50,5 +50,7 @@ public class Regex {
 		}else {
 			System.out.println(qq+"长度错误！");
 		}
+		
+		System.out.println("Long.parseLong(qq) ="+l);
 	}
 }

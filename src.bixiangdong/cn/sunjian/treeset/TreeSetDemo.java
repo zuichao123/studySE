@@ -18,7 +18,7 @@ public class TreeSetDemo {
 
 //		TreeSet ts = new TreeSet();
 		//根据比较器进行比较
-		TreeSet ts = new TreeSet(new ComparatorByName());
+		TreeSet<Person> ts = new TreeSet<Person>(new ComparatorByName());
 		
 		ts.add(new Person("zhangsan",29));
 		ts.add(new Person("wangwu",23));
@@ -26,7 +26,7 @@ public class TreeSetDemo {
 		ts.add(new Person("zhouqi",21));
 		ts.add(new Person("zhaoliu",25));
 		
-		Iterator it = ts.iterator();
+		Iterator<Person> it = ts.iterator();
 		
 		while(it.hasNext()){
 			Person p = (Person) it.next();

@@ -20,6 +20,7 @@ public class Person implements Serializable/*标记接口*/{
 	private static int age;
 	
 	
+	@SuppressWarnings("static-access")
 	public Person(String name, int age) {
 		super();
 		this.name = name;
@@ -34,6 +35,7 @@ public class Person implements Serializable/*标记接口*/{
 	public int getAge() {
 		return age;
 	}
+	@SuppressWarnings("static-access")
 	public void setAge(int age) {
 		this.age = age;
 	}

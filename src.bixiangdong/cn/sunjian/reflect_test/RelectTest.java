@@ -22,7 +22,7 @@ public class RelectTest {
 		 * 不用new来完成，而是值获取其class文件。在内部实现创建对象的动作。
 		 */
 		
-		File configFile = new File(System.getProperty("user.dir")+"/files/pci.properties");
+		File configFile = new File(System.getProperty("user.dir")+"/files/bixiangdong/others/pci.properties");
 		Properties prop = new Properties();
 		FileInputStream fis = new FileInputStream(configFile);
 		
@@ -31,7 +31,7 @@ public class RelectTest {
 		for (int i = 0; i < prop.size(); i++) {
 			String pciName = prop.getProperty("pci"+(i+1));
 			
-			Class clazz = Class.forName(pciName);//用class去加载这个pci子类。
+			Class<?> clazz = Class.forName(pciName);//用class去加载这个pci子类。
 		
 			PCI p = (PCI)clazz.newInstance();
 		
