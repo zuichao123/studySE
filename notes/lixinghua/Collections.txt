@@ -1443,8 +1443,12 @@ java数据库编程：java.sql.*包中；
 		小结：以上的监听事件，都可以用内部类+adpter类的方式，来完成只需要覆写接口中用到的方法，不用到的不用覆写；
 		
 		
+		12.5单选按钮JRadioButton：
+			在给出的多个显示信息中指定选择一个，在Swing中使用JRadionButton完成；
+			所有的按钮需要放在一个（ButtonGroup）组中，才能实现单选的功能；
 		
-		
+		12.6复选按钮JCheckButton：
+			使用JCheckBox完成复选框的操作；
 		
 		
 		
