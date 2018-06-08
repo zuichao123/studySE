@@ -1450,9 +1450,24 @@ java数据库编程：java.sql.*包中；
 		12.6复选按钮JCheckButton：
 			使用JCheckBox完成复选框的操作；
 		
-		
-		
-		
+		12.7列表框JList：
+			列表框可以同时将多个选项信息以列表的方式展现给用户，使用JList可以构建一个列表框；
+			JList是可以进行多选或单选的：可以通过ListSelectctionModel接口完成；
+			还可以使用ListModel创建列表框； 
+				在JList的构造方法中有一个使用ListModel构造JList对象的操作，ListModel是一个专门用于创建JList列表内容操作的接口；
+				此接口中只用两个方法是有用的：
+					Object getElementAt(int index)
+						根据索引取出内容；
+					int getSize()
+						取出全部的列表内容；
+			在JList中可以使用ListSelectionListener的监听接口实现对JList中的所选项进行监听，此接口定义了如下方法：
+				void valueChanged(ListSelectionEvent e)
+					当值发生改变时调用；
+				此方法会产生ListSelectionEvent事件，此事件中的常用方法如下所示。
+					public int getFirstIndex()
+						返回选择的第一个选项的索引值；
+					public int getLastIndex()
+						返回选择的最后一个选项的索引值；
 		
 		
 		
