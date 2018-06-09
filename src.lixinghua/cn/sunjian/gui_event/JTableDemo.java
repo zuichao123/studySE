@@ -36,7 +36,7 @@ import javax.swing.table.TableColumnModel;
  *
  */
 class ChangeTable implements ActionListener{	// 通过按钮实现动态表格
-	private JFrame frame = new JFrame("Welcome To MLDN") ; 
+	private JFrame frame = new JFrame("ChangeTable") ; 
 	private JTable table = null ;	//表格
 	private DefaultTableModel tableModel ;	// TableModel
 	private JComboBox<String> sexList = new JComboBox<String>();//下拉选择框
@@ -165,7 +165,7 @@ class DefaultTable extends AbstractTableModel{
 }
 
 class NormalTableDemo{
-	private JFrame frame = new JFrame("Welcome To MLDN") ; 
+	private JFrame frame = new JFrame("NormalTable") ; 
 	private JTable table = null ;
 	private DefaultTable defaultTable = new DefaultTable() ;	// TableModel
 	private JComboBox<String> sexList = new JComboBox<String>() ;
