@@ -1468,8 +1468,42 @@ java数据库编程：java.sql.*包中；
 						返回选择的第一个选项的索引值；
 					public int getLastIndex()
 						返回选择的最后一个选项的索引值；
+		 
+		 12.8下拉列表框JComboBox：
+		 	与JList一样，在JComboBox中也可以使用ComboBoxModel接口来构造JComboBox中的列表内容，
+		 	ComboBoxModel接口是ListModel接口的子类，除了继承JListModel中的所有操作方法之外，还增加了如下方法：
+		 		void setSelectedItem(Object anItem)
+		 			设置选项内容；
+		 		Object getSelectedItem()
+		 			返回选择项；
+		 	如果想要编辑的话，则需要使用以下的方法：
+		 		public void configureEditor(ComboBoxEditor anEditor,Object anItem)
+		 			此编辑器从JComboBox中取得；		
+		 			
+		12.9菜单组件：JMenu与JMenuBar
+			若在Java中实现菜单，则可以使用JMenu组件，当然，如果要使用JMenu则首先要了解JMenuBar组件，
+			JMenuBar组件的功能是用来摆放JMenu组件的，当建立完许多的JMenu组件之后，需要通过JMenuBar组件来将JMenu组件加入到窗口中；
+			
+			JMenuItem类：
+				通过此类设置菜单的选项；
+				JMenuItem继承AbstractButton类，因此JMenuItem也可以理解为一种特殊的JButton组件，当选择某个菜单项时也会触发ActionEvent事件；
 		
-		
+		12.10文件选择框JFileChooser：
+			在使用记事本或者word的时候，可以通过文件选择框选择要打开或保存的文件，在Swing中可以使用JFileChooser组件实现此功能；
+			
+		12.11表格JTable：
+			表格组件提供了以行和列的形式显示数据的视图。在程序开发中是一个非常重要的组件，尤其在需要讲一堆数据有条理的展现给用户的时候，表格的设计更能显示出他的重要性；
+			在Swing中可以通过JTable组件轻松的构造出所需要的表格，并且也提供了一些方法来管理这些表格的内容；
+			
+			使用JTable构建的表格相对比较单一，如果想要制作一些操作界面更加友好的表格，例如在表格上加入一些单选按钮或下拉列表框，则就要使用TableModel接口；	
+			使用AbstractTableModel创建一个表格；
+			以下的方法特别重要：
+				public class<?> getColumnClass(int columnIndex)
+			在表格中会根据类型进行不同的数据显示，例如：
+				boolean：以CheckBox的形式显示；
+				数值：以JLabel的形式显示，文字向右排列；
+			
+			除了使用AbstractTableModel构建表格之外，还可以使用DefaultTableModel而且使用DefaultTableModel创建的表格更加有意义，而且操作更加的方便；
 		
 		
 		
