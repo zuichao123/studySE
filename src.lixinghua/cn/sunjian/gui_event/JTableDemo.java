@@ -181,6 +181,7 @@ class NormalTableDemo{
 		frame.add(scr,BorderLayout.CENTER) ;	// 加入组件
 		frame.setSize(370,190) ;
 		frame.setVisible(true) ;
+		
 		frame.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				System.exit(1) ;

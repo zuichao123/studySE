@@ -1504,10 +1504,6 @@ java数据库编程：java.sql.*包中；
 				数值：以JLabel的形式显示，文字向右排列；
 			
 			除了使用AbstractTableModel构建表格之外，还可以使用DefaultTableModel而且使用DefaultTableModel创建的表格更加有意义，而且操作更加的方便；
-		
-		
-		
-		。。。。。。。。。	
 			
 
 JAVA网络编程：
