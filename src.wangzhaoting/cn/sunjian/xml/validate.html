@@ -1,0 +1,9 @@
+<script type="text/javascript">
+	var xmldoc = new ActiveXObject("Microsoft.XMLDOM");
+	xmldoc.validateOnParse="true";
+	xmldoc.load("instance.xml");
+	var reson = xmldoc.parseError.reason;
+	var line = xmldoc.parseError.line;
+	document.write(reson+"<br/>");
+	document.write(line);
+</script>

@@ -91,6 +91,7 @@
 										title可以有多次获没有；
 										author可以有零次或一次；
 										Email必须有；
+		
 		5.2定义元素的属性（attribute）：
 			语法：<!ATTLIST 哪个元素的属性
 				属性名1     属性值类型     设置说明
@@ -111,8 +112,31 @@
 				#IMPLIED：说明该属性可有可无；	
 				#FIXED：表示属性的取值为一个固定值，语法：#FIXED "固定值"；
 				直接值：表示属性的取值为该默认值；
+		
+		5.3定义实体：
+			关键字	ENTITY；
+				概念：在DTD中定义，在XML中使用；
+				语法：<!ENTITY 实体名称“实体内容”>
+				引用方式（注意是在xml中使用）：&实体名称;
+				DTD定义：
+					<!ENTITY copyright "传智播客版权所有">
+				XML中引用：
+					&copyright;
+				
+				概念：在DTD中定义，在DTD中使用；
+				语法：<!ENTITY % 实体名称    "实体内容">
+				引用方式（注意是在DTD中使用）：%实体名称;
+				DTD中定义：
+					<!ENTITY % TAG_NAMES "姓名|EMAIL|电话|地址">
+				DTD中引用：
+					<!ELEMENT 个人信息(%TAG_NAMES|生日)>
+					<!ELEMENT 客户信息(%TAG_NAMES|公司名)>
 					
-						
+					
+					
+			
+				
+				
 						
 						
 						
