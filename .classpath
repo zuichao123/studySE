@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src.bixiangdong"/>
-	<classpathentry kind="src" path="src.lixinghua"/>
-	<classpathentry kind="src" path="src.practices"/>
-	<classpathentry kind="src" path="src.utils"/>
+	<classpathentry kind="src" path="src.abixiangdong"/>
+	<classpathentry kind="src" path="src.alixinghua"/>
+	<classpathentry kind="src" path="src.sunjian.practices"/>
+	<classpathentry kind="src" path="src.sunjian.utils"/>
 	<classpathentry kind="src" path="src.whiteboxtesting"/>
 	<classpathentry kind="src" path="src.personmanage"/>
-	<classpathentry kind="src" path="src.wangzhaoting"/>
+	<classpathentry kind="src" path="src.awangzhaoting"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="lib/jgoodies-common-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jgoodies-common-1.8.0.jar"/>
