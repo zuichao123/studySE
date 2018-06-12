@@ -149,8 +149,11 @@
 				javax.xml.parsers包中，定义了几个工厂类，我们可以通过调用这些工厂类，得到对XML文档解析的DOM和SAX解析器对象；
 					DocumentBuilderFactory
 					SAXParserFactory 	
-				
-				
+		
+		6.4更新XML文档：
+			javax.xml.transform包中的Transformer类用于把代表XML文件的Document对象转换为某种格式后，进行输出；
+				例如把XML文件应用样式表转成一个HTML文档；		
+				当然也可以把Document对象又重新写回到XML文件中；
 						
 						
 						
