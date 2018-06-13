@@ -1,4 +1,4 @@
-package cn.sunjian.xml;
+package cn.sunjian.jaxp;
 
 import java.io.IOException;
 
@@ -29,31 +29,38 @@ import org.xml.sax.SAXException;
  */
 public class JaxpDomDemo {
 
-	private static final String XML_FILE_PATH = System.getProperty("user.dir")+"/files/wangzhaoting/book.xml";
+	private static final String XML_FILE_PATH = System.getProperty("user.dir")+"/src.awangzhaoting/cn/sunjian/jaxp/book.xml";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
-							
-		Document document = null;
-		
-		//得到解析工厂DocumentBuilderFactory
+		// 得到解析工厂DocumentBuilderFactory
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		//得到解析器DocumentBuilder
-		try {
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			try {
-				//解析指定的XML文档，得到代表内存DOM树的Document对象
-				document = builder.parse(XML_FILE_PATH);
-			} catch (SAXException e) {				
-				e.printStackTrace();
-			} catch (IOException e) {				
-				e.printStackTrace();
-			}
-		} catch (ParserConfigurationException e) {			
-			e.printStackTrace();
-		}
+		// 得到解析器DocumentBuilder
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		// 解析指定的XML文档，得到代表内存DOM树的Document对象
+		Document document = builder.parse(XML_FILE_PATH);
+		test1(document);
+							
+//		Document document = null;
+//		
+//		//得到解析工厂DocumentBuilderFactory
+//		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//		//得到解析器DocumentBuilder
+//		try {
+//			DocumentBuilder builder = factory.newDocumentBuilder();
+//			try {
+//				//解析指定的XML文档，得到代表内存DOM树的Document对象
+//				document = builder.parse(XML_FILE_PATH);
+//				test1(document);
+//			} catch (SAXException e) {				
+//				e.printStackTrace();
+//			} catch (IOException e) {				
+//				e.printStackTrace();
+//			}
+//		} catch (ParserConfigurationException e) {			
+//			e.printStackTrace();
+//		}
 		
-		test7(document);
 	}
 
 	//1、得到某个具体的节点内容：打印第二本书的作者

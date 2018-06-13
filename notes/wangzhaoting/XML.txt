@@ -155,7 +155,9 @@
 				例如把XML文件应用样式表转成一个HTML文档；		
 				当然也可以把Document对象又重新写回到XML文件中；
 						
-						
+	7.数据访问对象：DAO（Data Access Object）
+		
+					
 						
 						
 						
