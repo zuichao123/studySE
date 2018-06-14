@@ -213,7 +213,7 @@ public class JaxpDomDemo {
 		Node node = document.getElementsByTagName("书").item(1);
 		//添加出版社属性
 		Element element = (Element) node;
-		element.setAttribute("出版社", "山西传智");
+		element.setAttribute("出版社1", "山西传智1");
 		//把内存中Document树写回XML文件中
 		TransformerFactory factory = TransformerFactory.newInstance();
 		try {
