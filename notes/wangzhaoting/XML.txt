@@ -136,28 +136,47 @@
 		6.1DOM方式：
 			DOM：Document Object Model，文档对象模型，这种方式是W3C推荐的处理XML的一种方式；
 		
+			常用解析开发包：
+				JAXP：sun公司推出的实现，能进行DOM和SAX进行解析；它的API都在JavaSE中；
+					 它由一下几个包及其子包组成：
+					 	org.w3c.dom：提供DOM方式解析XML的标准接口；
+					 	org.xml.sax：提供SAX方式解析XML的标准接口；
+					 	javax.xml：提供了解析XML文档的类；
+					javax.xml.parsers包中，定义了几个工厂类，我们可以通过调用这些工厂类，得到对XML文档解析的DOM和SAX解析器对象；
+						DocumentBuilderFactory
+						SAXParserFactory 	
+			
+			更新XML文档：
+				javax.xml.transform包中的Transformer类用于把代表XML文件的Document对象转换为某种格式后，进行输出；
+					例如把XML文件应用样式表转成一个HTML文档；		
+					当然也可以把Document对象又重新写回到XML文件中；
+						
 		6.2SAX方式：
+			解析原理：
+				通过读取器读取XML文档，当读到了文档的某一部分时（文档的开始、元素的开始、文本、元素的结束、文档的结束），
+				都会调用事件处理器的对应方法，读到的数据，以参数的形式传递给对应的方法；
+				
 			SAX：Simple API for XML，这种方式不是官方标准，属于开源社区XML-DEV，几乎所有的XML解析器都支持它；				
 				只能进行查询操作，节省内存；	
-		
-		6.3常用解析开发包：
-			JAXP：sun公司推出的实现，能进行DOM和SAX进行解析；它的API都在JavaSE中；
-				 它由一下几个包及其子包组成：
-				 	org.w3c.dom：提供DOM方式解析XML的标准接口；
-				 	org.xml.sax：提供SAX方式解析XML的标准接口；
-				 	javax.xml：提供了解析XML文档的类；
-				javax.xml.parsers包中，定义了几个工厂类，我们可以通过调用这些工厂类，得到对XML文档解析的DOM和SAX解析器对象；
-					DocumentBuilderFactory
-					SAXParserFactory 	
-		
-		6.4更新XML文档：
-			javax.xml.transform包中的Transformer类用于把代表XML文件的Document对象转换为某种格式后，进行输出；
-				例如把XML文件应用样式表转成一个HTML文档；		
-				当然也可以把Document对象又重新写回到XML文件中；
-						
-	7.数据访问对象：DAO（Data Access Object）
+			SAX解析：
+				在使用DOM解析XML文档时，需要读取整个XML文档，在内存中构架代表整个DOM树的Document对象，从而在对
+				XML文档进行操作，此种情况下，如果XML文档特别大，就会消耗计算机的大量内存，并且容易导致内存溢出；
+				
+				SAX解析允许在读取文档的时候，即对文档进行处理，而不必等到整个文档装载完后才会对文档进行操作；
+				SAX采用20180614074838处理掉方式解析XML文件，利用SAX解析XML文档，涉及啷个部分：
+					解析器和事件处理器；
+					解析器可以使用JAXP的API创建，创建出SAX解析器后，就可以指定解析器去解析某个XML文档；
+					解析器采用SAX方式在解析某个XML文档时，他只要解析到？XML文档的一个组成部分，都回去调用事件处理器的一个方法，解析器在调用事件处理器的方法时，
+					会把当前解析到的XML文件内容作为方法的参数传递给事件处理器；
+					事件处理器有程序员编写，程序员通过事件处理器中方法的参数，就可以很轻松得到SAX解析器解析到的数据，从而可以决定如果对数据进行处理；
+			
+		6.3DOM4J解析XML文档：
+			DOM4J是一个简单、灵活的开放源代码的库，DOM4j是由早期开发JDOM的人分离出来而后独立开发的。与JDOM不同的是，dom4j使用接口和抽象基类，虽然DOM4j的API相对要复杂一些，但它提供了比JDOM更好的灵活性。
+			DOM4j是一个非常优秀的java XML API，具有性能优异、功能强大和极易使用的特点。现在很多软件采用的DOM4j，例如：Hibernate，包括sun公司自己的JAXM也使用了DOM4j；
+			使用DOM4j开发，需下载相应的jar文件；
 		
 					
+	7.数据访问对象：DAO（Data Access Object）
 						
 						
 						

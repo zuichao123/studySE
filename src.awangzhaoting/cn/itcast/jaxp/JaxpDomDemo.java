@@ -1,4 +1,4 @@
-package cn.sunjian.jaxp;
+package cn.itcast.jaxp;
 
 import java.io.IOException;
 
@@ -18,6 +18,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import cn.itcast.util.Constant;
+
 
 /**
  * xml-Dom解析：
@@ -28,43 +30,42 @@ import org.xml.sax.SAXException;
  *
  */
 public class JaxpDomDemo {
-
-	private static final String XML_FILE_PATH = System.getProperty("user.dir")+"/src.awangzhaoting/cn/sunjian/jaxp/book.xml";
 	
 	public static void main(String[] args) throws Exception {
 		
-		// 得到解析工厂DocumentBuilderFactory
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		// 得到解析器DocumentBuilder
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		// 解析指定的XML文档，得到代表内存DOM树的Document对象
-		Document document = builder.parse(XML_FILE_PATH);
-		test1(document);
-							
-//		Document document = null;
-//		
-//		//得到解析工厂DocumentBuilderFactory
-//		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//		//得到解析器DocumentBuilder
-//		try {
-//			DocumentBuilder builder = factory.newDocumentBuilder();
-//			try {
-//				//解析指定的XML文档，得到代表内存DOM树的Document对象
-//				document = builder.parse(XML_FILE_PATH);
-//				test1(document);
-//			} catch (SAXException e) {				
-//				e.printStackTrace();
-//			} catch (IOException e) {				
-//				e.printStackTrace();
-//			}
-//		} catch (ParserConfigurationException e) {			
-//			e.printStackTrace();
-//		}
+		//定义代表内存DOM树的Document对象
+		Document document = null;
 		
+		//得到解析工厂DocumentBuilderFactory
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		//得到解析器DocumentBuilder
+		try {
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			try {
+				//解析指定的XML文档，得到代表内存DOM树的Document对象
+				document = builder.parse(Constant.XML_FILE_PATH+"book.xml");
+			} catch (SAXException e) {				
+				e.printStackTrace();
+			} catch (IOException e) {				
+				e.printStackTrace();
+			}
+		} catch (ParserConfigurationException e) {			
+			e.printStackTrace();
+		}
+		
+		test1(document);
+		test2(document);
+		test3(document);
+		test4(document);
+		test5(document);
+		test6(document);
+		test7(document);
+		test8(document);
 	}
 
 	//1、得到某个具体的节点内容：打印第二本书的作者
 	private static void test1(Document document) {
+		
 		//根据标签的名称获取所有的作者元素
 		NodeList nl = document.getElementsByTagName("作者");
 		//按照索引取得第2个本书的作者元素
@@ -76,6 +77,7 @@ public class JaxpDomDemo {
 	
 	//2、遍历所有元素节点：打印元素的名称
 	public static void test2(Node node){
+		
 		//判断当前节点是不是一个元素节点
 		if (node.getNodeType() == Node.ELEMENT_NODE) {
 			//如果是：打印它的名称
@@ -93,6 +95,9 @@ public class JaxpDomDemo {
 	
 	//3、修改某个元素节点的主体内容：把第一本书的售价改为30.00元
 	public static void test3(Document document){
+		
+		System.out.println("把第一本书的售价改为30.00元:");
+		
 		//找到第一本书的售价
 		NodeList nl = document.getElementsByTagName("售价");
 		Node node = nl.item(0);
@@ -103,7 +108,7 @@ public class JaxpDomDemo {
 		try {
 			Transformer ts = factory.newTransformer();
 			try {
-				ts.transform(new DOMSource(document), new StreamResult(XML_FILE_PATH));
+				ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"book.xml"));
 			} catch (TransformerException e) {				
 				e.printStackTrace();
 			}
@@ -115,6 +120,9 @@ public class JaxpDomDemo {
 	
 	//4、向指定元素节点中增加子元素节点：第一本书中增加子元素<内部价>19.00元
 	public static void test4(Document document){
+		
+		System.out.println("第一本书中增加子元素<内部价>19.00元:");
+		
 		//创建一个新的元素并设置其主体内容
 		Element element = document.createElement("内部价");
 		element.setTextContent("19.00元");
@@ -127,7 +135,7 @@ public class JaxpDomDemo {
 		try {
 			Transformer ts = factory.newTransformer();
 			try {
-				ts.transform(new DOMSource(document), new StreamResult(XML_FILE_PATH));
+				ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"book.xml"));
 			} catch (TransformerException e) {				
 				e.printStackTrace();
 			}
@@ -138,6 +146,9 @@ public class JaxpDomDemo {
 	
 	//5、向指定元素节点上增加同级元素节点：在第一本书的售价前面增加<批发价>9.00元
 	public static void test5(Document document){
+		
+		System.out.println("在第一本书的售价前面增加<批发价>9.00元:");
+		
 		//创建一个新的元素并设置其中的主体内容
 		Element element = document.createElement("批发价");
 		element.setTextContent("9.00元");
@@ -150,7 +161,7 @@ public class JaxpDomDemo {
 		try {
 			Transformer ts = factory.newTransformer();
 			try {
-				ts.transform(new DOMSource(document), new StreamResult(XML_FILE_PATH));
+				ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"book.xml"));
 			} catch (TransformerException e) {				
 				e.printStackTrace();
 			}
@@ -161,6 +172,9 @@ public class JaxpDomDemo {
 	
 	//6、删除指定元素节点：删除内部价
 	public static void test6(Document document){
+		
+		System.out.println("删除内部价:");
+		
 		//找到内部价节点，用爸爸删除
 		Node node = document.getElementsByTagName("内部价").item(0);
 		node.getParentNode().removeChild(node);
@@ -169,7 +183,7 @@ public class JaxpDomDemo {
 		try {
 			Transformer ts = factory.newTransformer();
 			try {
-				ts.transform(new DOMSource(document), new StreamResult(XML_FILE_PATH));
+				ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"book.xml"));
 			} catch (TransformerException e) {				
 				e.printStackTrace();
 			}
@@ -180,6 +194,9 @@ public class JaxpDomDemo {
 	
 	//7、操作XML文件属性：打印第一本书的属性出版社
 	public static void test7(Document document){
+		
+		System.out.println("打印第一本书的属性: ");
+		
 		//得到第一本书
 		Node node = document.getElementsByTagName("书").item(0);
 		//打印指定属性的取值
@@ -189,6 +206,9 @@ public class JaxpDomDemo {
 	
 	//8、添加一个出版社属性给第二本书
 	public static void test8(Document document){
+		
+		System.out.println("添加一个出版社属性给第二本书:");
+		
 		//得到第二本书
 		Node node = document.getElementsByTagName("书").item(1);
 		//添加出版社属性
@@ -199,7 +219,7 @@ public class JaxpDomDemo {
 		try {
 			Transformer ts = factory.newTransformer();
 			try {
-				ts.transform(new DOMSource(document), new StreamResult(XML_FILE_PATH));
+				ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"book.xml"));
 			} catch (TransformerException e) {				
 				e.printStackTrace();
 			}
