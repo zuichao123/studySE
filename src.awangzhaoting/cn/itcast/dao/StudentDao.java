@@ -14,11 +14,12 @@ import cn.itcast.util.DocumentUtil;
  * @author jack
  *
  */
-public class StudentDao {
+public class StudentDao implements IStudentDao {
 
-	/**
-	 * 添加学生信息到XML文件中
+	/* (non-Javadoc)
+	 * @see cn.itcast.dao.IStudentDao#createStudent(cn.itcast.domain.Student)
 	 */
+	@Override
 	public boolean createStudent(Student s){
 		//目标：在根元素exam中添加Student子元素
 		boolean result = false;
@@ -55,10 +56,10 @@ public class StudentDao {
 		return result;
 	}
 	
-	/**
-	 * 根据学生姓名删除学生
-	 * 如果学生不存在，返回false
+	/* (non-Javadoc)
+	 * @see cn.itcast.dao.IStudentDao#deleteStudent(java.lang.String)
 	 */
+	@Override
 	public boolean deleteStudent(String name){
 		
 		boolean result = false;
@@ -87,10 +88,10 @@ public class StudentDao {
 		return result;
 	}
 	
-	/**
-	 * 根据准考证号查询学生信息
-	 * 如果学生不存在，返回null
+	/* (non-Javadoc)
+	 * @see cn.itcast.dao.IStudentDao#findStudent(java.lang.String)
 	 */
+	@Override
 	public Student findStudent(String examid){
 		
 		Student s = null;

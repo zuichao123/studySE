@@ -18,10 +18,12 @@ import org.w3c.dom.Document;
  */
 public class DocumentUtil {
 
+	//得到Document对象
 	public static Document getCocument() throws Exception{
 		DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		return builder.parse(Constant.XML_FILE_PATH+"exam.xml");
 	}
+	//写入XML文件
 	public static void writeXml(Document document) throws Exception {
 		Transformer ts = TransformerFactory.newInstance().newTransformer();
 		ts.transform(new DOMSource(document), new StreamResult(Constant.XML_FILE_PATH+"exam.xml"));

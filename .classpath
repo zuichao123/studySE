@@ -22,9 +22,9 @@
 	<classpathentry kind="lib" path="lib/SaxonLiaison.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.7.2.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/jaxen-1.1-beta-6.jar"/>
+	<classpathentry kind="lib" path="lib/saxon-dom-8.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/sunjian/git/study/lib/saxon-dom-8.7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/sunjian/git/study/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/sunjian/git/study/lib/jaxen-1.1-beta-6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
