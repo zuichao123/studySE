@@ -586,6 +586,11 @@ java类集：
 		 否则无法实例化。
 		 如果想要调用有参的构造，则必须按照以下的步骤进行：
 		 		1.通过Class类中的getConstructors()取得本类中的全部构造方法；
+		 			通过getConstructor(参数类型.class)得到相应参数的构造方法；
+		 			通过getDeclaredConstructors()取得本类中所有的构造方法包括私有的；
+		 			通过getDeclaredConstructor(参数类型。class)得到相应参数的私有构造方法；
+		 				再通过暴力反射：setAccessible(true)；
+		 			通过newInstance()方法得到默认的无参构造方法；	
 		  		2.向构造方法中传递一个对象数组进去，里面包含了构造方法中所需的各个参数；
 		  		3.之后通过Constructor实例化对象；
 	

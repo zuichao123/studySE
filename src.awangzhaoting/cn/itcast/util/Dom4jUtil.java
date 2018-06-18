@@ -20,14 +20,15 @@ public class Dom4jUtil {
 	//得到Document对象
 	public static Document getDocument() throws Exception{
 		SAXReader reader = new SAXReader();
-		Document document = reader.read(Constant.XML_FILE_PATH+"book.xml");
+		Document document = reader.read(Constant.XML_FILE_PATH+"exam.xml");
 		return document;
 	}
 	//写入XML文件
-	@SuppressWarnings("unused")
 	public static void writeXml(Document document) throws Exception{
-		OutputStream out = new FileOutputStream(Constant.XML_FILE_PATH+"book.xml");
+		OutputStream out = new FileOutputStream(Constant.XML_FILE_PATH+"exam.xml");
 		OutputFormat format = OutputFormat.createPrettyPrint();
 		XMLWriter writer = new XMLWriter(out, format);
+		writer.write(document);
+		writer.close();
 	}
 }

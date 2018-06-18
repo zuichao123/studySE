@@ -3,7 +3,6 @@ package cn.itcast.dom4j;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -11,7 +10,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import cn.itcast.util.Constant;
-import net.sf.saxon.pull.TreeWalker;
 
 /**
  * Dom4j練習：
@@ -64,6 +62,7 @@ public class Dom4jDemo {
 		TreeWalk(root);
 //		TreeWalk1(root);		
 	}
+	@SuppressWarnings("unused")
 	private void TreeWalk1(Element root) {
 		System.out.println(root.getName());
 		//节点的数量

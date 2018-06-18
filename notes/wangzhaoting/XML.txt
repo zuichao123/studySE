@@ -176,8 +176,155 @@
 			使用DOM4j开发，需下载相应的jar文件；
 		
 					
-	7.数据访问对象：DAO（Data Access Object）
-						
+	7.XML Schema：xsd
+		是一种用于定义和描述XML文档结构与尼尔的模式语言，其出现是为了克服DTD的局限性；
+		XML Schema VS DTD：
+			XMLSchema符合XML语法结构；
+			DOM、SAX等XMLAPI很容易解析出XML Schema文档中的内容；
+			XML Schema对名称空间支持得更好；
+			XML Schema比XML DTD支持更多的数据类型，支持用户自定义新的数据类型；
+			XML Schema定义约束的能力非常强大，可以对XML实例文档作出细致的语义限制；
+			XML Schema不能像DTD一样定义实体，比DTD更复杂，但XML Schema现在已是w3c组织的标准，它证逐步取代DTD；
+			
+			必须有一个根节点名称为：schema；
+			编写了一个XML Schema约束文档后，通常需要把这个文件中声明的元素绑定到一个URI地址上，在XML Schema技术中有一个专业术语来描述这个过程，
+			即：把XML Schema文档声明的元素绑定到一个名称空间上，以后XML文件就可以通过这个URI（即名称空间）来告诉解析引擎，xml文档中编写的元素来自哪里，被谁约束；			
+		
+		1、Schema约束文档本身就是一个XML文档，扩展名为xsd
+		2、重点：根据Schema写出XML文档
+		难点：XML文档的根元素怎么写？
+		
+			a、首先看Schema文档，找到根元素
+			<?xml version="1.0" encoding="UTF-8"?>
+			<书架></书架>
+			b、思考：书架来自于哪个名称空间？看Schema文档，targetNamespace就是名称空间。
+			用xmlns关键字(xmlns名称空间声明)来声明我的元素来自哪个名称空间（xmlns：xml namespace）
+			
+			<?xml version="1.0" encoding="UTF-8"?>
+			<itcast:书架  xmlns:itcast="http://www.itcast.cn"></itcast:书架>
+			
+			c、思考：名称空间与哪个xsd文件对应呢？使用schemaLocation关键字来关联名称空间和xsd的对应关系
+			
+			<?xml version="1.0" encoding="UTF-8"?>
+			<itcast:书架  xmlns:itcast="http://www.itcast.cn" 
+						schemaLocation="http://www.itcast.cn book.xsd"></itcast:书架>
+			
+			d、schemaLocation来自哪里？来自一个标准的名称空间（http://www.w3.org/2001/XMLSchema-instance）
+			<?xml version="1.0" encoding="UTF-8"?>
+			<itcast:书架  xmlns:itcast="http://www.itcast.cn" 
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.itcast.cn book.xsd"></itcast:书架>
+		一、泛型
+		只给编译器用的。编译完后字节码中没有泛型的。
+		泛型：如果等号左右都用到了泛型，必须类型一致。
+		ArrayList<Object> list = new ArrayList<String>();错误的
+		
+		只有一边使用泛型，另一边不使用泛型是可以的。
+		
+		只有引用类型才能作为泛型方法的实际参数
+		二、Web开发的基本概念
+		服务器上的WEB资源：
+		静态资源：基本不变的。比如html、css、js
+		动态资源：根据不同环境而不同，动的。动态资源生成静态资源。比如：JSP、ASP
+		
+		三、Web开发需要的服务器
+		JavaEE:是13种技术的总称。Servlet/JSP属于JavaEE技术的一种
+		常用的服务器：
+		WebLogic:支持JavaEE规范。称之为JavaEE容器：即实现了什么规范的服务器就叫做什么容器。属于重量级服务器。
+		WebSphereAS（Application Server）：支持JavaEE规范
+		JbossAS：支持JavaEE规范。免费
+		Tomcat：支持Servlet/JSP规范。轻量级服务器。
+		
+		Java相关规范（接口和抽象类）都是SUN制定
+		
+		
+		四、Tomcat的安装与启动遇到的问题(目标：TOmcat能启动)
+		1、注意：不要把Tocmat装到有中文或空格的目录中。
+		2、验证Tomcat是否成功
+			a、进入Tomcat\bin，执行startup.bat
+			b、启动过程中没有出错。最好还要打开浏览器：http://localhost:8080看到猫说明OK
+			
+		3、启动Tomcat遇到的问题：
+			***a、无法启动：配置系统环境变量JAVA_HOME=你的JDK的安装目录
+			
+			Tips:
+				HTTP协议规定，Web应用的默认端口是80
+				把Tomcat使用的默认端口8080改为Web应用的默认端口80？
+				
+				在TOmcat\conf目录中有一个server.xml
+				找到8080改为80，就可以使用默认端口了。
+		4、Catalina_home=Tomcat的安装目录（不建议使用）
+			
+		五、Tomcat的目录结构（服务器厂商自定义的）
+		CATALINA_HOME：
+			*bin:运行Tomcat的相关命令
+			*conf：Tomcat的配置信息所在
+			*lib：Tomcat运行需要的jar包
+			*logs:TOmcat的运行日志
+			temp：存放临时文件的
+			*webapps:Web应用的存放目录。该目录中的每个目录都代表一个应用。
+			work：Tomcat的工作目录
+			
+		*****六、JavaWeb应用的目录结构（SUN制定的，有严格要求）必须记住
+		Tomcat：打war包：
+			jar -cvf xxx.war .
+		
+		MyApp:(目录，应用的名称)
+			1.html
+			css
+				a.css
+			WEB-INF:此目录必须有，且大小必须完全一致。该目录中的资源，用户无法直接访问到。（非常重要）
+				classes:存放Java类的字节码
+				lib:存放本应用需要的jar包
+				web.xml:本应用的配置文件
+		
+		***七、如何“部署”自己的应用到Tomcat中
+		方式一：把你的应用拷贝到Tomcat\webapps目录下。
+		方式二：把自己的应用打包成war包，再拷贝到Tomcat\webapps目录下
+			进入你的应用目录
+			执行：jar -cvf MyApp.war .
+			
+		八、Tomcat组成部分详解：
+			虚拟目录：
+				方式一：（不建议使用，原因就是需要重新启动）
+					1、修改Tomcat\conf\server.xml，找到<Host name="localhost"/>元素
+					2、在其中增加一个子元素，内容如下：
+						<Context path="/haha" docBase="E:\MyApp"/>
+						path:虚拟目录的名称。给用户来访问的
+						docBase:实际应用的存放目录
+					3、重新启动Tomcat
+					4、访问资源：http://localhost:8080/haha/1.html就是访问E盘下MyApp目录中的1.html
+				**方式二：
+					在Tomcat\conf\[enginename]\[hostname]目录下建立一个特殊的文件，文件扩展名为xml；
+					文件的主文件名就是映射的虚拟路径（即<Context path="/haha" docBase="E:\MyApp"/>中的path）
+					增加以下内容：
+					<?xml version="1.0"?>
+					<Context docBase="E:\MyApp"/>
+					
+				练习：配置E盘上的MyApp作为默认应用
+				1、在Tomcat\conf\[enginename]\[hostname]目录下建立一个特殊的文件，文件名ROOT.xml；
+				2、由于默认应用特殊，也需要重新启动Tomcat
+				访问MyApp下的1.html
+				http://locahost:8080/1.html
+				
+				
+			虚拟主机：
+				
+			连接器:
+				
+		
+		（作业）案例:默认端口\默认应用\默认主页
+		默认端口：
+		默认应用：
+		默认主页：
+			修改应用中的web.xml文件
+			根元素下增加以下内容：
+				   <welcome-file-list>
+					<welcome-file>1.html</welcome-file>
+				</welcome-file-list>
+
+
+
 						
 						
 						
