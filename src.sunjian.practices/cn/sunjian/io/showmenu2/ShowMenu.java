@@ -1,4 +1,5 @@
 package cn.sunjian.io.showmenu2;
+
 /**
  * java.io²Ù×÷Á·Ï°£º
  * 
@@ -38,10 +39,10 @@ package cn.sunjian.io.showmenu2;
  * @author sunjian
  *
  */
-public class TestShowMenu {
-
+public class ShowMenu {
+	
 	public static void main(String[] args) {
-
+			
 		new Menu();
 	}
 

@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * 定义一个输入数据类：
@@ -18,11 +19,13 @@ import java.util.Date;
 public class InputData {
 	
 	BufferedReader buf = null;//接收键盘输入数据信息对象
+	Scanner scan = null;
 	
 	public InputData(){//构造方法，实例化BufferedReader对象
-		this.buf = new BufferedReader(new InputStreamReader(System.in));
+//		this.buf = new BufferedReader(new InputStreamReader(System.in));
+		this.scan = new Scanner(System.in);
 	}
-
+	
 	//获取字符串信息
 	public String getString(String info){
 		String temp = null;//接收读取的信息
@@ -93,5 +96,76 @@ public class InputData {
 		}
 		return temp;
 	}
+	
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	public String getString1(){
+		String temp = null;//接收读取的信息
+		
+		temp = this.scan.nextLine();//读取键盘录入的信息，一次读取一行
+		
+		System.out.print(temp);
+		return temp;
+	}
+	
+	//获取整形数据
+	public int getInt1(){
+		int temp = 0;//用于存放整形数据
+		String str = null;//接收读取的数据
+		boolean flag = true;//定义一个标记
+		
+		while(flag){			
+			str = this.getString1();//接收数据
+			if (str.matches("^\\d+$")) {//正则表达式判断，输入的数据是否为数字
+				temp = Integer.parseInt(str);//将接收的字符串数字转换成整形数字
+				flag = false;//结束循环
+			}else {
+//				System.out.println(err);//否则，打印错误信息
+			}
+		}
+		return temp;
+	}
+	
+	//获取浮点型数据
+	public float getFloat1(){
+		float temp = 0;//用于存放小数数据
+		String str = null;//接收读取的数据
+		boolean flag = true;//定义一个标记位
+		
+		while(flag){
+			str = this.getString1();//接收数据^\\d+.?\\d+$
+			if (str.matches("^\\d+.?\\d+$")) {//正则表达式判断，输入的数据是否为小数
+				temp = Float.parseFloat(str);//将接受的数据转成小数
+				flag = false;//结束循环
+			}else {
+//				System.out.println();//打印错误信息
+			}
+		}
+		return temp;
+	}
+	
+	//获取日期格式的数据
+	public Date getDate1(){
+		Date temp = null;//用于存放日期数据
+		String str = null;//接收读取的数据
+		boolean flag = true;//定义一个标记位
+		
+		while(flag){
+			str = this.getString1();//接收数据
+			if (str.matches("^\\d{4}-\\d{2}-\\d{2}$")) {//正则表达式判断，输入的数据是否为日期
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");//定义输入的日期格式
+				try {
+					temp = sdf.parse(str);//将接收的字符串数据转换成日期
+				} catch (ParseException e) {			
+					e.printStackTrace();
+				}
+				flag = false;//结束循环
+			}else {
+//				System.out.println(err);//打印错误信息
+			}
+		}
+		return temp;
+	}
+	
+	
 	
 }

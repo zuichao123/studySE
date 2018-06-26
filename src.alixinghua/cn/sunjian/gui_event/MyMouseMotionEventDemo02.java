@@ -32,11 +32,11 @@ class MyMouseMotionHandle extends JFrame{
 ()) ;
 			}
 		}) ;
-		super.addWindowListener(new WindowAdapter(){
+		super.addWindowListener(new WindowAdapter(){// 加入事件
 			public void windowClosing(WindowEvent e){
 				System.exit(1) ;
 			}
-		}) ;	// 加入事件
+		}) ;	
 		super.setSize(310,210) ;
 		super.setVisible(true) ;
 	}
