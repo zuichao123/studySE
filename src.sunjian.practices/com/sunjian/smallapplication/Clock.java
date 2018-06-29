@@ -217,7 +217,7 @@ public class Clock extends JComponent{
         Clock c = new Clock();
         c.showUI();
         JFrame f = new JFrame("Clock By Jack");
-        Image img=Toolkit.getDefaultToolkit().getImage("title.gif");//窗口图标
+        Image img=Toolkit.getDefaultToolkit().getImage(System.getProperty("user.dir")+"/files/lixinghua/image/CR7.jpg");//窗口图标
         f.setIconImage(img);
         f.setSize(400,400);
         f.setResizable(false);

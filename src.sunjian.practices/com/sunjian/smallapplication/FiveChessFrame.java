@@ -59,7 +59,7 @@ public class FiveChessFrame extends JFrame implements MouseListener, Runnable {
                 this.repaint();
                 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 try {
-                        bjImage = ImageIO.read(new File("tools/background.jpg"));
+                        bjImage = ImageIO.read(new File(System.getProperty("user.dir")+"/files/lixinghua/image/CR7.jpg"));
                 } catch (IOException e) {
                         e.printStackTrace();
                 }

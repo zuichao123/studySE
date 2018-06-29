@@ -1,8 +1,10 @@
 package com.sunjian.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -13,6 +15,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,6 +23,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 import cn.sunjian.io.InputData;
 
@@ -65,12 +69,16 @@ import cn.sunjian.io.InputData;
  * @author sunjian
  *
  */
-public class Window extends JFrame {
+public class MyWindow extends JFrame {
 	
-	JFrame mJFrame;
-	Container content;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	JFrame mJframe;
 	JPanel mJpanle;
-	JScrollPane mJtascrol;
 	
 	JLabel mJlGreeting;
 	JLabel mJlOne;
@@ -79,9 +87,12 @@ public class Window extends JFrame {
 	JLabel mJlFour;
 	JLabel mJlZero;
 	JLabel mJlPleaseChoose;
+	JLabel mJlResult;
 	
 	JTextField mJTextField;
 	JTextArea mJTextArea;
+	
+	JScrollPane mJtascrol;
 	
 	JComboBox<Object> mJcbPleaseChoose;
 	
@@ -97,114 +108,127 @@ public class Window extends JFrame {
 		int WINDOW_LOCATION_Y = screenHeight / 2 - HEIGHT_WINDOW / 2 + 30;
 		String[] fontSize = {"   ","0","1","2","3","4"};
 		
-		this.mJFrame = new JFrame();
-		this.content = mJFrame.getContentPane();
+		//System.out.println("屏幕分辨率："+screenWidth+":"+screenHeight);
+		
+		this.mJframe = new JFrame();
 		this.mJpanle = new JPanel();	
 		
+		//this.mJpanle.setSize(500, 500);
+		
+		//定义界面元素
 		this.mJlGreeting = new JLabel("==-==XXX系统==-==");
-		this.mJlOne = new JLabel("[1]、增加数据",SwingConstants.LEFT);
-	    this.mJlTwo = new JLabel("[2]、删除数据");
-	    this.mJlThree = new JLabel("[3]、修改数据");
-	    this.mJlFour = new JLabel("[4]、查看数据");
-	    this.mJlZero = new JLabel("[0]、系统退出");
+		this.mJlOne = new JLabel("【1】、增加数据",SwingConstants.LEFT);
+	    this.mJlTwo = new JLabel("【2】、删除数据");
+	    this.mJlThree = new JLabel("【3】、修改数据");
+	    this.mJlFour = new JLabel("【4】、查看数据");
+	    this.mJlZero = new JLabel("【0】、系统退出");
 	    this.mJTextField = new JTextField("请输入",10);
 	    this.mJlPleaseChoose = new JLabel("请选择：");
+	    this.mJlResult = new JLabel("结果：");
 	    this.mJcbPleaseChoose = new JComboBox<Object>(fontSize);
 	    this.mJTextArea = new JTextArea(3,50);
 	    this.mJbConfirm = new JButton("确定");
 		
-//	    this.mJpanle.setLayout(null);
-		//设置添加的位置、大小等
-	    this.mJpanle.setLayout(null);
-		//***添加到面板中
-		this.mJlGreeting.setSize(30, 30);
-		this.mJlGreeting.setLocation(12, 5);
-		this.mJlGreeting.setFont(new Font("宋体", Font.BOLD, 24));
+		//***添加到面板中设置添加的位置、大小等
+		this.mJlGreeting.setSize(270, 40);
+		this.mJlGreeting.setLocation(400,0);
+		this.mJlGreeting.setFont(new Font("宋体", Font.CENTER_BASELINE,28));
 		this.mJlGreeting.setBackground(Color.blue);
 		this.mJpanle.add(mJlGreeting);
 		
-		this.mJlOne.setSize(30, 30);
-		this.mJlOne.setLocation(100, 200);
+		this.mJlOne.setSize(130, 130);
+		this.mJlOne.setLocation(20, 55);
 		this.mJlOne.setFont(new Font("宋体", Font.CENTER_BASELINE, 14));
 		this.mJlOne.setBackground(Color.BLACK);
 		this.mJpanle.add(mJlOne);
 		
-		this.mJlTwo.setSize(30, 30);
-		this.mJlTwo.setLocation(12,25);
-		this.mJlTwo.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJlTwo.setSize(130, 130);
+		this.mJlTwo.setLocation(20,105);
+		this.mJlTwo.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlTwo.setBackground(Color.blue);
 		this.mJpanle.add(mJlTwo);
 		
-		this.mJlThree.setSize(30, 30);
-		this.mJlThree.setLocation(12,35);
-		this.mJlThree.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJlThree.setSize(130, 130);
+		this.mJlThree.setLocation(20,155);
+		this.mJlThree.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlThree.setBackground(Color.blue);
 		this.mJpanle.add(mJlThree);
 		
-		this.mJlFour.setSize(30, 30);
-		this.mJlFour.setLocation(12,45);
-		this.mJlFour.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJlFour.setSize(130, 130);
+		this.mJlFour.setLocation(20,205);
+		this.mJlFour.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlFour.setBackground(Color.blue);
 		this.mJpanle.add(mJlFour);
 		
-		this.mJlZero.setSize(30, 30);
-		this.mJlZero.setLocation(12,55);
-		this.mJlZero.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJlZero.setSize(130, 130);
+		this.mJlZero.setLocation(20,255);
+		this.mJlZero.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlZero.setBackground(Color.blue);
 		this.mJpanle.add(mJlZero);
 		
-		this.mJlPleaseChoose.setSize(30, 30);
-		this.mJlPleaseChoose.setLocation(12,65);
-		this.mJlPleaseChoose.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJlPleaseChoose.setSize(100, 100);
+		this.mJlPleaseChoose.setLocation(20,305);
+		this.mJlPleaseChoose.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlPleaseChoose.setBackground(Color.blue);
 		this.mJpanle.add(mJlPleaseChoose);
 		
+		this.mJlResult.setSize(100, 100);
+		this.mJlResult.setLocation(mJlPleaseChoose.getX(),mJlPleaseChoose.getY()+50);
+		this.mJlResult.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
+		this.mJlResult.setBackground(Color.blue);
+		this.mJpanle.add(mJlResult);
+		
+		/*输入文本框
 		this.mJTextField.setSize(30, 30);
-		this.mJTextField.setLocation(12,75);
-		this.mJTextField.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJTextField.setLocation(120,355);
+		this.mJTextField.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJTextField.setForeground(Color.lightGray);
 		this.mJTextField.setBackground(Color.white);
 		this.mJTextField.setEnabled(true);
-		//this.mJpanle.add(mJTextField);	
+		this.mJpanle.add(mJTextField);*/	
 		
-		this.mJcbPleaseChoose.setSize(30, 30);
-		this.mJcbPleaseChoose.setLocation(12,65);
-		this.mJcbPleaseChoose.setFont(new Font("宋体", Font.BOLD, 24));
+		this.mJcbPleaseChoose.setSize(102, 20);
+		this.mJcbPleaseChoose.setLocation(mJlPleaseChoose.getX()+65,mJcbPleaseChoose.getY()+345);
+		this.mJcbPleaseChoose.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJcbPleaseChoose.setBackground(Color.white);
-		this.mJcbPleaseChoose.setMaximumRowCount(3);
-		this.mJtascrol = new JScrollPane(mJcbPleaseChoose);
-		this.mJpanle.add(mJtascrol);
-
-		this.mJTextArea.setSize(50, 50);
-		this.mJTextArea.setLocation(12,85);
-		this.mJTextArea.setFont(new Font("宋体", Font.BOLD, 14));
-		this.mJTextArea.setBackground(Color.white);
-		this.mJTextArea.setEnabled(true);
-		this.mJTextArea.setLineWrap(true);
-		this.mJtascrol = new JScrollPane(mJTextArea);//设置多行文本的滚动条
-		this.mJpanle.add(mJtascrol);
+		this.mJcbPleaseChoose.setMaximumRowCount(4);
+		this.mJpanle.add(mJcbPleaseChoose);
 		
+		this.mJTextArea.setSize(150, 120);
+		this.mJTextArea.setLocation(mJlResult.getX()+65,mJlResult.getY()+40);
+		this.mJTextArea.setFont(new Font("宋体", Font.BOLD, 10));
+		this.mJTextArea.setBackground(Color.WHITE);
+		this.mJTextArea.setEnabled(true);//可编辑
+		this.mJTextArea.setLineWrap(true);//自动换行
+		this.mJpanle.add(mJTextArea);
 		
-		this.mJbConfirm.setSize(30,30);
-		this.mJbConfirm.setLocation(100, 100);
-		this.mJbConfirm.setFont(new Font("宋体", Font.HANGING_BASELINE, 26));
+		this.mJtascrol = new JScrollPane(this.mJTextArea);
+		this.mJtascrol.setSize(150, 90);
+		this.mJtascrol.setLocation(mJlResult.getX()+65,mJlResult.getY()+40);
+		this.mJpanle.add(mJtascrol);		
+		
+		this.mJbConfirm.setSize(60,60);
+		this.mJbConfirm.setLocation(520,620);
+		this.mJbConfirm.setFont(new Font("宋体", Font.CENTER_BASELINE, 10));
 		this.mJpanle.add(mJbConfirm);
+			
+		//设置容器布局为空
+		this.setLayout(null);
+		this.mJpanle.setLayout(null);
 		
-		
-		this.content.add(mJpanle);//将面板添加到容器中
+		//将面板添加到窗体容器中
+		this.mJframe.getContentPane().add(mJpanle, BorderLayout.CENTER);
 		
 		//设置窗体
-//		this.mJpanle.setLayout(null);
-//		this.mJFrame.setLayout(null);
-		this.mJFrame.setLocation(WINDOW_LOCATION_X,WINDOW_LOCATION_Y);
-		this.mJFrame.setSize(1050,800);
-//		this.mJFrame.setResizable(true);
-		this.mJFrame.setVisible(true);
-//		this.mJFrame.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-//		this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		this.mJFrame.setTitle("xxxx系统");	
-			
+		this.mJframe.setLocation(WINDOW_LOCATION_X + 55,WINDOW_LOCATION_Y);
+		this.mJframe.setSize(this.mJframe.getX()*3,this.mJframe.getY()*4);
+		this.mJframe.setResizable(false);
+		this.mJframe.setVisible(true);
+		//this.mJframe.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		//this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.mJframe.setTitle("人员管理系统");	
 		
+		System.out.println(this.mJframe.getWidth());
 		
 		this.mJTextField.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e){
@@ -223,34 +247,16 @@ public class Window extends JFrame {
 				
 				if (e.getSource() == mJbConfirm) {
 					
-//					mJTextArea.setText("");
+					mJTextArea.setText("");
 					
 					if (mJcbContent.equals("1")) {
-//						System.out.println("111111111");
-						mJTextArea.append("请输入姓名：\n");
 						
-//						System.out.println("111111112");
-						InputData input = new InputData();//实例化输入数据对象
-//						System.out.println("111111113");
-						mJTextArea.requestFocus();
-						String name = input.getString1();
-//						System.out.println("111111114");
-						mJTextArea.setText("请输入年龄： 年龄必须是数字！\n");
-//						System.out.println("111111115");
-//						int age = input.getInt1();
-//						System.out.println("111111116");
+						disableMainFrame();
 						
-//						Person per = new Person(name, age);//实例化Person类
+						new MyWindowAdd().init();
 						
-//						mJTextArea.setText(per.toString());
+						enableMainFrame();
 						
-						JOptionPane.showMessageDialog(mJpanle, "添加成功");
-						
-						mJTextArea.append("添加成功\n");
-						mJTextArea.append("添加成功\n");
-						mJTextArea.append("添加成功\n");
-						mJTextArea.append("添加成功\n");
-						mJTextArea.append("添加成功");
 					}
 					if (mJcbContent.equals("2")) {
 						mJTextArea.setText("");
@@ -271,21 +277,41 @@ public class Window extends JFrame {
 						mJTextArea.setText("拜拜");
 						System.exit(1);//系统退出
 						mJTextArea.setText("");
-					}else {
-						if (mJcbContent.equals("")) {
-							mJTextArea.setText("请选择...");
-						}
+					}					
+					if (mJcbContent.equals("")) {
+						mJTextArea.setText("请选择...");
 					}
 				}	
 			}
+
+			
 		});
 		
-		this.mJFrame.addWindowListener(new WindowAdapter() {
+		this.mJframe.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e){
 				System.exit(1);
 			}
 		});
 		
 	}
-
+	
+	private void disableMainFrame() {
+		
+//		this.mJframe.setFocusable(false);
+		this.mJframe.setEnabled(false);
+		this.mJcbPleaseChoose.setFocusable(false);
+		this.mJTextArea.setEnabled(false);
+		this.mJbConfirm.setEnabled(false);
+	}
+	public void enableMainFrame(){
+//		this.mJframe.setFocusable(true);
+		this.mJframe.setEnabled(true);
+		this.mJcbPleaseChoose.setEnabled(true);
+		this.mJTextArea.setEnabled(true);
+		this.mJbConfirm.setEnabled(true);
+	}
+	
+	public static void main(String[] args) {
+		new MyWindow().run();
+	}
 }
