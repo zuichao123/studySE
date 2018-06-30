@@ -1,9 +1,8 @@
-package com.sunjian.gui;
+package com.sunjian.gui_personmanagegui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -13,16 +12,20 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class MyWindowAdd extends JDialog{
+
+public class MyWindowAdd extends MyWindow{
+	private String userManagerPath = System.getProperty("user.dir")+"/files/lixinghua/file/userManager.txt";
 	private String right = System.getProperty("user.dir")+"/files/lixinghua/image/right.png" ;
 	private String wrong = System.getProperty("user.dir")+"/files/lixinghua/image/wrong.gif" ;
+	private int myJFrameGetX = 0;
+	private int myJFrameGetY = 0;
 	
 	/**
 	 * 
@@ -50,13 +53,19 @@ public class MyWindowAdd extends JDialog{
 	JLabel mJlAImageR;
 	JLabel mJlAImageW;
 	
-	public MyWindowAdd(){
-		
+	JTextArea superMJtextArea;
+	
+	public MyWindowAdd(JFrame mJFrame,JTextArea mJTextArea){
+		this.myJFrameGetX = mJFrame.getX();
+		this.myJFrameGetY = mJFrame.getY();
+		this.superMJtextArea = mJTextArea;
 	}
 	
+	
 	/*创建窗口*/
-	public void init(){
+	public void add(){
 		
+		/************定义组件****************/
 		this.mJframeAdd = new JFrame();
 		this.mJpanelAdd = new JPanel();
 		
@@ -69,6 +78,7 @@ public class MyWindowAdd extends JDialog{
 		this.mJbConfirm = new JButton("确定");
 		this.mJbCancel = new JButton("取消");
 		
+		/************画组件*****************/
 		this.mJlName.setSize(100, 100);
 		this.mJlName.setLocation(12, 5);
 		this.mJlName.setFont(new Font("宋体", Font.BOLD, 14));
@@ -138,12 +148,11 @@ public class MyWindowAdd extends JDialog{
 		this.mJframeAdd.getContentPane().add(mJpanelAdd, BorderLayout.CENTER);
 		
 		this.mJframeAdd.setSize(460,400);
-		this.mJframeAdd.setLocation(570, 270);
+		this.mJframeAdd.setLocation(myJFrameGetX + 185,myJFrameGetY + 100);
 		this.mJframeAdd.setVisible(true);
 		this.mJframeAdd.setAlwaysOnTop(true);
 		this.mJframeAdd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.mJframeAdd.setTitle("添加用户");
-		
 		
 		
 		this.mJframeAdd.addWindowListener(new WindowAdapter() {
@@ -157,16 +166,44 @@ public class MyWindowAdd extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				if (e.getSource() == mJbConfirm) {
+					if (!(mJtfAge.getText().equals("")) && mJtfAge.getText().matches("^\\d+$")) {
+						mJlAImageR.setVisible(true);
+						mJlAImageW.setVisible(false);
+					}
+					if (!(mJtfName.getText().equals("")) && mJtfName.getText().length() < 7) {
+						mJlNImageR.setVisible(true);
+						mJlNImageW.setVisible(false);
+					}
+					
 					if (mJtfAge.getText() != null && mJtfAge.getText().matches("^\\d+$") 
 							&& mJtfName.getText() != null && mJtfName.getText().length() < 7) {
 						
-						JOptionPane.showMessageDialog(mJpanelAdd, "添加成功");
+						String name = mJtfName.getText();
+						int age = Integer.parseInt(mJtfAge.getText());
+						
+						Person per = new Person(name, age);
+						FileOperate fo = new FileOperate(userManagerPath);
+						
+						try {
+							fo.save(per);
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+						
+						superMJtextArea.setText("添加成功！\n"+per.toString());
+						
+						JOptionPane.showMessageDialog(mJpanelAdd, "添加成功！");
+						
 						mJframeAdd.dispose();
+						
 					}else if (mJtfAge.getText().equals("") || !(mJtfAge.getText().matches("^\\d+$"))) {
 						mJlAImageW.setVisible(true);
-					}if (mJtfName.getText() == null || mJtfName.getText().length() > 6) {
+						mJlAImageR.setVisible(false);
+					}if (mJtfName.getText().equals("") || mJtfName.getText().length() > 6) {
 						mJlNImageW.setVisible(true);
+						mJlNImageR.setVisible(false);
 					}
 					
 				}
@@ -186,48 +223,39 @@ public class MyWindowAdd extends JDialog{
 		});
 	
 		this.mJtfName.addFocusListener(new FocusListener(){
-			public void focusLost(FocusEvent e) {  
-				String nameContent = mJtfName.getText();
-			  	
-			  	if (!(nameContent.equals("")) && nameContent.length()<7) {
-			  		mJlNImageR.setVisible(true);
-			  		mJlNImageW.setVisible(false);
-				}else {
-					mJlNImageW.setVisible(true);
-					mJlNImageR.setVisible(false);
-				}
+			public void focusLost(FocusEvent e) { //失去焦点执行 
+//				String nameContent = mJtfName.getText();
+//			  	
+//			  	if (!(nameContent.equals("")) && nameContent.length()<7) {
+//			  		mJlNImageR.setVisible(true);
+//			  		mJlNImageW.setVisible(false);
+//				}else {
+//					mJlNImageW.setVisible(true);
+//					mJlNImageR.setVisible(false);
+//				}
 				
 			}
-			 public void focusGained(FocusEvent e) {
-			//获得焦点执行的代码 
+			public void focusGained(FocusEvent e) {			//获得焦点执行的代码 
+				 
 			}
 		});
 		
 		this.mJtfAge.addFocusListener(new FocusListener(){
-			public void focusLost(FocusEvent e) {  
-				String nameContent = mJtfAge.getText();
-				
-				if (nameContent != null && nameContent.matches("^\\d+$")) {
-					mJlAImageR.setVisible(true);
-					mJlAImageW.setVisible(false);
-				}else {
-					mJlAImageW.setVisible(true);
-					mJlAImageR.setVisible(false);
-				}
+			public void focusLost(FocusEvent e) { //失去焦点执行 
+//				String nameContent = mJtfAge.getText();
+//				
+//				if (nameContent != null && nameContent.matches("^\\d+$")) {
+//					mJlAImageR.setVisible(true);
+//					mJlAImageW.setVisible(false);
+//				}else {
+//					mJlAImageW.setVisible(true);
+//					mJlAImageR.setVisible(false);
+//				}
 			}
-			public void focusGained(FocusEvent e) {
-				//获得焦点执行的代码 
+			public void focusGained(FocusEvent e) {//获得焦点执行的代码
+				 
 			}
 		});
 		
 	}
-	
-	
-	
-
-	
-	public static void main(String[] args) {
-		new MyWindowAdd().init();
-	}
-	
 }

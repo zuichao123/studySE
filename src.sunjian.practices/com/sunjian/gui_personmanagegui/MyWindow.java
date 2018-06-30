@@ -1,10 +1,8 @@
-package com.sunjian.gui;
+package com.sunjian.gui_personmanagegui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -12,23 +10,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-
-import cn.sunjian.io.InputData;
-
-
-
 
 /**
  * java.io、图形界面：操作练习：
@@ -76,6 +67,7 @@ public class MyWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String mIcomFBPath = System.getProperty("user.dir")+"/files/lixinghua/image/abao.jpg";
 	
 	JFrame mJframe;
 	JPanel mJpanle;
@@ -88,6 +80,7 @@ public class MyWindow extends JFrame {
 	JLabel mJlZero;
 	JLabel mJlPleaseChoose;
 	JLabel mJlResult;
+	JLabel mJlImageFB;
 	
 	JTextField mJTextField;
 	JTextArea mJTextArea;
@@ -98,6 +91,8 @@ public class MyWindow extends JFrame {
 	
 	JButton mJbConfirm;
 	
+	ImageIcon mIconFB;
+	
 	public void run(){
 		
 		int WIDTH_WINDOW = 1368;
@@ -106,68 +101,68 @@ public class MyWindow extends JFrame {
 		int screenHeight = ((int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().height);
 		int WINDOW_LOCATION_X = screenWidth / 2 - WIDTH_WINDOW / 2 + 50;
 		int WINDOW_LOCATION_Y = screenHeight / 2 - HEIGHT_WINDOW / 2 + 30;
-		String[] fontSize = {"   ","0","1","2","3","4"};
+		String[] fontSize = {"   ","1","2","3","4","0"};
 		
 		//System.out.println("屏幕分辨率："+screenWidth+":"+screenHeight);
 		
 		this.mJframe = new JFrame();
 		this.mJpanle = new JPanel();	
 		
-		//this.mJpanle.setSize(500, 500);
-		
-		//定义界面元素
+		/*定义界面元素*/
 		this.mJlGreeting = new JLabel("==-==XXX系统==-==");
 		this.mJlOne = new JLabel("【1】、增加数据",SwingConstants.LEFT);
 	    this.mJlTwo = new JLabel("【2】、删除数据");
 	    this.mJlThree = new JLabel("【3】、修改数据");
 	    this.mJlFour = new JLabel("【4】、查看数据");
 	    this.mJlZero = new JLabel("【0】、系统退出");
+	    this.mIconFB = new ImageIcon(mIcomFBPath);
+		this.mJlImageFB = new JLabel(mIconFB);
 	    this.mJTextField = new JTextField("请输入",10);
 	    this.mJlPleaseChoose = new JLabel("请选择：");
-	    this.mJlResult = new JLabel("结果：");
+	    this.mJlResult = new JLabel("结	果：");
 	    this.mJcbPleaseChoose = new JComboBox<Object>(fontSize);
 	    this.mJTextArea = new JTextArea(3,50);
 	    this.mJbConfirm = new JButton("确定");
 		
-		//***添加到面板中设置添加的位置、大小等
+		/***添加到面板中设置添加的位置、大小等**************/
 		this.mJlGreeting.setSize(270, 40);
-		this.mJlGreeting.setLocation(400,0);
+		this.mJlGreeting.setLocation(280,0);
 		this.mJlGreeting.setFont(new Font("宋体", Font.CENTER_BASELINE,28));
 		this.mJlGreeting.setBackground(Color.blue);
 		this.mJpanle.add(mJlGreeting);
 		
 		this.mJlOne.setSize(130, 130);
-		this.mJlOne.setLocation(20, 55);
+		this.mJlOne.setLocation(20, 25);
 		this.mJlOne.setFont(new Font("宋体", Font.CENTER_BASELINE, 14));
 		this.mJlOne.setBackground(Color.BLACK);
 		this.mJpanle.add(mJlOne);
 		
 		this.mJlTwo.setSize(130, 130);
-		this.mJlTwo.setLocation(20,105);
+		this.mJlTwo.setLocation(this.mJlOne.getX(),this.mJlOne.getY() + 50);
 		this.mJlTwo.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlTwo.setBackground(Color.blue);
 		this.mJpanle.add(mJlTwo);
 		
 		this.mJlThree.setSize(130, 130);
-		this.mJlThree.setLocation(20,155);
+		this.mJlThree.setLocation(this.mJlOne.getX(),this.mJlTwo.getY() + 50);
 		this.mJlThree.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlThree.setBackground(Color.blue);
 		this.mJpanle.add(mJlThree);
 		
 		this.mJlFour.setSize(130, 130);
-		this.mJlFour.setLocation(20,205);
+		this.mJlFour.setLocation(this.mJlOne.getX(),this.mJlThree.getY() + 50);
 		this.mJlFour.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlFour.setBackground(Color.blue);
 		this.mJpanle.add(mJlFour);
 		
 		this.mJlZero.setSize(130, 130);
-		this.mJlZero.setLocation(20,255);
+		this.mJlZero.setLocation(this.mJlOne.getX(),this.mJlFour.getY() + 50);
 		this.mJlZero.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlZero.setBackground(Color.blue);
 		this.mJpanle.add(mJlZero);
 		
 		this.mJlPleaseChoose.setSize(100, 100);
-		this.mJlPleaseChoose.setLocation(20,305);
+		this.mJlPleaseChoose.setLocation(this.mJlOne.getX() + 5,this.mJlZero.getY() + 80);
 		this.mJlPleaseChoose.setFont(new Font("宋体", Font.CENTER_BASELINE,14));
 		this.mJlPleaseChoose.setBackground(Color.blue);
 		this.mJpanle.add(mJlPleaseChoose);
@@ -208,9 +203,14 @@ public class MyWindow extends JFrame {
 		this.mJpanle.add(mJtascrol);		
 		
 		this.mJbConfirm.setSize(60,60);
-		this.mJbConfirm.setLocation(520,620);
+		this.mJbConfirm.setLocation(this.mJlGreeting.getX()+100,this.mJlGreeting.getY()+500);
 		this.mJbConfirm.setFont(new Font("宋体", Font.CENTER_BASELINE, 10));
 		this.mJpanle.add(mJbConfirm);
+		
+		this.mJlImageFB.setSize(490,450);
+		this.mJlImageFB.setLocation(mJlOne.getX()+260, mJlOne.getY()+10);
+		this.mJlImageFB.setBackground(Color.WHITE);
+		this.mJpanle.add(mJlImageFB);
 			
 		//设置容器布局为空
 		this.setLayout(null);
@@ -220,15 +220,14 @@ public class MyWindow extends JFrame {
 		this.mJframe.getContentPane().add(mJpanle, BorderLayout.CENTER);
 		
 		//设置窗体
-		this.mJframe.setLocation(WINDOW_LOCATION_X + 55,WINDOW_LOCATION_Y);
-		this.mJframe.setSize(this.mJframe.getX()*3,this.mJframe.getY()*4);
-		this.mJframe.setResizable(false);
+		this.mJframe.setSize(820,620);
+		this.mJframe.setLocation(WINDOW_LOCATION_X + 200,WINDOW_LOCATION_Y);
+		this.mJframe.setResizable(true);
 		this.mJframe.setVisible(true);
 		//this.mJframe.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		//this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.mJframe.setTitle("人员管理系统");	
 		
-		System.out.println(this.mJframe.getWidth());
 		
 		this.mJTextField.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e){
@@ -249,34 +248,27 @@ public class MyWindow extends JFrame {
 					
 					mJTextArea.setText("");
 					
-					if (mJcbContent.equals("1")) {
-						
+					if (mJcbContent.equals("1")) {//添加人员	
+						disableMainFrame();		
+						new MyWindowAdd(mJframe,mJTextArea).add();									
+						enableMainFrame();
+					}
+					if (mJcbContent.equals("2")) {//删除人员
+						new MyWindowDelete(mJpanle).delete();
+					}
+					if (mJcbContent.equals("3")) {//更新人员
 						disableMainFrame();
 						
-						new MyWindowAdd().init();
+						new MyWindowUpdate(mJframe, mJTextArea).update();
 						
 						enableMainFrame();
-						
 					}
-					if (mJcbContent.equals("2")) {
-						mJTextArea.setText("");
-//						Operate.delete();//调用删除操作
-						mJTextArea.setText("删除成功");
+					if (mJcbContent.equals("4")) {//查看人员
+						new MyWindowSelect(mJpanle,mJTextArea).look();
 					}
-					if (mJcbContent.equals("3")) {
-						mJTextArea.setText("");
-						Operate.update();//调用更新操作
-						mJTextArea.setText("更新成功");
-					}
-					if (mJcbContent.equals("4")) {
-						mJTextArea.setText("");
-						Operate.find();//调用查看操作
-						mJTextArea.setText("查看成功");
-					}
-					if (mJcbContent.equals("0")) {
+					if (mJcbContent.equals("0")) {//系统退出
 						mJTextArea.setText("拜拜");
-						System.exit(1);//系统退出
-						mJTextArea.setText("");
+						System.exit(1);
 					}					
 					if (mJcbContent.equals("")) {
 						mJTextArea.setText("请选择...");

@@ -1,8 +1,9 @@
-package com.sunjian.gui;
+package com.sunjian.gui_personmanagegui;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
@@ -64,5 +65,37 @@ public class FileOperate {
 		
 		return obj;
 	}
-	
+	public Object load1() throws Exception{
+		Object obj = null;//接收读取的内容
+		ObjectInputStream ois = null;//对象输入流
+		
+		try {
+			ois = new ObjectInputStream(new FileInputStream(this.file));
+			obj = ois.readObject();//读取对象
+		} catch(Exception e){
+			throw e;
+		}finally {
+			ois.close();
+		}
+		
+		return obj;
+	}
+
+	public boolean delete() {
+		if (this.file.exists()) {	
+			if (this.file.canRead() && this.file.canWrite() && this.file.canExecute()) {			
+				this.file.delete();
+				try {
+					this.file.createNewFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}		
+	}
 }

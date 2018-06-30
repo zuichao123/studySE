@@ -1,9 +1,9 @@
-package com.sunjian.gui;
+package com.sunjian.gui_personmanagegui;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		new MyWindow().run();
 	}
 

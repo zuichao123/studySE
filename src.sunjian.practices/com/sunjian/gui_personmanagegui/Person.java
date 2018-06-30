@@ -1,4 +1,4 @@
-package com.sunjian.gui;
+package com.sunjian.gui_personmanagegui;
 
 import java.io.Serializable;
 

@@ -1,6 +1,5 @@
 package com.sunjian.gui;
 
-import java.io.InputStream;
 
 import cn.sunjian.io.InputData;
 import cn.sunjian.utils.Path;

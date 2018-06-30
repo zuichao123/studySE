@@ -22,8 +22,8 @@ public class InputData {
 	Scanner scan = null;
 	
 	public InputData(){//构造方法，实例化BufferedReader对象
-//		this.buf = new BufferedReader(new InputStreamReader(System.in));
-		this.scan = new Scanner(System.in);
+		this.buf = new BufferedReader(new InputStreamReader(System.in));
+//		this.scan = new Scanner(System.in);
 	}
 	
 	//获取字符串信息
