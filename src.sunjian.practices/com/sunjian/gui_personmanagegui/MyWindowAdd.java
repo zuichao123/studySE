@@ -21,19 +21,19 @@ import javax.swing.JTextField;
 
 
 public class MyWindowAdd extends MyWindow{
-	private String userManagerPath = System.getProperty("user.dir")+"/files/lixinghua/file/userManager.txt";
-	private String right = System.getProperty("user.dir")+"/files/lixinghua/image/right.png" ;
-	private String wrong = System.getProperty("user.dir")+"/files/lixinghua/image/wrong.gif" ;
-	private int myJFrameGetX = 0;
-	private int myJFrameGetY = 0;
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	/**************************/
-
+//	private String userManagerPath = System.getProperty("user.dir")+"/files/lixinghua/file/userManager.txt";
+	private String right = System.getProperty("user.dir")+"/files/lixinghua/image/right.png" ;
+	private String wrong = System.getProperty("user.dir")+"/files/lixinghua/image/wrong.gif" ;
 	
+	private int myJFrameGetX = 0;
+	private int myJFrameGetY = 0;
+
 	/**************init*******************/
 	JFrame mJframeAdd;
 	JPanel mJpanelAdd;
@@ -59,12 +59,6 @@ public class MyWindowAdd extends MyWindow{
 		this.myJFrameGetX = mJFrame.getX();
 		this.myJFrameGetY = mJFrame.getY();
 		this.superMJtextArea = mJTextArea;
-	}
-	
-	
-	/*创建窗口*/
-	public void add(){
-		
 		/************定义组件****************/
 		this.mJframeAdd = new JFrame();
 		this.mJpanelAdd = new JPanel();
@@ -77,8 +71,15 @@ public class MyWindowAdd extends MyWindow{
 		
 		this.mJbConfirm = new JButton("确定");
 		this.mJbCancel = new JButton("取消");
-		
+	}
+	
+	/*创建窗口*/
+	public void add(){
+			
 		/************画组件*****************/
+		this.setLayout(null);
+		this.mJpanelAdd.setLayout(null);
+		
 		this.mJlName.setSize(100, 100);
 		this.mJlName.setLocation(12, 5);
 		this.mJlName.setFont(new Font("宋体", Font.BOLD, 14));
@@ -136,15 +137,7 @@ public class MyWindowAdd extends MyWindow{
 		this.mJbCancel.setLocation(this.mJbConfirm.getX() + 160, this.mJbConfirm.getY());
 //		this.mJbCancel.setFont(new Font("宋体", Font.BOLD, 10));
 		this.mJpanelAdd.add(mJbCancel);
-		
-		//...........
-		
-		
-		//......................
-		
-		this.setLayout(null);
-		this.mJpanelAdd.setLayout(null);
-		
+
 		this.mJframeAdd.getContentPane().add(mJpanelAdd, BorderLayout.CENTER);
 		
 		this.mJframeAdd.setSize(460,400);
@@ -177,39 +170,52 @@ public class MyWindowAdd extends MyWindow{
 						mJlNImageW.setVisible(false);
 					}
 					
-					if (mJtfAge.getText() != null && mJtfAge.getText().matches("^\\d+$") 
-							&& mJtfName.getText() != null && mJtfName.getText().length() < 7) {
+					if (!(mJtfAge.getText().equals("")) && mJtfAge.getText().matches("^\\d+$") 
+							&& !(mJtfName.getText().equals("")) && mJtfName.getText().length() < 7) {
 						
 						String name = mJtfName.getText();
 						int age = Integer.parseInt(mJtfAge.getText());
 						
 						Person per = new Person(name, age);
-						FileOperate fo = new FileOperate(userManagerPath);
+//						FileOperate fo = new FileOperate(userManagerPath);
+//						
+//						try {
+//							fo.save(per);
+//						} catch (Exception e1) {
+//							e1.printStackTrace();
+//						}
 						
-						try {
-							fo.save(per);
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
+						DBOperate dbo = new DBOperate();
+						dbo.add(name, age);
 						
 						superMJtextArea.setText("添加成功！\n"+per.toString());
 						
 						JOptionPane.showMessageDialog(mJpanelAdd, "添加成功！");
 						
-						mJframeAdd.dispose();
+						mJtfAge.setText("");
+						mJtfName.setText("");
 						
-					}else if (mJtfAge.getText().equals("") || !(mJtfAge.getText().matches("^\\d+$"))) {
-						mJlAImageW.setVisible(true);
+						mJlNImageR.setVisible(false);
+						mJlNImageW.setVisible(false);
 						mJlAImageR.setVisible(false);
-					}if (mJtfName.getText().equals("") || mJtfName.getText().length() > 6) {
+						mJlAImageW.setVisible(false);
+						
+//						mJframeAdd.dispose();	
+					}
+					
+					else if (mJtfName.getText().equals("") || mJtfName.getText().length() > 6) {
 						mJlNImageW.setVisible(true);
 						mJlNImageR.setVisible(false);
+					}
+					else if (mJtfAge.getText().equals("") || !(mJtfAge.getText().matches("^\\d+$"))) {
+						mJlAImageW.setVisible(true);
+						mJlAImageR.setVisible(false);
 					}
 					
 				}
 				
 			}
-		});
+		}); 
 		
 		this.mJbCancel.addActionListener(new ActionListener() {
 			

@@ -198,7 +198,7 @@ public class MyWindow extends JFrame {
 		this.mJpanle.add(mJTextArea);
 		
 		this.mJtascrol = new JScrollPane(this.mJTextArea);
-		this.mJtascrol.setSize(150, 90);
+		this.mJtascrol.setSize(this.mJTextArea.getWidth(), this.mJTextArea.getHeight());
 		this.mJtascrol.setLocation(mJlResult.getX()+65,mJlResult.getY()+40);
 		this.mJpanle.add(mJtascrol);		
 		
@@ -254,17 +254,19 @@ public class MyWindow extends JFrame {
 						enableMainFrame();
 					}
 					if (mJcbContent.equals("2")) {//删除人员
-						new MyWindowDelete(mJpanle).delete();
+						disableMainFrame();
+						new MyWindowDelete(mJframe).delete();
+						enableMainFrame();
 					}
 					if (mJcbContent.equals("3")) {//更新人员
 						disableMainFrame();
-						
 						new MyWindowUpdate(mJframe, mJTextArea).update();
-						
 						enableMainFrame();
 					}
 					if (mJcbContent.equals("4")) {//查看人员
-						new MyWindowSelect(mJpanle,mJTextArea).look();
+						disableMainFrame();
+						new MyWindowSelect(mJframe).look();
+						enableMainFrame();
 					}
 					if (mJcbContent.equals("0")) {//系统退出
 						mJTextArea.setText("拜拜");
