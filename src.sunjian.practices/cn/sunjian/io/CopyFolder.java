@@ -38,17 +38,22 @@ public class CopyFolder {
 		File srcPath = new File(srcDir);//源文件夹	
 		File desPath = new File(desDir);//目的文件夹
 		
+		long startTime = System.currentTimeMillis();
+		System.out.println("复制文件夹开始时间："+startTime);
 		
 		if (srcPath.exists()) {			
 			File[] f1 = srcPath.listFiles();//列出源文件中的所有文件
-			copyFolder1(f1,desPath);
+//			copyFolder1(f1,desPath);
 			copyFolder2(f1,desPath);
-			copyFolder3(f1,desPath);
+//			copyFolder3(f1,desPath);
 			
 		}else {
 			System.out.println("您要复制的文件夹不存在！");
 		}	
 		
+		long endTime = System.currentTimeMillis();
+		System.out.println("复制文件夹结束时间："+endTime);
+		System.out.println("本次复制夹共用时："+(endTime - startTime)+"ms");
 	}
 	
 	/*
@@ -127,10 +132,16 @@ public class CopyFolder {
 				copyFolder1(f1[i].listFiles(), des);
 			}
 		}
-		System.out.println("您本次复制文件夹使用的是：文件输入、输出流的方式！");
+		System.out.println("您本次复制文件夹使用的是：文件普通输入、输出流的方式！");
 	}
 	
-private static void copyFolder3(File[] f1, File desPath) throws IOException {
+	/**
+	 * 文件缓冲输入、输出流的方式
+	 * @param f1
+	 * @param desPath
+	 * @throws IOException
+	 */
+	private static void copyFolder3(File[] f1, File desPath) throws IOException {
 		
 		BufferedReader bufr = null;//文件输入流
 		BufferedWriter bufw = null;//文件输出流
