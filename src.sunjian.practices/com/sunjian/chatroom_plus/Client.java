@@ -1,11 +1,14 @@
 package com.sunjian.chatroom_plus;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
+
 
 /**
  * 客户端主类
@@ -53,15 +56,60 @@ public class Client {
 					break;
 				}
 			}
-		} catch (Exception e) {
-			//捕获到异常，关闭网络资源，并推出改程序
-			
-			
-			
-			//.............
-			
-			
-			
+		} catch (UnknownHostException e) {
+			//捕获到异常，关闭网络资源，并退出改程序
+			System.out.println("找不到远程服务器，请确定服务器已经启动！");
+			closeRs();
+			System.exit(1);	
+		}catch (IOException e) {
+			System.out.println("网络异常！请重新登录！");
+			closeRs();
+			System.exit(1);
+		}
+		//以该Socket对应的输入流启动ClientThread线程
+		new ClientThread(brServer).start();
+	}
+
+	//定义一个读取键盘输出，并向网络发送的方法
+	private void readAndSend(){
+		try {
+			//不断地读取键盘输入
+			String line = null;
+			while((line = keyIn.readLine()) != null){
+				//如果发送的信息中有冒号，且以/开头，则认为想发送私聊信息
+				if(line.indexOf(":") > 0 && line.startsWith("/")){
+					line = line.substring(1);
+					ps.println(CrazyitProtocol.PRIVATE_ROUND + line.split(":")[0] + CrazyitProtocol.SPLIT_SIGN + line.split(":")[1] + CrazyitProtocol.PRIVATE_ROUND);
+				}else {
+					ps.println(CrazyitProtocol.MSG_ROUND + line + CrazyitProtocol.MSG_ROUND);
+				}
+			}
+		} catch (IOException e) {//捕获到异常，关闭网络资源，并退出该程序
+			System.out.println("网络通信异常！请重新登录！");
+			closeRs();
+			System.exit(1);
+		}
+	}
+	
+	//关闭Socket、输入流、输出流的方法
+	private void closeRs() {
+		try{
+			if(keyIn != null){
+				ps.close();
+			}
+			if (brServer != null) {
+				ps.close();
+			}
+			if (ps != null) {
+				ps.close();
+			}
+			if (socket != null) {
+				keyIn.close();
+			}
+		}catch (IOException e) {
+			Client client = new Client();
+			client.init();
+			client.readAndSend();
 		}
 	}
 	
