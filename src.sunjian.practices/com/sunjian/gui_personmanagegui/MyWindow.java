@@ -67,7 +67,7 @@ public class MyWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String mIcomFBPath = System.getProperty("user.dir")+"/files/lixinghua/image/abao.jpg";
+	private String mIcomFBPath = System.getProperty("user.dir")+"/files/lixinghua/image/liya.jpg";
 	
 	JFrame mJframe;
 	JPanel mJpanle;
