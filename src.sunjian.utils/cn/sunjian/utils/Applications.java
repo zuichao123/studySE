@@ -7,6 +7,11 @@ import java.io.InputStreamReader;
 
 public class Applications {
 
+	/**
+	 * 打开指定的应用程序
+	 * @param appPath 应用程序路径
+	 * @param appName 应用程序名称（加.exe）
+	 */
 	public static void openApp(String appPath,String appName){
 		Runtime runtime = Runtime.getRuntime();
 		File file = new File(appPath+"\\"+appName);
@@ -22,6 +27,10 @@ public class Applications {
 		}
 	}
 	
+	/**
+	 * 杀死指定的应用程序
+	 * @param appName 应用程序名称（加.exe）
+	 */
 	public static void killApp(String appName){
 		Runtime runtime = Runtime.getRuntime();
 		try {
@@ -34,7 +43,11 @@ public class Applications {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 在进程中查找指定的应用程序是否启用
+	 * @param processName 应用程序进程名
+	 * @return 启用?true:false
+	 */
 	public static boolean findProcess(String processName){
 		boolean flag = false;
 		BufferedReader bf = null;
@@ -62,21 +75,4 @@ public class Applications {
 		return flag;
 	}
 	
-	
-	
-	
-	
-	public static void main(String[] args) {
-		String appPath = "E:\\ButtonElf\\path\\ButtonElf";
-		String appName = "2014.exe";
-//		openApp(appPath,appName);
-//		try {
-//			Thread.sleep(30000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		killApp(appName);
-		
-		//System.out.println(findProcess(appName));
-	}
 }
