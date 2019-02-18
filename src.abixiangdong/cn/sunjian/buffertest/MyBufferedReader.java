@@ -92,9 +92,9 @@ public class MyBufferedReader {
 		
 		while((ch=myRead())!=-1){
 			
-			if (ch=='\r')
+			if (ch=='\r')//»Ø³µ
 				continue;
-			if(ch=='\n')
+			if(ch=='\n')//»»ÐÐ====£¨\t  tab£©
 				return sb.toString();
 			
 			sb.append((char)ch);

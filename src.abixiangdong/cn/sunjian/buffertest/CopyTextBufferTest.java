@@ -26,7 +26,6 @@ public class CopyTextBufferTest {
 			bufw.newLine();
 			bufw.flush();
 		}
-		
 		/*int ch = 0 ;
 		while((ch=bufr.read())!=-1){
 			bufw.write(ch);
