@@ -27,7 +27,6 @@ package javax.xml.ws;
 
 import javax.xml.ws.soap.Addressing;
 import javax.xml.ws.spi.WebServiceFeatureAnnotation;
-import java.lang.annotation.*;
 
 /**
  * The <code>WebServiceRef</code> annotation is used to

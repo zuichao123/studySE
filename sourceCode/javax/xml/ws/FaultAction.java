@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  * The <code>FaultAction</code> annotation is used inside an {@link Action}
  * annotation to allow an explicit association of a WS-Addressing

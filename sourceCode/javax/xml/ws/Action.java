@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  * The <code>Action</code> annotation allows explicit association of a
  * WS-Addressing <code>Action</code> message addressing property with

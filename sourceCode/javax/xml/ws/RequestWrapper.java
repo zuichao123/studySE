@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  * Used to annotate methods in the Service Endpoint Interface with the request
  * wrapper bean to be used at runtime. The default value of the <code>localName</code> is

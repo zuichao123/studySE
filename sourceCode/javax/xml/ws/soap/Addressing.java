@@ -29,7 +29,6 @@ import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.WebServiceRef;
 import javax.xml.ws.soap.AddressingFeature.Responses;
 import javax.xml.ws.spi.WebServiceFeatureAnnotation;
-import java.lang.annotation.*;
 
 /**
  * This annotation represents the use of WS-Addressing with either

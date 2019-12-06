@@ -30,7 +30,6 @@ import javax.xml.ws.WebServiceFeature;
 import javax.xml.ws.WebServiceRef;
 import javax.xml.ws.soap.Addressing;
 import javax.xml.ws.soap.MTOM;
-import java.lang.annotation.*;
 
 /**
  * Annotation used to identify other annotations

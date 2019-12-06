@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  *  Used to annotate the <code>get<em>PortName</em>()</code>
  *  methods of a generated service interface.

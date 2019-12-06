@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  *  The <code>BindingType</code> annotation is used to
  *  specify the binding to use for a web service

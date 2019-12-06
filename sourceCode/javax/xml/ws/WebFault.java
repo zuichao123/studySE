@@ -25,8 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
-
 /**
  * Used to annotate service specific exception classes to customize
  * to the local and namespace name of the fault element and the name

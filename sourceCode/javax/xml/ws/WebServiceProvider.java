@@ -25,7 +25,6 @@
 
 package javax.xml.ws;
 
-import java.lang.annotation.*;
 /**
  * Used to annotate a Provider implementation class.
  *

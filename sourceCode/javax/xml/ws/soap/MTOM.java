@@ -28,7 +28,6 @@ package javax.xml.ws.soap;
 import javax.xml.ws.WebServiceProvider;
 import javax.xml.ws.WebServiceRef;
 import javax.xml.ws.spi.WebServiceFeatureAnnotation;
-import java.lang.annotation.*;
 
 /**
  * This feature represents the use of MTOM with a

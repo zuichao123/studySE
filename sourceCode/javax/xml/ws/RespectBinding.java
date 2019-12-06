@@ -26,7 +26,6 @@
 package javax.xml.ws;
 
 import javax.xml.ws.spi.WebServiceFeatureAnnotation;
-import java.lang.annotation.*;
 
 
 /**
