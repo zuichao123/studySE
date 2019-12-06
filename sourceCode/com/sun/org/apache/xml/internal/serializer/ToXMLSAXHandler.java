@@ -22,19 +22,18 @@
  */
  package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
-import java.util.Properties;
-
-import javax.xml.transform.Result;
-
 import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.LexicalHandler;
+
+import javax.xml.transform.Result;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Writer;
+import java.util.Properties;
 
 /**
  * This class receives notification of SAX-like events, and with gathered

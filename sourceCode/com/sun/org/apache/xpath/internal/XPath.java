@@ -22,12 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import java.io.Serializable;
-
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.SourceLocator;
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.dtm.DTM;
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
@@ -35,9 +29,13 @@ import com.sun.org.apache.xml.internal.utils.SAXSourceLocator;
 import com.sun.org.apache.xpath.internal.compiler.Compiler;
 import com.sun.org.apache.xpath.internal.compiler.FunctionTable;
 import com.sun.org.apache.xpath.internal.compiler.XPathParser;
-import com.sun.org.apache.xpath.internal.functions.Function;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.SourceLocator;
+import javax.xml.transform.TransformerException;
+import java.io.Serializable;
 
 /**
  * The XPath class wraps an expression object and provides general services

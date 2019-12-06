@@ -22,12 +22,12 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
-
 import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
 import com.sun.org.apache.xml.internal.serializer.utils.Utils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
 
 /**
  * This class is not a public API.

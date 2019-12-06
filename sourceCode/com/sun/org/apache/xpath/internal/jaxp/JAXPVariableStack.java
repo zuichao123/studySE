@@ -21,16 +21,15 @@
 
 package com.sun.org.apache.xpath.internal.jaxp;
 
-import javax.xml.transform.TransformerException;
-import javax.xml.xpath.XPathVariableResolver;
-
+import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.utils.QName;
 import com.sun.org.apache.xpath.internal.VariableStack;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.objects.XObject;
-
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
-import com.sun.org.apache.xalan.internal.res.XSLMessages;
+
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathVariableResolver;
 
 
 /**

@@ -25,8 +25,6 @@
 
 package com.sun.source.util;
 
-import com.sun.source.tree.*;
-
 /**
  * A TreeVisitor that visits all the child tree nodes.
  * To visit nodes of a particular type, just override the

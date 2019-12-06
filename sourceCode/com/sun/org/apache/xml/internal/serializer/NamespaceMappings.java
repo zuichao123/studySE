@@ -22,12 +22,12 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
+import org.xml.sax.ContentHandler;
+import org.xml.sax.SAXException;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Stack;
-
-import org.xml.sax.ContentHandler;
-import org.xml.sax.SAXException;
 
 /**
  * This class keeps track of the currently defined namespaces. Conceptually the

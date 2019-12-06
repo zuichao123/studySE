@@ -22,10 +22,10 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.io.Serializable;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.AttributesImpl;
+
+import java.io.Serializable;
 
 /**
  * Mutable version of AttributesImpl.

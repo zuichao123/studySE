@@ -22,27 +22,15 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import com.sun.org.apache.xalan.internal.utils.SecuritySupport;
+
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.io.BufferedWriter;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.IllegalCharsetNameException;
 import java.nio.charset.UnsupportedCharsetException;
-import java.util.Collections;
-import java.util.Map;
 import java.util.Map.Entry;
-
-import com.sun.org.apache.xalan.internal.utils.SecuritySupport;
 
 /**
  * Provides information about encodings. Depends on the Java runtime

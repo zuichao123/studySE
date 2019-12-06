@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import java.util.Vector;
-
 import com.sun.org.apache.xpath.internal.functions.FuncExtFunction;
+
+import java.util.Vector;
 
 /**
  * Interface that XPath objects can call to obtain access to an

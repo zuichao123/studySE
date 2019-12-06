@@ -22,11 +22,11 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.io.IOException;
-import java.io.Serializable;
-
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**

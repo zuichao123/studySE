@@ -25,15 +25,12 @@
 
 package com.sun.security.auth.module;
 
-import java.util.*;
-import java.io.IOException;
-import javax.security.auth.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
-import com.sun.security.auth.UnixPrincipal;
-import com.sun.security.auth.UnixNumericUserPrincipal;
 import com.sun.security.auth.UnixNumericGroupPrincipal;
+import com.sun.security.auth.UnixNumericUserPrincipal;
+import com.sun.security.auth.UnixPrincipal;
+
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 
 /**
  * <p> This <code>LoginModule</code> imports a user's Unix

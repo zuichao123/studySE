@@ -25,26 +25,13 @@
 
 package com.sun.source.util;
 
-import java.lang.reflect.Method;
-
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.lang.model.element.AnnotationMirror;
-import javax.lang.model.element.AnnotationValue;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.ErrorType;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.Diagnostic;
 import javax.tools.JavaCompiler.CompilationTask;
-
-import com.sun.source.tree.CatchTree;
-import com.sun.source.tree.ClassTree;
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.MethodTree;
-import com.sun.source.tree.Scope;
-import com.sun.source.tree.Tree;
+import java.lang.reflect.Method;
 
 /**
  * Bridges JSR 199, JSR 269, and the Tree API.

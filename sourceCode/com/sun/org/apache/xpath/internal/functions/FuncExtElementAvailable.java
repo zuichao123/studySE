@@ -23,15 +23,15 @@
 package com.sun.org.apache.xpath.internal.functions;
 
 import com.sun.org.apache.xalan.internal.templates.Constants;
-// J2SE does not support Xalan interpretive
-/*
-import com.sun.org.apache.xalan.internal.transformer.TransformerImpl;
-*/
-import com.sun.org.apache.xml.internal.utils.QName;
 import com.sun.org.apache.xpath.internal.ExtensionsProvider;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.objects.XBoolean;
 import com.sun.org.apache.xpath.internal.objects.XObject;
+
+// J2SE does not support Xalan interpretive
+/*
+import com.sun.org.apache.xalan.internal.transformer.TransformerImpl;
+*/
 
 /**
  * Execute the ExtElementAvailable() function.

@@ -22,11 +22,10 @@
  */
 package com.sun.org.apache.xml.internal.serializer.utils;
 
-import java.io.File;
+import com.sun.org.apache.xml.internal.serializer.utils.URI.MalformedURIException;
 
 import javax.xml.transform.TransformerException;
-
-import com.sun.org.apache.xml.internal.serializer.utils.URI.MalformedURIException;
+import java.io.File;
 
 /**
  * This class is used to resolve relative URIs and SystemID

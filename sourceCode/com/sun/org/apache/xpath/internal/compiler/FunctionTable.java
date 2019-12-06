@@ -22,10 +22,10 @@
  */
 package com.sun.org.apache.xpath.internal.compiler;
 
-import com.sun.org.apache.xpath.internal.Expression;
 import com.sun.org.apache.xpath.internal.functions.Function;
-import java.util.HashMap;
+
 import javax.xml.transform.TransformerException;
+import java.util.HashMap;
 
 /**
  * The function table for XPath.

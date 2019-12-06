@@ -25,8 +25,6 @@
 
 package com.sun.source.util;
 
-import com.sun.source.tree.*;
-
 /**
  * A TreeVisitor that visits all the child tree nodes, and provides
  * support for maintaining a path for the parent nodes.

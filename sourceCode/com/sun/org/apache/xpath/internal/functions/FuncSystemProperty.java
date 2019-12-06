@@ -22,17 +22,16 @@
  */
 package com.sun.org.apache.xpath.internal.functions;
 
-import java.io.BufferedInputStream;
-import java.io.InputStream;
-import java.util.Properties;
-
+import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
+import com.sun.org.apache.xalan.internal.utils.SecuritySupport;
 import com.sun.org.apache.xpath.internal.XPathContext;
-import com.sun.org.apache.xpath.internal.objects.XNumber;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.objects.XString;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
-import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
-import com.sun.org.apache.xalan.internal.utils.SecuritySupport;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * Execute the SystemProperty() function.

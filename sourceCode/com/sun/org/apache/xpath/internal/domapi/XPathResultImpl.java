@@ -24,8 +24,6 @@
 
 package com.sun.org.apache.xpath.internal.domapi;
 
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xpath.internal.XPath;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
@@ -39,6 +37,8 @@ import org.w3c.dom.events.EventTarget;
 import org.w3c.dom.traversal.NodeIterator;
 import org.w3c.dom.xpath.XPathException;
 import org.w3c.dom.xpath.XPathResult;
+
+import javax.xml.transform.TransformerException;
 
 /**
  *

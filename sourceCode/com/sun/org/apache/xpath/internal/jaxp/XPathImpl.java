@@ -21,31 +21,21 @@
 
 package com.sun.org.apache.xpath.internal.jaxp;
 
-import javax.xml.namespace.QName;
-import javax.xml.namespace.NamespaceContext;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFunctionResolver;
-import javax.xml.xpath.XPathVariableResolver;
-import javax.xml.xpath.XPathExpression;
-
-import com.sun.org.apache.xml.internal.dtm.DTM;
-import com.sun.org.apache.xpath.internal.*;
-import com.sun.org.apache.xpath.internal.objects.XObject;
-import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xalan.internal.utils.FactoryImpl;
 import com.sun.org.apache.xalan.internal.utils.FeatureManager;
-
-import org.w3c.dom.Node;
+import com.sun.org.apache.xml.internal.dtm.DTM;
+import com.sun.org.apache.xpath.internal.objects.XObject;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.w3c.dom.traversal.NodeIterator;
-
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import javax.xml.parsers.*;
-
+import javax.xml.namespace.NamespaceContext;
+import javax.xml.namespace.QName;
+import javax.xml.xpath.*;
 import java.io.IOException;
 
 /**

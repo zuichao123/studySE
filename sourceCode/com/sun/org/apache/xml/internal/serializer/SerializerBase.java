@@ -22,20 +22,17 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
-import java.util.Vector;
-
-import javax.xml.transform.SourceLocator;
-import javax.xml.transform.Transformer;
-
 import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
 import com.sun.org.apache.xml.internal.serializer.utils.Utils;
-import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
-import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.ext.Locator2;
+
+import javax.xml.transform.SourceLocator;
+import javax.xml.transform.Transformer;
+import java.io.IOException;
+import java.util.Vector;
 
 
 /**

@@ -22,11 +22,11 @@
  */
 package com.sun.org.apache.xpath.internal.compiler;
 
-import javax.xml.transform.TransformerException;
-
-import com.sun.org.apache.xpath.internal.functions.Function;
-import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
 import com.sun.org.apache.xalan.internal.utils.ConfigurationError;
+import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
+import com.sun.org.apache.xpath.internal.functions.Function;
+
+import javax.xml.transform.TransformerException;
 
 /**
  * Lazy load of functions into the function table as needed, so we don't

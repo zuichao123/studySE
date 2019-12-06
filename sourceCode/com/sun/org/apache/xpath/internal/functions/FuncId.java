@@ -22,8 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal.functions;
 
-import java.util.StringTokenizer;
-
 import com.sun.org.apache.xml.internal.dtm.DTM;
 import com.sun.org.apache.xml.internal.dtm.DTMIterator;
 import com.sun.org.apache.xml.internal.utils.StringVector;
@@ -32,6 +30,8 @@ import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.objects.XNodeSet;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
+import java.util.StringTokenizer;
 
 /**
  * Execute the Id() function.

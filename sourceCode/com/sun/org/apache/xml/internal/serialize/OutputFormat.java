@@ -30,12 +30,12 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
-import java.io.UnsupportedEncodingException;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
 import org.w3c.dom.Node;
 import org.w3c.dom.html.HTMLDocument;
+
+import java.io.UnsupportedEncodingException;
 
 
 /**

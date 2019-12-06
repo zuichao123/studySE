@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.io.Serializable;
-
 import com.sun.org.apache.xml.internal.dtm.DTM;
+
+import java.io.Serializable;
 
 /**
  * A very simple table that stores a list of Nodes.

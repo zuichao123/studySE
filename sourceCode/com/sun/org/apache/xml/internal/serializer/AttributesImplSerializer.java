@@ -23,10 +23,11 @@
 
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.AttributesImpl;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class extends org.xml.sax.helpers.AttributesImpl which implements org.

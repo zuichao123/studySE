@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import javax.xml.transform.TransformerException;
-
 import org.w3c.dom.Node;
+
+import javax.xml.transform.TransformerException;
 
 /**
  * This class implements an exception object that all

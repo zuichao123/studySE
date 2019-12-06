@@ -25,32 +25,21 @@
 
 package com.sun.security.auth.module;
 
+import sun.security.util.Password;
+
+import javax.security.auth.DestroyFailedException;
+import javax.security.auth.Destroyable;
+import javax.security.auth.Subject;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
+import javax.security.auth.spi.LoginModule;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.*;
-import java.security.cert.*;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
-import java.util.*;
-import javax.security.auth.Destroyable;
-import javax.security.auth.DestroyFailedException;
-import javax.security.auth.Subject;
-import javax.security.auth.x500.*;
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.ConfirmationCallback;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.TextOutputCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
-import javax.security.auth.login.FailedLoginException;
-import javax.security.auth.login.LoginException;
-import javax.security.auth.spi.LoginModule;
-
-import sun.security.util.Password;
 
 /**
  * Provides a JAAS login module that prompts for a key store alias and

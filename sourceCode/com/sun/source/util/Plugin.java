@@ -24,8 +24,8 @@
  */
 package com.sun.source.util;
 
-import java.util.ServiceLoader;
 import javax.tools.StandardLocation;
+import java.util.ServiceLoader;
 
 /**
  * The interface for a javac plug-in.

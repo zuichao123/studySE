@@ -22,12 +22,12 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
+import org.xml.sax.ContentHandler;
+import org.xml.sax.DocumentHandler;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
-
-import org.xml.sax.ContentHandler;
-import org.xml.sax.DocumentHandler;
 
 
 /**

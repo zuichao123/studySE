@@ -25,28 +25,25 @@
 
 package com.sun.security.auth.module;
 
-import java.security.AccessController;
-import java.net.SocketPermission;
-import java.security.Principal;
-import java.security.PrivilegedAction;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.Set;
-
-import javax.naming.*;
-import javax.naming.directory.*;
-import javax.naming.ldap.*;
-import javax.security.auth.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
-
 import com.sun.security.auth.LdapPrincipal;
 import com.sun.security.auth.UserPrincipal;
+
+import javax.security.auth.AuthPermission;
+import javax.security.auth.Subject;
+import javax.security.auth.callback.CallbackHandler;
+import javax.security.auth.callback.NameCallback;
+import javax.security.auth.callback.PasswordCallback;
+import javax.security.auth.login.Configuration;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
+import javax.security.auth.spi.LoginModule;
+import java.net.SocketPermission;
+import java.security.AccessController;
+import java.security.Principal;
+import java.security.PrivilegedAction;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**

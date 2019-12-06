@@ -25,8 +25,8 @@
 
 package com.sun.source.tree;
 
-import java.util.List;
 import javax.tools.JavaFileObject;
+import java.util.List;
 
 /**
  * Represents the abstract syntax tree for compilation units (source

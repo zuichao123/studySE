@@ -25,9 +25,8 @@
 
 package com.sun.source.tree;
 
-import java.util.List;
-
 import javax.lang.model.element.Name;
+import java.util.List;
 
 /**
  * A tree node for a member reference expression.

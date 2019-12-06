@@ -28,7 +28,6 @@ import com.sun.org.apache.xml.internal.dtm.DTMManager;
 import com.sun.org.apache.xml.internal.utils.XMLString;
 import com.sun.org.apache.xpath.internal.NodeSetDTM;
 import com.sun.org.apache.xpath.internal.axes.NodeSequence;
-
 import org.w3c.dom.NodeList;
 import org.w3c.dom.traversal.NodeIterator;
 

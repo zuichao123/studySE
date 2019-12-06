@@ -25,9 +25,9 @@
 
 package com.sun.security.auth;
 
+import javax.security.auth.Subject;
 import java.security.CodeSource;
 import java.security.PermissionCollection;
-import javax.security.auth.Subject;
 
 /**
  * This class represents a default implementation for

@@ -22,10 +22,10 @@
  */
 package com.sun.org.apache.xpath.internal.compiler;
 
-import java.util.Vector;
-
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
+import java.util.Vector;
 
 /**
  * This class is in charge of lexical processing of the XPath

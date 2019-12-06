@@ -22,19 +22,15 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
+import org.w3c.dom.Node;
+
+import javax.xml.transform.SourceLocator;
+import javax.xml.transform.Transformer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.util.Properties;
 import java.util.Vector;
-import javax.xml.transform.SourceLocator;
-import javax.xml.transform.Transformer;
-import org.w3c.dom.Node;
-import org.xml.sax.Attributes;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.Locator;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
 
 
 /**

@@ -25,8 +25,6 @@
 
 package com.sun.source.util;
 
-import com.sun.source.doctree.*;
-
 /**
  * A simple visitor for tree nodes.
  *

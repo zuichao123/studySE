@@ -28,13 +28,13 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
-import java.io.IOException;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.AttributeList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+
+import java.io.IOException;
 
 
 /**

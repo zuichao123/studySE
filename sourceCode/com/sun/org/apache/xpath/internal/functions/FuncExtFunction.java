@@ -22,19 +22,15 @@
  */
 package com.sun.org.apache.xpath.internal.functions;
 
-import java.util.Vector;
-
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xpath.internal.Expression;
-import com.sun.org.apache.xpath.internal.ExpressionNode;
 import com.sun.org.apache.xpath.internal.ExpressionOwner;
-import com.sun.org.apache.xpath.internal.ExtensionsProvider;
-import com.sun.org.apache.xpath.internal.XPathContext;
-import com.sun.org.apache.xpath.internal.XPathVisitor;
 import com.sun.org.apache.xpath.internal.objects.XNull;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import com.sun.org.apache.xpath.internal.res.XPATHMessages;
+
+import java.util.Vector;
 
 /**
  * An object of this class represents an extension call expression.  When

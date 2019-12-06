@@ -22,13 +22,12 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.io.Serializable;
-
-import javax.xml.transform.SourceLocator;
-
 import org.xml.sax.Locator;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.LocatorImpl;
+
+import javax.xml.transform.SourceLocator;
+import java.io.Serializable;
 
 /**
  * Class SAXSourceLocator extends org.xml.sax.helpers.LocatorImpl

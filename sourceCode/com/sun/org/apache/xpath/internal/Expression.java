@@ -22,9 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.dtm.DTM;
 import com.sun.org.apache.xml.internal.dtm.DTMIterator;
@@ -32,8 +29,10 @@ import com.sun.org.apache.xml.internal.utils.XMLString;
 import com.sun.org.apache.xpath.internal.objects.XNodeSet;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
-
 import org.xml.sax.ContentHandler;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.TransformerException;
 
 /**
  * This abstract class serves as the base for all expression objects.  An

@@ -21,33 +21,25 @@
 
 package com.sun.org.apache.xpath.internal.jaxp;
 
-import com.sun.org.apache.xpath.internal.*;
-import javax.xml.transform.TransformerException;
-
-import com.sun.org.apache.xpath.internal.objects.XObject;
-import com.sun.org.apache.xml.internal.dtm.DTM;
-import com.sun.org.apache.xml.internal.utils.PrefixResolver;
-import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xalan.internal.utils.FactoryImpl;
 import com.sun.org.apache.xalan.internal.utils.FeatureManager;
+import com.sun.org.apache.xml.internal.dtm.DTM;
+import com.sun.org.apache.xpath.internal.objects.XObject;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.traversal.NodeIterator;
+import org.xml.sax.InputSource;
 
-import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
-import javax.xml.xpath.XPathExpressionException;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFunctionResolver;
 import javax.xml.xpath.XPathVariableResolver;
-import javax.xml.xpath.XPathConstants;
-
-import org.w3c.dom.Node;
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.traversal.NodeIterator;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-
-import org.xml.sax.InputSource;
 
 /**
  * The XPathExpression interface encapsulates a (compiled) XPath expression.

@@ -22,13 +22,10 @@
  */
 package com.sun.org.apache.xpath.internal.operations;
 
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.utils.QName;
 import com.sun.org.apache.xpath.internal.Expression;
 import com.sun.org.apache.xpath.internal.ExpressionOwner;
-import com.sun.org.apache.xpath.internal.XPath;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.XPathVisitor;
 import com.sun.org.apache.xpath.internal.axes.PathComponent;
@@ -36,6 +33,8 @@ import com.sun.org.apache.xpath.internal.axes.WalkerFactory;
 import com.sun.org.apache.xpath.internal.objects.XNodeSet;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
+import javax.xml.transform.TransformerException;
 
 
 /**

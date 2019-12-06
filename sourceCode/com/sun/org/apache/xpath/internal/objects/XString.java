@@ -22,8 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal.objects;
 
-import java.util.Locale;
-
 import com.sun.org.apache.xml.internal.dtm.DTM;
 import com.sun.org.apache.xml.internal.utils.XMLCharacterRecognizer;
 import com.sun.org.apache.xml.internal.utils.XMLString;
@@ -31,6 +29,8 @@ import com.sun.org.apache.xml.internal.utils.XMLStringFactory;
 import com.sun.org.apache.xpath.internal.ExpressionOwner;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.XPathVisitor;
+
+import java.util.Locale;
 
 /**
  * This class represents an XPath string object, and is capable of

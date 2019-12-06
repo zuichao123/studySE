@@ -26,7 +26,6 @@ import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.utils.DOM2Helper;
 import com.sun.org.apache.xpath.internal.axes.ContextNodeList;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
-
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

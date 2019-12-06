@@ -22,19 +22,17 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.util.StringTokenizer;
-import java.util.Vector;
+import com.sun.org.apache.xml.internal.utils.SystemIDResolver;
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
-
-import com.sun.org.apache.xml.internal.utils.SystemIDResolver;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.helpers.DefaultHandler;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 /**
  * Search for the xml-stylesheet processing instructions in an XML document.

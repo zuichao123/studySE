@@ -24,33 +24,23 @@ package com.sun.org.apache.xpath.internal;
 
 import com.sun.org.apache.xalan.internal.extensions.ExpressionContext;
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
-import com.sun.org.apache.xml.internal.dtm.Axis;
-import com.sun.org.apache.xml.internal.dtm.DTM;
-import com.sun.org.apache.xml.internal.dtm.DTMFilter;
-import com.sun.org.apache.xml.internal.dtm.DTMIterator;
-import com.sun.org.apache.xml.internal.dtm.DTMManager;
-import com.sun.org.apache.xml.internal.dtm.DTMWSFilter;
 import com.sun.org.apache.xml.internal.dtm.ref.sax2dtm.SAX2RTFDTM;
-import com.sun.org.apache.xml.internal.utils.IntStack;
-import com.sun.org.apache.xml.internal.utils.NodeVector;
-import com.sun.org.apache.xml.internal.utils.ObjectStack;
-import com.sun.org.apache.xml.internal.utils.PrefixResolver;
-import com.sun.org.apache.xml.internal.utils.XMLString;
 import com.sun.org.apache.xpath.internal.axes.SubContextList;
 import com.sun.org.apache.xpath.internal.objects.DTMXRTreeFrag;
 import com.sun.org.apache.xpath.internal.objects.XObject;
 import com.sun.org.apache.xpath.internal.objects.XString;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+import org.xml.sax.XMLReader;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.SourceLocator;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.URIResolver;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Stack;
 import java.util.Vector;
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.SourceLocator;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.URIResolver;
-import org.xml.sax.XMLReader;
 
 /**
  * Default class for the runtime execution context for XPath.

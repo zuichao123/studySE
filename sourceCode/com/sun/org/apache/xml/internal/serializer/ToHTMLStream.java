@@ -22,17 +22,16 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.util.Properties;
-
-import javax.xml.transform.Result;
-
 import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
 import com.sun.org.apache.xml.internal.serializer.utils.Utils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+
+import javax.xml.transform.Result;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.Properties;
 
 /**
  * This serializer takes a series of SAX or

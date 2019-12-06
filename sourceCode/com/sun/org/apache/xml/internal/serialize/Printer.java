@@ -28,9 +28,9 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
-import java.io.Writer;
-import java.io.StringWriter;
 import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
 
 /**

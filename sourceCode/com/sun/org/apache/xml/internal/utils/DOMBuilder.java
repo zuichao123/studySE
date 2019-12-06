@@ -22,22 +22,14 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.util.Stack;
-
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentFragment;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.Text;
-import org.w3c.dom.CDATASection;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.ext.LexicalHandler;
+
+import java.util.Stack;
 /**
  * This class takes SAX events (in addition to some extra events
  * that SAX doesn't handle yet) and adds the result to a document

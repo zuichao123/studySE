@@ -25,8 +25,8 @@
 
 package com.sun.source.doctree;
 
-import java.util.List;
 import javax.lang.model.element.Name;
+import java.util.List;
 
 /**
  * A tree node for the start of an HTML element.

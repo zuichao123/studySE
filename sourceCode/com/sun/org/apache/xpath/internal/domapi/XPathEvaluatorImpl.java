@@ -23,8 +23,6 @@
 
 package com.sun.org.apache.xpath.internal.domapi;
 
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
 import com.sun.org.apache.xpath.internal.XPath;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
@@ -36,6 +34,8 @@ import org.w3c.dom.xpath.XPathEvaluator;
 import org.w3c.dom.xpath.XPathException;
 import org.w3c.dom.xpath.XPathExpression;
 import org.w3c.dom.xpath.XPathNSResolver;
+
+import javax.xml.transform.TransformerException;
 
 /**
  *

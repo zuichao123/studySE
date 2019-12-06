@@ -26,22 +26,16 @@
 
 package com.sun.security.auth.module;
 
-import java.io.*;
+import sun.misc.HexDumpEncoder;
+import sun.security.jgss.krb5.Krb5Util;
+import sun.security.krb5.Credentials;
+
+import javax.security.auth.kerberos.KeyTab;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.text.MessageFormat;
-import java.util.*;
-
-import javax.security.auth.*;
-import javax.security.auth.kerberos.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
-
-import sun.security.krb5.*;
-import sun.security.jgss.krb5.Krb5Util;
-import sun.security.krb5.Credentials;
-import sun.misc.HexDumpEncoder;
 
 /**
  * <p> This <code>LoginModule</code> authenticates users using

@@ -23,19 +23,6 @@
 package com.sun.org.apache.xml.internal.serializer;
 
 import com.sun.org.apache.xalan.internal.utils.SecuritySupport;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.util.Properties;
-import java.util.StringTokenizer;
-import java.util.Vector;
-
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
 import com.sun.org.apache.xml.internal.serializer.utils.Utils;
 import com.sun.org.apache.xml.internal.serializer.utils.WrappedRuntimeException;
@@ -43,6 +30,18 @@ import org.w3c.dom.Node;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
+import java.util.Properties;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 //import com.sun.media.sound.IESecurity;
 

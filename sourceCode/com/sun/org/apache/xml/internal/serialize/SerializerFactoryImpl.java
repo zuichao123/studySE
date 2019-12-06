@@ -22,10 +22,11 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
-import java.io.OutputStream;
-import java.io.Writer;
-import java.io.UnsupportedEncodingException;
 import com.sun.org.apache.xerces.internal.dom.DOMMessageFormatter;
+
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 
 /**
  * Default serializer factory can construct serializers for the three

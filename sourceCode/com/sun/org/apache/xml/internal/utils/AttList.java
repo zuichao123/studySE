@@ -25,7 +25,6 @@ package com.sun.org.apache.xml.internal.utils;
 import org.w3c.dom.Attr;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-
 import org.xml.sax.Attributes;
 
 /**

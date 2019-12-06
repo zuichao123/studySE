@@ -25,12 +25,12 @@
 
 package com.sun.source.util;
 
+import com.sun.source.doctree.DocCommentTree;
+
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.element.Element;
-import javax.tools.JavaCompiler.CompilationTask;
-
-import com.sun.source.doctree.DocCommentTree;
 import javax.tools.Diagnostic;
+import javax.tools.JavaCompiler.CompilationTask;
 
 /**
  * Provides access to syntax trees for doc comments.

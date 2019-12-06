@@ -26,6 +26,7 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 import com.sun.org.apache.xerces.internal.dom.DOMMessageFormatter;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;

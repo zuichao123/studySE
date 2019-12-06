@@ -21,9 +21,9 @@
 
 package com.sun.org.apache.xpath.internal.jaxp;
 
-import org.w3c.dom.Node;
-import org.w3c.dom.NamedNodeMap;
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 
 import javax.xml.namespace.NamespaceContext;
 

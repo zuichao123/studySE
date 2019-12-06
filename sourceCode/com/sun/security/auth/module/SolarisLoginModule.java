@@ -25,15 +25,12 @@
 
 package com.sun.security.auth.module;
 
-import java.util.*;
-import java.io.IOException;
-import javax.security.auth.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
-import com.sun.security.auth.SolarisPrincipal;
-import com.sun.security.auth.SolarisNumericUserPrincipal;
 import com.sun.security.auth.SolarisNumericGroupPrincipal;
+import com.sun.security.auth.SolarisNumericUserPrincipal;
+import com.sun.security.auth.SolarisPrincipal;
+
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 
 /**
  * <p> This <code>LoginModule</code> imports a user's Solaris

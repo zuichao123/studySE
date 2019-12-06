@@ -22,8 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal.axes;
 
-import java.util.Vector;
-
 import com.sun.org.apache.xml.internal.dtm.DTM;
 import com.sun.org.apache.xml.internal.dtm.DTMFilter;
 import com.sun.org.apache.xml.internal.dtm.DTMIterator;
@@ -32,6 +30,8 @@ import com.sun.org.apache.xml.internal.utils.NodeVector;
 import com.sun.org.apache.xpath.internal.NodeSetDTM;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.objects.XObject;
+
+import java.util.Vector;
 
 /**
  * This class is the dynamic wrapper for a Xalan DTMIterator instance, and

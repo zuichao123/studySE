@@ -22,23 +22,21 @@
 
 package com.sun.org.apache.xpath.internal.jaxp;
 
-import javax.xml.transform.TransformerException;
-import javax.xml.xpath.XPathFunctionResolver;
-import javax.xml.xpath.XPathFunction;
-import javax.xml.xpath.XPathFunctionException;
-
-import com.sun.org.apache.xpath.internal.ExtensionsProvider;
-import com.sun.org.apache.xpath.internal.XPathContext;
-import com.sun.org.apache.xpath.internal.objects.XObject;
-import com.sun.org.apache.xpath.internal.objects.XNodeSet;
-import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xalan.internal.utils.FeatureManager;
-
+import com.sun.org.apache.xpath.internal.ExtensionsProvider;
 import com.sun.org.apache.xpath.internal.functions.FuncExtFunction;
-import java.util.Vector;
-import java.util.ArrayList;
+import com.sun.org.apache.xpath.internal.objects.XNodeSet;
+import com.sun.org.apache.xpath.internal.objects.XObject;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
 import javax.xml.namespace.QName;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathFunction;
+import javax.xml.xpath.XPathFunctionException;
+import javax.xml.xpath.XPathFunctionResolver;
+import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *

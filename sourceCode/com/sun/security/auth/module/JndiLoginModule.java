@@ -25,22 +25,17 @@
 
 package com.sun.security.auth.module;
 
-import javax.security.auth.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
-import javax.naming.*;
-import javax.naming.directory.*;
+import com.sun.security.auth.UnixNumericGroupPrincipal;
+import com.sun.security.auth.UnixNumericUserPrincipal;
+import com.sun.security.auth.UnixPrincipal;
 
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
-import java.util.Map;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.ResourceBundle;
-
-import com.sun.security.auth.UnixPrincipal;
-import com.sun.security.auth.UnixNumericUserPrincipal;
-import com.sun.security.auth.UnixNumericGroupPrincipal;
 
 
 /**

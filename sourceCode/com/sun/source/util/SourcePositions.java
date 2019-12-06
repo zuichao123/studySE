@@ -25,8 +25,6 @@
 
 package com.sun.source.util;
 
-import com.sun.source.tree.*;
-
 /**
  * Provides methods to obtain the position of a Tree within a CompilationUnit.
  * A position is defined as a simple character offset from the start of a

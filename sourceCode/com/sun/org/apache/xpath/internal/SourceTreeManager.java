@@ -22,8 +22,10 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import java.io.IOException;
-import java.util.Vector;
+import com.sun.org.apache.xml.internal.dtm.DTM;
+import com.sun.org.apache.xml.internal.utils.SystemIDResolver;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.SourceLocator;
@@ -31,12 +33,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamSource;
-
-import com.sun.org.apache.xml.internal.dtm.DTM;
-import com.sun.org.apache.xml.internal.utils.SystemIDResolver;
-
-import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
+import java.io.IOException;
+import java.util.Vector;
 
 /**
  * This class bottlenecks all management of source trees.  The methods

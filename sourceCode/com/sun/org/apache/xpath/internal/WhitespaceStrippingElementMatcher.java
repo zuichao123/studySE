@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import javax.xml.transform.TransformerException;
-
 import org.w3c.dom.Element;
+
+import javax.xml.transform.TransformerException;
 
 /**
  * A class that implements this interface can tell if a given element should

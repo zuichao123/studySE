@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import javax.xml.transform.SourceLocator;
-
 import org.xml.sax.SAXException;
+
+import javax.xml.transform.SourceLocator;
 
 /**
  * This interface describes extensions to the SAX ContentHandler interface.

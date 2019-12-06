@@ -22,16 +22,15 @@
  */
  package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
+import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
+import com.sun.org.apache.xml.internal.serializer.utils.Utils;
+import org.xml.sax.SAXException;
 
 import javax.xml.transform.ErrorListener;
 import javax.xml.transform.Result;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
-
-import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
-import com.sun.org.apache.xml.internal.serializer.utils.Utils;
-import org.xml.sax.SAXException;
+import java.io.IOException;
 
 /**
  * This class converts SAX or SAX-like calls to a

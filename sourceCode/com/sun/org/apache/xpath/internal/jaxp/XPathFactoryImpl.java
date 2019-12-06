@@ -22,10 +22,10 @@
 package com.sun.org.apache.xpath.internal.jaxp;
 
 import com.sun.org.apache.xalan.internal.XalanConstants;
-import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xalan.internal.utils.FeatureManager;
 import com.sun.org.apache.xalan.internal.utils.FeaturePropertyBase;
+import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
 
 import javax.xml.XMLConstants;
 import javax.xml.xpath.XPathFactory;

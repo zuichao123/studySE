@@ -23,6 +23,7 @@ package com.sun.org.apache.xml.internal.serialize;
 
 
 import com.sun.org.apache.xerces.internal.util.EncodingMap;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 import java.util.Map;

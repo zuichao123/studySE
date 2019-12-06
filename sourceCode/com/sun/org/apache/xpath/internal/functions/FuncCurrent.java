@@ -22,17 +22,16 @@
  */
 package com.sun.org.apache.xpath.internal.functions;
 
+import com.sun.org.apache.xalan.internal.res.XSLMessages;
+import com.sun.org.apache.xalan.internal.res.XSLTErrorResources;
 import com.sun.org.apache.xml.internal.dtm.DTM;
-import com.sun.org.apache.xml.internal.dtm.DTMIterator;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.axes.LocPathIterator;
 import com.sun.org.apache.xpath.internal.axes.PredicatedNodeTest;
+import com.sun.org.apache.xpath.internal.axes.SubContextList;
 import com.sun.org.apache.xpath.internal.objects.XNodeSet;
 import com.sun.org.apache.xpath.internal.objects.XObject;
-import com.sun.org.apache.xpath.internal.axes.SubContextList;
 import com.sun.org.apache.xpath.internal.patterns.StepPattern;
-import com.sun.org.apache.xalan.internal.res.XSLMessages;
-import com.sun.org.apache.xalan.internal.res.XSLTErrorResources;
 
 
 /**

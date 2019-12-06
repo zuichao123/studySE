@@ -25,8 +25,9 @@
 
 package com.sun.security.auth;
 
-import java.security.Principal;
 import sun.security.x509.X500Name;
+
+import java.security.Principal;
 
 /**
  * <p> This class represents an X.500 <code>Principal</code>.

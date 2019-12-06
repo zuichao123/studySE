@@ -27,8 +27,6 @@ package com.sun.source.util;
 
 import java.util.Iterator;
 
-import com.sun.source.tree.*;
-
 /**
  * A path of tree nodes, typically used to represent the sequence of ancestor
  * nodes of a tree node up to the top level CompilationUnitTree node.

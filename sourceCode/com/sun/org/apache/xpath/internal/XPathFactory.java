@@ -22,9 +22,9 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import javax.xml.transform.SourceLocator;
-
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
+
+import javax.xml.transform.SourceLocator;
 
 /**
  * Factory class for creating an XPath.  Implementors of XPath derivatives

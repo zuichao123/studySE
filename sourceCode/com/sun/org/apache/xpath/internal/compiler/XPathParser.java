@@ -22,9 +22,6 @@
  */
 package com.sun.org.apache.xpath.internal.compiler;
 
-import javax.xml.transform.ErrorListener;
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xalan.internal.res.XSLMessages;
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
 import com.sun.org.apache.xpath.internal.XPathProcessorException;
@@ -32,6 +29,9 @@ import com.sun.org.apache.xpath.internal.domapi.XPathStylesheetDOM3Exception;
 import com.sun.org.apache.xpath.internal.objects.XNumber;
 import com.sun.org.apache.xpath.internal.objects.XString;
 import com.sun.org.apache.xpath.internal.res.XPATHErrorResources;
+
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.TransformerException;
 
 /**
  * Tokenizes and parses XPath expressions. This should really be named

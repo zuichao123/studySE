@@ -25,10 +25,10 @@
 
 package com.sun.source.util;
 
+import com.sun.source.tree.CompilationUnitTree;
+
 import javax.lang.model.element.TypeElement;
 import javax.tools.JavaFileObject;
-
-import com.sun.source.tree.CompilationUnitTree;
 
 /**
  * Provides details about work that has been done by the JDK Java Compiler, javac.

@@ -24,26 +24,7 @@ package com.sun.org.apache.xml.internal.utils;
 
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
-
-import org.w3c.dom.Attr;
-import org.w3c.dom.CDATASection;
-import org.w3c.dom.Comment;
 import org.w3c.dom.DOMException;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentFragment;
-import org.w3c.dom.DocumentType;
-import org.w3c.dom.Element;
-import org.w3c.dom.EntityReference;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.ProcessingInstruction;
-import org.w3c.dom.Text;
-
-import org.w3c.dom.UserDataHandler;
-import org.w3c.dom.DOMConfiguration;
-import org.w3c.dom.TypeInfo;
 /**
  * <meta name="usage" content="internal"/>
  * To be subclassed by classes that wish to fake being nodes.

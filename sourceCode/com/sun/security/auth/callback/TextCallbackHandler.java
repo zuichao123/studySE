@@ -26,23 +26,14 @@
 package com.sun.security.auth.callback;
 
 /* JAAS imports */
-import javax.security.auth.callback.Callback;
-import javax.security.auth.callback.CallbackHandler;
-import javax.security.auth.callback.ConfirmationCallback;
-import javax.security.auth.callback.NameCallback;
-import javax.security.auth.callback.PasswordCallback;
-import javax.security.auth.callback.TextOutputCallback;
-import javax.security.auth.callback.UnsupportedCallbackException;
+import sun.security.util.Password;
 
-/* Java imports */
+import javax.security.auth.callback.UnsupportedCallbackException;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PushbackInputStream;
-import java.util.Arrays;
 
-import sun.security.util.Password;
+/* Java imports */
 
 /**
  * <p>

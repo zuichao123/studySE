@@ -23,6 +23,7 @@ package com.sun.org.apache.xml.internal.serialize;
 
 import com.sun.org.apache.xerces.internal.utils.ObjectFactory;
 import com.sun.org.apache.xerces.internal.utils.SecuritySupport;
+
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;

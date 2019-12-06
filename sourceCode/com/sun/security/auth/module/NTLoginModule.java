@@ -25,20 +25,9 @@
 
 package com.sun.security.auth.module;
 
-import java.util.*;
-import java.io.IOException;
-import javax.security.auth.*;
-import javax.security.auth.callback.*;
-import javax.security.auth.login.*;
-import javax.security.auth.spi.*;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.auth.login.LoginException;
 import java.security.Principal;
-import com.sun.security.auth.NTUserPrincipal;
-import com.sun.security.auth.NTSidUserPrincipal;
-import com.sun.security.auth.NTDomainPrincipal;
-import com.sun.security.auth.NTSidDomainPrincipal;
-import com.sun.security.auth.NTSidPrimaryGroupPrincipal;
-import com.sun.security.auth.NTSidGroupPrincipal;
-import com.sun.security.auth.NTNumericCredential;
 
 /**
  * <p> This <code>LoginModule</code>

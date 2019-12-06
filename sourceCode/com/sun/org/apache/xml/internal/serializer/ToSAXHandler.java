@@ -22,14 +22,11 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.util.Vector;
-
 import org.xml.sax.Attributes;
-import org.xml.sax.ContentHandler;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.ext.LexicalHandler;
+
+import java.util.Vector;
 
 /**
  * This class is used to provide a base behavior to be inherited

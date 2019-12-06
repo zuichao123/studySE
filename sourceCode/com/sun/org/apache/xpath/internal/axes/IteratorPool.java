@@ -22,10 +22,10 @@
  */
 package com.sun.org.apache.xpath.internal.axes;
 
-import java.util.ArrayList;
-
 import com.sun.org.apache.xml.internal.dtm.DTMIterator;
 import com.sun.org.apache.xml.internal.utils.WrappedRuntimeException;
+
+import java.util.ArrayList;
 
 /**
  * Pool of object of a given type to pick from to help memory usage

@@ -22,11 +22,11 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.util.ArrayList;
-
+import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
-import com.sun.org.apache.xalan.internal.utils.ObjectFactory;
+
+import java.util.ArrayList;
 
 
 /**

@@ -29,7 +29,6 @@ import com.sun.org.apache.xpath.internal.Expression;
 import com.sun.org.apache.xpath.internal.ExpressionNode;
 import com.sun.org.apache.xpath.internal.XPathContext;
 import com.sun.org.apache.xpath.internal.axes.RTFIterator;
-
 import org.w3c.dom.NodeList;
 
 /**

@@ -25,22 +25,15 @@ package com.sun.org.apache.xml.internal.utils;
 import com.sun.org.apache.xml.internal.dtm.ref.DTMNodeProxy;
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
+import org.w3c.dom.Node;
+
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.Attr;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.DocumentType;
-import org.w3c.dom.Element;
-import org.w3c.dom.Entity;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.Text;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
 
 /**
  * @deprecated Since the introduction of the DTM, this class will be removed.

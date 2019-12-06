@@ -22,16 +22,15 @@
  */
 package com.sun.org.apache.xpath.internal;
 
-import javax.xml.transform.TransformerException;
-
 import com.sun.org.apache.xml.internal.utils.PrefixResolver;
 import com.sun.org.apache.xml.internal.utils.PrefixResolverDefault;
 import com.sun.org.apache.xpath.internal.objects.XObject;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.traversal.NodeIterator;
+
+import javax.xml.transform.TransformerException;
 
 /**
  * The methods in this class are convenience methods into the

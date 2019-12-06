@@ -22,15 +22,14 @@
  */
 package com.sun.org.apache.xml.internal.serializer;
 
-import java.io.IOException;
-
-import javax.xml.transform.Transformer;
-
 import org.w3c.dom.Node;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.ext.DeclHandler;
+
+import javax.xml.transform.Transformer;
+import java.io.IOException;
 
 /**
  * This interface is the one that a serializer implements. It is a group of

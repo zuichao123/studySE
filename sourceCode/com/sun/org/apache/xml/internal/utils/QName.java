@@ -22,13 +22,12 @@
  */
 package com.sun.org.apache.xml.internal.utils;
 
-import java.util.Stack;
-import java.util.StringTokenizer;
-
 import com.sun.org.apache.xml.internal.res.XMLErrorResources;
 import com.sun.org.apache.xml.internal.res.XMLMessages;
-
 import org.w3c.dom.Element;
+
+import java.util.Stack;
+import java.util.StringTokenizer;
 
 /**
  * Class to represent a qualified name: "The name of an internal XSLT object,

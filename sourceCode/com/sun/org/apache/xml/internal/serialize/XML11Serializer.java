@@ -37,18 +37,17 @@
 package com.sun.org.apache.xml.internal.serialize;
 
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
-
 import com.sun.org.apache.xerces.internal.dom.DOMMessageFormatter;
-import com.sun.org.apache.xerces.internal.impl.Constants;
 import com.sun.org.apache.xerces.internal.util.NamespaceSupport;
 import com.sun.org.apache.xerces.internal.util.SymbolTable;
 import com.sun.org.apache.xerces.internal.util.XML11Char;
 import com.sun.org.apache.xerces.internal.util.XMLChar;
-import org.xml.sax.SAXException;
 import org.w3c.dom.DOMError;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Writer;
 
 /**
  * Implements an XML serializer supporting both DOM and SAX pretty
