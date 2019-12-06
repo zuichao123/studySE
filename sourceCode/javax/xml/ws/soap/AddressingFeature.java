@@ -25,9 +25,9 @@
 
 package javax.xml.ws.soap;
 
-import javax.xml.ws.WebServiceFeature;
 import javax.xml.ws.Endpoint;
 import javax.xml.ws.Service;
+import javax.xml.ws.WebServiceFeature;
 
 /**
  * AddressingFeature represents the use of WS-Addressing with either

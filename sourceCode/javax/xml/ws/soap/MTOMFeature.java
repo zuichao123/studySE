@@ -25,10 +25,10 @@
 
 package javax.xml.ws.soap;
 
-import javax.xml.ws.WebServiceFeature;
-import javax.xml.ws.WebServiceException;
 import javax.xml.ws.Endpoint;
 import javax.xml.ws.Service;
+import javax.xml.ws.WebServiceException;
+import javax.xml.ws.WebServiceFeature;
 
 /**
  * This feature represents the use of MTOM with a

@@ -25,8 +25,8 @@
 
 package javax.xml.ws;
 
-import java.util.Map;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
+import java.util.Map;
 
 /**
  * The <code>BindingProvider</code> interface provides access to the

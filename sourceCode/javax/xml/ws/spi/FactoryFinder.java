@@ -25,10 +25,8 @@
 
 package javax.xml.ws.spi;
 
-import java.io.*;
-
-import java.util.Properties;
 import javax.xml.ws.WebServiceException;
+import java.util.Properties;
 
 class FactoryFinder {
 

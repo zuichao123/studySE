@@ -25,12 +25,12 @@
 
 package javax.xml.ws;
 
-import javax.xml.namespace.QName;
-import java.util.Iterator;
-import javax.xml.ws.handler.HandlerResolver;
 import javax.xml.bind.JAXBContext;
-import javax.xml.ws.spi.ServiceDelegate;
+import javax.xml.namespace.QName;
+import javax.xml.ws.handler.HandlerResolver;
 import javax.xml.ws.spi.Provider;
+import javax.xml.ws.spi.ServiceDelegate;
+import java.util.Iterator;
 
 /**
  * <code>Service</code> objects provide the client view of a Web service.

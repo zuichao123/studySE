@@ -25,11 +25,10 @@
 
 package javax.xml.transform.stream;
 
+import javax.xml.transform.Source;
 import java.io.File;
 import java.io.InputStream;
 import java.io.Reader;
-
-import javax.xml.transform.Source;
 
 /**
  * <p>Acts as an holder for a transformation Source in the form

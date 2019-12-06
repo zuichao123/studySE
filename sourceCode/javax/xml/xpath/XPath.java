@@ -26,8 +26,9 @@
 package javax.xml.xpath;
 
 import org.xml.sax.InputSource;
-import javax.xml.namespace.QName;
+
 import javax.xml.namespace.NamespaceContext;
+import javax.xml.namespace.QName;
 
 /**
  * <p><code>XPath</code> provides access to the XPath evaluation environment and expressions.</p>

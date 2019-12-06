@@ -25,16 +25,17 @@
 
 package javax.xml.ws.spi;
 
-import java.net.URL;
-import java.util.List;
-import java.util.Iterator;
-import java.util.Map;
-import java.lang.reflect.Method;
-import javax.xml.namespace.QName;
-import javax.xml.ws.*;
-import javax.xml.ws.wsaddressing.W3CEndpointReference;
-
 import org.w3c.dom.Element;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.WebServiceException;
+import javax.xml.ws.WebServiceFeature;
+import javax.xml.ws.wsaddressing.W3CEndpointReference;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Service provider for <code>ServiceDelegate</code> and

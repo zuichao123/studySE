@@ -25,15 +25,11 @@
 
 package javax.xml.ws.spi;
 
-import java.util.Iterator;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Dispatch;
-import javax.xml.ws.Service;
-import javax.xml.ws.handler.HandlerResolver;
-import javax.xml.ws.WebServiceFeature;
 import javax.xml.bind.JAXBContext;
-import javax.xml.ws.EndpointReference;
-import javax.xml.ws.WebServiceException;
+import javax.xml.namespace.QName;
+import javax.xml.ws.*;
+import javax.xml.ws.handler.HandlerResolver;
+import java.util.Iterator;
 
 
 /**

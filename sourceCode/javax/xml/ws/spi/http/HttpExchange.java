@@ -26,14 +26,14 @@
 package javax.xml.ws.spi.http;
 
 import javax.xml.ws.handler.MessageContext;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.security.Principal;
 
 /**
  * This class encapsulates a HTTP request received and a

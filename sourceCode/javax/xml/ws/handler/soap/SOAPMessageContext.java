@@ -25,9 +25,9 @@
 
 package javax.xml.ws.handler.soap;
 
-import javax.xml.soap.SOAPMessage;
 import javax.xml.bind.JAXBContext;
 import javax.xml.namespace.QName;
+import javax.xml.soap.SOAPMessage;
 import java.util.Set;
 
 /** The interface <code>SOAPMessageContext</code>

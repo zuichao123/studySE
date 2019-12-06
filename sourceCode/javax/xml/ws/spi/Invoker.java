@@ -27,8 +27,8 @@ package javax.xml.ws.spi;
 
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.WebServiceFeature;
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Invoker hides the detail of calling into application endpoint

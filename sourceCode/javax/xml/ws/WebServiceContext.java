@@ -25,10 +25,11 @@
 
 package javax.xml.ws;
 
-import java.security.Principal;
+import org.w3c.dom.Element;
+
 import javax.xml.ws.handler.MessageContext;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
-import org.w3c.dom.Element;
+import java.security.Principal;
 
 
 /**

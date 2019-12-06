@@ -25,12 +25,13 @@
 
 package javax.xml.ws;
 
-import java.util.List;
-import java.util.Map;
+import org.w3c.dom.Element;
+
 import javax.xml.ws.spi.Provider;
 import javax.xml.ws.spi.http.HttpContext;
 import javax.xml.ws.wsaddressing.W3CEndpointReference;
-import org.w3c.dom.Element;
+import java.util.List;
+import java.util.Map;
 
 
 /**

@@ -25,16 +25,13 @@
 
 package javax.xml.validation;
 
-import java.io.File;
-import java.net.URL;
+import org.w3c.dom.ls.LSResourceResolver;
+import org.xml.sax.*;
+
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
-import org.w3c.dom.ls.LSResourceResolver;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXNotRecognizedException;
-import org.xml.sax.SAXNotSupportedException;
-import org.xml.sax.SAXParseException;
+import java.io.File;
+import java.net.URL;
 
 /**
  * Factory that creates {@link Schema} objects&#x2E; Entry-point to
